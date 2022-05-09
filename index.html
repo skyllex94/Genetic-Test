@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="styles.css" rel="stylesheet">
+    <script src="app.js"></script>
+    <title>Genetic Test</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Genetic Test</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Начало</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="services1.html">Услуги</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="help.html">Помощна страница</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html" tabindex="-1" aria-disabled="true">Контакти</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Търсене" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Търси</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div id="carouselExampleCaptions" class="carousel slide carousel-dark" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/img/1.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3>Намери истината в гените си!</h3>
+                    <p>Какъв е твоя път е въпроса на който трябва всеки един от нас да си отговори.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/img/2.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3>За нас и нашето семейство!</h3>
+                    <p>Разбери за каква работа си предразположен да вършиш.</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <section id="primary" class="container">
+        <div class="row">
+            <div class="col">
+                <h2 class="text-center m-5">Как работи нашият продукт?</h2>
+            </div>
+        </div>
+        <div class="card mx-3">
+            <div class="row align-items-center h-100">
+                <div class="col-md-4 mx-auto">
+                    <img src="/img/fingerprint.jpg" class="img-fluid mx-auto d-block rounded-start" alt="...">
+                </div>
+                <div class="col-md-8 mx-auto">
+                    <div class="card-body">
+                        <h5 class="card-title">Защо нашите пръстови отпечатъци са важни?</h5>
+                        <p class="card-text">Всеки един от нас има уникални отпечатъци и чрез тях може да видим към
+                            какво е предразположен всеки един от нас и във какво е добър. Имайки тези знания, ние може
+                            да насочим себе си към най-добрата кариерна работа за нас, или да насочим децата си към това
+                            към което ще са най-предразположени.</p>
+                        <p class="card-text"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mx-3">
+            <div class="row align-items-center h-100">
+                <div class="col-md-8 mx-auto">
+                    <div class="card-body">
+                        <h5 class="card-title">Genetic Test е решението!</h5>
+                        <p class="card-text">С нашия продукт ще можете да сканирате всеки един от вашите пръстови
+                            отпечатъци и иновативния ни продукт ще ви даде обстоен доклад ЗА ВСИЧКО КОЕТО И "ИЗПИСАНО"
+                            на вашите пръстови отпечатъци. Самият доклад е 30+ страници със всякакви детайли за това
+                            което крият гените ви!</p>
+                        <p class="card-text"></p>
+                    </div>
+                </div>
+                <div class="col-md-4 mx-auto">
+                    <img src="/img/fingers.jpg" class="img-fluid mx-auto d-block rounded-start " alt="...">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="secondary" class="container my-3">
+        <div class="row">
+            <div class="col">
+                <h2 class="text-center m-5">Какви са нашите услуги?</h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-3 text-center">
+                <div class="card border-dark mb-3 h-100">
+                    <div class="card-header py-3">
+                        <h5>Безплатно Тестване</h5>
+                    </div>
+                    <div class="card-body text-dark">
+                        <p class="card-text">Тествай себе си със нашият самостоятелен и персонален тест за всеки желаещ
+                            да разгледа и пробва услугите ни!</p>
+                        <p class="card-text">Чрез теста ни ще можете да определите собствения си тип папили на пръстите
+                            и ще получите лимитиран доклад със персонализирана информация за вашия тип характер и към
+                            какво сте предразположени.</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-success">
+                        <button class="btn btn-outline-success d-grid gap-2 col-6 mx-auto">Избери</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 text-center">
+                <div class="card border-dark mb-3 h-100">
+                    <div class="card-header py-3">
+                        <h5>Тестване по раздели - 10лв.</h5>
+                    </div>
+                    <div class="card-body text-dark">
+                        <p class="card-text">Тестването по раздели е тестване , при което Вие определяте от кои
+                            информационни блока се интересувате.</p>
+                        <p class="card-text">Чрез теста ни ще можете да определите пряк тип от всички раздели на
+                            промоционална цена.</p>
+                        <p class="card-text">Всеки наш раздел и информативен и пълен със полезна за вас информация.</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-success">
+                        <button class="btn btn-outline-success d-grid gap-2 col-6 mx-auto">Избери</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 text-center">
+                <div class="card border-dark mb-3 h-100">
+                    <div class="card-header py-3">
+                        <h5>Тестване от експерт - 20лв.</h5>
+                    </div>
+                    <div class="card-body text-dark">
+                        <p class="card-text">Персоналното тестване е тестване от представител на Genetic-test България.
+                            То е индивидуално и може да се направи по два
+                            начина.</p>
+                        <p class="card-text">Чрез теста ни ще можете да определите собствения си тип папили на пръстите
+                            и ще получите лимитиран доклад със персонализирана информация за вашия тип характер и към
+                            какво сте предразположени.</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-success">
+                        <button class="btn btn-outline-success d-grid gap-2 col-6 mx-auto">Избери</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-center text-white">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                        class="fab fa-facebook-f"></i></a>
+
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                        class="fab fa-twitter"></i></a>
+
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                        class="fab fa-google"></i></a>
+
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                        class="fab fa-instagram"></i></a>
+
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                        class="fab fa-linkedin-in"></i></a>
+            </section>
+        </div>
+
+        <div class="text-center p-3">
+            <script>document.write(new Date().getFullYear())</script> - Всички права запазени:
+            <a class="text-white" href="google.com">Genetic Test - Svishtov ©</a>
+        </div>
+    </footer>
+</body>
+
+</html>

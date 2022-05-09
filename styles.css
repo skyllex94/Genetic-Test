@@ -1,0 +1,11 @@
+#primary .card {
+    border: none;
+}
+
+.text-center p-3 {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.rightHand {
+    transform: scaleX(-1);
+}
