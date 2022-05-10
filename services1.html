@@ -120,44 +120,54 @@
         <div class="row justify-content-center">
             <div class="col-md-2 text-center">
                 <div class="card border-dark mb-3 h-100" style="max-width: 18rem;">
+                    <div class="card-header">Спирала</div>
+                    <div class="card-body text-dark" id="spiral" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img class="rounded d-block mx-auto img-fluid" draggable="true" ondragstart="drag(event)" id="drag_spiral"
+                            src="/img/print6.jpg">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                <div class="card border-dark mb-3 h-100" style="max-width: 18rem;">
                     <div class="card-header">Двойна Спирала</div>
-                    <div class="card-body text-dark">
-                        <img class="rounded d-block mx-auto img-fluid" src="/img/print1.jpg">
+                    <div class="card-body text-dark" id="double_spiral" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <img class="rounded d-block mx-auto img-fluid" draggable="true" ondragstart="drag(event)" id="drag_double_spiral" src="/img/print1.jpg">
                     </div>
                 </div>
             </div>
             <div class="col-md-2 text-center">
                 <div class="card border-dark mb-3 h-100" style="max-width: 18rem;">
                     <div class="card-header">Дъга</div>
-                    <div class="card-body text-dark">
-                        <img class="rounded d-block mx-auto img-fluid" src="/img/print2.jpg">
+                    <div class="card-body text-dark" id="rainbow" ondrop="drop(event)"  ondragover="allowDrop(event)">
+                        <img class="rounded d-block mx-auto img-fluid" draggable="true" ondragstart="drag(event)" id="drag_rainbow" src="/img/print2.jpg">
                     </div>
                 </div>
             </div>
             <div class="col-md-2 text-center">
                 <div class="card border-dark mb-3 h-100" style="max-width: 18rem;">
                     <div class="card-header">R-Примка</div>
-                    <div class="card-body text-dark">
-                        <img class="rounded d-block mx-auto img-fluid" src="/img/print3.jpg">
+                    <div class="card-body text-dark" id="r_knot" ondrop="drop(event)"  ondragover="allowDrop(event)">
+                        <img class="rounded d-block mx-auto img-fluid" draggable="true" ondragstart="drag(event)" id="drag_r_knot" src="/img/print3.jpg">
                     </div>
                 </div>
             </div>
             <div class="col-md-2 text-center">
                 <div class="card border-dark mb-3 h-100" style="max-width: 18rem;">
                     <div class="card-header">L-Примка</div>
-                    <div class="card-body text-dark">
-                        <img class="rounded d-block mx-auto img-fluid" src="/img/print4.jpg">
+                    <div class="card-body text-dark" id="l_knot" ondrop="drop(event)"  ondragover="allowDrop(event)">
+                        <img class="rounded d-block mx-auto img-fluid" draggable="true" ondragstart="drag(event)" id="drag_l_knot" src="/img/print4.jpg">
                     </div>
                 </div>
             </div>
             <div class="col-md-2 text-center">
                 <div class="card border-dark mb-3 h-100" style="max-width: 18rem;">
-                    <div class="card-header">Палатковидна Дъга</div>
-                    <div class="card-body text-dark">
-                        <img class="rounded d-block mx-auto img-fluid" src="/img/print5.jpg">
+                    <div class="card-header">Дъга - Палатка</div>
+                    <div class="card-body text-dark" id="tent" ondrop="drop(event)"  ondragover="allowDrop(event)">
+                        <img class="rounded d-block mx-auto img-fluid" draggable="true" ondragstart="drag(event)" id="drag_tent" src="/img/print5.jpg">
                     </div>
                 </div>
             </div>
+            
         </div>
     </section>
 
@@ -169,50 +179,53 @@
         </div>
 
         <div class="card m-3">
-            <div class="row align-items-center h-100">
+            <div class="row align-items-start h-100">
                 <div class="col-md-2 mx-auto">
                     <img src="/img/hand.png" class="img-fluid mx-auto d-block rounded-start" alt="...">
                 </div>
-                <div class="col-md-10 mx-auto my-auto">
+                <div class="col-md-10 mx-auto">
 
                     <div class="row">
                         <div class="col-md-2 text-center">
-                            <div class="card border-dark mb-3 h-100" style="max-width: 18rem;">
+                            <div class="card border-dark  h-100" style="max-width: 18rem;">
                                 <div class="card-header">Палец</div>
-                                <div class="card-body text-dark">
-                                    <img class="rounded d-block mx-auto img-fluid" src="/img/placeholder.jpg">
+                                <div class="card-body text-dark ">
+                                    <div class="placeholder pb-5"  id="left-thumb" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+                                    </div>
+                                    <!-- <img class="rounded d-block mx-auto img-fluid" src="/img/placeholder.jpg"> -->
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-2 text-center">
-                            <div class="card border-dark mb-3 h-100" style="max-width: 18rem;">
+                            <div class="card border-dark  h-100" style="max-width: 18rem;">
                                 <div class="card-header">Показалец</div>
-                                <div class="card-body text-dark">
-                                    <img class="rounded d-block mx-auto img-fluid" src="/img/placeholder.jpg">
+                                <div class="card-body text-dark pb-5" id="left-index" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <!-- <img class="rounded d-block mx-auto img-fluid" src="/img/placeholder.jpg"> -->
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-2 text-center">
-                            <div class="card border-dark mb-3 h-100" style="max-width: 18rem;">
+                            <div class="card border-dark  h-100" style="max-width: 18rem;">
                                 <div class="card-header">Среден</div>
-                                <div class="card-body text-dark">
-                                    <img class="rounded d-block mx-auto img-fluid" src="/img/placeholder.jpg">
+                                <div class="card-body text-dark pb-5" id="left-middle" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <!-- <img class="rounded d-block mx-auto img-fluid" src="/img/placeholder.jpg"> -->
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-2 text-center">
-                            <div class="card border-dark mb-3 h-100" style="max-width: 18rem;">
+                            <div class="card border-dark  h-100" style="max-width: 18rem;">
                                 <div class="card-header">Безимен</div>
-                                <div class="card-body text-dark">
-                                    <img class="rounded d-block mx-auto img-fluid" src="/img/placeholder.jpg">
+                                <div class="card-body text-dark pb-5" id="left-ring" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <!-- <img class="rounded d-block mx-auto img-fluid" src="/img/placeholder.jpg"> -->
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-2 text-center">
-                            <div class="card border-dark mb-3 h-100" style="max-width: 18rem;">
+                            <div class="card border-dark  h-100" style="max-width: 18rem;">
                                 <div class="card-header">Кутре</div>
-                                <div class="card-body text-dark">
-                                    <img class="rounded d-block mx-auto img-fluid" src="/img/placeholder.jpg">
+                                <div class="card-body text-dark pb-5" id="left-pinky" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <!-- <img class="rounded d-block mx-auto img-fluid" src="/img/placeholder.jpg"> -->
                                 </div>
                             </div>
                         </div>
@@ -223,7 +236,7 @@
         </div>
 
         <div class="card m-3">
-            <div class="row align-items-center h-100">
+            <div class="row align-items-start h-100">
                 <div class="col-md-10 ">
                     <div class="row justify-content-end">
                         <div class="col-md-2 text-center">

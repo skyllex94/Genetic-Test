@@ -9,3 +9,12 @@
 .rightHand {
     transform: scaleX(-1);
 }
+
+.placeholder {
+    height: 100px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px dashed gray;
+    background-image: url("/img/placeholder.jpg");
+    background-size: cover;
+}
