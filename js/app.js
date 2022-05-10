@@ -37,15 +37,18 @@ function validateForm() {
 //  ---- Draggable objects ----
 
 function allowDrop(ev) {
-  ev.preventDefault();
+    ev.preventDefault();
 }
 
 function drag(ev) {
-  ev.dataTransfer.setData("text", ev.target.id);
+    ev.dataTransfer.setData("item", ev.target.id);
+    // let yes = ev.dataTransfer.getData("item")
+    // yes.appendChild(document.getElementById(p));
+    // let pr = p.cloneNode(true);
 }
 
 function drop(ev) {
-  ev.preventDefault();
-  let data = ev.dataTransfer.getData("text");
-  ev.target.appendChild(document.getElementById(data));
+    ev.preventDefault();
+    let data = ev.dataTransfer.getData("item");
+    ev.target.appendChild(document.getElementById(data));
 }
