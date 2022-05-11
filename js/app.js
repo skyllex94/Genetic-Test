@@ -50,5 +50,27 @@ function drag(ev) {
 function drop(ev) {
     ev.preventDefault();
     let data = ev.dataTransfer.getData("item");
-    ev.target.appendChild(document.getElementById(data));
+    let src = document.getElementById(data);
+    let target = ev.currentTarget.firstElementChild;
+
+    if (target == null){
+        let clone = src.cloneNode(true);
+        clone.id = document.getElementById(data).id + "1";
+        ev.target.appendChild(clone);
+    } else {
+        let parent = src.parentNode;
+        console.log(parent.className);
+        if (parent.classList.contains("placeholder")) {
+            return 1;
+        } else {
+            let clone = src.cloneNode(true);
+            ev.currentTarget.replaceChild(clone, target);
+        }
+        
+    }
+    
+    
+    // copyItem.id = document.getElementById(data).id + "1";
+    // ev.target.appendChild(copyItem);
+
 }
