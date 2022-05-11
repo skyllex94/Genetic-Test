@@ -12,6 +12,7 @@
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="styles.css" rel="stylesheet">
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="js/app.js"></script>
     <title>Genetic Test</title>
 </head>
@@ -62,7 +63,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6 mb-md-0 mb-5">
 
-                <form id="contact-form" name="contact-form" action="php/contactformhandler.php" method="POST">
+                 <form id="contact-form" onsubmit="sendEmail(); reset(); return false;" name="contact-form" > <!-- action="php/contactformhandler.php" method="POST" -->
                     <div class="row mb-2">
                         <div class="col-md-6">
                             <div class="md-form mb-0">
@@ -95,7 +96,8 @@
                         </div>
                     </div>
                     <div class="text-center text-md-left">
-                        <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Изпрати</a>
+                        <!-- <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Изпрати</a> -->
+                        <button class="btn btn-primary" type="submit">Изпрати</button>
                     </div>
                     
                     <div class="status"></div>

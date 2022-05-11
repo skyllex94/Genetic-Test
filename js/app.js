@@ -42,9 +42,6 @@ function allowDrop(ev) {
 
 function drag(ev) {
     ev.dataTransfer.setData("item", ev.target.id);
-    // let yes = ev.dataTransfer.getData("item")
-    // yes.appendChild(document.getElementById(p));
-    // let pr = p.cloneNode(true);
 }
 
 function drop(ev) {
@@ -59,18 +56,29 @@ function drop(ev) {
         ev.target.appendChild(clone);
     } else {
         let parent = src.parentNode;
-        console.log(parent.className);
+        // console.log(parent.className);
+        // check if the drag is asked from a finger 
+        // rather than the types of fingerprints selection
         if (parent.classList.contains("placeholder")) {
             return 1;
         } else {
             let clone = src.cloneNode(true);
             ev.currentTarget.replaceChild(clone, target);
         }
-        
     }
-    
-    
-    // copyItem.id = document.getElementById(data).id + "1";
-    // ev.target.appendChild(copyItem);
+}
 
+// Send Email From Contact Form
+function sendEmail() {
+    Email.send({
+        Host: "smtp.elasticemail.com",
+        Username: "skyllex@abv.bg",
+        Password: "3B3620376E05424FE3929662BA017F291276",
+        To: "kkanchev94@gmail.com",
+        From: document.getElementById("email").value,
+        Subject: document.getElementById("subject").value,
+        Body: document.getElementById("message").value
+    }).then(
+        message => alert(message)
+    );
 }
