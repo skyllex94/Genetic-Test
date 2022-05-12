@@ -130,28 +130,26 @@ function sendData()
             }
         ]
 
+        let emailMessage = []
+
         for (let i = 0; i < allFingerprints.length; i++){
-            console.log(allFingerprints[i].finger + " / " + allFingerprints[i].print + "\n");
+            emailMessage = emailMessage + (allFingerprints[i].finger + " / " + allFingerprints[i].print + "\n");
+            // console.log(allFingerprints[i].finger + " / " + allFingerprints[i].print + "\n");
         }
+        console.log(emailMessage);
         
+        Email.send({
+                Host: "smtp.elasticemail.com",
+                Username: "skyllex@abv.bg",
+                Password: "3B3620376E05424FE3929662BA017F291276",
+                To: "kkanchev94@gmail.com",
+                From: document.getElementById("email").value,
+                Subject: "New Inquery",
+                Body: emailMessage
+            }).then(
+                message => alert(message)
+            );
 
-        // for (let i = 1; i <= 10; i++)
-        // {
-
-            
-        // }
-
-
-        // switch (className = leftHandThumb.classList) {
-
-        //     case className.contains("double_spiral"):
-        //         console.log("Left Thumb is a Double Spiral!")
-        //         break;
-        //     default:
-        //         console.log("Something Else I guess")
-
-        // }
-        // console.log("There is a submission" + id)
     } else {
         alert("There is no submitted fingerprint?");
         
