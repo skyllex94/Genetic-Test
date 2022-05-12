@@ -123,7 +123,7 @@
                 <div class="card border-dark h-100" style="max-width: 18rem;">
                     <div class="card-header">Спирала</div>
                     <div class="card-body text-dark" id="spiral" ondrop="drop(event)" ondragover="allowDrop(event)">
-                        <img class="rounded d-block mx-auto pt-2 img-fluid" draggable="true" ondragstart="drag(event)" id="drag_spiral"
+                        <img class="rounded d-block mx-auto pt-2 img-fluid" name="Спирала" draggable="true" ondragstart="drag(event)" id="drag_spiral"
                             src="/img/print6.jpg">
                     </div>
                 </div>
@@ -132,7 +132,7 @@
                 <div class="card border-dark h-100" style="max-width: 18rem;">
                     <div class="card-header">Двойна Спирала</div>
                     <div class="card-body text-dark" id="double_spiral" ondrop="drop(event)" ondragover="allowDrop(event)">
-                        <img class="rounded d-block mx-auto pt-2 img-fluid double_spiral" draggable="true" ondragstart="drag(event)" id="drag_double_spiral" src="/img/print1.jpg">
+                        <img class="rounded d-block mx-auto pt-2 img-fluid" name="Двойна Спирала" draggable="true" ondragstart="drag(event)" id="drag_double_spiral" src="/img/print1.jpg">
                     </div>
                 </div>
             </div>
@@ -140,7 +140,7 @@
                 <div class="card border-dark h-100" style="max-width: 18rem;">
                     <div class="card-header">Дъга</div>
                     <div class="card-body text-dark" id="rainbow" ondrop="drop(event)"  ondragover="allowDrop(event)">
-                        <img class="rounded d-block mx-auto pt-2 img-fluid" draggable="true" ondragstart="drag(event)" id="drag_rainbow" src="/img/print2.jpg">
+                        <img class="rounded d-block mx-auto pt-2 img-fluid" name="Дъга" draggable="true" ondragstart="drag(event)" id="drag_rainbow" src="/img/print2.jpg">
                     </div>
                 </div>
             </div>
@@ -148,7 +148,7 @@
                 <div class="card border-dark h-100" style="max-width: 18rem;">
                     <div class="card-header">R-Примка</div>
                     <div class="card-body text-dark" id="r_knot" ondrop="drop(event)"  ondragover="allowDrop(event)">
-                        <img class="rounded d-block mx-auto pt-2 img-fluid" draggable="true" ondragstart="drag(event)" id="drag_r_knot" src="/img/print3.jpg">
+                        <img class="rounded d-block mx-auto pt-2 img-fluid" name="R-Примка" draggable="true" ondragstart="drag(event)" id="drag_r_knot" src="/img/print3.jpg">
                     </div>
                 </div>
             </div>
@@ -156,7 +156,7 @@
                 <div class="card border-dark h-100" style="max-width: 18rem;">
                     <div class="card-header">L-Примка</div>
                     <div class="card-body text-dark" id="l_knot" ondrop="drop(event)"  ondragover="allowDrop(event)">
-                        <img class="rounded d-block mx-auto pt-2 img-fluid" draggable="true" ondragstart="drag(event)" id="drag_l_knot" src="/img/print4.jpg">
+                        <img class="rounded d-block mx-auto pt-2 img-fluid" name="L-Примка" draggable="true" ondragstart="drag(event)" id="drag_l_knot" src="/img/print4.jpg">
                     </div>
                 </div>
             </div>
@@ -164,7 +164,7 @@
                 <div class="card border-dark h-100" style="max-width: 18rem;">
                     <div class="card-header">Дъга - Палатка</div>
                     <div class="card-body text-dark" id="tent" ondrop="drop(event)"  ondragover="allowDrop(event)">
-                        <img class="rounded d-block mx-auto pt-2 img-fluid" draggable="true" ondragstart="drag(event)" id="drag_tent" src="/img/print5.jpg">
+                        <img class="rounded d-block mx-auto pt-2 img-fluid" name="Дъга - Палатка" draggable="true" ondragstart="drag(event)" id="drag_tent" src="/img/print5.jpg">
                     </div>
                 </div>
             </div>
@@ -190,7 +190,7 @@
                         <div class="col-md-2 text-center">
                             <div class="card border-dark h-100" style="max-width: 18rem;">
                                 <div class="card-header">Палец</div>
-                                <div class="card-body text-dark ">
+                                <div class="card-body text-dark finger" id="Ляв Палец">
                                     <div class="placeholder"  id="left-thumb" ondrop="drop(event)" ondragover="allowDrop(event)">
                                     </div>
                                 </div>
@@ -199,7 +199,7 @@
                         <div class="col-md-2 text-center">
                             <div class="card border-dark h-100" style="max-width: 18rem;">
                                 <div class="card-header">Показалец</div>
-                                <div class="card-body text-dark">
+                                <div class="card-body text-dark finger" id="Ляв Показалец">
                                     <div class="placeholder" id="left-index" ondrop="drop(event)" ondragover="allowDrop(event)">
                                         <!-- <img class="rounded d-block mx-auto img-fluid" src="/img/placeholder.jpg"> -->
                                     </div>
@@ -209,7 +209,7 @@
                         <div class="col-md-2 text-center">
                             <div class="card border-dark h-100" style="max-width: 18rem;">
                                 <div class="card-header">Среден</div>
-                                <div class="card-body text-dark">
+                                <div class="card-body text-dark finger" id="Ляв Среден">
                                     <div class="placeholder" id="left-middle" ondrop="drop(event)" ondragover="allowDrop(event)">
                                         <!-- <img class="rounded d-block mx-auto img-fluid" src="/img/placeholder.jpg"> -->
                                     </div>
@@ -219,7 +219,7 @@
                         <div class="col-md-2 text-center">
                             <div class="card border-dark h-100" style="max-width: 18rem;">
                                 <div class="card-header">Безимен</div>
-                                <div class="card-body text-dark">
+                                <div class="card-body text-dark finger" id="Ляв Безимен">
                                     <div class="placeholder" id="left-ring" ondrop="drop(event)" ondragover="allowDrop(event)">
                                         <!-- <img class="rounded d-block mx-auto img-fluid" src="/img/placeholder.jpg"> -->
                                     </div>
@@ -229,7 +229,7 @@
                         <div class="col-md-2 text-center">
                             <div class="card border-dark h-100" style="max-width: 18rem;">
                                 <div class="card-header">Кутре</div>
-                                <div class="card-body text-dark">
+                                <div class="card-body text-dark finger" id="Ляво Кутре">
                                     <div class="placeholder" id="left-pinky" ondrop="drop(event)" ondragover="allowDrop(event)">
                                         <!-- <img class="rounded d-block mx-auto img-fluid" src="/img/placeholder.jpg"> -->
                                     </div>

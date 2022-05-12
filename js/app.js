@@ -53,6 +53,7 @@ function drop(ev) {
     if (target == null){
         let clone = src.cloneNode(true);
         clone.id = document.getElementById(data).id + "1";
+        clone.classList.add("choice");
         ev.target.appendChild(clone);
     } else {
         let parent = src.parentNode;
@@ -101,11 +102,6 @@ function sendData()
 
     if (leftHandThumb != null)
     {
-        // let className = leftHandThumb;
-
-        // if (className.classList.contains("double_spiral")) {
-        //     console.log(className.className)
-        // }
 
         let allFingerprints = [
             {
@@ -136,7 +132,19 @@ function sendData()
             emailMessage = emailMessage + (allFingerprints[i].finger + " / " + allFingerprints[i].print + "\n");
             // console.log(allFingerprints[i].finger + " / " + allFingerprints[i].print + "\n");
         }
-        console.log(emailMessage);
+        // console.log(emailMessage);
+
+        allChoicesEmailMessage =  {} // {"Ляв Палец" : "Двойна Спирала", "Ляв Показалец" : ...}
+        let choices = document.querySelectorAll(".choice");
+        let fingers = document.querySelectorAll(".finger");
+        
+
+        for (let i = 0; i < choices.length; i++)
+        {
+            allChoicesEmailMessage[fingers[i].id] = choices[i].name;
+        }
+        
+        console.log(allChoicesEmailMessage);
         
         Email.send({
                 Host: "smtp.elasticemail.com",
@@ -145,14 +153,13 @@ function sendData()
                 To: "kkanchev94@gmail.com",
                 From: document.getElementById("email").value,
                 Subject: "New Inquery",
-                Body: emailMessage
+                Body: allChoicesEmailMessage
             }).then(
                 message => alert(message)
             );
 
     } else {
         alert("There is no submitted fingerprint?");
-        
     }
 }
 // && leftHandIndex && leftHandMiddle && leftHandRing && leftHandPinky &&
