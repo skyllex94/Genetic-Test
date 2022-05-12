@@ -56,7 +56,6 @@ function drop(ev) {
         ev.target.appendChild(clone);
     } else {
         let parent = src.parentNode;
-        // console.log(parent.className);
         // check if the drag is asked from a finger 
         // rather than the types of fingerprints selection
         if (parent.classList.contains("placeholder")) {
@@ -68,8 +67,9 @@ function drop(ev) {
     }
 }
 
-// Send Email From Contact Form
-function sendEmail() {
+// Send Email From Contact Form - ElasticEmail SMTP provider
+function sendEmail() 
+{
     Email.send({
         Host: "smtp.elasticemail.com",
         Username: "skyllex@abv.bg",
@@ -82,3 +82,80 @@ function sendEmail() {
         message => alert(message)
     );
 }
+
+// Send the fingerprint data collected from the online form
+
+function sendData()
+{
+    let leftHandThumb = document.getElementById("left-thumb").firstElementChild;
+    let leftHandIndex = document.getElementById("left-index").firstElementChild;
+    let leftHandMiddle = document.getElementById("left-middle").firstElementChild;
+    let leftHandRing = document.getElementById("left-ring").firstElementChild;
+    let leftHandPinky = document.getElementById("left-pinky").firstElementChild;
+
+    let rightHandThumb = document.getElementById("right-thumb").firstElementChild;
+    let rightHandIndex = document.getElementById("right-index").firstElementChild;
+    let rightHandMiddle = document.getElementById("right-middle").firstElementChild;
+    let rightHandRing = document.getElementById("right-ring").firstElementChild;
+    let rightHandPinky = document.getElementById("right-pinky").firstElementChild;
+
+    if (leftHandThumb != null)
+    {
+        // let className = leftHandThumb;
+
+        // if (className.classList.contains("double_spiral")) {
+        //     console.log(className.className)
+        // }
+
+        let allFingerprints = [
+            {
+                finger: "left-thumb",
+                print: leftHandThumb.id
+            },
+            {
+                finger: "left-index",
+                print: leftHandIndex.id
+            },
+            {
+                finger: "left-middle",
+                print: leftHandMiddle.id
+            },
+            {
+                finger: "left-ring",
+                print: leftHandRing.id
+            },
+             {
+                finger: "left-pinky",
+                print: leftHandPinky.id
+            }
+        ]
+
+        for (let i = 0; i < allFingerprints.length; i++){
+            console.log(allFingerprints[i].finger + " / " + allFingerprints[i].print + "\n");
+        }
+        
+
+        // for (let i = 1; i <= 10; i++)
+        // {
+
+            
+        // }
+
+
+        // switch (className = leftHandThumb.classList) {
+
+        //     case className.contains("double_spiral"):
+        //         console.log("Left Thumb is a Double Spiral!")
+        //         break;
+        //     default:
+        //         console.log("Something Else I guess")
+
+        // }
+        // console.log("There is a submission" + id)
+    } else {
+        alert("There is no submitted fingerprint?");
+        
+    }
+}
+// && leftHandIndex && leftHandMiddle && leftHandRing && leftHandPinky &&
+        // rightHandThumb && rightHandIndex && rightHandMiddle && rightHandRing && rightHandPinky

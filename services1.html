@@ -132,7 +132,7 @@
                 <div class="card border-dark h-100" style="max-width: 18rem;">
                     <div class="card-header">Двойна Спирала</div>
                     <div class="card-body text-dark" id="double_spiral" ondrop="drop(event)" ondragover="allowDrop(event)">
-                        <img class="rounded d-block mx-auto pt-2 img-fluid" draggable="true" ondragstart="drag(event)" id="drag_double_spiral" src="/img/print1.jpg">
+                        <img class="rounded d-block mx-auto pt-2 img-fluid double_spiral" draggable="true" ondragstart="drag(event)" id="drag_double_spiral" src="/img/print1.jpg">
                     </div>
                 </div>
             </div>
@@ -191,8 +191,7 @@
                             <div class="card border-dark h-100" style="max-width: 18rem;">
                                 <div class="card-header">Палец</div>
                                 <div class="card-body text-dark ">
-                                    <div class="placeholder pb-5"  id="left-thumb" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                        
+                                    <div class="placeholder"  id="left-thumb" ondrop="drop(event)" ondragover="allowDrop(event)">
                                     </div>
                                 </div>
                             </div>
@@ -201,7 +200,7 @@
                             <div class="card border-dark h-100" style="max-width: 18rem;">
                                 <div class="card-header">Показалец</div>
                                 <div class="card-body text-dark">
-                                    <div class="placeholder pb-5" id="left-index" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="placeholder" id="left-index" ondrop="drop(event)" ondragover="allowDrop(event)">
                                         <!-- <img class="rounded d-block mx-auto img-fluid" src="/img/placeholder.jpg"> -->
                                     </div>
                                 </div>
@@ -211,7 +210,7 @@
                             <div class="card border-dark h-100" style="max-width: 18rem;">
                                 <div class="card-header">Среден</div>
                                 <div class="card-body text-dark">
-                                    <div class="placeholder pb-5" id="left-middle" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="placeholder" id="left-middle" ondrop="drop(event)" ondragover="allowDrop(event)">
                                         <!-- <img class="rounded d-block mx-auto img-fluid" src="/img/placeholder.jpg"> -->
                                     </div>
                                 </div>
@@ -221,7 +220,7 @@
                             <div class="card border-dark h-100" style="max-width: 18rem;">
                                 <div class="card-header">Безимен</div>
                                 <div class="card-body text-dark">
-                                    <div class="placeholder pb-5" id="left-ring" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="placeholder" id="left-ring" ondrop="drop(event)" ondragover="allowDrop(event)">
                                         <!-- <img class="rounded d-block mx-auto img-fluid" src="/img/placeholder.jpg"> -->
                                     </div>
                                 </div>
@@ -238,7 +237,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -297,6 +295,9 @@
 
                 <div class="col-md-2 mx-auto">
                     <img src="/img/hand.png" class="img-fluid mx-auto d-block rounded-start rightHand" alt="...">
+                </div>
+                <div class="col-12 mb-4 mx-auto text-center">
+                    <button onclick="sendData()" class="btn btn-primary">Изпрати резултати</button>
                 </div>
             </div>
         </div>
