@@ -122,7 +122,7 @@
             <div class="col-md-2 text-center">
                 <div class="card border-dark h-100" style="max-width: 18rem;">
                     <div class="card-header">Спирала</div>
-                    <div class="card-body text-dark" id="spiral" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="card-body text-dark symbol" id="spiral" ondrop="drop(event)" ondragover="allowDrop(event)">
                         <img class="rounded d-block mx-auto pt-2 img-fluid" name="Спирала" draggable="true" ondragstart="drag(event)" id="drag_spiral"
                             src="/img/print6.jpg">
                     </div>
@@ -131,7 +131,7 @@
             <div class="col-md-2 text-center">
                 <div class="card border-dark h-100" style="max-width: 18rem;">
                     <div class="card-header">Двойна Спирала</div>
-                    <div class="card-body text-dark" id="double_spiral" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="card-body text-dark symbol" id="double_spiral" ondrop="drop(event)" ondragover="allowDrop(event)">
                         <img class="rounded d-block mx-auto pt-2 img-fluid" name="Двойна Спирала" draggable="true" ondragstart="drag(event)" id="drag_double_spiral" src="/img/print1.jpg">
                     </div>
                 </div>
@@ -139,7 +139,7 @@
             <div class="col-md-2 text-center">
                 <div class="card border-dark h-100" style="max-width: 18rem;">
                     <div class="card-header">Дъга</div>
-                    <div class="card-body text-dark" id="rainbow" ondrop="drop(event)"  ondragover="allowDrop(event)">
+                    <div class="card-body text-dark symbol" id="rainbow" ondrop="drop(event)"  ondragover="allowDrop(event)">
                         <img class="rounded d-block mx-auto pt-2 img-fluid" name="Дъга" draggable="true" ondragstart="drag(event)" id="drag_rainbow" src="/img/print2.jpg">
                     </div>
                 </div>
@@ -147,7 +147,7 @@
             <div class="col-md-2 text-center">
                 <div class="card border-dark h-100" style="max-width: 18rem;">
                     <div class="card-header">R-Примка</div>
-                    <div class="card-body text-dark" id="r_knot" ondrop="drop(event)"  ondragover="allowDrop(event)">
+                    <div class="card-body text-dark symbol" id="r_knot" ondrop="drop(event)"  ondragover="allowDrop(event)">
                         <img class="rounded d-block mx-auto pt-2 img-fluid" name="R-Примка" draggable="true" ondragstart="drag(event)" id="drag_r_knot" src="/img/print3.jpg">
                     </div>
                 </div>
@@ -155,7 +155,7 @@
             <div class="col-md-2 text-center">
                 <div class="card border-dark h-100" style="max-width: 18rem;">
                     <div class="card-header">L-Примка</div>
-                    <div class="card-body text-dark" id="l_knot" ondrop="drop(event)"  ondragover="allowDrop(event)">
+                    <div class="card-body text-dark symbol" id="l_knot" ondrop="drop(event)"  ondragover="allowDrop(event)">
                         <img class="rounded d-block mx-auto pt-2 img-fluid" name="L-Примка" draggable="true" ondragstart="drag(event)" id="drag_l_knot" src="/img/print4.jpg">
                     </div>
                 </div>
@@ -163,7 +163,7 @@
             <div class="col-md-2 text-center">
                 <div class="card border-dark h-100" style="max-width: 18rem;">
                     <div class="card-header">Дъга - Палатка</div>
-                    <div class="card-body text-dark" id="tent" ondrop="drop(event)"  ondragover="allowDrop(event)">
+                    <div class="card-body text-dark symbol" id="tent" ondrop="drop(event)"  ondragover="allowDrop(event)">
                         <img class="rounded d-block mx-auto pt-2 img-fluid" name="Дъга - Палатка" draggable="true" ondragstart="drag(event)" id="drag_tent" src="/img/print5.jpg">
                     </div>
                 </div>
@@ -173,11 +173,11 @@
     </section>
 
     <section id="primary" class="container">
-        <div class="row">
+        <!-- <div class="row">
             <div class="col">
                 <h2 class="text-center mb-5">Как работи нашият продукт?</h2>
             </div>
-        </div>
+        </div> -->
 
         <div class="card m-3">
             <div class="row align-items-start h-100">
@@ -191,7 +191,7 @@
                             <div class="card border-dark h-100" style="max-width: 18rem;">
                                 <div class="card-header">Палец</div>
                                 <div class="card-body text-dark finger" id="Ляв Палец">
-                                    <div class="placeholder"  id="left-thumb" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="placeholder empty"  id="left-thumb" ondrop="drop(event)" ondragover="allowDrop(event)">
                                     </div>
                                 </div>
                             </div>
@@ -200,7 +200,7 @@
                             <div class="card border-dark h-100" style="max-width: 18rem;">
                                 <div class="card-header">Показалец</div>
                                 <div class="card-body text-dark finger" id="Ляв Показалец">
-                                    <div class="placeholder" id="left-index" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="placeholder empty" id="left-index" ondrop="drop(event)" ondragover="allowDrop(event)">
                                     </div>
                                 </div>
                             </div>
@@ -209,7 +209,7 @@
                             <div class="card border-dark h-100" style="max-width: 18rem;">
                                 <div class="card-header">Среден</div>
                                 <div class="card-body text-dark finger" id="Ляв Среден">
-                                    <div class="placeholder" id="left-middle" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="placeholder empty" id="left-middle" ondrop="drop(event)" ondragover="allowDrop(event)">
                                     </div>
                                 </div>
                             </div>
@@ -218,7 +218,7 @@
                             <div class="card border-dark h-100" style="max-width: 18rem;">
                                 <div class="card-header">Безимен</div>
                                 <div class="card-body text-dark finger" id="Ляв Безимен">
-                                    <div class="placeholder" id="left-ring" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="placeholder empty" id="left-ring" ondrop="drop(event)" ondragover="allowDrop(event)">
                                     </div>
                                 </div>
                             </div>
@@ -227,7 +227,7 @@
                             <div class="card border-dark h-100" style="max-width: 18rem;">
                                 <div class="card-header">Кутре</div>
                                 <div class="card-body text-dark finger" id="Ляво Кутре">
-                                    <div class="placeholder" id="left-pinky" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="placeholder empty" id="left-pinky" ondrop="drop(event)" ondragover="allowDrop(event)">
                                     </div>
                                 </div>
                             </div>
@@ -245,7 +245,7 @@
                             <div class="card border-dark mb-3 h-100" style="max-width: 18rem;">
                                 <div class="card-header">Палец</div>
                                 <div class="card-body text-dark finger" id="Десен Палец">
-                                    <div class="placeholder" id="right-thumb" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="placeholder empty" id="right-thumb" ondrop="drop(event)" ondragover="allowDrop(event)">
                                     </div>
                                 </div>
                             </div>
@@ -254,7 +254,7 @@
                             <div class="card border-dark mb-3 h-100" style="max-width: 18rem;">
                                 <div class="card-header">Показалец</div>
                                 <div class="card-body text-dark finger" id="Десен Показалец">
-                                    <div class="placeholder" id="right-index" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="placeholder empty" id="right-index" ondrop="drop(event)" ondragover="allowDrop(event)">
                                     </div>
                                 </div>
                             </div>
@@ -263,7 +263,7 @@
                             <div class="card border-dark mb-3 h-100" style="max-width: 18rem;">
                                 <div class="card-header">Среден</div>
                                 <div class="card-body text-dark finger" id="Десен Среден">
-                                    <div class="placeholder" id="right-middle" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="placeholder empty" id="right-middle" ondrop="drop(event)" ondragover="allowDrop(event)">
                                     </div>
                                 </div>
                             </div>
@@ -272,7 +272,7 @@
                             <div class="card border-dark mb-3 h-100" style="max-width: 18rem;">
                                 <div class="card-header">Безимен</div>
                                 <div class="card-body text-dark finger" id="Десен Безимен">
-                                    <div class="placeholder" id="right-ring" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="placeholder empty" id="right-ring" ondrop="drop(event)" ondragover="allowDrop(event)">
                                     </div>
                                 </div>
                             </div>
@@ -281,7 +281,7 @@
                             <div class="card border-dark mb-3 h-100" style="max-width: 18rem;">
                                 <div class="card-header">Кутре</div>
                                 <div class="card-body text-dark finger" id="Дясно Кутре">
-                                    <div class="placeholder" id="right-pinky" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="placeholder empty" id="right-pinky" ondrop="drop(event)" ondragover="allowDrop(event)">
                                     </div>
                                 </div>
                             </div>
@@ -292,15 +292,21 @@
                 <div class="col-md-2 mx-auto">
                     <img src="/img/hand.png" class="img-fluid mx-auto d-block rounded-start rightHand" alt="...">
                 </div>
-                <div class="col-12 mb-4 mx-auto text-center">
-                    
-                        <input type="text" id="name" placeholder="Името ви">
-                        <input type="email" id="email" placeholder="Имейла ви">
-                        
+                <div class="row d-flex justify-content-center my-4">
+                    <div class="col-md-3 mb-2">
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Имена">
+                    </div>
+                    <div class="col-md-3 mb-2">
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Имейл">
+                    </div>
+                    <div class="col-md-2 mb-2">
                         <!-- Submit Button that will trigger the whole checkup of fields and send the data -->
                         <button type="submit" onclick="sendData()" class="btn btn-primary">Изпрати резултати</button>
-                    
+                    </div>
                 </div>
+                
+
+
             </div>
         </div>
     </section>

@@ -1,8 +1,18 @@
-// let currentYear = new Date().getFullYear();
-// document.getElementById("getYear").innerHTML = currentYear;
 
-console.log("Here!")
+function dragEnter(e) {
+    e.preventDefault();
+    this.classList.add("hovered");
+}
 
+function dragLeave() {
+    this.className = "placeholder empty";
+}
+
+function dragDrop() {
+    this.className = "placeholder empty";
+}
+
+// ---- Contact form Validation ----
 function validateForm() {
     var name = document.getElementById('name').value;
     if (name == "") {
@@ -38,37 +48,61 @@ function validateForm() {
 
 function allowDrop(ev) {
     ev.preventDefault();
+    
+    
 }
 
 function drag(ev) {
+    // Set the item being dragged to a form of a variable
     ev.dataTransfer.setData("item", ev.target.id);
+    // UI Manipulation - NodeList of all the placeholders
+    const empties = document.querySelectorAll(".empty");
+
+    for (const empty of empties) {
+        // Hovering change when the dragged item in on top
+        empty.addEventListener('dragover', function dragOver(e){
+            e.preventDefault();
+            empty.classList.add("hovered");
+            
+        });
+        empty.addEventListener('dragenter', dragEnter);
+        empty.addEventListener('dragleave', dragLeave);
+        empty.addEventListener('drop', dragDrop);
+    }   
 }
 
 function drop(ev) {
     ev.preventDefault();
+
+    // Fetch the data from the item being dragged
     let data = ev.dataTransfer.getData("item");
+    // Store the source and the target of the drag
     let src = document.getElementById(data);
     let target = ev.currentTarget.firstElementChild;
 
+    // Check if there is a dropped item on the target already
     if (target == null){
+        // If not, create a copy of the sourse item being dragged
         let clone = src.cloneNode(true);
         clone.id = document.getElementById(data).id + "1";
+        // Add a class of choice so it can be error checked later
         clone.classList.add("choice");
         ev.target.appendChild(clone);
     } else {
         let parent = src.parentNode;
-        // check if the drag is asked from a finger 
-        // rather than the types of fingerprints selection
-        if (parent.classList.contains("placeholder")) {
+        // check if the drag is asked from a finger rather than the symbol type
+        if (parent.classList.contains("placeholder") || 
+        (parent.classList.contains("symbol") && target.parentNode.classList.contains("symbol"))) {
             return 1;
         } else {
+            // Replace the placeholder with the new symbol being dragged
             let clone = src.cloneNode(true);
             ev.currentTarget.replaceChild(clone, target);
         }
     }
 }
 
-// Send Email From Contact Form - ElasticEmail SMTP provider
+// ---- Send Email From Contact Form - ElasticEmail SMTP provider  ----
 function sendEmail() 
 {
     Email.send({
@@ -84,7 +118,7 @@ function sendEmail()
     );
 }
 
-// Send the fingerprint data collected from the online form
+//  ---- Send the fingerprint data collected from the online form  ----
 
 function sendData()
 {
@@ -127,7 +161,7 @@ function sendData()
 
         // Email Body Header - using html tags for line breaks
         let emailBody = "Име на клиента: " + customerName.value + "<br>";
-        emailBody += "Имейл на клиента: " + customerEmail.value + "<br>";
+        emailBody += "Имейл на клиента: " + customerEmail.value + "<br>" + "<br>";
         emailBody += " --- Пръстови отпечатъци ---" + "<br>" + "<br>";
 
         // Loop through each key-value and format it as you include it to the email body
@@ -144,7 +178,7 @@ function sendData()
                 Password: "3B3620376E05424FE3929662BA017F291276",
                 To: "kkanchev94@gmail.com",
                 From: customerEmail.value, // "skyllex@abv.bg",
-                Subject: "New Inquery",
+                Subject: "Нов онлайн отчет",
                 Body: emailBody
             }).then(
                 // message => alert(message)
@@ -156,6 +190,7 @@ function sendData()
     }
 }
 
+// ---- Response back from the sendEmail promise which will give a conditional alert message ----
 function emailResponse(message)
 {
     if (message == "OK") {

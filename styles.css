@@ -14,7 +14,22 @@
     width: 8vw;
     height: 8vw;
     border-radius: 5px;
-    border: 1px dashed gray;
-    background-image: url("/img/placeholder.jpg");
+    border: 1px solid gray;
+    /* background-image: url("/img/placeholder.jpg"); */
+    background-color: white;
     background-size: cover;
+}
+
+.hold {
+    border: solid rgb(58, 67, 74) 4px;
+}
+
+.hovered {
+    background: #f4f4f4;
+    border: 4px dashed #a09191;
+    /* border-style: dashed; */
+}
+
+.highlight {
+    border: 4px dashed #f4f4f4;
 }
