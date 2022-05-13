@@ -118,7 +118,7 @@
     <section class="container my-5">
         <h2 class="text-center my-5">Безплатно Тестване</h2>
 
-        <div class="row justify-content-start">
+        <div class="row justify-content-start mx-auto">
             <div class="col-md-2 text-center">
                 <div class="card border-dark h-100" style="max-width: 18rem;">
                     <div class="card-header">Спирала</div>
@@ -173,21 +173,15 @@
     </section>
 
     <section id="primary" class="container">
-        <!-- <div class="row">
-            <div class="col">
-                <h2 class="text-center mb-5">Как работи нашият продукт?</h2>
-            </div>
-        </div> -->
-
         <div class="card m-3">
-            <div class="row align-items-start h-100">
-                <div class="col-md-2 mx-auto">
+            <div class="row align-items-start h-100 py-3">
+                <div class="col-lg-2 mx-auto px-5">
                     <img src="/img/hand.png" class="img-fluid mx-auto d-block rounded-start" alt="...">
+                    <p class="text-center mt-3 lead">Лява Ръка</p>
                 </div>
                 <div class="col-md-10 mx-auto">
-
                     <div class="row">
-                        <div class="col-md-2 text-center">
+                        <div class="col-lg-2 text-center">
                             <div class="card border-dark h-100" style="max-width: 18rem;">
                                 <div class="card-header">Палец</div>
                                 <div class="card-body text-dark finger" id="Ляв Палец">
@@ -196,7 +190,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-2 text-center">
+                        <div class="col-lg-2 text-center">
                             <div class="card border-dark h-100" style="max-width: 18rem;">
                                 <div class="card-header">Показалец</div>
                                 <div class="card-body text-dark finger" id="Ляв Показалец">
@@ -205,7 +199,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-2 text-center">
+                        <div class="col-lg-2 text-center">
                             <div class="card border-dark h-100" style="max-width: 18rem;">
                                 <div class="card-header">Среден</div>
                                 <div class="card-body text-dark finger" id="Ляв Среден">
@@ -214,7 +208,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-2 text-center">
+                        <div class="col-lg-2 text-center">
                             <div class="card border-dark h-100" style="max-width: 18rem;">
                                 <div class="card-header">Безимен</div>
                                 <div class="card-body text-dark finger" id="Ляв Безимен">
@@ -223,7 +217,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-2 text-center">
+                        <div class="col-lg-2 text-center">
                             <div class="card border-dark h-100" style="max-width: 18rem;">
                                 <div class="card-header">Кутре</div>
                                 <div class="card-body text-dark finger" id="Ляво Кутре">
@@ -232,15 +226,26 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-lg-2">
+                            <div class="alert">
+                                <i class="fa-solid fa-circle-info"></i>
+                                Довлечете типът папиляр до всеки един от пръстите ви след като ги определите.
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="card m-3">
-            <div class="row align-items-start h-100">
-                <div class="col-md-10">
-                    <div class="row justify-content-end">
+        <div class="card m-3 py-3">
+            <div class="row h-100">
+                <div class="col-lg-2 mx-auto px-5 ">
+                    <img src="/img/hand.png" class="img-fluid mx-auto d-block rounded-start rightHand" alt="...">
+                    <p class="text-center mt-3 lead">Дясна Ръка</p>
+                </div>
+                <div class="col-lg-10">
+                    <div class="row justify-content-start ">
+                        
                         <div class="col-md-2 text-center">
                             <div class="card border-dark mb-3 h-100" style="max-width: 18rem;">
                                 <div class="card-header">Палец</div>
@@ -286,27 +291,28 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-lg-2">
+                            <div class="alert">
+                                <i class="fa-solid fa-circle-info"></i>
+                                При затруднения, посетете нашата 
+                                <a href="/help.html">помощна страница.</a> 
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <div class="col-md-2 mx-auto">
-                    <img src="/img/hand.png" class="img-fluid mx-auto d-block rounded-start rightHand" alt="...">
-                </div>
-                <div class="row d-flex justify-content-center my-4">
-                    <div class="col-md-3 mb-2">
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Имена">
-                    </div>
-                    <div class="col-md-3 mb-2">
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Имейл">
-                    </div>
-                    <div class="col-md-2 mb-2">
-                        <!-- Submit Button that will trigger the whole checkup of fields and send the data -->
-                        <button type="submit" onclick="sendData()" class="btn btn-primary">Изпрати резултати</button>
-                    </div>
-                </div>
-                
-
-
+        <div class="row d-flex justify-content-center my-4">
+            <div class="col-md-3 mb-2">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Имена">
+            </div>
+            <div class="col-md-3 mb-2">
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Имейл">
+            </div>
+            <div class="col-md-2 mb-2">
+                <!-- Submit Button that will trigger the whole checkup of fields and send the data -->
+                <button type="submit" onclick="sendData()" class="btn btn-primary">Изпрати резултати</button>
             </div>
         </div>
     </section>
