@@ -100,67 +100,68 @@ function sendData()
     let rightHandRing = document.getElementById("right-ring").firstElementChild;
     let rightHandPinky = document.getElementById("right-pinky").firstElementChild;
 
-    if (leftHandThumb != null)
+    let customerName = document.getElementById("name");
+    let customerEmail = document.getElementById("email");
+
+    if (leftHandThumb && leftHandIndex && leftHandMiddle && leftHandRing && leftHandPinky && 
+        rightHandThumb && rightHandIndex && rightHandMiddle && rightHandRing && rightHandPinky &&
+        customerName.value && customerEmail.value != null)
     {
 
-        let allFingerprints = [
-            {
-                finger: "left-thumb",
-                print: leftHandThumb.id
-            },
-            {
-                finger: "left-index",
-                print: leftHandIndex.id
-            },
-            {
-                finger: "left-middle",
-                print: leftHandMiddle.id
-            },
-            {
-                finger: "left-ring",
-                print: leftHandRing.id
-            },
-             {
-                finger: "left-pinky",
-                print: leftHandPinky.id
-            }
-        ]
-
-        let emailMessage = []
-
-        for (let i = 0; i < allFingerprints.length; i++){
-            emailMessage = emailMessage + (allFingerprints[i].finger + " / " + allFingerprints[i].print + "\n");
-            // console.log(allFingerprints[i].finger + " / " + allFingerprints[i].print + "\n");
-        }
-        // console.log(emailMessage);
-
+        //  Creating an objects with key-value pairs of all the fingers with their chosen symbol
         allChoicesEmailMessage =  {} // {"Ляв Палец" : "Двойна Спирала", "Ляв Показалец" : ...}
         let choices = document.querySelectorAll(".choice");
         let fingers = document.querySelectorAll(".finger");
-        
 
+        // Looping through each one and assigning them values
         for (let i = 0; i < choices.length; i++)
         {
             allChoicesEmailMessage[fingers[i].id] = choices[i].name;
         }
+
+        // Creating arrays of the keys and values in order to format it for the email body
+        arrKeys = [];
+        arrValues = [];
+        arrKeys = Object.keys(allChoicesEmailMessage);
+        arrValues = Object.values(allChoicesEmailMessage);
+
+        // Email Body Header - using html tags for line breaks
+        let emailBody = "Име на клиента: " + customerName.value + "<br>";
+        emailBody += "Имейл на клиента: " + customerEmail.value + "<br>";
+        emailBody += " --- Пръстови отпечатъци ---" + "<br>" + "<br>";
+
+        // Loop through each key-value and format it as you include it to the email body
+        for (let i = 0; i < arrKeys.length; i++)
+        {
+            emailBody += (arrKeys[i] + " : " + arrValues[i] + "<br>");
+        }
         
-        console.log(allChoicesEmailMessage);
-        
+        // Send Email with ElasticEmail SMTP service
         Email.send({
                 Host: "smtp.elasticemail.com",
+                // Current encrypted credentials
                 Username: "skyllex@abv.bg",
                 Password: "3B3620376E05424FE3929662BA017F291276",
                 To: "kkanchev94@gmail.com",
-                From: document.getElementById("email").value,
+                From: customerEmail.value, // "skyllex@abv.bg",
                 Subject: "New Inquery",
-                Body: allChoicesEmailMessage
+                Body: emailBody
             }).then(
-                message => alert(message)
+                // message => alert(message)
+                message => emailResponse(message)
             );
 
     } else {
-        alert("There is no submitted fingerprint?");
+        alert("Моля въведете нужната информация във всички полета.");
     }
 }
-// && leftHandIndex && leftHandMiddle && leftHandRing && leftHandPinky &&
-        // rightHandThumb && rightHandIndex && rightHandMiddle && rightHandRing && rightHandPinky
+
+function emailResponse(message)
+{
+    if (message == "OK") {
+        return alert("Вашите резултати бяха изпратени към нас. Ще ви върнем отговор в следващите няколко дни. Благодарим Ви!");
+    }
+    else {
+        return alert("Грешка с изпращането, моля проверете дали всички папили са въведели, ако грешката продължава свържете се с нас в контакната форма.");
+    }
+}

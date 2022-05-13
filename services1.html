@@ -201,7 +201,6 @@
                                 <div class="card-header">Показалец</div>
                                 <div class="card-body text-dark finger" id="Ляв Показалец">
                                     <div class="placeholder" id="left-index" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                        <!-- <img class="rounded d-block mx-auto img-fluid" src="/img/placeholder.jpg"> -->
                                     </div>
                                 </div>
                             </div>
@@ -211,7 +210,6 @@
                                 <div class="card-header">Среден</div>
                                 <div class="card-body text-dark finger" id="Ляв Среден">
                                     <div class="placeholder" id="left-middle" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                        <!-- <img class="rounded d-block mx-auto img-fluid" src="/img/placeholder.jpg"> -->
                                     </div>
                                 </div>
                             </div>
@@ -221,7 +219,6 @@
                                 <div class="card-header">Безимен</div>
                                 <div class="card-body text-dark finger" id="Ляв Безимен">
                                     <div class="placeholder" id="left-ring" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                        <!-- <img class="rounded d-block mx-auto img-fluid" src="/img/placeholder.jpg"> -->
                                     </div>
                                 </div>
                             </div>
@@ -231,7 +228,6 @@
                                 <div class="card-header">Кутре</div>
                                 <div class="card-body text-dark finger" id="Ляво Кутре">
                                     <div class="placeholder" id="left-pinky" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                        <!-- <img class="rounded d-block mx-auto img-fluid" src="/img/placeholder.jpg"> -->
                                     </div>
                                 </div>
                             </div>
@@ -248,7 +244,7 @@
                         <div class="col-md-2 text-center">
                             <div class="card border-dark mb-3 h-100" style="max-width: 18rem;">
                                 <div class="card-header">Палец</div>
-                                <div class="card-body text-dark">
+                                <div class="card-body text-dark finger" id="Десен Палец">
                                     <div class="placeholder" id="right-thumb" ondrop="drop(event)" ondragover="allowDrop(event)">
                                     </div>
                                 </div>
@@ -257,7 +253,7 @@
                         <div class="col-md-2 text-center">
                             <div class="card border-dark mb-3 h-100" style="max-width: 18rem;">
                                 <div class="card-header">Показалец</div>
-                                <div class="card-body text-dark">
+                                <div class="card-body text-dark finger" id="Десен Показалец">
                                     <div class="placeholder" id="right-index" ondrop="drop(event)" ondragover="allowDrop(event)">
                                     </div>
                                 </div>
@@ -266,7 +262,7 @@
                         <div class="col-md-2 text-center">
                             <div class="card border-dark mb-3 h-100" style="max-width: 18rem;">
                                 <div class="card-header">Среден</div>
-                                <div class="card-body text-dark">
+                                <div class="card-body text-dark finger" id="Десен Среден">
                                     <div class="placeholder" id="right-middle" ondrop="drop(event)" ondragover="allowDrop(event)">
                                     </div>
                                 </div>
@@ -275,7 +271,7 @@
                         <div class="col-md-2 text-center">
                             <div class="card border-dark mb-3 h-100" style="max-width: 18rem;">
                                 <div class="card-header">Безимен</div>
-                                <div class="card-body text-dark">
+                                <div class="card-body text-dark finger" id="Десен Безимен">
                                     <div class="placeholder" id="right-ring" ondrop="drop(event)" ondragover="allowDrop(event)">
                                     </div>
                                 </div>
@@ -284,7 +280,7 @@
                         <div class="col-md-2 text-center">
                             <div class="card border-dark mb-3 h-100" style="max-width: 18rem;">
                                 <div class="card-header">Кутре</div>
-                                <div class="card-body text-dark">
+                                <div class="card-body text-dark finger" id="Дясно Кутре">
                                     <div class="placeholder" id="right-pinky" ondrop="drop(event)" ondragover="allowDrop(event)">
                                     </div>
                                 </div>
@@ -298,12 +294,10 @@
                 </div>
                 <div class="col-12 mb-4 mx-auto text-center">
                     
-                        <!-- <input type="text" id="name" placeholder="Name"> -->
-                        <input type="email" id="email" placeholder="Email">
-                        <textarea rows="4" id="message" placeholder="Message"></textarea>
+                        <input type="text" id="name" placeholder="Името ви">
+                        <input type="email" id="email" placeholder="Имейла ви">
                         
-                   
-
+                        <!-- Submit Button that will trigger the whole checkup of fields and send the data -->
                         <button type="submit" onclick="sendData()" class="btn btn-primary">Изпрати резултати</button>
                     
                 </div>
