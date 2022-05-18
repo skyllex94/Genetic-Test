@@ -160,30 +160,33 @@ function sendData()
         arrValues = Object.values(allChoicesEmailMessage);
 
         // Email Body Header - using html tags for line breaks
-        let emailBody = "Име на клиента: " + customerName.value + "<br>";
-        emailBody += "Имейл на клиента: " + customerEmail.value + "<br>" + "<br>";
-        emailBody += " --- Пръстови отпечатъци ---" + "<br>" + "<br>";
+        let emailBody = "Име на клиента: " + customerName.value + "\n";
+        emailBody += "Имейл на клиента: " + customerEmail.value + "\n" + "\n";
+        emailBody += " --- Пръстови отпечатъци ---" + "\n" + "\n";
 
         // Loop through each key-value and format it as you include it to the email body
         for (let i = 0; i < arrKeys.length; i++)
         {
-            emailBody += (arrKeys[i] + " : " + arrValues[i] + "<br>");
+            emailBody += (arrKeys[i] + " : " + arrValues[i] + "\n");
         }
+
+        let message = document.getElementById("message");
+        message.value = emailBody;
         
-        // Send Email with ElasticEmail SMTP service
-        Email.send({
-                Host: "smtp.elasticemail.com",
-                // Current encrypted credentials
-                Username: "multifunctionaltm@gmail.com",
-                Password: "6CE6A5036B969B4D1ED89EFC89826DA5A83A",
-                To: "kkanchev94@gmail.com",
-                From: customerEmail.value, // "skyllex@abv.bg",
-                Subject: "Нов онлайн отчет",
-                Body: emailBody
-            }).then(
-                // message => alert(message)
-                message => emailResponse(message)
-            );
+        // // Send Email with ElasticEmail SMTP service
+        // Email.send({
+        //         Host: "smtp.elasticemail.com",
+        //         // Current encrypted credentials
+        //         Username: "multifunctionaltm@gmail.com",
+        //         Password: "6CE6A5036B969B4D1ED89EFC89826DA5A83A",
+        //         To: "multifunctionaltm@gmail.com",
+        //         From: customerEmail.value, // "skyllex@abv.bg",
+        //         Subject: "Нов онлайн отчет",
+        //         Body: emailBody
+        //     }).then(
+        //         // message => alert(message)
+        //         message => emailResponse(message)
+        //     );
 
     } else {
         alert("Моля въведете нужната информация във всички полета.");
