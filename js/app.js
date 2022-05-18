@@ -174,8 +174,8 @@ function sendData()
         Email.send({
                 Host: "smtp.elasticemail.com",
                 // Current encrypted credentials
-                Username: "skyllex@abv.bg",
-                Password: "3B3620376E05424FE3929662BA017F291276",
+                Username: "multifunctionaltm@gmail.com",
+                Password: "6CE6A5036B969B4D1ED89EFC89826DA5A83A",
                 To: "kkanchev94@gmail.com",
                 From: customerEmail.value, // "skyllex@abv.bg",
                 Subject: "Нов онлайн отчет",
@@ -197,6 +197,6 @@ function emailResponse(message)
         return alert("Вашите резултати бяха изпратени към нас. Ще ви върнем отговор в следващите няколко дни. Благодарим Ви!");
     }
     else {
-        return alert("Грешка с изпращането, моля проверете дали всички папили са въведели, ако грешката продължава свържете се с нас в контакната форма.");
+        return alert("Грешка с изпращането, моля проверете дали всички папили са въведели, ако грешката продължава свържете се с нас чрез контактната форма.");
     }
 }

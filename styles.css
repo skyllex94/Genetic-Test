@@ -61,6 +61,14 @@
     background-image: url("/img/panel1.jpg"); /* linear-gradient(rgba(61, 60, 60, 0.8), rgba(0, 0, 0, 0.7)), */
     background-size: cover;
     background-repeat: no-repeat;
-    /* background-position: center; */
-    /* background-attachment: fixed; */
 }
+
+#secondary-content {
+    width: 100%;
+    background-color: #f9f9f9;
+}
+
+#mission {
+    background-color: orange;
+}
+
