@@ -100,22 +100,6 @@ function drop(ev) {
     }
 }
 
-// ---- Send Email From Contact Form - ElasticEmail SMTP provider  ----
-function sendEmail() 
-{
-    Email.send({
-        Host: "smtp.elasticemail.com",
-        Username: "skyllex@abv.bg",
-        Password: "3B3620376E05424FE3929662BA017F291276",
-        To: "kkanchev94@gmail.com",
-        From: document.getElementById("email").value,
-        Subject: document.getElementById("subject").value,
-        Body: document.getElementById("message").value
-    }).then(
-        message => alert(message)
-    );
-}
-
 //  ---- Confirm selection with fingerprint data collected from the online form  ----
 
 function confirmData()
@@ -145,13 +129,9 @@ function confirmData()
     let arrFingers = [leftHandThumb, leftHandIndex, leftHandMiddle, leftHandRing, leftHandPinky, 
     rightHandThumb, rightHandIndex, rightHandMiddle, rightHandRing, rightHandPinky];
     let arrSymbols = [spiral, doubleSpiral, rainbow, rKnot, lKnot, tent];
-    
-    let customerName = document.getElementById("name");
-    let customerEmail = document.getElementById("email");
 
     if (leftHandThumb && leftHandIndex && leftHandMiddle && leftHandRing && leftHandPinky && 
-        rightHandThumb && rightHandIndex && rightHandMiddle && rightHandRing && rightHandPinky &&
-        customerName.value && customerEmail.value != null) {
+        rightHandThumb && rightHandIndex && rightHandMiddle && rightHandRing && rightHandPinky != null) {
 
         // Creating an objects with key-value pairs of all the fingers with their chosen symbol
         // When a symbol is dropped, it adds a "choice" class to be further fetched for the email body
