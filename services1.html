@@ -327,42 +327,28 @@
             </div>
         </div>
 
-        <div class="row d-flex justify-content-center my-4">
-            <!-- <div class="col-md-3 mb-2">
-                <input type="text" required class="form-control" id="name" placeholder="Имена">
-            </div>
-            <div class="col-md-3 mb-2">
-                <input type="email" required class="form-control" id="email" placeholder="Имейл">
-            </div>
-            <div class="col-md-2 mb-2">
-                Submit Button that will trigger the whole checkup of fields and send the data
-                <button type="submit" onclick="sendData()" class="btn btn-primary">Изпрати резултати</button>
-            </div> -->
-            <div class="col-md-12">
-                <form action="https://formsubmit.co/d0f1b53d9f2c1063a0e8744d739cd10d" method="POST">
-                    <input type="hidden" name="_captcha" value="false">
-                
-                    <input type="email" name="email" id="email" placeholder="Email Address">
-                    <input type="text" name="name" id="name" placeholder="Name" required>
+        <form action="https://formsubmit.co/d0f1b53d9f2c1063a0e8744d739cd10d" method="POST">
+            <div class="row d-flex justify-content-center my-4">
+                <div class="col-md-3 mb-2">
+                    <input type="text" name="name" id="name" class="form-control" placeholder="Име" required>
+                </div>
+                <div class="col-md-3 mb-2">
+                    <input type="email" name="email" id="email" class="form-control" placeholder="Имейл" required>
+                </div>
+                <div class="col-md-2 mb-2">
+                    <input type="hidden" name="_subject" placeholder="Subject" value="Нов онлайн отчет">
                     <textarea id="message" name="message" hidden></textarea>
-                
-                    <button type="button">Try it</button>
-                
-                
-                
-                    <input type="hidden" name="_subject" placeholder="Subject" value="New">
-                    <button type="submit" onclick="sendData()">Send</button>
-                    <!-- <input type="hidden" name="_next" value="/thankyou.html"> type="submit"-->
-                </form>
+                    
+                    <button type="button" id="confirmSelection" class="btn btn-primary form-control" onclick="confirmData()">Потвърди</button>
+                </div>
+                <div class="col-md-2 mb-2">
+                    <button type="submit" id="sendData" class="btn btn-primary form-control" disabled>Изпрати</button>
+                </div>
             </div>
-            
-
-
-
-        </div>
+        </form>
     </section>
 
-    <footer class="bg-dark text-center text-white">
+    <footer class="bg-dark text-center text-white py-4">
         <!-- Grid container -->
         <div class="container p-4 pb-0">
             <!-- Section: Social media -->

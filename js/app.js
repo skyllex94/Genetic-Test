@@ -48,8 +48,6 @@ function validateForm() {
 
 function allowDrop(ev) {
     ev.preventDefault();
-    
-    
 }
 
 function drag(ev) {
@@ -118,10 +116,11 @@ function sendEmail()
     );
 }
 
-//  ---- Send the fingerprint data collected from the online form  ----
+//  ---- Confirm selection with fingerprint data collected from the online form  ----
 
-function sendData()
+function confirmData()
 {
+    // All fingers selection
     let leftHandThumb = document.getElementById("left-thumb").firstElementChild;
     let leftHandIndex = document.getElementById("left-index").firstElementChild;
     let leftHandMiddle = document.getElementById("left-middle").firstElementChild;
@@ -134,15 +133,28 @@ function sendData()
     let rightHandRing = document.getElementById("right-ring").firstElementChild;
     let rightHandPinky = document.getElementById("right-pinky").firstElementChild;
 
+    // All symbols selection
+    let spiral =  document.getElementById("drag_spiral");
+    let doubleSpiral = document.getElementById("drag_double_spiral");
+    let rainbow = document.getElementById("drag_rainbow");
+    let rKnot = document.getElementById("drag_r_knot");
+    let lKnot = document.getElementById("drag_l_knot");
+    let tent = document.getElementById("drag_tent");
+
+    // Arrays of all the symbols and fingers
+    let arrFingers = [leftHandThumb, leftHandIndex, leftHandMiddle, leftHandRing, leftHandPinky, 
+    rightHandThumb, rightHandIndex, rightHandMiddle, rightHandRing, rightHandPinky];
+    let arrSymbols = [spiral, doubleSpiral, rainbow, rKnot, lKnot, tent];
+    
     let customerName = document.getElementById("name");
     let customerEmail = document.getElementById("email");
 
     if (leftHandThumb && leftHandIndex && leftHandMiddle && leftHandRing && leftHandPinky && 
         rightHandThumb && rightHandIndex && rightHandMiddle && rightHandRing && rightHandPinky &&
-        customerName.value && customerEmail.value != null)
-    {
+        customerName.value && customerEmail.value != null) {
 
-        //  Creating an objects with key-value pairs of all the fingers with their chosen symbol
+        // Creating an objects with key-value pairs of all the fingers with their chosen symbol
+        // When a symbol is dropped, it adds a "choice" class to be further fetched for the email body
         allChoicesEmailMessage =  {} // {"Ляв Палец" : "Двойна Спирала", "Ляв Показалец" : ...}
         let choices = document.querySelectorAll(".choice");
         let fingers = document.querySelectorAll(".finger");
@@ -160,9 +172,9 @@ function sendData()
         arrValues = Object.values(allChoicesEmailMessage);
 
         // Email Body Header - using html tags for line breaks
-        let emailBody = "Име на клиента: " + customerName.value + "\n";
-        emailBody += "Имейл на клиента: " + customerEmail.value + "\n" + "\n";
-        emailBody += " --- Пръстови отпечатъци ---" + "\n" + "\n";
+        let emailBody = "\n" + " --- Пръстови отпечатъци ---" + "\n" + "\n";
+        // emailBody += "Имейл на клиента: " + customerEmail.value + "\n" + "\n";
+        // emailBody += " --- Пръстови отпечатъци ---" + "\n" + "\n";
 
         // Loop through each key-value and format it as you include it to the email body
         for (let i = 0; i < arrKeys.length; i++)
@@ -170,30 +182,25 @@ function sendData()
             emailBody += (arrKeys[i] + " : " + arrValues[i] + "\n");
         }
 
+        // Populate the hidden textarea with the selection
         let message = document.getElementById("message");
         message.value = emailBody;
-        
-        // // Send Email with ElasticEmail SMTP service
-        // Email.send({
-        //         Host: "smtp.elasticemail.com",
-        //         // Current encrypted credentials
-        //         Username: "multifunctionaltm@gmail.com",
-        //         Password: "6CE6A5036B969B4D1ED89EFC89826DA5A83A",
-        //         To: "multifunctionaltm@gmail.com",
-        //         From: customerEmail.value, // "skyllex@abv.bg",
-        //         Subject: "Нов онлайн отчет",
-        //         Body: emailBody
-        //     }).then(
-        //         // message => alert(message)
-        //         message => emailResponse(message)
-        //     );
+        document.getElementById("sendData").disabled = false;
+        document.getElementById("confirmSelection").disabled = true;
 
-    } else {
+        // Disable dragging
+        arrSymbols.forEach(symbol => symbol.setAttribute("draggable", false));
+        arrFingers.forEach(finger => {
+            finger.setAttribute("draggable", false);
+            finger.parentElement.parentElement.parentElement.classList.replace("border-dark", "confirmed");
+        });
+    }
+    else {
         alert("Моля въведете нужната информация във всички полета.");
     }
 }
 
-// ---- Response back from the sendEmail promise which will give a conditional alert message ----
+// ---- Response back from Elastic Email promise which will give a conditional alert message ----
 function emailResponse(message)
 {
     if (message == "OK") {
