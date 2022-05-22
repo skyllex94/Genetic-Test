@@ -130,9 +130,20 @@ function confirmData()
     rightHandThumb, rightHandIndex, rightHandMiddle, rightHandRing, rightHandPinky];
     let arrSymbols = [spiral, doubleSpiral, rainbow, rKnot, lKnot, tent];
 
+    let age = document.getElementById("age").value;
+        if (age > 99) {
+            alert("Моля прегледайте годините си.");
+            return 1;
+        }
+
+    let select = document.getElementById("gender");
+    let gender = select.options[select.selectedIndex].text;
+    console.log(gender);
+
     if (leftHandThumb && leftHandIndex && leftHandMiddle && leftHandRing && leftHandPinky && 
         rightHandThumb && rightHandIndex && rightHandMiddle && rightHandRing && rightHandPinky != null) {
-
+        
+        
         // Creating an objects with key-value pairs of all the fingers with their chosen symbol
         // When a symbol is dropped, it adds a "choice" class to be further fetched for the email body
         allChoicesEmailMessage =  {} // {"Ляв Палец" : "Двойна Спирала", "Ляв Показалец" : ...}
@@ -152,7 +163,8 @@ function confirmData()
         arrValues = Object.values(allChoicesEmailMessage);
 
         // Email Body Header - using html tags for line breaks
-        let emailBody = "\n" + " --- Пръстови отпечатъци ---" + "\n" + "\n";
+        let emailBody = "Пол: " + gender + "\n";
+        emailBody += "\n" + " --- Пръстови отпечатъци ---" + "\n" + "\n";
         // emailBody += "Имейл на клиента: " + customerEmail.value + "\n" + "\n";
         // emailBody += " --- Пръстови отпечатъци ---" + "\n" + "\n";
 
