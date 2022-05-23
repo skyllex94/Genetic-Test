@@ -201,3 +201,38 @@ function emailResponse(message)
         return alert("Грешка с изпращането, моля проверете дали всички папили са въведели, ако грешката продължава свържете се с нас чрез контактната форма.");
     }
 }
+
+// fetch('https://jsonplaceholder.typicode.com/todos/1')
+//   .then(resp => resp.blob())
+//   .then(blob => {
+//     const url = window.URL.createObjectURL(blob);
+//     const a = document.createElement('a');
+//     a.style.display = 'none';
+//     a.href = url;
+//     // the filename you want
+//     a.download = 'blank-test.docx';
+//     document.body.appendChild(a);
+//     a.click();
+//     window.URL.revokeObjectURL(url);
+//     alert('your file has downloaded!'); // or you know, something with better UX...
+//   })
+//   .catch(() => alert('oh no!'));
+
+// let uri = "https://genetictest-sv.com/wp-content/uploads/2020/06/instruction.bg_.docx";
+
+// function downloadURI(uri, name) 
+// {
+//     var link = document.createElement("a");
+//     // If you don't know the name or want to use
+//     // the webserver default set name = ''
+//     link.setAttribute('download', name);
+//     link.href = uri;
+//     document.body.appendChild(link);
+//     link.click();
+//     link.remove();
+// }
+
+function fileDownload()
+{
+    document.getElementById('download').click();
+}

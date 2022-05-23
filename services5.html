@@ -30,15 +30,15 @@
                         <!-- <a href="index.html"><img src="/img/logo.png" class="navbar-brand logo"></a> -->
 
                     </div>
-                    <div class="col-md-2 px-4 v-divider align-self-center">
+                    <div class="col-md-2 px-4 v-divider align-self-center d-none d-lg-block d-xl-block">
                         <p class="lead d-inline"><i class="fas fa-map-marker-alt p-1"></i><b> България</b></p>
                         <p>гр. Свищов, 5250</p>
                     </div>
-                    <div class="col-md-2 px-4 v-divider align-self-center">
+                    <div class="col-md-2 px-4 v-divider align-self-center d-none d-lg-block d-xl-block">
                         <p class="lead d-inline"><i class="fas fa-phone p-1"></i><b> 9:00 - 18:00 ч.</b></p>
                         <p>Понеделник - Събота</p>
                     </div>
-                    <div class="col-md-2 px-4 v-divider align-self-center">
+                    <div class="col-md-2 px-4 v-divider align-self-center d-none d-lg-block d-xl-block">
                         <p class="lead d-inline"><i class="fa fa-envelope px-2"></i><b>genetictest</b></p>
                         <p>-sv@abv.bg</p>
                     </div>
@@ -59,8 +59,23 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="index.html">Начало</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="services1.html">Услуги</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">Услуги
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="services1.html">Безплатно Онлайн Тестване</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="services2.html">Раздел - Модел за самореализация</a></li>
+                                    <li><a class="dropdown-item" href="services3.html">Раздел - Професионална дейност</a></li>
+                                    <li><a class="dropdown-item" href="services4.html">Раздел - Тип Темперамент</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="services5.html">Тестване от експерт</a></li>
+                                </ul>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="help.html">Помощна страница</a>
@@ -75,12 +90,12 @@
     </header>
 
     <section class="container mb-5">
-        <h2 class="text-center my-5">Раздел „Темперамент и тип на възприемане на новости“</h2>
+        <h2 class="text-center my-5">Тестване от експерт</h2>
         <div class="row justify-content-center">
-            <div class="col-md-4">
-                <img src="/img/subpart3.jpg" alt="" class="img-fluid">
+            <div class="col-md-6">
+                <img src="/img/expert1.jpg" alt="" class="img-fluid">
             </div>
-            <div class="col-md-8 py-4">
+            <div class="col-md-6 py-4">
                 <h4 class="pb-3">Описание</h4>
                 <hr>
                 <p>
@@ -102,6 +117,18 @@
                 <p>
                     Получавате отчет в размер на <b>17 страници</b> pdf формат.
                 </p>
+
+                <form>
+                    <a href="https://genetictest-sv.com/wp-content/uploads/2020/06/instruction.bg_.docx" onclick="fileDownload()" download
+                        id="download">
+                        <button class="btn btn-primary">Изтегли Ръководство</button>
+                    </a>
+                    
+                    <a href="https://genetictest-sv.com/wp-content/uploads/2020/06/blank-test.docx" onclick="fileDownload()" download id="download">
+                        <button class="btn btn-primary">Изтегли Бланка</button>
+                    </a>
+                </form>
+
                 <div class="row justify-content-end align-self-center pt-3">
                     <div class="col-md-8 pt-2">
                         Цена за закупyване: <b>19.99лв</b> (10.22 евро чрез PayPal)
