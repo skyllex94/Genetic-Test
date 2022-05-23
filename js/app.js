@@ -101,7 +101,6 @@ function drop(ev) {
 }
 
 //  ---- Confirm selection with fingerprint data collected from the online form  ----
-
 function confirmData()
 {
     // All fingers selection
