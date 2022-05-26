@@ -205,6 +205,8 @@ function down()
 }
 
 // Mobile Functionality
+document.getElementById("conf").addEventListener("click", mobileConfirm);
+
 function mobileConfirm() 
 {
     let leftThumb = document.getElementById("mobile-left-thumb");
@@ -213,18 +215,29 @@ function mobileConfirm()
     let leftRing = document.getElementById("mobile-left-ring");
     let leftPinky = document.getElementById("mobile-left-pinky");
 
-    let allFingers = [leftThumb, leftIndex, leftMiddle, leftRing, leftPinky];
+    let rightThumb = document.getElementById("mobile-right-thumb");
+    let rightIndex = document.getElementById("mobile-right-index");
+    let rightMiddle = document.getElementById("mobile-right-middle");
+    let rightRing = document.getElementById("mobile-right-ring");
+    let rightPinky = document.getElementById("mobile-right-pinky");
 
-    let age = document.getElementById("age").value;
+    let allFingers = [leftThumb, leftIndex, leftMiddle, leftRing, leftPinky, 
+        rightThumb, rightIndex, rightMiddle, rightRing, rightPinky];
+
+
+    let age = document.getElementById("mobileAge").value;
     if (age > 99) {
         alert("Моля прегледайте годините си.");
         return 1;
     }
 
-    let select = document.getElementById("gender");
+    // Gender Selection
+    let select = document.getElementById("mobileGender");
     let gender = select.options[select.selectedIndex].text;
 
-    let emailBody = "\n" + " --- Пръстови отпечатъци ---" + "\n" + "\n";
+    // Email Body Creation
+    let emailBody = "Пол: " + gender + "\n";
+    emailBody += "\n" + " --- Пръстови отпечатъци ---" + "\n" + "\n";
 
     for (finger of allFingers) {
         let fingerName = finger.parentElement.id;
@@ -233,7 +246,18 @@ function mobileConfirm()
         emailBody += symbol + "\n";
     }
     
-
-    let message = document.getElementById("message");
+    let message = document.getElementById("mobileMessage");
     message.value = emailBody;
+
+    document.getElementById("mobileSendData").disabled = false;
+    document.getElementById("conf").disabled = true;
+
+    disableFingerSelections(allFingers);
+}
+
+function disableFingerSelections(fingers)
+{
+    for (finger of fingers){
+        finger.disabled = true;
+    } 
 }
