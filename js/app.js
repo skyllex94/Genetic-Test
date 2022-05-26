@@ -58,7 +58,7 @@ function drag(ev) {
 
     for (const empty of empties) {
         // Hovering change when the dragged item in on top
-        empty.addEventListener('dragover', function dragOver(e){
+            empty.addEventListener('dragover', function dragOver(e){
             e.preventDefault();
             empty.classList.add("hovered");
             
@@ -137,11 +137,9 @@ function confirmData()
 
     let select = document.getElementById("gender");
     let gender = select.options[select.selectedIndex].text;
-    console.log(gender);
 
     if (leftHandThumb && leftHandIndex && leftHandMiddle && leftHandRing && leftHandPinky && 
         rightHandThumb && rightHandIndex && rightHandMiddle && rightHandRing && rightHandPinky != null) {
-        
         
         // Creating an objects with key-value pairs of all the fingers with their chosen symbol
         // When a symbol is dropped, it adds a "choice" class to be further fetched for the email body
@@ -164,8 +162,6 @@ function confirmData()
         // Email Body Header - using html tags for line breaks
         let emailBody = "Пол: " + gender + "\n";
         emailBody += "\n" + " --- Пръстови отпечатъци ---" + "\n" + "\n";
-        // emailBody += "Имейл на клиента: " + customerEmail.value + "\n" + "\n";
-        // emailBody += " --- Пръстови отпечатъци ---" + "\n" + "\n";
 
         // Loop through each key-value and format it as you include it to the email body
         for (let i = 0; i < arrKeys.length; i++)
@@ -176,6 +172,7 @@ function confirmData()
         // Populate the hidden textarea with the selection
         let message = document.getElementById("message");
         message.value = emailBody;
+        // UI Buttons Handling
         document.getElementById("sendData").disabled = false;
         document.getElementById("confirmSelection").disabled = true;
 
@@ -202,37 +199,41 @@ function emailResponse(message)
     }
 }
 
-// fetch('https://jsonplaceholder.typicode.com/todos/1')
-//   .then(resp => resp.blob())
-//   .then(blob => {
-//     const url = window.URL.createObjectURL(blob);
-//     const a = document.createElement('a');
-//     a.style.display = 'none';
-//     a.href = url;
-//     // the filename you want
-//     a.download = 'blank-test.docx';
-//     document.body.appendChild(a);
-//     a.click();
-//     window.URL.revokeObjectURL(url);
-//     alert('your file has downloaded!'); // or you know, something with better UX...
-//   })
-//   .catch(() => alert('oh no!'));
-
-// let uri = "https://genetictest-sv.com/wp-content/uploads/2020/06/instruction.bg_.docx";
-
-// function downloadURI(uri, name) 
-// {
-//     var link = document.createElement("a");
-//     // If you don't know the name or want to use
-//     // the webserver default set name = ''
-//     link.setAttribute('download', name);
-//     link.href = uri;
-//     document.body.appendChild(link);
-//     link.click();
-//     link.remove();
-// }
-
-function fileDownload()
+function down()
 {
     document.getElementById('download').click();
+}
+
+// Mobile Functionality
+function mobileConfirm() 
+{
+    let leftThumb = document.getElementById("mobile-left-thumb");
+    let leftIndex = document.getElementById("mobile-left-index");
+    let leftMiddle = document.getElementById("mobile-left-middle");
+    let leftRing = document.getElementById("mobile-left-ring");
+    let leftPinky = document.getElementById("mobile-left-pinky");
+
+    let allFingers = [leftThumb, leftIndex, leftMiddle, leftRing, leftPinky];
+
+    let age = document.getElementById("age").value;
+    if (age > 99) {
+        alert("Моля прегледайте годините си.");
+        return 1;
+    }
+
+    let select = document.getElementById("gender");
+    let gender = select.options[select.selectedIndex].text;
+
+    let emailBody = "\n" + " --- Пръстови отпечатъци ---" + "\n" + "\n";
+
+    for (finger of allFingers) {
+        let fingerName = finger.parentElement.id;
+        emailBody += fingerName + ": ";
+        let symbol = finger.options[finger.selectedIndex].text;
+        emailBody += symbol + "\n";
+    }
+    
+
+    let message = document.getElementById("message");
+    message.value = emailBody;
 }

@@ -2,9 +2,12 @@
     border: none;
 }
 
-/* .rounded {
-    border: 4px dashed rgb(169, 140, 102);
-} */
+#box {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #ccc;
+}
 
 .text-center p-3 {
     background-color: rgba(0, 0, 0, 0.2);
