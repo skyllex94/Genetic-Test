@@ -205,10 +205,14 @@ function down()
 }
 
 // Mobile Functionality
-document.getElementById("conf").addEventListener("click", mobileConfirm);
-
 function mobileConfirm() 
 {
+    // Confirm user choice
+    if (confirm("Сигурни ли сте, че проверихте всеки един от вашите пръсти?") == false) {
+        return 1;
+    }
+
+    // Define all finger selections
     let leftThumb = document.getElementById("mobile-left-thumb");
     let leftIndex = document.getElementById("mobile-left-index");
     let leftMiddle = document.getElementById("mobile-left-middle");
@@ -221,9 +225,9 @@ function mobileConfirm()
     let rightRing = document.getElementById("mobile-right-ring");
     let rightPinky = document.getElementById("mobile-right-pinky");
 
+    // Array of all of them for iteration
     let allFingers = [leftThumb, leftIndex, leftMiddle, leftRing, leftPinky, 
         rightThumb, rightIndex, rightMiddle, rightRing, rightPinky];
-
 
     let age = document.getElementById("mobileAge").value;
     if (age > 99) {
@@ -237,27 +241,36 @@ function mobileConfirm()
 
     // Email Body Creation
     let emailBody = "Пол: " + gender + "\n";
-    emailBody += "\n" + " --- Пръстови отпечатъци ---" + "\n" + "\n";
+    emailBody += "\n" + "--- Пръстови отпечатъци ---" + "\n" + "\n";
 
+    // Getting the info for each finger choices and adding to the email body
+    fingerChoices(allFingers, emailBody);
+    
+    let message = document.getElementById("mobileMessage");
+    message.value = emailBody;
+
+    // UI button disabling and finger selection
+    document.getElementById("mobileSendData").disabled = false;
+    document.getElementById("conf").disabled = true;
+    disableFingerSelections(allFingers);
+}
+
+function disableFingerSelections(fingers)
+{
+    // Disabling every selections HTML element
+    for (finger of fingers){
+        finger.disabled = true;
+    } 
+}
+
+function fingerChoices(allFingers, emailBody)
+{
+    // Looping over all of the finger selections and adding their 
+    // symbol and finger to the email body 
     for (finger of allFingers) {
         let fingerName = finger.parentElement.id;
         emailBody += fingerName + ": ";
         let symbol = finger.options[finger.selectedIndex].text;
         emailBody += symbol + "\n";
     }
-    
-    let message = document.getElementById("mobileMessage");
-    message.value = emailBody;
-
-    document.getElementById("mobileSendData").disabled = false;
-    document.getElementById("conf").disabled = true;
-
-    disableFingerSelections(allFingers);
-}
-
-function disableFingerSelections(fingers)
-{
-    for (finger of fingers){
-        finger.disabled = true;
-    } 
 }
