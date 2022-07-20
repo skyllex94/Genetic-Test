@@ -282,7 +282,15 @@ function mobileConfirm() {
   emailBody += "\n" + "--- Пръстови отпечатъци ---" + "\n" + "\n";
 
   // Getting the info for each finger choices and adding to the email body
-  emailBody = fingerChoices(allFingers, emailBody);
+  for (finger of allFingers) {
+    // Looping over all of the finger selections and adding their
+    // symbol and finger to the email body
+    let fingerName = finger.parentElement.id;
+    emailBody += fingerName + ": ";
+    let symbol = finger.options[finger.selectedIndex].text;
+    emailBody += symbol + "\n";
+  }
+
   let message = document.getElementById("mobileMessage");
   message.value = emailBody;
 
@@ -297,17 +305,4 @@ function disableFingerSelections(fingers) {
   for (finger of fingers) {
     finger.disabled = true;
   }
-}
-
-function fingerChoices(allFingers, emailBody) {
-  // Looping over all of the finger selections and adding their
-  // symbol and finger to the email body
-  let body = emailBody;
-  for (finger of allFingers) {
-    let fingerName = finger.parentElement.id;
-    body += fingerName + ": ";
-    let symbol = finger.options[finger.selectedIndex].text;
-    body += symbol + "\n";
-  }
-  return body;
 }
