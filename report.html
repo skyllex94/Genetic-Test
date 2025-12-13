@@ -12,6 +12,7 @@
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="styles.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -193,44 +194,450 @@
                     </div>
                 </div>
 
-                <!-- Career Recommendations -->
+                <!-- Education Type Analysis -->
                 <div class="card shadow mb-4">
-                    <div class="card-header bg-warning text-dark">
+                    <div class="card-header bg-primary text-white">
                         <h3 class="card-title mb-0">
-                            <i class="fas fa-briefcase me-2"></i>
-                            Професионални препоръки
+                            <i class="fas fa-graduation-cap me-2"></i>
+                            Тип образование - Анализ на показатели
                         </h3>
                     </div>
                     <div class="card-body">
-                        <h6>Подходящи професии:</h6>
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <h6>Техническо образование</h6>
+                                <div class="progress report-progress mb-2">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
+                                </div>
+                                <small class="text-muted">Висока предразположеност към технически дисциплини</small>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Хуманитарно образование</h6>
+                                <div class="progress report-progress mb-2">
+                                    <div class="progress-bar bg-secondary" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100">35%</div>
+                                </div>
+                                <small class="text-muted">Средна предразположеност към хуманитарни науки</small>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <h6>Природни науки</h6>
+                                <div class="progress report-progress mb-2">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100">78%</div>
+                                </div>
+                                <small class="text-muted">Висока предразположеност към математика и естествени науки</small>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Икономика и управление</h6>
+                                <div class="progress report-progress mb-2">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 42%" aria-valuenow="42" aria-valuemin="0" aria-valuemax="100">42%</div>
+                                </div>
+                                <small class="text-muted">Средна предразположеност към бизнес дисциплини</small>
+                            </div>
+                        </div>
+                        <div class="alert alert-info">
+                            <strong>Препоръка:</strong> Най-подходящи са технически и природонаучни специалности като компютърни науки, математика, физика или инженерство.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Directions Analysis -->
+                <div class="card shadow mb-4">
+                    <div class="card-header bg-success text-white">
+                        <h3 class="card-title mb-0">
+                            <i class="fas fa-compass me-2"></i>
+                            Направления на професионална дейност - Анализ на показатели
+                        </h3>
+                    </div>
+                    <div class="card-body">
                         <div class="row">
                             <div class="col-md-4 mb-3">
-                                <div class="card h-100 border-primary">
-                                    <div class="card-body text-center">
-                                        <i class="fas fa-code fa-2x text-primary mb-2"></i>
-                                        <h6>Програмист</h6>
-                                        <small class="text-muted">Висока съвместимост</small>
+                                <div class="text-center">
+                                    <div class="chart-container" style="position: relative; height: 150px;">
+                                        <canvas id="directionsChart"></canvas>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4 mb-3">
-                                <div class="card h-100 border-success">
-                                    <div class="card-body text-center">
-                                        <i class="fas fa-flask fa-2x text-success mb-2"></i>
-                                        <h6>Научен изследовател</h6>
-                                        <small class="text-muted">Добра съвместимост</small>
+                            <div class="col-md-8">
+                                <h6>Аналитична дейност</h6>
+                                <div class="progress report-progress mb-3">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 92%" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100">92%</div>
+                                </div>
+
+                                <h6>Творческа дейност</h6>
+                                <div class="progress report-progress mb-3">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 68%" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100">68%</div>
+                                </div>
+
+                                <h6>Организационна дейност</h6>
+                                <div class="progress report-progress mb-3">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 74%" aria-valuenow="74" aria-valuemin="0" aria-valuemax="100">74%</div>
+                                </div>
+
+                                <h6>Физическа дейност</h6>
+                                <div class="progress report-progress mb-3">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alert alert-success mt-3">
+                            <strong>Основно направление:</strong> Аналитична дейност с висока предразположеност към систематична и логическа работа.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Spheres Analysis -->
+                <div class="card shadow mb-4">
+                    <div class="card-header bg-info text-white">
+                        <h3 class="card-title mb-0">
+                            <i class="fas fa-building me-2"></i>
+                            Сфери на професионална дейност - Анализ на показатели
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <h6>IT и технологии</h6>
+                                <div class="progress report-progress mb-2">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 88%" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100">88%</div>
+                                </div>
+                                <small class="text-muted">Програмиране, разработка на софтуер, анализ на системи</small>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Наука и изследвания</h6>
+                                <div class="progress report-progress mb-2">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 82%" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100">82%</div>
+                                </div>
+                                <small class="text-muted">Научни изследвания, експерименти, анализ на данни</small>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <h6>Финанси и анализ</h6>
+                                <div class="progress report-progress mb-2">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65%</div>
+                                </div>
+                                <small class="text-muted">Финансов анализ, риск оценка, планиране</small>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Образование</h6>
+                                <div class="progress report-progress mb-2">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 58%" aria-valuenow="58" aria-valuemin="0" aria-valuemax="100">58%</div>
+                                </div>
+                                <small class="text-muted">Преподавателска дейност, обучение, консултиране</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Self-Realization Model Analysis -->
+                <div class="card shadow mb-4">
+                    <div class="card-header bg-warning text-dark">
+                        <h3 class="card-title mb-0">
+                            <i class="fas fa-target me-2"></i>
+                            Модел за самореализация - Анализ на показатели
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h6>Системен подход</h6>
+                                <div class="progress report-progress mb-3">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100">89%</div>
+                                </div>
+
+                                <h6>Планиране и организация</h6>
+                                <div class="progress report-progress mb-3">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 84%" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100">84%</div>
+                                </div>
+
+                                <h6>Креативно мислене</h6>
+                                <div class="progress report-progress mb-3">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100">72%</div>
+                                </div>
+
+                                <h6>Комуникация</h6>
+                                <div class="progress report-progress mb-3">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">55%</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="chart-container" style="position: relative; height: 200px;">
+                                        <canvas id="selfRealizationChart"></canvas>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4 mb-3">
-                                <div class="card h-100 border-info">
+                        </div>
+                        <div class="alert alert-warning mt-3">
+                            <strong>Вашият модел:</strong> Системен и планиращ тип с висока ефективност при структурирана работа.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Health Analysis -->
+                <div class="card shadow mb-4">
+                    <div class="card-header bg-danger text-white">
+                        <h3 class="card-title mb-0">
+                            <i class="fas fa-heartbeat me-2"></i>
+                            Здраве - Рискови фактори - Анализ на показатели
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <h6>Риск от стрес</h6>
+                                <div class="progress report-progress mb-2">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65%</div>
+                                </div>
+                                <small class="text-muted">Среден риск при продължителна интензивна работа</small>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Имунна система</h6>
+                                <div class="progress report-progress mb-2">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100">78%</div>
+                                </div>
+                                <small class="text-muted">Добра устойчивост на организма</small>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <h6>Нервна система</h6>
+                                <div class="progress report-progress mb-2">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100">72%</div>
+                                </div>
+                                <small class="text-muted">Добра устойчивост, но нужда от почивка</small>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Физическа издръжливост</h6>
+                                <div class="progress report-progress mb-2">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 68%" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100">68%</div>
+                                </div>
+                                <small class="text-muted">Средна физическа издръжливост</small>
+                            </div>
+                        </div>
+                        <div class="alert alert-danger">
+                            <strong>Препоръки:</strong> Редовни почивки, балансирано хранене, умерена физическа активност.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sports Analysis -->
+                <div class="card shadow mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="card-title mb-0">
+                            <i class="fas fa-running me-2"></i>
+                            Спорт - Анализ на показатели
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6>Интелектуални спортове</h6>
+                                <div class="progress report-progress mb-3">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 92%" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100">92%</div>
+                                </div>
+
+                                <h6>Индивидуални спортове</h6>
+                                <div class="progress report-progress mb-3">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100">78%</div>
+                                </div>
+
+                                <h6>Командни спортове</h6>
+                                <div class="progress report-progress mb-3">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card border-primary mb-3">
                                     <div class="card-body text-center">
-                                        <i class="fas fa-chart-line fa-2x text-info mb-2"></i>
-                                        <h6>Аналитик</h6>
-                                        <small class="text-muted">Средна съвместимост</small>
+                                        <i class="fas fa-chess fa-3x text-primary mb-3"></i>
+                                        <h6>Шах</h6>
+                                        <small class="text-muted">Най-подходящ спорт - развива стратегическо мислене</small>
+                                    </div>
+                                </div>
+                                <div class="card border-success mb-3">
+                                    <div class="card-body text-center">
+                                        <i class="fas fa-swimmer fa-3x text-success mb-3"></i>
+                                        <h6>Плуване</h6>
+                                        <small class="text-muted">Отличен избор - индивидуален спорт с технически елементи</small>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nervous System Potential -->
+                <div class="card shadow mb-4">
+                    <div class="card-header bg-info text-white">
+                        <h3 class="card-title mb-0">
+                            <i class="fas fa-brain me-2"></i>
+                            Потенциал на нервната система - Анализ на показатели
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <h6>Концентрация</h6>
+                                <div class="progress report-progress mb-2">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 88%" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100">88%</div>
+                                </div>
+                                <small class="text-muted">Висока способност за продължителна концентрация</small>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Бързина на реакция</h6>
+                                <div class="progress report-progress mb-2">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100">72%</div>
+                                </div>
+                                <small class="text-muted">Добра скорост на обработка на информация</small>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <h6>Стресоустойчивост</h6>
+                                <div class="progress report-progress mb-2">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 68%" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100">68%</div>
+                                </div>
+                                <small class="text-muted">Средна устойчивост на стресови ситуации</small>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Адаптивност</h6>
+                                <div class="progress report-progress mb-2">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+                                </div>
+                                <small class="text-muted">Добра способност за адаптация към промени</small>
+                            </div>
+                        </div>
+                        <div class="alert alert-info">
+                            <strong>Тип нервна система:</strong> Силен тип с добра работоспособност при системна дейност.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Behavioral Adaptation Type -->
+                <div class="card shadow mb-4">
+                    <div class="card-header bg-success text-white">
+                        <h3 class="card-title mb-0">
+                            <i class="fas fa-adjust me-2"></i>
+                            Тип поведенческа адаптация - Анализ на показатели
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h6>Системна адаптация</h6>
+                                <div class="progress report-progress mb-3">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 91%" aria-valuenow="91" aria-valuemin="0" aria-valuemax="100">91%</div>
+                                </div>
+
+                                <h6>Гъвкава адаптация</h6>
+                                <div class="progress report-progress mb-3">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 67%" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100">67%</div>
+                                </div>
+
+                                <h6>Консервативна адаптация</h6>
+                                <div class="progress report-progress mb-3">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 43%" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100">43%</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="chart-container" style="position: relative; height: 150px;">
+                                        <canvas id="adaptationChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alert alert-success mt-3">
+                            <strong>Вашият тип:</strong> Системна адаптация - предпочитате планирани промени и структурирана адаптация.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Temperament Analysis -->
+                <div class="card shadow mb-4">
+                    <div class="card-header bg-warning text-dark">
+                        <h3 class="card-title mb-0">
+                            <i class="fas fa-fire me-2"></i>
+                            Темперамент - Анализ на показатели
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <h6>Меланхоличен</h6>
+                                <div class="progress report-progress mb-2">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemin="0" aria-valuemax="100">35%</div>
+                                </div>
+                                <small class="text-muted">Ниска емоционалност, склонност към анализ</small>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Флегматичен</h6>
+                                <div class="progress report-progress mb-2">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100">72%</div>
+                                </div>
+                                <small class="text-muted">Спокоен, уравновесен, надежден</small>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <h6>Сангвиничен</h6>
+                                <div class="progress report-progress mb-2">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 58%" aria-valuenow="58" aria-valuemin="0" aria-valuemax="100">58%</div>
+                                </div>
+                                <small class="text-muted">Жизнерадостен, общителен, енергичен</small>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Холеричен</h6>
+                                <div class="progress report-progress mb-2">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 42%" aria-valuenow="42" aria-valuemin="0" aria-valuemax="100">42%</div>
+                                </div>
+                                <small class="text-muted">Импулсивен, енергичен, решителен</small>
+                            </div>
+                        </div>
+                        <div class="alert alert-warning">
+                            <strong>Вашият темперамент:</strong> Предимно флегматичен с елементи на сангвиничност.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News Perception Type -->
+                <div class="card shadow mb-4">
+                    <div class="card-header bg-secondary text-white">
+                        <h3 class="card-title mb-0">
+                            <i class="fas fa-lightbulb me-2"></i>
+                            Тип възприемане на новости - Анализ на показатели
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h6>Аналитично възприемане</h6>
+                                <div class="progress report-progress mb-3">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100">89%</div>
+                                </div>
+
+                                <h6>Интуитивно възприемане</h6>
+                                <div class="progress report-progress mb-3">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65%</div>
+                                </div>
+
+                                <h6>Практическо възприемане</h6>
+                                <div class="progress report-progress mb-3">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100">78%</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="chart-container" style="position: relative; height: 150px;">
+                                        <canvas id="newsPerceptionChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alert alert-secondary mt-3">
+                            <strong>Вашият тип:</strong> Аналитично възприемане - предпочитате задълбочен анализ преди приемане на новости.
                         </div>
                     </div>
                 </div>
@@ -356,8 +763,198 @@
             }
         }
 
-        // Load data when page loads
-        document.addEventListener('DOMContentLoaded', loadReportData);
+        // Create charts when page loads
+        function createCharts() {
+            // Directions Chart
+            const directionsCtx = document.getElementById('directionsChart');
+            if (directionsCtx) {
+                new Chart(directionsCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Аналитична', 'Творческа', 'Организационна', 'Физическа'],
+                        datasets: [{
+                            data: [92, 68, 74, 45],
+                            backgroundColor: ['#007bff', '#28a745', '#ffc107', '#dc3545'],
+                            borderWidth: 2,
+                            hoverBorderWidth: 3
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    padding: 20,
+                                    font: {
+                                        size: 14
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Self-Realization Chart
+            const selfRealizationCtx = document.getElementById('selfRealizationChart');
+            if (selfRealizationCtx) {
+                new Chart(selfRealizationCtx, {
+                    type: 'radar',
+                    data: {
+                        labels: ['Системен подход', 'Планиране', 'Креативно мислене', 'Комуникация'],
+                        datasets: [{
+                            label: 'Показатели',
+                            data: [89, 84, 72, 55],
+                            borderColor: '#ffc107',
+                            backgroundColor: 'rgba(255, 193, 7, 0.2)',
+                            pointBackgroundColor: '#ffc107',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: '#ffc107',
+                            pointRadius: 6,
+                            pointHoverRadius: 8
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            r: {
+                                beginAtZero: true,
+                                max: 100,
+                                ticks: {
+                                    stepSize: 20,
+                                    font: {
+                                        size: 12
+                                    }
+                                },
+                                pointLabels: {
+                                    font: {
+                                        size: 14
+                                    }
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                labels: {
+                                    font: {
+                                        size: 14
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Adaptation Chart
+            const adaptationCtx = document.getElementById('adaptationChart');
+            if (adaptationCtx) {
+                new Chart(adaptationCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Системна', 'Гъвкава', 'Консервативна'],
+                        datasets: [{
+                            label: 'Процент',
+                            data: [91, 67, 43],
+                            backgroundColor: ['#28a745', '#007bff', '#ffc107'],
+                            borderWidth: 2,
+                            borderColor: '#fff',
+                            hoverBorderWidth: 3
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 100,
+                                ticks: {
+                                    stepSize: 20,
+                                    font: {
+                                        size: 12
+                                    }
+                                }
+                            },
+                            x: {
+                                ticks: {
+                                    font: {
+                                        size: 14
+                                    }
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        }
+                    }
+                });
+            }
+
+            // News Perception Chart
+            const newsPerceptionCtx = document.getElementById('newsPerceptionChart');
+            if (newsPerceptionCtx) {
+                new Chart(newsPerceptionCtx, {
+                    type: 'polarArea',
+                    data: {
+                        labels: ['Аналитично', 'Интуитивно', 'Практическо'],
+                        datasets: [{
+                            data: [89, 65, 78],
+                            backgroundColor: [
+                                'rgba(0, 123, 255, 0.8)',
+                                'rgba(40, 167, 69, 0.8)',
+                                'rgba(255, 193, 7, 0.8)'
+                            ],
+                            borderWidth: 2,
+                            borderColor: '#fff',
+                            hoverBorderWidth: 3
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    padding: 20,
+                                    font: {
+                                        size: 14
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            r: {
+                                ticks: {
+                                    stepSize: 20,
+                                    font: {
+                                        size: 12
+                                    }
+                                },
+                                pointLabels: {
+                                    font: {
+                                        size: 14
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        // Load data and create charts when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadReportData();
+            createCharts();
+        });
     </script>
 </body>
 
