@@ -267,14 +267,14 @@ function mobileConfirm() {
     rightPinky,
   ];
 
-  let age = document.getElementById("mobileAge").value;
+  let age = document.getElementById("age").value;
   if (age > 99) {
     alert("Моля прегледайте годините си.");
     return 1;
   }
 
   // Gender Selection
-  let select = document.getElementById("mobileGender");
+  let select = document.getElementById("gender");
   let gender = select.options[select.selectedIndex].text;
 
   // Email Body Creation
@@ -291,12 +291,12 @@ function mobileConfirm() {
     emailBody += symbol + "\n";
   }
 
-  let message = document.getElementById("mobileMessage");
+  let message = document.getElementById("message");
   message.value = emailBody;
 
   // UI button disabling and finger selection
-  document.getElementById("mobileSendData").disabled = false;
-  document.getElementById("conf").disabled = true;
+  document.getElementById("sendData").disabled = false;
+  document.getElementById("confirmSelection").disabled = true;
   disableFingerSelections(allFingers);
 }
 
