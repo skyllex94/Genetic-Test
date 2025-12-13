@@ -192,9 +192,34 @@ function confirmData() {
       emailBody += arrKeys[i] + " : " + arrValues[i] + "\n";
     }
 
+    // Save data to localStorage for the report page
+    localStorage.setItem('report_name', document.getElementById("name").value);
+    localStorage.setItem('report_gender', gender);
+    localStorage.setItem('report_age', age);
+
+    // Save fingerprint data
+    const fingerprintData = {
+      leftHand: [
+        arrFingers[0] ? arrFingers[0].name : 'Не е посочен',
+        arrFingers[1] ? arrFingers[1].name : 'Не е посочен',
+        arrFingers[2] ? arrFingers[2].name : 'Не е посочен',
+        arrFingers[3] ? arrFingers[3].name : 'Не е посочен',
+        arrFingers[4] ? arrFingers[4].name : 'Не е посочен'
+      ],
+      rightHand: [
+        arrFingers[5] ? arrFingers[5].name : 'Не е посочен',
+        arrFingers[6] ? arrFingers[6].name : 'Не е посочен',
+        arrFingers[7] ? arrFingers[7].name : 'Не е посочен',
+        arrFingers[8] ? arrFingers[8].name : 'Не е посочен',
+        arrFingers[9] ? arrFingers[9].name : 'Не е посочен'
+      ]
+    };
+    localStorage.setItem('fingerprint_data', JSON.stringify(fingerprintData));
+
     // Populate the hidden textarea with the selection
     let message = document.getElementById("message");
     message.value = emailBody;
+
     // UI Buttons Handling
     document.getElementById("sendData").disabled = false;
     document.getElementById("confirmSelection").disabled = true;
@@ -208,6 +233,11 @@ function confirmData() {
         "confirmed"
       );
     });
+
+    // Redirect to report page after a short delay
+    setTimeout(() => {
+      window.location.href = 'report.html';
+    }, 1000);
   } else {
     alert("Моля въведете нужната информация във всички полета.");
   }
@@ -291,6 +321,35 @@ function mobileConfirm() {
     emailBody += symbol + "\n";
   }
 
+  // Save data to localStorage for the report page
+  localStorage.setItem('report_name', document.getElementById("name").value);
+  localStorage.setItem('report_gender', gender);
+  localStorage.setItem('report_age', age);
+
+  // Save fingerprint data for mobile
+  const fingerprintData = {
+    leftHand: [],
+    rightHand: []
+  };
+
+  // Get mobile finger selections
+  const leftFingers = ['mobile-left-thumb', 'mobile-left-index', 'mobile-left-middle', 'mobile-left-ring', 'mobile-left-pinky'];
+  const rightFingers = ['mobile-right-thumb', 'mobile-right-index', 'mobile-right-middle', 'mobile-right-ring', 'mobile-right-pinky'];
+
+  leftFingers.forEach(fingerId => {
+    const element = document.getElementById(fingerId);
+    const value = element.options[element.selectedIndex].text;
+    fingerprintData.leftHand.push(value);
+  });
+
+  rightFingers.forEach(fingerId => {
+    const element = document.getElementById(fingerId);
+    const value = element.options[element.selectedIndex].text;
+    fingerprintData.rightHand.push(value);
+  });
+
+  localStorage.setItem('fingerprint_data', JSON.stringify(fingerprintData));
+
   let message = document.getElementById("message");
   message.value = emailBody;
 
@@ -298,6 +357,11 @@ function mobileConfirm() {
   document.getElementById("sendData").disabled = false;
   document.getElementById("confirmSelection").disabled = true;
   disableFingerSelections(allFingers);
+
+  // Redirect to report page after a short delay
+  setTimeout(() => {
+    window.location.href = 'report.html';
+  }, 1000);
 }
 
 function disableFingerSelections(fingers) {

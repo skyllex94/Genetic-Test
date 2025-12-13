@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="bg">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Вашият Генетичен Отчет - Genetic Test</title>
+    <meta content='maximum-scale=1.0, initial-scale=1.0, width=device-width' name='viewport'>
+    <link rel="icon" href="/img/fingerprint-scan.png" type="image/icon type">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <section class="above-navigation">
+            <div class="container">
+                <div class="row py-4 d-flex">
+                    <div class="col-md-6 align-self-center">
+                        <a class="text-decoration-none" href="index.html">
+                            <p class="display-6 d-inline">Genetic test – Svishtov</p>
+                        </a>
+                        <p class="pt-1"> Биометрично изследване, основано на науката дерматоглифика</p>
+                    </div>
+                    <div class="col-md-2 px-4 v-divider align-self-center d-none d-lg-block d-xl-block">
+                        <p class="lead d-inline"><i class="fas fa-map-marker-alt p-1"></i><b> България</b></p>
+                        <p>гр. Свищов, 5250</p>
+                    </div>
+                    <div class="col-md-2 px-4 v-divider align-self-center d-none d-lg-block d-xl-block">
+                        <p class="lead d-inline"><i class="fas fa-phone p-1"></i><b>9:00-18:00ч.</b></p>
+                        <p>Понеделник-Събота</p>
+                    </div>
+                    <div class="col-md-2 px-4 v-divider align-self-center d-none d-lg-block d-xl-block">
+                        <p class="lead d-inline"><i class="fa fa-envelope px-2"></i><b>genetictest</b></p>
+                        <p>-sv@abv.bg</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="navigation container">
+            <nav class="navbar navbar-expand-lg navbar-light py-4">
+                <div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto ps-0 mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Начало</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">Услуги
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="services1.html">Безплатно Онлайн Тестване</a></li>
+                                <li class="dropdown-divider">
+                                    <hr>
+                                </li>
+                                <li><a class="dropdown-item" href="services2.html">Раздел - Модел за самореализация</a></li>
+                                <li><a class="dropdown-item" href="services3.html">Раздел - Професионална дейност</a></li>
+                                <li><a class="dropdown-item" href="services4.html">Раздел - Тип Темперамент</a></li>
+                                <li class="dropdown-divider">
+                                    <hr>
+                                </li>
+                                <li><a class="dropdown-item" href="services5.html">Тестване от експерт</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="help.html">Помощна страница</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html" tabindex="-1" aria-disabled="true">Контакти</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </section>
+    </header>
+
+    <section class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <!-- Report Header -->
+                <div class="text-center mb-5">
+                    <h1 class="display-4 text-primary mb-3">
+                        <i class="fas fa-file-alt me-3"></i>
+                        Вашият Генетичен Отчет
+                    </h1>
+                    <p class="lead">Базирано на анализа на вашите пръстови отпечатъци</p>
+                    <hr class="my-4">
+                </div>
+
+                <!-- Personal Information -->
+                <div class="card shadow mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="card-title mb-0">
+                            <i class="fas fa-user me-2"></i>
+                            Лична информация
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <strong>Име:</strong> <span id="report-name">[Име]</span>
+                            </div>
+                            <div class="col-md-3">
+                                <strong>Пол:</strong> <span id="report-gender">[Пол]</span>
+                            </div>
+                            <div class="col-md-3">
+                                <strong>Възраст:</strong> <span id="report-age">[Възраст]</span>
+                            </div>
+                            <div class="col-md-3">
+                                <strong>Дата:</strong> <span id="report-date">[Дата]</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fingerprint Analysis -->
+                <div class="card shadow mb-4">
+                    <div class="card-header bg-success text-white">
+                        <h3 class="card-title mb-0">
+                            <i class="fas fa-fingerprint me-2"></i>
+                            Анализ на пръстовите отпечатъци
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>Лява ръка:</h5>
+                                <ul class="list-group list-group-flush" id="left-hand-fingers">
+                                    <li class="list-group-item">Палец: [Тип]</li>
+                                    <li class="list-group-item">Показалец: [Тип]</li>
+                                    <li class="list-group-item">Среден: [Тип]</li>
+                                    <li class="list-group-item">Безимен: [Тип]</li>
+                                    <li class="list-group-item">Кутре: [Тип]</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>Дясна ръка:</h5>
+                                <ul class="list-group list-group-flush" id="right-hand-fingers">
+                                    <li class="list-group-item">Палец: [Тип]</li>
+                                    <li class="list-group-item">Показалец: [Тип]</li>
+                                    <li class="list-group-item">Среден: [Тип]</li>
+                                    <li class="list-group-item">Безимен: [Тип]</li>
+                                    <li class="list-group-item">Кутре: [Тип]</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personality Analysis -->
+                <div class="card shadow mb-4">
+                    <div class="card-header bg-info text-white">
+                        <h3 class="card-title mb-0">
+                            <i class="fas fa-brain me-2"></i>
+                            Анализ на характера
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info">
+                            <h5><i class="fas fa-lightbulb me-2"></i>Ваш основен тип личност:</h5>
+                            <p class="mb-0">Вашият анализ показва, че сте [Тип личност] с предразположеност към [Основни характеристики].</p>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <h6>Силни страни:</h6>
+                                <ul>
+                                    <li>Аналитично мислене</li>
+                                    <li>Творчески подход</li>
+                                    <li>Организираност</li>
+                                    <li>Способност за съсредоточаване</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Области за развитие:</h6>
+                                <ul>
+                                    <li>Комуникативни умения</li>
+                                    <li>Адаптивност към промени</li>
+                                    <li>Работа в екип</li>
+                                    <li>Емоционална интелигентност</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Career Recommendations -->
+                <div class="card shadow mb-4">
+                    <div class="card-header bg-warning text-dark">
+                        <h3 class="card-title mb-0">
+                            <i class="fas fa-briefcase me-2"></i>
+                            Професионални препоръки
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <h6>Подходящи професии:</h6>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <div class="card h-100 border-primary">
+                                    <div class="card-body text-center">
+                                        <i class="fas fa-code fa-2x text-primary mb-2"></i>
+                                        <h6>Програмист</h6>
+                                        <small class="text-muted">Висока съвместимост</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="card h-100 border-success">
+                                    <div class="card-body text-center">
+                                        <i class="fas fa-flask fa-2x text-success mb-2"></i>
+                                        <h6>Научен изследовател</h6>
+                                        <small class="text-muted">Добра съвместимост</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="card h-100 border-info">
+                                    <div class="card-body text-center">
+                                        <i class="fas fa-chart-line fa-2x text-info mb-2"></i>
+                                        <h6>Аналитик</h6>
+                                        <small class="text-muted">Средна съвместимост</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommendations -->
+                <div class="card shadow mb-4">
+                    <div class="card-header bg-secondary text-white">
+                        <h3 class="card-title mb-0">
+                            <i class="fas fa-star me-2"></i>
+                            Препоръки
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6>Образование:</h6>
+                                <p>Препоръчваме да се насочите към технически или научни специалности, където можете да развиете своите аналитични способности.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Спорт и хоби:</h6>
+                                <p>Подходящи спортове: шах, плуване, йога. Хобита: програмиране, четене на научна литература, пъзели.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Disclaimer -->
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    <strong>Важно:</strong> Този анализ е базиран на дерматоглифични принципи и служи като ориентир.
+                    За по-точна оценка се консултирайте с наш експерт.
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="text-center mt-4">
+                    <button onclick="window.print()" class="btn btn-primary me-2">
+                        <i class="fas fa-print me-1"></i>
+                        Отпечатай
+                    </button>
+                    <a href="services5.html" class="btn btn-success">
+                        <i class="fas fa-user-md me-1"></i>
+                        Поръчай експертен анализ
+                    </a>
+                    <a href="services1.html" class="btn btn-secondary ms-2">
+                        <i class="fas fa-redo me-1"></i>
+                        Нов тест
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-center text-white py-4">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/Genetictest.Svishtov"
+                    role="button"><i class="fab fa-facebook-f"></i></a>
+
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/revolyutsiya.usmivka"
+                    role="button"><i class="fab fa-facebook-f"></i></a>
+
+                |
+
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/genetictest_svishtov"
+                    role="button"><i class="fab fa-instagram"></i></a>
+
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/eveliniangelova"
+                    role="button"><i class="fab fa-instagram"></i></a>
+            </section>
+        </div>
+
+        <div class="text-center p-3">
+            <script>document.write(new Date().getFullYear())</script> - Всички права запазени:
+            <a class="text-white" href="google.com">Genetic Test - Svishtov ©</a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <script>
+        // Load data from URL parameters or localStorage
+        function loadReportData() {
+            // Try to get data from URL parameters first
+            const urlParams = new URLSearchParams(window.location.search);
+
+            const name = urlParams.get('name') || localStorage.getItem('report_name') || '[Име]';
+            const gender = urlParams.get('gender') || localStorage.getItem('report_gender') || '[Пол]';
+            const age = urlParams.get('age') || localStorage.getItem('report_age') || '[Възраст]';
+            const date = new Date().toLocaleDateString('bg-BG');
+
+            // Update personal info
+            document.getElementById('report-name').textContent = name;
+            document.getElementById('report-gender').textContent = gender;
+            document.getElementById('report-age').textContent = age;
+            document.getElementById('report-date').textContent = date;
+
+            // Update fingerprint data if available
+            const fingerprintData = localStorage.getItem('fingerprint_data');
+            if (fingerprintData) {
+                const data = JSON.parse(fingerprintData);
+
+                // Update left hand fingers
+                const leftFingers = ['left-thumb', 'left-index', 'left-middle', 'left-ring', 'left-pinky'];
+                leftFingers.forEach((finger, index) => {
+                    const element = document.querySelector(`#left-hand-fingers li:nth-child(${index + 1})`);
+                    if (element && data.leftHand && data.leftHand[index]) {
+                        element.textContent = `${element.textContent.split(':')[0]}: ${data.leftHand[index]}`;
+                    }
+                });
+
+                // Update right hand fingers
+                const rightFingers = ['right-thumb', 'right-index', 'right-middle', 'right-ring', 'right-pinky'];
+                rightFingers.forEach((finger, index) => {
+                    const element = document.querySelector(`#right-hand-fingers li:nth-child(${index + 1})`);
+                    if (element && data.rightHand && data.rightHand[index]) {
+                        element.textContent = `${element.textContent.split(':')[0]}: ${data.rightHand[index]}`;
+                    }
+                });
+            }
+        }
+
+        // Load data when page loads
+        document.addEventListener('DOMContentLoaded', loadReportData);
+    </script>
+</body>
+
+</html></contents>
+</xai:function_call">Creating a new report page with placeholder data that will be populated from the fingerprint selection.
