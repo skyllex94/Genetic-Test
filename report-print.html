@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="bg">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Вашият уникален биометричен отчет</title>
+    <style>
+      /* A4 формат - 210mm x 297mm при 96 DPI = 794px x 1123px */
+      @page {
+        size: A4;
+        margin: 20mm;
+      }
+
+      body {
+        font-family: "Times New Roman", serif;
+        font-size: 12pt;
+        line-height: 1.4;
+        color: #333;
+        background: white;
+        margin: 0;
+        padding: 20mm;
+        width: 210mm;
+        min-height: 297mm;
+      }
+
+      .report-container {
+        max-width: 170mm;
+        margin: 0 auto;
+      }
+
+      /* Заглавие */
+      .report-header {
+        text-align: center;
+        margin-bottom: 15mm;
+      }
+
+      .report-title {
+        font-size: 18pt;
+        font-weight: bold;
+        margin-bottom: 8mm;
+        color: #000;
+      }
+
+      .report-intro {
+        font-size: 9pt;
+        text-align: justify;
+        line-height: 1.3;
+        margin-bottom: 10mm;
+      }
+
+      /* Лична информация */
+      .personal-info {
+        display: flex;
+        margin-bottom: 15mm;
+        gap: 10mm;
+      }
+
+      .avatar-section {
+        flex: 0 0 35mm;
+      }
+
+      .avatar-box {
+        width: 35mm;
+        height: 35mm;
+        border: 1px solid #ccc;
+        background: #f8f8f8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 3mm;
+      }
+
+      .avatar-box img {
+        width: 30mm;
+        height: 30mm;
+        object-fit: cover;
+        border-radius: 2mm;
+      }
+
+      .info-section {
+        flex: 1;
+      }
+
+      .info-box {
+        border: 1px solid #ccc;
+        background: #f8f8f8;
+        padding: 3mm;
+        margin-bottom: 2mm;
+        border-radius: 2mm;
+      }
+
+      .info-label {
+        font-size: 8pt;
+        font-weight: bold;
+        margin-bottom: 1mm;
+        color: #666;
+      }
+
+      .info-field {
+        border-bottom: 1px solid #999;
+        padding: 1mm 0;
+        min-height: 5mm;
+      }
+
+      .age-row {
+        display: flex;
+        gap: 5mm;
+        align-items: end;
+      }
+
+      .age-field {
+        flex: 1;
+        border-bottom: 1px solid #999;
+        padding: 1mm 0;
+        min-height: 5mm;
+      }
+
+      .age-label-small {
+        font-size: 7pt;
+        color: #666;
+        margin-right: 2mm;
+      }
+
+      /* Ръце */
+      .hands-section {
+        margin-bottom: 15mm;
+      }
+
+      .hand-container {
+        margin-bottom: 8mm;
+      }
+
+      .hand-header {
+        background: #e0e0e0;
+        padding: 2mm 3mm;
+        margin-bottom: 3mm;
+        font-size: 10pt;
+        font-weight: bold;
+        text-align: center;
+        border-radius: 2mm;
+      }
+
+      .hand-visual {
+        height: 25mm;
+        border: 1px solid #ccc;
+        background: #f9f9f9;
+        margin-bottom: 3mm;
+        border-radius: 3mm;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14pt;
+        color: #999;
+      }
+
+      .fingers-row {
+        display: flex;
+        gap: 2mm;
+        justify-content: center;
+      }
+
+      .finger-box {
+        width: 18mm;
+        height: 18mm;
+        border: 1px solid #ccc;
+        background: #f8f8f8;
+        border-radius: 2mm;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1mm;
+      }
+
+      .finger-icon {
+        font-size: 12pt;
+        margin-bottom: 1mm;
+        color: #666;
+      }
+
+      .finger-label {
+        font-size: 7pt;
+        text-align: center;
+        color: #666;
+      }
+
+      /* Долна част */
+      .footer-section {
+        margin-top: 15mm;
+      }
+
+      .divider-line {
+        border-top: 1px solid #ccc;
+        margin-bottom: 5mm;
+      }
+
+      .icons-row {
+        display: flex;
+        justify-content: center;
+        gap: 5mm;
+      }
+
+      .footer-icon {
+        width: 8mm;
+        height: 8mm;
+        border: 1px solid #ccc;
+        background: #f8f8f8;
+        border-radius: 1mm;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10pt;
+        color: #666;
+      }
+
+      /* Print styles */
+      @media print {
+        body {
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+
+        .avatar-box,
+        .info-box,
+        .hand-header,
+        .hand-visual,
+        .finger-box,
+        .footer-icon {
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="report-container">
+      <!-- Header -->
+      <div class="report-header">
+        <div class="report-title">Вашият уникален биометричен отчет</div>
+        <div class="report-intro">
+          Този отчет е генериран въз основа на анализа на вашите пръстови
+          отпечатъци чрез дерматоглифичния метод. Резултатите предоставят ценна
+          информация за вашите вродени способности, темперамент и потенциал за
+          развитие. Анализът е научно обоснован и се основава на изследвания в
+          областта на генетиката и психологията. Отчетът е предназначен за лична
+          употреба и може да служи като ориентир за вашето саморазвитие.
+        </div>
+      </div>
+
+      <!-- Personal Information -->
+      <div class="personal-info">
+        <div class="avatar-section">
+          <div class="avatar-box">
+            <img id="gender-avatar" src="data/placeholder.jpg" alt="Силует" />
+          </div>
+        </div>
+        <div class="info-section">
+          <div class="info-box">
+            <div class="info-label">ИМЕ / ФАМИЛИЯ</div>
+            <div class="info-field" id="report-name">
+              ______________________________
+            </div>
+          </div>
+          <div class="info-box">
+            <div class="age-row">
+              <div class="info-label">ВЪЗРАСТ</div>
+              <div class="age-field" id="report-age">______</div>
+              <span class="age-label-small">години</span>
+            </div>
+          </div>
+          <div class="info-box">
+            <div class="info-label">ВЪЗРАСТ НА ТЕЛЕСНОТО ЛИЦЕ</div>
+            <div class="info-field" id="report-body-age">______</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hands Section -->
+      <div class="hands-section">
+        <!-- Left Hand -->
+        <div class="hand-container">
+          <div class="hand-header">ЛЯВА РЪКА</div>
+          <div class="hand-visual">
+            <span>✋</span>
+          </div>
+          <div class="fingers-row">
+            <div class="finger-box">
+              <div class="finger-icon">👆</div>
+              <div class="finger-label">палец</div>
+            </div>
+            <div class="finger-box">
+              <div class="finger-icon">☝️</div>
+              <div class="finger-label">показалец</div>
+            </div>
+            <div class="finger-box">
+              <div class="finger-icon">🖕</div>
+              <div class="finger-label">среден</div>
+            </div>
+            <div class="finger-box">
+              <div class="finger-icon">🖖</div>
+              <div class="finger-label">безименен</div>
+            </div>
+            <div class="finger-box">
+              <div class="finger-icon">🤞</div>
+              <div class="finger-label">кутре</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Hand -->
+        <div class="hand-container">
+          <div class="hand-header">ДЯСНА РЪКА</div>
+          <div class="hand-visual">
+            <span>✋</span>
+          </div>
+          <div class="fingers-row">
+            <div class="finger-box">
+              <div class="finger-icon">👆</div>
+              <div class="finger-label">палец</div>
+            </div>
+            <div class="finger-box">
+              <div class="finger-icon">☝️</div>
+              <div class="finger-label">показалец</div>
+            </div>
+            <div class="finger-box">
+              <div class="finger-icon">🖕</div>
+              <div class="finger-label">среден</div>
+            </div>
+            <div class="finger-box">
+              <div class="finger-icon">🖖</div>
+              <div class="finger-label">безименен</div>
+            </div>
+            <div class="finger-box">
+              <div class="finger-icon">🤞</div>
+              <div class="finger-label">кутре</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer-section">
+        <div class="divider-line"></div>
+        <div class="icons-row">
+          <div class="footer-icon">🧬</div>
+          <div class="footer-icon">👤</div>
+          <div class="footer-icon">📊</div>
+          <div class="footer-icon">🎯</div>
+          <div class="footer-icon">📈</div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Load data from URL parameters
+      function loadReportData() {
+        const urlParams = new URLSearchParams(window.location.search);
+
+        const name = urlParams.get("name") || "______________________________";
+        const gender = urlParams.get("gender") || "neutral";
+        const age = urlParams.get("age") || "______";
+        const bodyAge = urlParams.get("bodyAge") || "______";
+
+        document.getElementById("report-name").textContent = name;
+        document.getElementById("report-age").textContent = age;
+        document.getElementById("report-body-age").textContent = bodyAge;
+
+        // Update gender avatar
+        updateGenderAvatar(gender);
+      }
+
+      // Update gender avatar based on gender
+      function updateGenderAvatar(gender) {
+        const avatarImg = document.getElementById("gender-avatar");
+        if (!avatarImg) return;
+
+        const genderLower = gender.toLowerCase();
+
+        if (
+          genderLower.includes("мъж") ||
+          genderLower.includes("male") ||
+          genderLower.includes("man")
+        ) {
+          avatarImg.src = "data/male-silhouette.jpg";
+          avatarImg.alt = "Мъжки силует";
+        } else if (
+          genderLower.includes("жена") ||
+          genderLower.includes("female") ||
+          genderLower.includes("woman")
+        ) {
+          avatarImg.src = "data/female-silhouette.jpg";
+          avatarImg.alt = "Женски силует";
+        } else {
+          avatarImg.src = "data/placeholder.jpg";
+          avatarImg.alt = "Неутрален силует";
+        }
+      }
+
+      // Load data when page loads
+      document.addEventListener("DOMContentLoaded", function () {
+        loadReportData();
+      });
+    </script>
+  </body>
+</html>

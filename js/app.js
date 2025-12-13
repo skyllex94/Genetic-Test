@@ -370,3 +370,220 @@ function disableFingerSelections(fingers) {
     finger.disabled = true;
   }
 }
+
+// ===== ДЕРМАТОГЛИФИЧНИ АНАЛИЗИ =====
+
+// Система за оценка на пръстовите отпечатъци
+const FINGERPRINT_SCORES = {
+  'Дъга': 0,
+  'Палатковидна Дъга': 0,
+  'L-Примка': 1,
+  'R-Примка': 1,
+  'Спирала': 2,
+  'Двойна Спирала': 2
+};
+
+// Изчисляване на общата дерматоглифична формула
+function calculateDermatoglyphicFormula(fingerprints) {
+  let totalScore = 0;
+  let leftHandScore = 0;
+  let rightHandScore = 0;
+
+  // Лява ръка
+  const leftFingers = ['left-thumb', 'left-index', 'left-middle', 'left-ring', 'left-pinky'];
+  leftFingers.forEach(finger => {
+    const score = FINGERPRINT_SCORES[fingerprints.leftHand[leftFingers.indexOf(finger)]] || 0;
+    leftHandScore += score;
+    totalScore += score;
+  });
+
+  // Дясна ръка
+  const rightFingers = ['right-thumb', 'right-index', 'right-middle', 'right-ring', 'right-pinky'];
+  rightFingers.forEach(finger => {
+    const score = FINGERPRINT_SCORES[fingerprints.rightHand[rightFingers.indexOf(finger)]] || 0;
+    rightHandScore += score;
+    totalScore += score;
+  });
+
+  return {
+    total: totalScore,
+    leftHand: leftHandScore,
+    rightHand: rightHandScore,
+    maxScore: 20
+  };
+}
+
+// Анализ на типа образование
+function calculateEducationType(formula, fingerprints) {
+  const spiralPercentage = calculatePatternPercentage(fingerprints, 'Спирала', 'Двойна Спирала');
+  const loopPercentage = calculatePatternPercentage(fingerprints, 'L-Примка', 'R-Примка');
+  const archPercentage = calculatePatternPercentage(fingerprints, 'Дъга', 'Палатковидна Дъга');
+
+  return {
+    technical: Math.min(100, 75 + (spiralPercentage * 0.5) + (formula.total * 2)),
+    humanitarian: Math.min(100, 45 - (spiralPercentage * 0.3) + Math.max(0, (10 - formula.total) * 2)),
+    naturalScience: Math.min(100, 70 + (spiralPercentage * 0.4) + (formula.total * 1.5)),
+    economics: Math.min(100, 50 + (loopPercentage * 0.3) - (spiralPercentage * 0.2))
+  };
+}
+
+// Анализ на професионални направления
+function calculateProfessionalDirections(fingerprints) {
+  const spiralCount = countPatterns(fingerprints, 'Спирала', 'Двойна Спирала');
+  const loopCount = countPatterns(fingerprints, 'L-Примка', 'R-Примка');
+  const archCount = countPatterns(fingerprints, 'Дъга', 'Палатковидна Дъга');
+
+  const totalFingers = 10;
+  const spiralPercentage = (spiralCount / totalFingers) * 100;
+  const loopPercentage = (loopCount / totalFingers) * 100;
+  const archPercentage = (archCount / totalFingers) * 100;
+
+  return {
+    analytical: Math.min(100, 60 + (spiralPercentage * 0.8) + (loopCount * 3)),
+    creative: Math.min(100, 40 + (loopPercentage * 0.6) + (archCount * 2)),
+    organizational: Math.min(100, 55 + (spiralPercentage * 0.4) + (loopCount * 2)),
+    physical: Math.min(100, 30 + (archPercentage * 0.8) - (spiralPercentage * 0.3))
+  };
+}
+
+// Анализ на професионални сфери
+function calculateProfessionalSpheres(fingerprints) {
+  const spiralCount = countPatterns(fingerprints, 'Спирала', 'Двойна Спирала');
+  const loopCount = countPatterns(fingerprints, 'L-Примка', 'R-Примка');
+
+  return {
+    itAndTech: Math.min(100, 60 + (spiralCount * 6) + (loopCount * 2)),
+    scienceAndResearch: Math.min(100, 55 + (spiralCount * 5) + (loopCount * 3)),
+    financeAndAnalysis: Math.min(100, 45 + (loopCount * 4) + (spiralCount * 2)),
+    education: Math.min(100, 40 + (loopCount * 3) + Math.max(0, (5 - spiralCount) * 3))
+  };
+}
+
+// Анализ на модела за самореализация
+function calculateSelfRealizationModel(formula, fingerprints) {
+  const spiralPercentage = calculatePatternPercentage(fingerprints, 'Спирала', 'Двойна Спирала');
+  const loopPercentage = calculatePatternPercentage(fingerprints, 'L-Примка', 'R-Примка');
+
+  return {
+    systematicApproach: Math.min(100, 65 + (formula.total * 1.5) + (spiralPercentage * 0.3)),
+    planningAndOrganization: Math.min(100, 70 + (formula.total * 1.2) + (loopPercentage * 0.4)),
+    creativeThinking: Math.min(100, 50 + (spiralPercentage * 0.6) + (loopPercentage * 0.3)),
+    communication: Math.min(100, 40 + (loopPercentage * 0.8) - (spiralPercentage * 0.2))
+  };
+}
+
+// Анализ на здравословното състояние
+function calculateHealthAnalysis(fingerprints, formula) {
+  const spiralCount = countPatterns(fingerprints, 'Спирала', 'Двойна Спирала');
+  const loopCount = countPatterns(fingerprints, 'L-Примка', 'R-Примка');
+  const archCount = countPatterns(fingerprints, 'Дъга', 'Палатковидна Дъга');
+
+  return {
+    stressRisk: Math.min(100, 40 + (spiralCount * 8) + (formula.total * 1.5)),
+    immuneSystem: Math.min(100, 60 + (loopCount * 4) - (spiralCount * 2)),
+    nervousSystem: Math.min(100, 55 + (spiralCount * 6) + (loopCount * 2)),
+    physicalEndurance: Math.min(100, 50 + (archCount * 5) + (loopCount * 2))
+  };
+}
+
+// Анализ на спорт
+function calculateSportsAnalysis(fingerprints) {
+  const formula = calculateDermatoglyphicFormula(fingerprints);
+
+  return {
+    intellectualSports: Math.min(100, 60 + (formula.total * 2) + (countPatterns(fingerprints, 'Спирала', 'Двойна Спирала') * 4)),
+    individualSports: Math.min(100, 55 + (formula.total * 1.5) + (countPatterns(fingerprints, 'L-Примка', 'R-Примка') * 3)),
+    teamSports: Math.min(100, 35 + (countPatterns(fingerprints, 'Дъга', 'Палатковидна Дъга') * 4) - (formula.total * 0.5))
+  };
+}
+
+// Анализ на нервната система
+function calculateNervousSystem(fingerprints, formula) {
+  const spiralCount = countPatterns(fingerprints, 'Спирала', 'Двойна Спирала');
+  const loopCount = countPatterns(fingerprints, 'L-Примка', 'R-Примка');
+
+  return {
+    concentration: Math.min(100, 65 + (spiralCount * 6) + (formula.total * 1.2)),
+    reactionSpeed: Math.min(100, 60 + (spiralCount * 5) + (loopCount * 2)),
+    stressResistance: Math.min(100, 55 + (loopCount * 4) - (spiralCount * 2)),
+    adaptability: Math.min(100, 70 + (loopCount * 3) + (spiralCount * 2))
+  };
+}
+
+// Анализ на поведенческата адаптация
+function calculateBehavioralAdaptation(fingerprints) {
+  const formula = calculateDermatoglyphicFormula(fingerprints);
+  const spiralPercentage = calculatePatternPercentage(fingerprints, 'Спирала', 'Двойна Спирала');
+
+  return {
+    systematicAdaptation: Math.min(100, 65 + (formula.total * 1.8) + (spiralPercentage * 0.4)),
+    flexibleAdaptation: Math.min(100, 50 + (calculatePatternPercentage(fingerprints, 'L-Примка', 'R-Примка') * 0.7)),
+    conservativeAdaptation: Math.min(100, 35 + Math.max(0, (8 - formula.total) * 2))
+  };
+}
+
+// Анализ на темперамента
+function calculateTemperament(fingerprints) {
+  const spiralCount = countPatterns(fingerprints, 'Спирала', 'Двойна Спирала');
+  const loopCount = countPatterns(fingerprints, 'L-Примка', 'R-Примка');
+  const archCount = countPatterns(fingerprints, 'Дъга', 'Палатковидна Дъга');
+
+  return {
+    melancholic: Math.min(100, 25 + (archCount * 8) - (spiralCount * 3)),
+    phlegmatic: Math.min(100, 60 + (loopCount * 4) + (spiralCount * 2)),
+    sanguine: Math.min(100, 50 + (loopCount * 3) + (spiralCount * 3)),
+    choleric: Math.min(100, 35 + (spiralCount * 5) + Math.max(0, (loopCount - 3) * 2))
+  };
+}
+
+// Анализ на възприемането на новости
+function calculateNewsPerception(fingerprints) {
+  const spiralCount = countPatterns(fingerprints, 'Спирала', 'Двойна Спирала');
+  const loopCount = countPatterns(fingerprints, 'L-Примка', 'R-Примка');
+  const archCount = countPatterns(fingerprints, 'Дъга', 'Палатковидна Дъга');
+
+  return {
+    analyticalPerception: Math.min(100, 70 + (spiralCount * 6) + (loopCount * 2)),
+    intuitivePerception: Math.min(100, 50 + (spiralCount * 4) + (archCount * 2)),
+    practicalPerception: Math.min(100, 60 + (loopCount * 4) + (spiralCount * 3))
+  };
+}
+
+// Помощни функции
+function countPatterns(fingerprints, ...patterns) {
+  let count = 0;
+
+  Object.values(fingerprints.leftHand).forEach(pattern => {
+    if (patterns.includes(pattern)) count++;
+  });
+
+  Object.values(fingerprints.rightHand).forEach(pattern => {
+    if (patterns.includes(pattern)) count++;
+  });
+
+  return count;
+}
+
+function calculatePatternPercentage(fingerprints, ...patterns) {
+  const count = countPatterns(fingerprints, ...patterns);
+  return (count / 10) * 100; // 10 пръста общо
+}
+
+// Генериране на пълен анализ
+function generateCompleteAnalysis(fingerprints) {
+  const formula = calculateDermatoglyphicFormula(fingerprints);
+
+  return {
+    dermatoglyphicFormula: formula,
+    educationType: calculateEducationType(formula, fingerprints),
+    professionalDirections: calculateProfessionalDirections(fingerprints),
+    professionalSpheres: calculateProfessionalSpheres(fingerprints),
+    selfRealizationModel: calculateSelfRealizationModel(formula, fingerprints),
+    healthAnalysis: calculateHealthAnalysis(fingerprints, formula),
+    sportsAnalysis: calculateSportsAnalysis(fingerprints),
+    nervousSystem: calculateNervousSystem(fingerprints, formula),
+    behavioralAdaptation: calculateBehavioralAdaptation(fingerprints),
+    temperament: calculateTemperament(fingerprints),
+    newsPerception: calculateNewsPerception(fingerprints)
+  };
+}
