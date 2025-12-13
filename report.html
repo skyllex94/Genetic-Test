@@ -106,45 +106,59 @@
                         </h3>
                     </div>
                     <div class="card-body">
-                        <div class="row">
+                        <div class="row g-3">
                             <div class="col-md-4">
                                 <!-- Сиво правоъгълно с икона/силует -->
-                                <div class="text-center p-3 bg-light rounded border">
-                                    <img id="gender-avatar" src="img/placeholder.jpg" alt="Силует на лице" class="rounded-circle mb-2" style="width: 80px; height: 80px; object-fit: cover; border: 3px solid #666;">
-                                    <div class="text-muted small fw-bold">ЛИЧЕН ПРОФИЛ</div>
+                                <div class="text-center p-4 bg-light rounded border h-100 d-flex flex-column justify-content-between align-items-center" style="min-height: 220px;">
+                                    <div class="flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+                                        <!-- Генериран силует символ -->
+                                        <div id="gender-silhouette" class="d-flex align-items-center justify-content-center rounded-circle mb-3" style="width: 100px; height: 100px; background: linear-gradient(135deg, #e9ecef, #dee2e6); border: 3px solid #666;">
+                                            <img id="gender-avatar" src="data/placeholder.jpg" alt="Силует" style="width: 95px; height: 95px; object-fit: cover; border-radius: 50%;">
+                                        </div>
+                                        <div class="text-muted small fw-bold">ЛИЧЕН ПРОФИЛ</div>
+                                    </div>
+                                    <div class="mt-auto">
+                                        <div class="text-muted fw-bold small mb-1">ДАТА</div>
+                                        <div id="report-date" class="small fw-semibold">13 декември 2025 г.</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-8">
                                 <!-- Форма с лични данни -->
-                                <div class="bg-light rounded border p-3">
-                                    <!-- Ред 1: ИМЕ / ФАМИЛИЯ -->
-                                    <div class="mb-3">
-                                        <label class="form-label text-muted fw-bold small">ИМЕ / ФАМИЛИЯ</label>
-                                        <div class="border-bottom border-2" id="report-name" style="padding: 5px 0; font-size: 16px;">______________________________</div>
-                                    </div>
-
-                                    <!-- Ред 2: ВЪЗРАСТ -->
-                                    <div class="mb-3 d-flex align-items-center">
-                                        <label class="form-label text-muted fw-bold small me-3" style="min-width: 80px;">ВЪЗРАСТ</label>
-                                        <div class="border-bottom border-2 flex-grow-1 me-2" id="report-age" style="padding: 5px 0; font-size: 16px;">______</div>
-                                        <span class="text-muted">години</span>
-                                    </div>
-
-                                    <!-- ВЪЗРАСТ НА ТЕЛЕСНОТО ЛИЦЕ -->
-                                    <div class="mb-3">
-                                        <label class="form-label text-muted fw-bold small">ВЪЗРАСТ НА ТЕЛЕСНОТО ЛИЦЕ</label>
-                                        <div class="border-bottom border-2" id="report-body-age" style="padding: 5px 0; font-size: 16px; width: 100px;">______</div>
-                                    </div>
-
-                                    <!-- Пол и дата -->
-                                    <div class="row mt-4">
-                                        <div class="col-md-6">
-                                            <div class="text-muted fw-bold small mb-1">ПОЛ</div>
-                                            <div id="report-gender" style="font-size: 14px;">Неопределен</div>
+                                <div class="bg-light rounded border p-4 h-100 d-flex flex-column justify-content-between" style="min-height: 220px;">
+                                    <!-- Горна част - основни данни -->
+                                    <div class="flex-grow-1">
+                                        <!-- Ред 1: ИМЕ / ФАМИЛИЯ -->
+                                        <div class="mb-3">
+                                            <label class="form-label text-muted fw-bold small mb-2">ИМЕ / ФАМИЛИЯ</label>
+                                            <div class="border-bottom border-2" id="report-name" style="padding: 8px 0; font-size: 16px; min-height: 24px;">______________________________</div>
                                         </div>
-                                        <div class="col-md-6 text-end">
-                                            <div class="text-muted fw-bold small mb-1">ДАТА</div>
-                                            <div id="report-date" style="font-size: 14px;">13 декември 2025 г.</div>
+
+                                        <!-- Ред 2: ВЪЗРАСТ -->
+                                        <div class="mb-3">
+                                            <label class="form-label text-muted fw-bold small mb-2">ВЪЗРАСТ</label>
+                                            <div class="border-bottom border-2 d-flex align-items-center" style="padding: 8px 0; min-height: 24px;">
+                                                <div id="report-age" class="flex-grow-1" style="font-size: 16px;">______</div>
+                                                <span class="text-muted ms-2 small">години</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- Долна част - допълнителни данни -->
+                                    <div class="mt-auto">
+                                        <!-- ИМЕЙЛ поле -->
+                                        <div class="mb-3">
+                                            <label class="form-label text-muted fw-bold small mb-2">ИМЕЙЛ</label>
+                                            <div class="border-bottom border-2 d-flex align-items-center" style="padding: 8px 0; min-height: 24px;">
+                                                <div id="report-email" class="flex-grow-1" style="font-size: 16px;">___________________________</div>
+                                            </div>
+                                        </div>
+
+                                        <!-- ПОЛ -->
+                                        <div>
+                                            <label class="form-label text-muted fw-bold small mb-1">ПОЛ</label>
+                                            <div id="report-gender" class="small fw-semibold">Неопределен</div>
                                         </div>
                                     </div>
                                 </div>
@@ -1070,23 +1084,31 @@
 
         // Update gender avatar based on gender
         function updateGenderAvatar(gender) {
-            const avatarImg = document.getElementById('gender-avatar');
-            if (!avatarImg) return;
+            const genderAvatar = document.getElementById('gender-avatar');
+            const silhouetteDiv = document.getElementById('gender-silhouette');
+
+            if (!genderAvatar || !silhouetteDiv) return;
 
             const genderLower = gender.toLowerCase();
 
+            // Reset to default
+            genderAvatar.src = 'data/placeholder.jpg';
+            genderAvatar.alt = 'Неутрален силует';
+            silhouetteDiv.style.background = 'linear-gradient(135deg, #e9ecef, #dee2e6)';
+            silhouetteDiv.title = 'Неутрален силует';
+
             if (genderLower.includes('мъж') || genderLower.includes('male') || genderLower.includes('man')) {
-                avatarImg.src = 'img/male-silhouette.jpg'; // Male silhouette JPEG
-                avatarImg.alt = 'Мъжки силует';
-                avatarImg.title = 'Мъж';
+                // Зареждане на мъжко изображение
+                genderAvatar.src = 'data/Picture.png - мъж.png';
+                genderAvatar.alt = 'Мъжки силует';
+                silhouetteDiv.style.background = 'linear-gradient(135deg, #007bff, #0056b3)';
+                silhouetteDiv.title = 'Мъжки силует - персонализирано изображение';
             } else if (genderLower.includes('жена') || genderLower.includes('female') || genderLower.includes('woman')) {
-                avatarImg.src = 'img/female-silhouette.jpg'; // Female silhouette JPEG
-                avatarImg.alt = 'Женски силует';
-                avatarImg.title = 'Жена';
-            } else {
-                avatarImg.src = 'img/placeholder.jpg'; // Neutral placeholder
-                avatarImg.alt = 'Неутрален силует';
-                avatarImg.title = 'Неопределен пол';
+                // Зареждане на женско изображение
+                genderAvatar.src = 'data/Picture.png жена.png';
+                genderAvatar.alt = 'Женски силует';
+                silhouetteDiv.style.background = 'linear-gradient(135deg, #f8f9fa, #e9ecef)';
+                silhouetteDiv.title = 'Женски силует - персонализирано изображение';
             }
         }
 
@@ -1137,14 +1159,14 @@
             const name = urlParams.get('name') || localStorage.getItem('report_name') || '______________________________';
             const gender = urlParams.get('gender') || localStorage.getItem('report_gender') || 'Неопределен';
             const age = urlParams.get('age') || localStorage.getItem('report_age') || '______';
-            const bodyAge = urlParams.get('bodyAge') || localStorage.getItem('report_body_age') || '______';
+            const email = urlParams.get('email') || localStorage.getItem('report_email') || '___________________________';
             const date = new Date().toLocaleDateString('bg-BG');
 
             // Update personal info
             document.getElementById('report-name').textContent = name;
             document.getElementById('report-gender').textContent = gender;
             document.getElementById('report-age').textContent = age;
-            document.getElementById('report-body-age').textContent = bodyAge;
+            document.getElementById('report-email').textContent = email;
             document.getElementById('report-date').textContent = date;
 
             // Update gender avatar based on gender
