@@ -101,26 +101,53 @@
                 <div class="card shadow mb-4">
                     <div class="card-header bg-primary text-white">
                         <h3 class="card-title mb-0">
-                            <i class="fas fa-user me-2"></i>
-                            Лична информация
+                            <i class="fas fa-user-circle me-2"></i>
+                            Лични данни
                         </h3>
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-3 text-center">
-                                <div class="mb-3">
-                                    <img id="gender-avatar" src="img/placeholder.jpg" alt="Силует" class="rounded-circle img-fluid shadow" style="width: 120px; height: 120px; object-fit: cover; border: 4px solid #007bff; transition: all 0.3s ease;">
+                            <div class="col-md-4">
+                                <!-- Сиво правоъгълно с икона/силует -->
+                                <div class="text-center p-3 bg-light rounded border">
+                                    <img id="gender-avatar" src="img/placeholder.jpg" alt="Силует на лице" class="rounded-circle mb-2" style="width: 80px; height: 80px; object-fit: cover; border: 3px solid #666;">
+                                    <div class="text-muted small fw-bold">ЛИЧЕН ПРОФИЛ</div>
                                 </div>
-                                <strong>Пол:</strong> <span id="report-gender">Неопределен</span>
                             </div>
-                            <div class="col-md-3">
-                                <strong>Име:</strong> <span id="report-name">Потребител</span>
-                            </div>
-                            <div class="col-md-3">
-                                <strong>Възраст:</strong> <span id="report-age">25-35 години</span>
-                            </div>
-                            <div class="col-md-3">
-                                <strong>Дата:</strong> <span id="report-date">13 декември 2025 г.</span>
+                            <div class="col-md-8">
+                                <!-- Форма с лични данни -->
+                                <div class="bg-light rounded border p-3">
+                                    <!-- Ред 1: ИМЕ / ФАМИЛИЯ -->
+                                    <div class="mb-3">
+                                        <label class="form-label text-muted fw-bold small">ИМЕ / ФАМИЛИЯ</label>
+                                        <div class="border-bottom border-2" id="report-name" style="padding: 5px 0; font-size: 16px;">______________________________</div>
+                                    </div>
+
+                                    <!-- Ред 2: ВЪЗРАСТ -->
+                                    <div class="mb-3 d-flex align-items-center">
+                                        <label class="form-label text-muted fw-bold small me-3" style="min-width: 80px;">ВЪЗРАСТ</label>
+                                        <div class="border-bottom border-2 flex-grow-1 me-2" id="report-age" style="padding: 5px 0; font-size: 16px;">______</div>
+                                        <span class="text-muted">години</span>
+                                    </div>
+
+                                    <!-- ВЪЗРАСТ НА ТЕЛЕСНОТО ЛИЦЕ -->
+                                    <div class="mb-3">
+                                        <label class="form-label text-muted fw-bold small">ВЪЗРАСТ НА ТЕЛЕСНОТО ЛИЦЕ</label>
+                                        <div class="border-bottom border-2" id="report-body-age" style="padding: 5px 0; font-size: 16px; width: 100px;">______</div>
+                                    </div>
+
+                                    <!-- Пол и дата -->
+                                    <div class="row mt-4">
+                                        <div class="col-md-6">
+                                            <div class="text-muted fw-bold small mb-1">ПОЛ</div>
+                                            <div id="report-gender" style="font-size: 14px;">Неопределен</div>
+                                        </div>
+                                        <div class="col-md-6 text-end">
+                                            <div class="text-muted fw-bold small mb-1">ДАТА</div>
+                                            <div id="report-date" style="font-size: 14px;">13 декември 2025 г.</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -136,25 +163,144 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
+                            <!-- Лява ръка -->
                             <div class="col-md-6">
-                                <h5>Лява ръка:</h5>
-                                <ul class="list-group list-group-flush" id="left-hand-fingers">
-                                    <li class="list-group-item">Палец: Дъга - Палатка</li>
-                                    <li class="list-group-item">Показалец: Дъга - Палатка</li>
-                                    <li class="list-group-item">Среден: Дъга - Палатка</li>
-                                    <li class="list-group-item">Безимен: R-Примка</li>
-                                    <li class="list-group-item">Кутре: Дъга - Палатка</li>
-                                </ul>
+                                <div class="bg-light rounded p-3 mb-3">
+                                    <h5 class="text-center mb-3 text-success">
+                                        <i class="fas fa-hand-paper me-2"></i>
+                                        Лява ръка
+                                    </h5>
+                                    <div class="finger-list">
+                                        <div class="d-flex align-items-center mb-2 p-2 bg-white rounded border">
+                                            <div class="finger-icon me-3">
+                                                <i class="fas fa-circle text-muted" style="font-size: 24px;"></i>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <strong>Палец:</strong>
+                                                <span id="left-thumb-pattern" class="badge bg-secondary ms-1">Дъга - Палатка</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex align-items-center mb-2 p-2 bg-white rounded border">
+                                            <div class="finger-icon me-3">
+                                                <i class="fas fa-circle text-muted" style="font-size: 24px;"></i>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <strong>Показалец:</strong>
+                                                <span id="left-index-pattern" class="badge bg-secondary ms-1">Дъга - Палатка</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex align-items-center mb-2 p-2 bg-white rounded border">
+                                            <div class="finger-icon me-3">
+                                                <i class="fas fa-circle text-muted" style="font-size: 24px;"></i>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <strong>Среден:</strong>
+                                                <span id="left-middle-pattern" class="badge bg-secondary ms-1">Дъга - Палатка</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex align-items-center mb-2 p-2 bg-white rounded border">
+                                            <div class="finger-icon me-3">
+                                                <i class="fas fa-circle text-muted" style="font-size: 24px;"></i>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <strong>Безимен:</strong>
+                                                <span id="left-ring-pattern" class="badge bg-primary ms-1">R-Примка</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex align-items-center mb-2 p-2 bg-white rounded border">
+                                            <div class="finger-icon me-3">
+                                                <i class="fas fa-circle text-muted" style="font-size: 24px;"></i>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <strong>Кутре:</strong>
+                                                <span id="left-pinky-pattern" class="badge bg-secondary ms-1">Дъга - Палатка</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+
+                            <!-- Дясна ръка -->
                             <div class="col-md-6">
-                                <h5>Дясна ръка:</h5>
-                                <ul class="list-group list-group-flush" id="right-hand-fingers">
-                                    <li class="list-group-item">Палец: Спирала</li>
-                                    <li class="list-group-item">Показалец: L-Примка</li>
-                                    <li class="list-group-item">Среден: R-Примка</li>
-                                    <li class="list-group-item">Безимен: R-Примка</li>
-                                    <li class="list-group-item">Кутре: Дъга - Палатка</li>
-                                </ul>
+                                <div class="bg-light rounded p-3 mb-3">
+                                    <h5 class="text-center mb-3 text-success">
+                                        <i class="fas fa-hand-paper me-2"></i>
+                                        Дясна ръка
+                                    </h5>
+                                    <div class="finger-list">
+                                        <div class="d-flex align-items-center mb-2 p-2 bg-white rounded border">
+                                            <div class="finger-icon me-3">
+                                                <i class="fas fa-circle text-muted" style="font-size: 24px;"></i>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <strong>Палец:</strong>
+                                                <span id="right-thumb-pattern" class="badge bg-danger ms-1">Спирала</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex align-items-center mb-2 p-2 bg-white rounded border">
+                                            <div class="finger-icon me-3">
+                                                <i class="fas fa-circle text-muted" style="font-size: 24px;"></i>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <strong>Показалец:</strong>
+                                                <span id="right-index-pattern" class="badge bg-primary ms-1">L-Примка</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex align-items-center mb-2 p-2 bg-white rounded border">
+                                            <div class="finger-icon me-3">
+                                                <i class="fas fa-circle text-muted" style="font-size: 24px;"></i>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <strong>Среден:</strong>
+                                                <span id="right-middle-pattern" class="badge bg-primary ms-1">R-Примка</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex align-items-center mb-2 p-2 bg-white rounded border">
+                                            <div class="finger-icon me-3">
+                                                <i class="fas fa-circle text-muted" style="font-size: 24px;"></i>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <strong>Безимен:</strong>
+                                                <span id="right-ring-pattern" class="badge bg-primary ms-1">R-Примка</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex align-items-center mb-2 p-2 bg-white rounded border">
+                                            <div class="finger-icon me-3">
+                                                <i class="fas fa-circle text-muted" style="font-size: 24px;"></i>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <strong>Кутре:</strong>
+                                                <span id="right-pinky-pattern" class="badge bg-secondary ms-1">Дъга - Палатка</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Обща информация -->
+                        <div class="mt-3 p-3 bg-light rounded">
+                            <div class="row text-center">
+                                <div class="col-md-4">
+                                    <div class="text-muted small">Общ брой пръсти</div>
+                                    <div class="h4 text-success">10</div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="text-muted small">Дерматоглифична формула</div>
+                                    <div class="h4 text-primary" id="dermatoglyphic-formula">1:5:4</div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="text-muted small">Тип ръце</div>
+                                    <div class="h4 text-info">Смесен</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -905,6 +1051,23 @@
           };
         }
 
+        // Update pattern badge color based on pattern type
+        function updatePatternBadge(badgeElement, pattern) {
+            if (!badgeElement) return;
+
+            badgeElement.className = 'badge ms-1';
+
+            if (pattern.includes('Дъга') || pattern.includes('Палатка')) {
+                badgeElement.classList.add('bg-secondary');
+            } else if (pattern.includes('Примка')) {
+                badgeElement.classList.add('bg-primary');
+            } else if (pattern.includes('Спирала')) {
+                badgeElement.classList.add('bg-danger');
+            } else {
+                badgeElement.classList.add('bg-secondary');
+            }
+        }
+
         // Update gender avatar based on gender
         function updateGenderAvatar(gender) {
             const avatarImg = document.getElementById('gender-avatar');
@@ -971,15 +1134,17 @@
             // Try to get data from URL parameters first
             const urlParams = new URLSearchParams(window.location.search);
 
-            const name = urlParams.get('name') || localStorage.getItem('report_name') || 'Потребител';
+            const name = urlParams.get('name') || localStorage.getItem('report_name') || '______________________________';
             const gender = urlParams.get('gender') || localStorage.getItem('report_gender') || 'Неопределен';
-            const age = urlParams.get('age') || localStorage.getItem('report_age') || '25-35 години';
+            const age = urlParams.get('age') || localStorage.getItem('report_age') || '______';
+            const bodyAge = urlParams.get('bodyAge') || localStorage.getItem('report_body_age') || '______';
             const date = new Date().toLocaleDateString('bg-BG');
 
             // Update personal info
             document.getElementById('report-name').textContent = name;
             document.getElementById('report-gender').textContent = gender;
             document.getElementById('report-age').textContent = age;
+            document.getElementById('report-body-age').textContent = bodyAge;
             document.getElementById('report-date').textContent = date;
 
             // Update gender avatar based on gender
@@ -992,20 +1157,24 @@
             };
 
             // Update left hand fingers
-            const leftFingers = ['left-thumb', 'left-index', 'left-middle', 'left-ring', 'left-pinky'];
-            leftFingers.forEach((finger, index) => {
-                const element = document.querySelector(`#left-hand-fingers li:nth-child(${index + 1})`);
+            const leftFingerIds = ['left-thumb-pattern', 'left-index-pattern', 'left-middle-pattern', 'left-ring-pattern', 'left-pinky-pattern'];
+            leftFingerIds.forEach((fingerId, index) => {
+                const element = document.getElementById(fingerId);
                 if (element && staticFingerprintData.leftHand && staticFingerprintData.leftHand[index]) {
-                    element.textContent = `${element.textContent.split(':')[0]}: ${staticFingerprintData.leftHand[index]}`;
+                    element.textContent = staticFingerprintData.leftHand[index];
+                    // Update badge color based on pattern type
+                    updatePatternBadge(element, staticFingerprintData.leftHand[index]);
                 }
             });
 
             // Update right hand fingers
-            const rightFingers = ['right-thumb', 'right-index', 'right-middle', 'right-ring', 'right-pinky'];
-            rightFingers.forEach((finger, index) => {
-                const element = document.querySelector(`#right-hand-fingers li:nth-child(${index + 1})`);
+            const rightFingerIds = ['right-thumb-pattern', 'right-index-pattern', 'right-middle-pattern', 'right-ring-pattern', 'right-pinky-pattern'];
+            rightFingerIds.forEach((fingerId, index) => {
+                const element = document.getElementById(fingerId);
                 if (element && staticFingerprintData.rightHand && staticFingerprintData.rightHand[index]) {
-                    element.textContent = `${element.textContent.split(':')[0]}: ${staticFingerprintData.rightHand[index]}`;
+                    element.textContent = staticFingerprintData.rightHand[index];
+                    // Update badge color based on pattern type
+                    updatePatternBadge(element, staticFingerprintData.rightHand[index]);
                 }
             });
         }
