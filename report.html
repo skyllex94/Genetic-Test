@@ -172,10 +172,17 @@
                     <div class="card-header bg-success text-white">
                         <h3 class="card-title mb-0">
                             <i class="fas fa-fingerprint me-2"></i>
-                            Анализ на пръстовите отпечатъци
+                            Вашата пръстова формула
                         </h3>
                     </div>
                     <div class="card-body">
+                        <div class="alert alert-success mb-4">
+                            <h6><i class="fas fa-info-circle me-2"></i>Важна информация за вашия отчет</h6>
+                            <p class="mb-2"><strong>Този отчет има приложимо значение само и единствено за вас.</strong></p>
+                            <p class="mb-2">Въз основа на вашият стандартен биометричен отчет, тук ще намерите подробна интерпретация и анализ за вашата пръстова формула.</p>
+                            <p class="mb-0">Моля да имате в предвид, че в отчета се говори за характеристиките, заложени на генетично ниво. Процентните стойности в отчета показват до каква степен вашите дерматоглифски признаци съвпадат с признаците на тези хора, които притежават даденото качество.</p>
+                        </div>
+
                         <div class="row">
                             <!-- Лява ръка -->
                             <div class="col-md-6">
@@ -303,17 +310,21 @@
                         <!-- Обща информация -->
                         <div class="mt-3 p-3 bg-light rounded">
                             <div class="row text-center">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="text-muted small">Общ брой пръсти</div>
                                     <div class="h4 text-success">10</div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="text-muted small">Дерматоглифична формула</div>
                                     <div class="h4 text-primary" id="dermatoglyphic-formula">1:5:4</div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="text-muted small">Тип ръце</div>
                                     <div class="h4 text-info">Смесен</div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="text-muted small">Делта индекс</div>
+                                    <div class="h4 text-warning" id="delta-index">0</div>
                                 </div>
                             </div>
                         </div>
@@ -899,6 +910,28 @@
           'Двойна Спирала': 2
         };
 
+        // Система за оценка на делта индекс
+        const DELTA_INDEX_SCORES = {
+          'Дъга': 0,
+          'Дъга - Палатка': 0,
+          'Палатковидна Дъга': 0,
+          'L-Примка': 1,
+          'R-Примка': 1,
+          'Спирала': 2,
+          'Двойна Спирала': 2
+        };
+
+        // Изображения за различните видове пръстови отпечатъци
+        const FINGERPRINT_IMAGES = {
+          'Дъга': 'img/print2.jpg', // Arch image
+          'Дъга - Палатка': 'img/print5.jpg', // Tented arch image
+          'Палатковидна Дъга': 'img/print5.jpg', // Tented arch image
+          'L-Примка': 'img/print4.jpg', // Ulnar loop (left loop) image
+          'R-Примка': 'img/print3.jpg', // Radial loop (right loop) image
+          'Спирала': 'img/print6.jpg', // Spiral image
+          'Двойна Спирала': 'img/print1.jpg' // Double spiral image
+        };
+
         // Изчисляване на общата дерматоглифична формула
         function calculateDermatoglyphicFormula(fingerprints) {
           let totalScore = 0;
@@ -927,6 +960,23 @@
             rightHand: rightHandScore,
             maxScore: 20
           };
+        }
+
+        // Изчисляване на делта индекс
+        function calculateDeltaIndex(fingerprints) {
+          let totalDeltaScore = 0;
+
+          // Лява ръка
+          fingerprints.leftHand.forEach(pattern => {
+            totalDeltaScore += DELTA_INDEX_SCORES[pattern] || 0;
+          });
+
+          // Дясна ръка
+          fingerprints.rightHand.forEach(pattern => {
+            totalDeltaScore += DELTA_INDEX_SCORES[pattern] || 0;
+          });
+
+          return totalDeltaScore;
         }
 
         // Анализ на типа образование
@@ -1082,6 +1132,16 @@
             }
         }
 
+        // Update fingerprint icon based on pattern type
+        function updateFingerprintIcon(iconContainer, pattern) {
+            if (!iconContainer) return;
+
+            const imageSrc = FINGERPRINT_IMAGES[pattern] || 'img/placeholder.jpg';
+
+            // Replace the icon element with an image
+            iconContainer.innerHTML = `<img src="${imageSrc}" alt="${pattern}" style="width: 32px; height: 32px; object-fit: cover; border-radius: 4px;">`;
+        }
+
         // Update gender avatar based on gender
         function updateGenderAvatar(gender) {
             const genderAvatar = document.getElementById('gender-avatar');
@@ -1135,9 +1195,11 @@
         // Генериране на пълен анализ
         function generateCompleteAnalysis(fingerprints) {
           const formula = calculateDermatoglyphicFormula(fingerprints);
+          const deltaIndex = calculateDeltaIndex(fingerprints);
 
           return {
             dermatoglyphicFormula: formula,
+            deltaIndex: deltaIndex,
             educationType: calculateEducationType(formula, fingerprints),
             professionalDirections: calculateProfessionalDirections(fingerprints),
             professionalSpheres: calculateProfessionalSpheres(fingerprints),
@@ -1186,6 +1248,11 @@
                     element.textContent = staticFingerprintData.leftHand[index];
                     // Update badge color based on pattern type
                     updatePatternBadge(element, staticFingerprintData.leftHand[index]);
+
+                    // Update icon based on pattern type
+                    const fingerContainer = element.closest('.d-flex');
+                    const iconContainer = fingerContainer.querySelector('.finger-icon');
+                    updateFingerprintIcon(iconContainer, staticFingerprintData.leftHand[index]);
                 }
             });
 
@@ -1197,6 +1264,11 @@
                     element.textContent = staticFingerprintData.rightHand[index];
                     // Update badge color based on pattern type
                     updatePatternBadge(element, staticFingerprintData.rightHand[index]);
+
+                    // Update icon based on pattern type
+                    const fingerContainer = element.closest('.d-flex');
+                    const iconContainer = fingerContainer.querySelector('.finger-icon');
+                    updateFingerprintIcon(iconContainer, staticFingerprintData.rightHand[index]);
                 }
             });
         }
@@ -1398,6 +1470,9 @@
 
             // Generate complete analysis
             const analysis = generateCompleteAnalysis(fingerprints);
+
+            // Update Delta Index
+            document.getElementById('delta-index').textContent = analysis.deltaIndex;
 
             // Update Education Type
             updateProgressBar('education-technical', analysis.educationType.technical);
