@@ -331,44 +331,6 @@
                     </div>
                 </div>
 
-                <!-- Personality Analysis -->
-                <div class="card shadow mb-4">
-                    <div class="card-header bg-info text-white">
-                        <h3 class="card-title mb-0">
-                            <i class="fas fa-brain me-2"></i>
-                            Анализ на характера
-                        </h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="alert alert-info">
-                            <h5><i class="fas fa-lightbulb me-2"></i>Ваш основен тип личност:</h5>
-                            <p class="mb-0"><strong>Динамичен експлозивен тип с холерично-сангвиничен темперамент.</strong> Вие сте силно експресивна и динамична личност с комбинация от вулканичен темперамент и практическа ориентация. Имате висока степен на адаптивност и способност за бързи обрати в живота.</p>
-                        </div>
-
-                        <div class="row mt-4">
-                            <div class="col-md-6">
-                                <h6>Силни страни:</h6>
-                                <ul>
-                                    <li>Експлозивна динамика и вдъхновение</li>
-                                    <li>Бърза реакция в критични ситуации</li>
-                                    <li>Висока степен на адаптивност</li>
-                                    <li>Способност за ръководство и вземане на решения</li>
-                                    <li>Комбинация от креативност и практичност</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <h6>Области за развитие:</h6>
-                                <ul>
-                                    <li>Управление на импулсивността</li>
-                                    <li>Избягване на монотонна работа</li>
-                                    <li>Поддържане на вътрешно равновесие</li>
-                                    <li>Управление на стрес в динамични ситуации</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Education Type Analysis -->
                 <div class="card shadow mb-4">
                     <div class="card-header bg-primary text-white">
@@ -377,39 +339,11 @@
                             Тип образование - Анализ на показатели
                         </h3>
                     </div>
+                    <div class="alert alert-primary mb-3">
+                        <small class="text-muted">Даденият показаател показва най-подходящото за вас профилно образование, което да съчетава вашите нужди и възможности.</small>
+                    </div>
                     <div class="card-body">
-                        <div class="row mb-4">
-                            <div class="col-md-6">
-                                <h6>Техническо образование</h6>
-                                <div class="progress report-progress mb-2">
-                                    <div class="progress-bar bg-primary" role="progressbar" id="education-technical" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
-                                </div>
-                                <small class="text-muted">Висока предразположеност към технически дисциплини</small>
-                            </div>
-                            <div class="col-md-6">
-                                <h6>Хуманитарно образование</h6>
-                                <div class="progress report-progress mb-2">
-                                    <div class="progress-bar bg-secondary" role="progressbar" id="education-humanitarian" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100">35%</div>
-                                </div>
-                                <small class="text-muted">Средна предразположеност към хуманитарни науки</small>
-                            </div>
-                        </div>
-                        <div class="row mb-4">
-                            <div class="col-md-6">
-                                <h6>Природни науки</h6>
-                                <div class="progress report-progress mb-2">
-                                    <div class="progress-bar bg-success" role="progressbar" id="education-natural" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100">78%</div>
-                                </div>
-                                <small class="text-muted">Висока предразположеност към математика и естествени науки</small>
-                            </div>
-                            <div class="col-md-6">
-                                <h6>Икономика и управление</h6>
-                                <div class="progress report-progress mb-2">
-                                    <div class="progress-bar bg-warning" role="progressbar" id="education-economics" style="width: 42%" aria-valuenow="42" aria-valuemin="0" aria-valuemax="100">42%</div>
-                                </div>
-                                <small class="text-muted">Средна предразположеност към бизнес дисциплини</small>
-                            </div>
-                        </div>
+                        <div id="education-types-container"></div>
                         <div class="alert alert-info">
                             <strong>Препоръка:</strong> Най-подходящи са технически и природонаучни специалности с елементи на динамично мислене и практическо приложение. Добри възможности в инженерството, компютърните науки и приложните природни науки.
                         </div>
@@ -424,16 +358,22 @@
                             Направления на професионална дейност - Анализ на показатели
                         </h3>
                     </div>
+                    <div class="alert alert-success mb-3">
+                        <h6 class="text-center mb-3"><strong>ПРОФЕСИЯТА СЕ СЪСТОИ ОТ ТРИ КОМПОНЕНТА - НАСОКА, СФЕРА, МОДЕЛ</strong></h6>
+                        <small class="text-muted">Вероятно е, че всеки от нас би искал всеки ден да ходи на работа с удоволствие, да постига впечатляващи резултати и да се усъвършенства. За съжаление не на всеки му се отдава. Изборът на професия, която не съответства на особеностите на мисленето и характера на човека, може да предизвика постоянно недоволство от работата и получените резултати. Затова е много важно да се подходи внимателно към определянето на професионалнатото направление.</small>
+                        <br><br>
+                        <small class="text-muted">В този раздел са посочени качествата, които ще Ви помогнат да постигнете успех в работата си. Това са направленията на професионална дейност, в които следва да изградите кариерата си. Направлението на професионална дейност посочва къде Вие ще постигнете максимален успех, а сферата на професионалната дейност помага да разберете как можете да го направите.</small>
+                    </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-6 mb-3">
                                 <div class="text-center">
-                                    <div class="chart-container" style="position: relative; height: 150px;">
+                                    <div class="chart-container" style="position: relative; height: 200px;">
                                         <canvas id="directionsChart"></canvas>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-6">
                                 <h6>Аналитична дейност</h6>
                                 <div class="progress report-progress mb-3">
                                     <div class="progress-bar bg-primary" role="progressbar" id="directions-analytical" style="width: 92%" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100">92%</div>
@@ -515,27 +455,7 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-8">
-                                <h6>Системен подход</h6>
-                                <div class="progress report-progress mb-3">
-                                    <div class="progress-bar bg-warning" role="progressbar" id="selfrealization-systematic" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100">89%</div>
-                                </div>
-
-                                <h6>Планиране и организация</h6>
-                                <div class="progress report-progress mb-3">
-                                    <div class="progress-bar bg-success" role="progressbar" id="selfrealization-planning" style="width: 84%" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100">84%</div>
-                                </div>
-
-                                <h6>Креативно мислене</h6>
-                                <div class="progress report-progress mb-3">
-                                    <div class="progress-bar bg-primary" role="progressbar" id="selfrealization-creative" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100">72%</div>
-                                </div>
-
-                                <h6>Комуникация</h6>
-                                <div class="progress report-progress mb-3">
-                                    <div class="progress-bar bg-info" role="progressbar" id="selfrealization-communication" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">55%</div>
-                                </div>
-                            </div>
+                            <div class="col-md-8" id="selfrealization-indicators"></div>
                             <div class="col-md-4">
                                 <div class="text-center">
                                     <div class="chart-container" style="position: relative; height: 200px;">
@@ -817,6 +737,44 @@
                     </div>
                 </div>
 
+                <!-- Personality Analysis -->
+                <div class="card shadow mb-4">
+                    <div class="card-header bg-info text-white">
+                        <h3 class="card-title mb-0">
+                            <i class="fas fa-brain me-2"></i>
+                            Анализ на характера
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info">
+                            <h5><i class="fas fa-lightbulb me-2"></i>Ваш основен тип личност:</h5>
+                            <p class="mb-0"><strong>Динамичен експлозивен тип с холерично-сангвиничен темперамент.</strong> Вие сте силно експресивна и динамична личност с комбинация от вулканичен темперамент и практическа ориентация. Имате висока степен на адаптивност и способност за бързи обрати в живота.</p>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <h6>Силни страни:</h6>
+                                <ul>
+                                    <li>Експлозивна динамика и вдъхновение</li>
+                                    <li>Бърза реакция в критични ситуации</li>
+                                    <li>Висока степен на адаптивност</li>
+                                    <li>Способност за ръководство и вземане на решения</li>
+                                    <li>Комбинация от креативност и практичност</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Области за развитие:</h6>
+                                <ul>
+                                    <li>Управление на импулсивността</li>
+                                    <li>Избягване на монотонна работа</li>
+                                    <li>Поддържане на вътрешно равновесие</li>
+                                    <li>Управление на стрес в динамични ситуации</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Recommendations -->
                 <div class="card shadow mb-4">
                     <div class="card-header bg-secondary text-white">
@@ -979,6 +937,40 @@
           return totalDeltaScore;
         }
 
+        // Детайлни описания за типовете образование
+        const EDUCATION_DESCRIPTIONS = {
+          technical: {
+            title: 'Техническо образование',
+            description: 'Техническото образование включва инженерство, машиностроене, електротехника и други технически дисциплини. Хората с висока предразположеност към техническо образование проявяват силен интерес към практическо решаване на проблеми и работа с технологии. Те се справят добре с аналитично мислене и имат способността да съчетават теоретични знания с практически приложения.',
+            careers: 'Инженери, техници, конструктори, специалисти по роботика и автоматизация.'
+          },
+          humanitarian: {
+            title: 'Хуманитарно образование',
+            description: 'Хуманитарното образование обхваща философия, история, литература, социология и други хуманитарни науки. Хората с предразположеност към хуманитарни дисциплини проявяват интерес към човешките отношения, културата и обществените процеси. Те имат способността да анализират сложни социални явления и да разбират човешкото поведение.',
+            careers: 'Преподаватели, журналисти, социални работници, културни дейци.'
+          },
+          naturalScience: {
+            title: 'Природни науки',
+            description: 'Природните науки включват биология, химия, физика, екология и други природо-научни дисциплини. Хората с предразположеност към природни науки проявяват интерес към изучаването на природните закони и явления, експериментални методи и научни изследвания. Те имат аналитично мислене, способност за систематично наблюдение и експериментиране, както и критично мислене.',
+            careers: 'Биолози, химици, физици, еколози, изследователи, лаборанти, анализатори.'
+          },
+          economics: {
+            title: 'Икономика и управление',
+            description: 'Икономиката и управлението включват бизнес, финанси, маркетинг и организационно управление. Хората с предразположеност към тези дисциплини проявяват интерес към бизнес процеси, финансов анализ и стратегическо планиране. Те имат способността да вземат рационални решения и да управляват ресурси ефективно.',
+            careers: 'Икономисти, мениджъри, финансисти, бизнес консултанти.'
+          },
+          linguistic: {
+            title: 'Лингвистично образование',
+            description: 'Лингвистичното образование обхваща изучаването на езици, литература и лингвистика. Хората с предразположеност към езикови дисциплини проявяват интерес към комуникацията, езиковите структури и културните аспекти на езика. Те имат способността да учат чужди езици и да анализират езикови явления.',
+            careers: 'Преводачи, филолози, учители по езици, лингвисти.'
+          },
+          mathematical: {
+            title: 'Математическо образование',
+            description: 'Математическото образование включва чиста математика, приложна математика и статистически методи. Хората с предразположеност към математически дисциплини проявяват интерес към абстрактното мислене, логическите конструкции и количествения анализ. Те имат способността да решават сложни проблеми чрез математически модели и алгоритми.',
+            careers: 'Математици, статистици, анализатори на данни, разработчици на софтуер.'
+          }
+        };
+
         // Анализ на типа образование
         function calculateEducationType(formula, fingerprints) {
           const spiralPercentage = calculatePatternPercentage(fingerprints, 'Спирала', 'Двойна Спирала');
@@ -988,9 +980,61 @@
           return {
             technical: Math.min(100, 75 + (spiralPercentage * 0.5) + (formula.total * 2)),
             humanitarian: Math.min(100, 45 - (spiralPercentage * 0.3) + Math.max(0, (10 - formula.total) * 2)),
-            naturalScience: Math.min(100, 70 + (spiralPercentage * 0.4) + (formula.total * 1.5)),
-            economics: Math.min(100, 50 + (loopPercentage * 0.3) - (spiralPercentage * 0.2))
+            naturalScience: Math.min(100, 72 + (spiralPercentage * 0.35) + (formula.total * 1.65)),
+            economics: Math.min(100, 50 + (loopPercentage * 0.3) - (spiralPercentage * 0.2)),
+            linguistic: Math.min(100, 30 + (loopPercentage * 0.4) + Math.max(0, (8 - formula.total) * 1.5)),
+            mathematical: Math.min(100, 80 + (spiralPercentage * 0.6) + (formula.total * 2.2))
           };
+        }
+
+        // Показване на типовете образование в сортиран ред
+        function displayEducationTypes(educationData) {
+          const container = document.getElementById('education-types-container');
+          if (!container) return;
+
+          // Сортиране по процент в низходящ ред (от най-висок към най-нисък)
+          const sortedEducation = Object.entries(educationData)
+            .map(([key, value]) => ({ key, value, ...EDUCATION_DESCRIPTIONS[key] }))
+            .sort((a, b) => b.value - a.value);
+
+          let html = '';
+
+          // Групиране по 2 в ред
+          for (let i = 0; i < sortedEducation.length; i += 2) {
+            html += '<div class="row mb-4">';
+
+            // Първи елемент в реда
+            const firstItem = sortedEducation[i];
+            html += `
+              <div class="col-md-6">
+                <h6>${firstItem.title}</h6>
+                <div class="progress report-progress mb-2">
+                  <div class="progress-bar" role="progressbar" style="width: ${firstItem.value}%" aria-valuenow="${firstItem.value}" aria-valuemin="0" aria-valuemax="100">${firstItem.value}%</div>
+                </div>
+                <p class="text-muted small mb-2">${firstItem.description}</p>
+                <p class="text-primary small"><strong>Възможни кариери:</strong> ${firstItem.careers}</p>
+              </div>
+            `;
+
+            // Втори елемент в реда (ако съществува)
+            if (i + 1 < sortedEducation.length) {
+              const secondItem = sortedEducation[i + 1];
+              html += `
+                <div class="col-md-6">
+                  <h6>${secondItem.title}</h6>
+                  <div class="progress report-progress mb-2">
+                    <div class="progress-bar" role="progressbar" style="width: ${secondItem.value}%" aria-valuenow="${secondItem.value}" aria-valuemin="0" aria-valuemax="100">${secondItem.value}%</div>
+                  </div>
+                  <p class="text-muted small mb-2">${secondItem.description}</p>
+                  <p class="text-primary small"><strong>Възможни кариери:</strong> ${secondItem.careers}</p>
+                </div>
+              `;
+            }
+
+            html += '</div>';
+          }
+
+          container.innerHTML = html;
         }
 
         // Анализ на професионални направления
@@ -1026,16 +1070,60 @@
         }
 
         // Анализ на модела за самореализация
+        // Детайлни описания за модела на самореализация
+        const SELFREALIZATION_DESCRIPTIONS = {
+          communication: {
+            title: 'Комуникация',
+            description: 'Комуникативните умения включват способността за ефективно общуване, изразяване на мисли и разбиране на другите. Хората с високи комуникативни умения се справят добре в социални ситуации, могат да убеждават и да водят разговори. Те имат способността да създават и поддържат добри отношения.',
+            careers: 'Мениджъри, преподаватели, консултанти, PR специалисти.'
+          },
+          practice: {
+            title: 'Практика',
+            description: 'Практическата ориентация включва способността за прилагане на знанията в реални ситуации, решаване на конкретни проблеми и ефективно използване на наличните ресурси. Хората с практическа ориентация предпочитат конкретни действия пред абстрактни идеи и се справят добре с ръчна работа и технически задачи.',
+            careers: 'Инженери, техници, занаятчии, предприемачи.'
+          },
+          analysis: {
+            title: 'Анализи',
+            description: 'Аналитичните умения включват способността за логическо мислене, систематизиране на информацията и вземане на обосновани решения. Хората с аналитичен подход се справят добре с решаването на сложни проблеми, обработка на данни и стратегическо планиране.',
+            careers: 'Аналитици, изследователи, счетоводители, програмисти.'
+          }
+        };
+
         function calculateSelfRealizationModel(formula, fingerprints) {
           const spiralPercentage = calculatePatternPercentage(fingerprints, 'Спирала', 'Двойна Спирала');
           const loopPercentage = calculatePatternPercentage(fingerprints, 'L-Примка', 'R-Примка');
 
           return {
-            systematicApproach: Math.min(100, 65 + (formula.total * 1.5) + (spiralPercentage * 0.3)),
-            planningAndOrganization: Math.min(100, 70 + (formula.total * 1.2) + (loopPercentage * 0.4)),
-            creativeThinking: Math.min(100, 50 + (spiralPercentage * 0.6) + (loopPercentage * 0.3)),
-            communication: Math.min(100, 40 + (loopPercentage * 0.8) - (spiralPercentage * 0.2))
+            communication: Math.min(100, 45 + (loopPercentage * 0.8) - (spiralPercentage * 0.1)),
+            practice: Math.min(100, 70 + (formula.total * 1.2) + (loopPercentage * 0.3)),
+            analysis: Math.min(100, 65 + (spiralPercentage * 0.6) + (formula.total * 1.3))
           };
+        }
+
+        // Показване на индикаторите за самореализация в сортиран ред
+        function displaySelfRealizationIndicators(modelData) {
+          const container = document.getElementById('selfrealization-indicators');
+          if (!container) return;
+
+          // Сортиране по процент в низходящ ред (от най-висок към най-нисък)
+          const sortedIndicators = Object.entries(modelData)
+            .map(([key, value]) => ({ key, value, ...SELFREALIZATION_DESCRIPTIONS[key] }))
+            .sort((a, b) => b.value - a.value);
+
+          let html = '';
+
+          sortedIndicators.forEach(indicator => {
+            html += `
+              <h6>${indicator.title}</h6>
+              <div class="progress report-progress mb-3">
+                <div class="progress-bar" role="progressbar" style="width: ${indicator.value}%" aria-valuenow="${indicator.value}" aria-valuemin="0" aria-valuemax="100">${indicator.value}%</div>
+              </div>
+              <p class="text-muted small mb-3">${indicator.description}</p>
+              <p class="text-primary small"><strong>Подходящи кариери:</strong> ${indicator.careers}</p>
+            `;
+          });
+
+          container.innerHTML = html;
         }
 
         // Анализ на здравословното състояние
@@ -1313,10 +1401,10 @@
                 new Chart(selfRealizationCtx, {
                     type: 'radar',
                     data: {
-                        labels: ['Системен подход', 'Планиране', 'Креативно мислене', 'Комуникация'],
+                        labels: ['Комуникация', 'Практика', 'Анализи'],
                         datasets: [{
                             label: 'Показатели',
-                            data: [88, 82, 78, 65],
+                            data: [75, 85, 90],
                             borderColor: '#ffc107',
                             backgroundColor: 'rgba(255, 193, 7, 0.2)',
                             pointBackgroundColor: '#ffc107',
@@ -1474,11 +1562,11 @@
             // Update Delta Index
             document.getElementById('delta-index').textContent = analysis.deltaIndex;
 
-            // Update Education Type
-            updateProgressBar('education-technical', analysis.educationType.technical);
-            updateProgressBar('education-humanitarian', analysis.educationType.humanitarian);
-            updateProgressBar('education-natural', analysis.educationType.naturalScience);
-            updateProgressBar('education-economics', analysis.educationType.economics);
+            // Display Education Types (sorted)
+            displayEducationTypes(analysis.educationType);
+
+            // Display Self-Realization Model (sorted)
+            displaySelfRealizationIndicators(analysis.selfRealizationModel);
 
             // Update Professional Directions
             updateProgressBar('directions-analytical', analysis.professionalDirections.analytical);
@@ -1492,11 +1580,8 @@
             updateProgressBar('spheres-finance', analysis.professionalSpheres.financeAndAnalysis);
             updateProgressBar('spheres-education', analysis.professionalSpheres.education);
 
-            // Update Self-Realization Model
-            updateProgressBar('selfrealization-systematic', analysis.selfRealizationModel.systematicApproach);
-            updateProgressBar('selfrealization-planning', analysis.selfRealizationModel.planningAndOrganization);
-            updateProgressBar('selfrealization-creative', analysis.selfRealizationModel.creativeThinking);
-            updateProgressBar('selfrealization-communication', analysis.selfRealizationModel.communication);
+            // Display Self-Realization Model (sorted)
+            displaySelfRealizationIndicators(analysis.selfRealizationModel);
 
             // Update Health Analysis
             updateProgressBar('health-stress', analysis.healthAnalysis.stressRisk);
