@@ -472,58 +472,6 @@
                     </div>
                 </div>
 
-                <!-- Health Analysis -->
-                <div class="card shadow mb-4">
-                    <div class="card-header bg-danger text-white">
-                        <h3 class="card-title mb-0">
-                            <i class="fas fa-heartbeat me-2"></i>
-                            Здраве - Рискови фактори - Анализ на показатели
-                        </h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="alert alert-danger mb-4">
-                            <h6><i class="fas fa-exclamation-triangle me-2"></i>Важно за вашето здраве</h6>
-                            <p class="mb-0">Този анализ показва потенциалните рискове за вашето здраве въз основа на дерматоглифичните показатели. Високите проценти в рисковите фактори (като стрес) изискват особено внимание и превантивни мерки.</p>
-                        </div>
-                        <div class="row mb-4">
-                            <div class="col-md-6 mb-3">
-                                <div class="text-center">
-                                    <div class="chart-container" style="position: relative; height: 200px;">
-                                        <canvas id="healthChart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <h6 style="font-size: 1.2em; font-weight: bold;">Риск от стрес <span class="badge bg-danger ms-2">Висок риск</span></h6>
-                                <p class="text-muted mb-2" style="font-size: 1.05em;"><strong>Среден риск при продължителна интензивна работа</strong></p>
-                                <p class="text-muted mb-4" style="font-size: 1.0em;">Вашият показател за стрес е 65%, което изисква внимателно управление на работното натоварване и редовни почивки.</p>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <h6 style="font-size: 1.1em;">Имунна система</h6>
-                                <p class="text-muted small mb-2">Добра устойчивост на организма</p>
-                                <p class="text-muted small mb-0">Имунната ви система показва добри резултати (78%), което е положителен фактор за общото здраве.</p>
-                            </div>
-                            <div class="col-md-6">
-                                <h6>Нервна система</h6>
-                                <p class="text-muted small mb-2">Добра устойчивост, но нужда от почивка</p>
-                                <p class="text-muted small mb-0">Нервната система е стабилна (72%), но се нуждае от баланс между активност и почивка.</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h6 style="font-size: 0.9em;">Физическа издръжливост</h6>
-                                <p class="text-muted small mb-2" style="font-size: 0.9em;">Средна физическа издръжливост</p>
-                                <p class="text-muted small mb-0" style="font-size: 0.9em;">Физическата издръжливост е на средно ниво (68%), препоръчва се умерена физическа активност.</p>
-                            </div>
-                        </div>
-                        <div class="alert alert-danger">
-                            <strong>Препоръки:</strong> Редовни почивки за управление на възбудимата нервна система, балансирано хранене, умерена физическа активност. Избягвайте продължителен стрес. Добра регенерация, но се нуждаете от почивка.
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Sports Analysis -->
                 <div class="card shadow mb-4">
                     <div class="card-header bg-primary text-white">
@@ -1660,59 +1608,6 @@
                                             });
                                         }
                                         return [];
-                                    }
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-
-            // Health Chart
-            const healthCtx = document.getElementById('healthChart');
-            if (healthCtx) {
-                new Chart(healthCtx, {
-                    type: 'radar',
-                    data: {
-                        labels: ['Риск от стрес', 'Имунна система', 'Нервна система', 'Физическа издръжливост'],
-                        datasets: [{
-                            label: 'Здравни показатели',
-                            data: [65, 78, 72, 68],
-                            borderColor: '#dc3545',
-                            backgroundColor: 'rgba(220, 53, 69, 0.2)',
-                            pointBackgroundColor: '#dc3545',
-                            pointBorderColor: '#fff',
-                            pointHoverBackgroundColor: '#fff',
-                            pointHoverBorderColor: '#dc3545',
-                            pointRadius: 6,
-                            pointHoverRadius: 8
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                            r: {
-                                beginAtZero: true,
-                                max: 100,
-                                ticks: {
-                                    stepSize: 20,
-                                    font: {
-                                        size: 12
-                                    }
-                                },
-                                pointLabels: {
-                                    font: {
-                                        size: 12
-                                    }
-                                }
-                            }
-                        },
-                        plugins: {
-                            legend: {
-                                labels: {
-                                    font: {
-                                        size: 14
                                     }
                                 }
                             }
