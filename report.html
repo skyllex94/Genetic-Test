@@ -615,38 +615,16 @@
                         <div class="row mb-4">
                             <div class="col-md-6 mb-3">
                                 <div class="text-center">
-                                    <div class="chart-container" style="position: relative; height: 200px;">
-                                        <canvas id="temperamentChart"></canvas>
-                                    </div>
+                                    <img src="data/темперамент.png" alt="темперамент" class="img-fluid rounded shadow-sm" style="max-width: 100%; max-height: 200px;">
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <h6 style="font-size: 1.2em; font-weight: bold;">Сангвиничен <span class="badge bg-warning ms-2">Доминиращ темперамент</span></h6>
-                                <p class="text-muted mb-2" style="font-size: 1.05em;"><strong>Най-висок показател - 72%</strong></p>
-                                <p class="text-muted mb-4" style="font-size: 1.0em;">Жизнерадостен, общителен, енергичен. Лесно се адаптирате към нови ситуации и хора.</p>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <h6>Флегматичен</h6>
-                                <p class="text-muted small mb-2">Спокоен тип - 68%</p>
-                                <p class="text-muted small mb-0">Спокоен, уравновесен, надежден. Предпочитате стабилност и планираност.</p>
-                            </div>
-                            <div class="col-md-6">
-                                <h6>Холеричен</h6>
-                                <p class="text-muted small mb-2">Енергичен тип - 68%</p>
-                                <p class="text-muted small mb-0">Импулсивен, енергичен, решителен. Бързи реакции и силна воля.</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h6 style="font-size: 0.9em;">Меланхоличен</h6>
-                                <p class="text-muted small mb-2" style="font-size: 0.9em;">Аналитичен тип - 25%</p>
-                                <p class="text-muted small mb-0" style="font-size: 0.9em;">Ниска емоционалност, склонност към анализ. Дълбоки чувства и внимание към детайли.</p>
+                                <h6 style="font-size: 1.3em; font-weight: bold; color: #ffc107;">Сангвиничен <span class="badge bg-warning ms-2">Доминиращ темперамент</span></h6>
+                                <p class="text-dark mb-0" style="font-size: 1.0em;">Сангвиничният темперамент се характеризира с жизнерадостност, общителност и висока енергичност. Вие сте оптимистичен, лесно се адаптирате към нови ситуации и хора, имате богато въображение и бързо мислите. Сангвиниците са естествени лидери в социални ситуации, обичат да бъдат в центъра на вниманието и лесно завързват контакти. Вашият темперамент ви прави гъвкав, адаптивен и способен да се справяте добре със стреса чрез позитивно мислене и бързи решения.</p>
                             </div>
                         </div>
                         <div class="alert alert-warning">
-                            <strong>Вашият темперамент:</strong> Холерично-сангвиничен с елементи на експлозивност. Комбинация от динамика, адаптивност и практичност.
+                            <strong>Вашият темперамент:</strong> Чист сангвиничен тип с висока степен на социална адаптивност. Вашият оптимизъм и енергичност ви помагат да се справяте успешно с предизвикателства и да мотивирате околните.
                         </div>
                     </div>
                 </div>
@@ -1699,71 +1677,6 @@
                 });
             }
 
-            // Temperament Chart
-            const temperamentCtx = document.getElementById('temperamentChart');
-            if (temperamentCtx) {
-                new Chart(temperamentCtx, {
-                    type: 'polarArea',
-                    data: {
-                        labels: ['Сангвиничен', 'Флегматичен', 'Холеричен', 'Меланхоличен'],
-                        datasets: [{
-                            label: 'Темпераменти (%)',
-                            data: [72, 68, 68, 25],
-                            backgroundColor: [
-                                'rgba(255, 193, 7, 0.8)',   // yellow for sanguine
-                                'rgba(40, 167, 69, 0.8)',   // green for phlegmatic
-                                'rgba(220, 53, 69, 0.8)',   // red for choleric
-                                'rgba(0, 123, 255, 0.6)'    // blue for melancholic (more transparent as it's lowest)
-                            ],
-                            borderColor: [
-                                '#ffc107',
-                                '#28a745',
-                                '#dc3545',
-                                '#007bff'
-                            ],
-                            borderWidth: 2,
-                            hoverBorderWidth: 4
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                            r: {
-                                beginAtZero: true,
-                                max: 100,
-                                ticks: {
-                                    stepSize: 20,
-                                    font: {
-                                        size: 12
-                                    },
-                                    callback: function(value) {
-                                        return value + '%';
-                                    }
-                                },
-                                pointLabels: {
-                                    font: {
-                                        size: 13,
-                                        weight: 'bold'
-                                    }
-                                }
-                            }
-                        },
-                        plugins: {
-                            legend: {
-                                display: false
-                            },
-                            tooltip: {
-                                callbacks: {
-                                    label: function(context) {
-                                        return context.label + ': ' + context.parsed.r + '%';
-                                    }
-                                }
-                            }
-                        }
-                    }
-                });
-            }
 
             // Self-Realization Chart
             const selfRealizationCtx = document.getElementById('selfRealizationChart');
