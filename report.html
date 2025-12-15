@@ -630,43 +630,66 @@
                     </div>
                 </div>
 
-                <!-- News Perception Type -->
+                <!-- Individual-Typological Characteristics of Personality -->
                 <div class="card shadow mb-4">
-                    <div class="card-header bg-secondary text-white">
+                    <div class="card-header bg-info text-white">
                         <h3 class="card-title mb-0">
-                            <i class="fas fa-lightbulb me-2"></i>
-                            Тип възприемане на новости - Анализ на показатели
+                            <i class="fas fa-user-astronaut me-2"></i>
+                            Индивидуално-типологически особености на личността
                         </h3>
                     </div>
                     <div class="card-body">
-                        <div class="alert alert-secondary mb-4">
-                            <h6><i class="fas fa-lightbulb me-2"></i>Как възприемате новостите</h6>
-                            <p class="mb-0">Типът възприемане на новости показва как обработвате и интерпретирате нова информация. Това определя вашия подход към учене, решаване на проблеми и адаптация към промени.</p>
+                        <div class="alert alert-info mb-4">
+                            <h6><i class="fas fa-user-astronaut me-2"></i>Вашите индивидуални особености</h6>
+                            <p class="mb-0">Този анализ разкрива уникалните типологически характеристики на вашата личност въз основа на комплексна оценка на различни психологически параметри.</p>
                         </div>
                         <div class="row mb-4">
                             <div class="col-md-6 mb-3">
                                 <div class="text-center">
-                                    <div class="chart-container" style="position: relative; height: 200px;">
-                                        <canvas id="newsPerceptionChart"></canvas>
+                                    <div class="personality-circle-container" style="position: relative; width: 320px; height: 320px; margin: 0 auto; padding: 30px;">
+                                        <!-- Central Core -->
+                                        <div class="personality-core" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100px; height: 100px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 2;">
+                                            <i class="fas fa-user text-white fa-2x"></i>
+                                        </div>
+
+                                        <!-- Personality Traits Orbit -->
+                                        <div class="personality-trait trait-1" style="position: absolute; top: 30px; left: 50%; transform: translateX(-50%); z-index: 1;">
+                                            <div class="trait-circle" style="width: 60px; height: 60px; background: linear-gradient(135deg, #4facfe, #00f2fe); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15); margin-bottom: 10px;">
+                                                <i class="fas fa-brain text-white fa-lg"></i>
+                                            </div>
+                                            <div class="trait-label text-center" style="font-size: 0.9em; color: #4facfe; font-weight: bold; line-height: 1.3;">Когнитивен</div>
+                                        </div>
+
+                                        <div class="personality-trait trait-2" style="position: absolute; top: 50%; right: 30px; transform: translateY(-50%); z-index: 1;">
+                                            <div class="trait-circle" style="width: 60px; height: 60px; background: linear-gradient(135deg, #43e97b, #38f9d7); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15); margin-bottom: 10px;">
+                                                <i class="fas fa-heart text-white fa-lg"></i>
+                                            </div>
+                                            <div class="trait-label text-center" style="font-size: 0.9em; color: #43e97b; font-weight: bold; line-height: 1.3;">Емоционален</div>
+                                        </div>
+
+                                        <div class="personality-trait trait-3" style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 1;">
+                                            <div class="trait-circle" style="width: 60px; height: 60px; background: linear-gradient(135deg, #fa709a, #fee140); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15); margin-bottom: 10px;">
+                                                <i class="fas fa-handshake text-white fa-lg"></i>
+                                            </div>
+                                            <div class="trait-label text-center" style="font-size: 0.9em; color: #fa709a; font-weight: bold; line-height: 1.3;">Социален</div>
+                                        </div>
+
+                                        <div class="personality-trait trait-4" style="position: absolute; top: 50%; left: 30px; transform: translateY(-50%); z-index: 1;">
+                                            <div class="trait-circle" style="width: 60px; height: 60px; background: linear-gradient(135deg, #a8edea, #fed6e3); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15); margin-bottom: 10px;">
+                                                <i class="fas fa-cogs text-white fa-lg"></i>
+                                            </div>
+                                            <div class="trait-label text-center" style="font-size: 0.9em; color: #a8edea; font-weight: bold; line-height: 1.3;">Типологичен</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <h6>Аналитично възприемане <span class="badge bg-primary ms-2">Най-силно развито</span></h6>
-                                <p class="text-muted small mb-2"><strong>Отличен аналитичен подход - 89%</strong></p>
-                                <p class="text-muted small mb-4">Задълбочено анализирате информацията, търсите логика и систематизирате знанията преди да вземете решения.</p>
-
-                                <h6>Практическо възприемане</h6>
-                                <p class="text-muted small mb-2">Добър практически подход - 78%</p>
-                                <p class="text-muted small mb-4">Фокусирате се върху практическото приложение на информацията и конкретните резултати.</p>
-
-                                <h6>Интуитивно възприемане</h6>
-                                <p class="text-muted small mb-2">Развито интуитивно мислене - 65%</p>
-                                <p class="text-muted small mb-0">Разчитате на интуицията и вътрешните усещания при обработка на нова информация.</p>
+                                <h6 style="font-size: 1.3em; font-weight: bold; color: #17a2b8;">Индивидуален профил</h6>
+                                <p class="text-dark mb-0" style="font-size: 1.0em;">Вашият индивидуално-типологически профил се характеризира с уникална комбинация от когнитивни, емоционални и поведенчески особености. Анализът показва специфичните начини, по които обработвате информация, вземате решения и взаимодействате със заобикалящата среда. Тези особености формират вашата уникална индивидуалност и определят най-ефективните стратегии за личностно развитие.</p>
                             </div>
                         </div>
-                        <div class="alert alert-secondary mt-3">
-                            <strong>Вашият тип:</strong> Аналитично-практическо възприемане - комбинирате задълбочен анализ с практическо приложение на новости.
+                        <div class="alert alert-info">
+                            <strong>Ключови характеристики:</strong> Индивидуалната типология включва комплексна оценка на вашия темперамент, поведенчески стил и когнитивни предпочитания, които заедно формират уникалния ви личностен профил.
                         </div>
                     </div>
                 </div>
@@ -1744,57 +1767,6 @@
             }
 
 
-            // News Perception Chart
-            const newsPerceptionCtx = document.getElementById('newsPerceptionChart');
-            if (newsPerceptionCtx) {
-                new Chart(newsPerceptionCtx, {
-                    type: 'polarArea',
-                    data: {
-                        labels: ['Аналитично', 'Интуитивно', 'Практическо'],
-                        datasets: [{
-                            data: [88, 72, 85],
-                            backgroundColor: [
-                                'rgba(0, 123, 255, 0.8)',
-                                'rgba(40, 167, 69, 0.8)',
-                                'rgba(255, 193, 7, 0.8)'
-                            ],
-                            borderWidth: 2,
-                            borderColor: '#fff',
-                            hoverBorderWidth: 3
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                position: 'bottom',
-                                labels: {
-                                    padding: 20,
-                                    font: {
-                                        size: 14
-                                    }
-                                }
-                            }
-                        },
-                        scales: {
-                            r: {
-                                ticks: {
-                                    stepSize: 20,
-                                    font: {
-                                        size: 12
-                                    }
-                                },
-                                pointLabels: {
-                                    font: {
-                                        size: 14
-                                    }
-                                }
-                            }
-                        }
-                    }
-                });
-            }
         }
 
         // Calculate and update all analysis results
