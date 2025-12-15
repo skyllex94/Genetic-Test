@@ -586,42 +586,15 @@
                             <img src="data/поведение.png" alt="тип поведенческа адаптация" class="img-fluid rounded w-100" style="max-height: 300px;">
                         </div>
                         <div class="alert alert-success mb-4">
-                            <h6><i class="fas fa-adjust me-2"></i>Вашите поведенчески типове</h6>
-                            <p class="mb-0">Анализът показва основните поведенчески типове (Мислител, Събеседник, Практик) и техните смесени форми. Това разкрива как комбинирате различни подходи в поведението си.</p>
+                            <h6><i class="fas fa-brain me-2"></i>Вашият доминиращ поведенчески тип</h6>
+                            <p class="mb-0">Анализът показва, че вашият основен поведенчески тип е мислител. Този тип се характеризира с аналитичен подход и предпочитание към логическо мислене и систематичност.</p>
                         </div>
-                        <div class="row mb-4">
-                            <div class="col-md-6 mb-3">
-                                <div class="text-center">
-                                    <div class="chart-container" style="position: relative; height: 250px;">
-                                        <canvas id="adaptationChart"></canvas>
-                                    </div>
-                                    <small class="text-muted">Полярна графика на адаптационни стилове</small>
-                                </div>
+                        <div class="alert alert-primary">
+                            <div class="text-center mb-3">
+                                <h5 class="text-success mb-3"><i class="fas fa-star me-2"></i>Вашият основен поведенчески тип</h5>
+                                <h6 style="font-size: 1.3em; font-weight: bold; color: #007bff;">Мислител <span class="badge bg-primary ms-2">Най-силен тип</span></h6>
+                                <p class="text-dark mb-0" style="font-size: 1.0em;"><strong>Мислителят е рационален и аналитичен тип, който предпочита логическо мислене, систематичен подход и детайлно планиране. Вашият стил на поведение се характеризира с рационалност, критичност и предпочитание към структурирани решения. Вие сте склонни да анализирате ситуации дълбоко, да търсите логически обяснения и да вземате решения въз основа на факти и доказателства, а не на емоции или интуиция.</strong></p>
                             </div>
-                            <div class="col-md-6">
-                                <h5 class="text-success mb-3"><i class="fas fa-star me-2"></i>Основни поведенчески типове</h5>
-
-                                <h6 style="font-size: 1.1em; font-weight: bold; color: #007bff;">Мислител <span class="badge bg-primary ms-2">Най-силен</span></h6>
-                                <div class="progress report-progress mb-2" style="height: 1.1rem;">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 85%; font-size: 0.95em; font-weight: bold;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
-                                </div>
-                                <p class="text-muted small mb-3">Аналитичен подход, предпочитате логическо мислене и планиране.</p>
-
-                                <h6 style="font-size: 1.0em; font-weight: bold; color: #28a745;">Практик</h6>
-                                <div class="progress report-progress mb-2" style="height: 1.0rem;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 78%; font-size: 0.9em;" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100">78%</div>
-                                </div>
-                                <p class="text-muted small mb-3">Ориентиран към действие, предпочитате конкретни резултати.</p>
-
-                                <h6 style="font-size: 1.0em; font-weight: bold; color: #ffc107;">Събеседник</h6>
-                                <div class="progress report-progress mb-2" style="height: 1.0rem;">
-                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 72%; font-size: 0.9em;" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100">72%</div>
-                                </div>
-                                <p class="text-muted small mb-0">Социален тип, предпочитате комуникация и взаимодействие.</p>
-                            </div>
-                        </div>
-                        <div class="alert alert-success mt-3">
-                            <strong>Вашият профил:</strong> Доминиращ мислител с практически подход - комбинирате аналитично мислене с ориентация към конкретни резултати. Добре балансирате индивидуална работа с комуникативни умения.
                         </div>
                     </div>
                 </div>
@@ -1856,73 +1829,6 @@
                 });
             }
 
-            // Adaptation Chart
-            const adaptationCtx = document.getElementById('adaptationChart');
-            if (adaptationCtx) {
-                new Chart(adaptationCtx, {
-                    type: 'polarArea',
-                    data: {
-                        labels: ['Мислител', 'Практик', 'Събеседник'],
-                        datasets: [{
-                            label: 'Основни поведенчески типове (%)',
-                            data: [85, 78, 72],
-                            backgroundColor: [
-                                'rgba(0, 123, 255, 0.9)',   // blue - thinker (highest)
-                                'rgba(40, 167, 69, 0.8)',   // green - practitioner
-                                'rgba(255, 193, 7, 0.8)'    // yellow - conversationalist
-                            ],
-                            borderColor: [
-                                '#007bff',
-                                '#28a745',
-                                '#ffc107'
-                            ],
-                            borderWidth: 2,
-                            hoverBorderWidth: 4
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                            r: {
-                                beginAtZero: true,
-                                max: 100,
-                                ticks: {
-                                    stepSize: 20,
-                                    font: {
-                                        size: 12
-                                    },
-                                    callback: function(value) {
-                                        return value + '%';
-                                    }
-                                },
-                                pointLabels: {
-                                    font: {
-                                        size: 13,
-                                        weight: 'bold'
-                                    },
-                                    callback: function(value, index) {
-                                        const labels = ['Системна', 'Гъвкава', 'Консервативна'];
-                                        return labels[index];
-                                    }
-                                }
-                            }
-                        },
-                        plugins: {
-                            legend: {
-                                display: false
-                            },
-                            tooltip: {
-                                callbacks: {
-                                    label: function(context) {
-                                        return context.label + ': ' + context.parsed.r + '%';
-                                    }
-                                }
-                            }
-                        }
-                    }
-                });
-            }
 
             // News Perception Chart
             const newsPerceptionCtx = document.getElementById('newsPerceptionChart');
