@@ -538,7 +538,7 @@
                                     <div class="chart-container" style="position: relative; height: 250px;">
                                         <canvas id="nervousSystemChart"></canvas>
                                     </div>
-                                    <small class="text-muted">Радарна графика на нервните показатели</small>
+                                    <small class="text-muted">Стълбовидна графика на нервните показатели</small>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -582,9 +582,12 @@
                         </h3>
                     </div>
                     <div class="card-body">
+                        <div class="mb-4">
+                            <img src="data/поведение.png" alt="тип поведенческа адаптация" class="img-fluid rounded w-100" style="max-height: 300px;">
+                        </div>
                         <div class="alert alert-success mb-4">
-                            <h6><i class="fas fa-adjust me-2"></i>Как се адаптирате към промените</h6>
-                            <p class="mb-0">Типът поведенческа адаптация показва как реагирате на промени и нови ситуации. Това определя вашия стил на приспособяване към предизвикателства и нови условия.</p>
+                            <h6><i class="fas fa-adjust me-2"></i>Вашите поведенчески типове</h6>
+                            <p class="mb-0">Анализът показва основните поведенчески типове (Мислител, Събеседник, Практик) и техните смесени форми. Това разкрива как комбинирате различни подходи в поведението си.</p>
                         </div>
                         <div class="row mb-4">
                             <div class="col-md-6 mb-3">
@@ -596,27 +599,29 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <h6 style="font-size: 1.2em; font-weight: bold; color: #28a745;">Системна адаптация <span class="badge bg-success ms-2">Най-висок показател</span></h6>
-                                <div class="progress report-progress mb-2" style="height: 1.2rem;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 91%; font-size: 1.0em; font-weight: bold;" aria-valuenow="91" aria-valuemin="0" aria-valuemax="100">91%</div>
-                                </div>
-                                <p class="text-dark mb-3" style="font-size: 0.95em;"><strong>Отлична системност. Предпочитате планирани и системни промени, стъпка по стъпка адаптация към нови условия.</strong></p>
+                                <h5 class="text-success mb-3"><i class="fas fa-star me-2"></i>Основни поведенчески типове</h5>
 
-                                <h6 style="font-size: 1.0em; font-weight: bold;">Гъвкава адаптация</h6>
+                                <h6 style="font-size: 1.1em; font-weight: bold; color: #007bff;">Мислител <span class="badge bg-primary ms-2">Най-силен</span></h6>
+                                <div class="progress report-progress mb-2" style="height: 1.1rem;">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 85%; font-size: 0.95em; font-weight: bold;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
+                                </div>
+                                <p class="text-muted small mb-3">Аналитичен подход, предпочитате логическо мислене и планиране.</p>
+
+                                <h6 style="font-size: 1.0em; font-weight: bold; color: #28a745;">Практик</h6>
                                 <div class="progress report-progress mb-2" style="height: 1.0rem;">
-                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 67%; font-size: 0.9em;" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100">67%</div>
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 78%; font-size: 0.9em;" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100">78%</div>
                                 </div>
-                                <p class="text-muted small mb-3">Добра гъвкавост. Способни сте да се адаптирате бързо към промени, когато е необходимо.</p>
+                                <p class="text-muted small mb-3">Ориентиран към действие, предпочитате конкретни резултати.</p>
 
-                                <h6 style="font-size: 0.9em; font-weight: normal; color: #6c757d;">Консервативна адаптация</h6>
-                                <div class="progress report-progress mb-2" style="height: 0.8rem;">
-                                    <div class="progress-bar bg-secondary" role="progressbar" style="width: 43%; font-size: 0.8em;" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100">43%</div>
+                                <h6 style="font-size: 1.0em; font-weight: bold; color: #ffc107;">Събеседник</h6>
+                                <div class="progress report-progress mb-2" style="height: 1.0rem;">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 72%; font-size: 0.9em;" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100">72%</div>
                                 </div>
-                                <p class="text-muted small mb-0" style="font-size: 0.85em;">По-ниска консервативност. Предпочитате стабилност и се адаптирате по-бавно към големи промени.</p>
+                                <p class="text-muted small mb-0">Социален тип, предпочитате комуникация и взаимодействие.</p>
                             </div>
                         </div>
                         <div class="alert alert-success mt-3">
-                            <strong>Вашият тип:</strong> Динамична системна адаптация - предпочитате бързи, експресивни промени с висока степен на адаптивност към нови ситуации.
+                            <strong>Вашият профил:</strong> Доминиращ мислител с практически подход - комбинирате аналитично мислене с ориентация към конкретни резултати. Добре балансирате индивидуална работа с комуникативни умения.
                         </div>
                     </div>
                 </div>
@@ -1442,58 +1447,44 @@
             const directionsCtx = document.getElementById('directionsChart');
             if (directionsCtx) {
                 new Chart(directionsCtx, {
-                    type: 'polarArea',
+                    type: 'doughnut',
                     data: {
                         labels: ['Комуникации', 'Практика', 'Анализ'],
                         datasets: [{
-                            label: 'Професионални направления (%)',
                             data: [75, 85, 90],
-                            backgroundColor: [
-                                'rgba(0, 123, 255, 0.8)',
-                                'rgba(40, 167, 69, 0.8)',
-                                'rgba(255, 193, 7, 0.8)'
-                            ],
-                            borderColor: [
-                                '#007bff',
-                                '#28a745',
-                                '#ffc107'
-                            ],
+                            backgroundColor: ['#007bff', '#28a745', '#ffc107'],
                             borderWidth: 2,
-                            hoverBorderWidth: 4
+                            borderColor: '#fff'
                         }]
                     },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
-                        scales: {
-                            r: {
-                                beginAtZero: true,
-                                max: 100,
-                                ticks: {
-                                    stepSize: 20,
-                                    font: {
-                                        size: 12
-                                    },
-                                    callback: function(value) {
-                                        return value + '%';
-                                    }
-                                },
-                                pointLabels: {
-                                    font: {
-                                        size: 13,
-                                        weight: 'bold'
-                                    }
-                                }
-                            }
-                        },
                         plugins: {
                             legend: {
-                                display: false
-                            },
-                            tooltip: {
-                                callbacks: {
-                                    label: function(context) {
-                                        return context.label + ': ' + context.parsed.r + '%';
+                                position: 'bottom',
+                                labels: {
+                                    padding: 20,
+                                    font: {
+                                        size: 14
+                                    },
+                                    generateLabels: function(chart) {
+                                        const data = chart.data;
+                                        if (data.labels.length && data.datasets.length) {
+                                            const dataset = data.datasets[0];
+                                            return data.labels.map(function(label, i) {
+                                                const value = dataset.data[i];
+                                                return {
+                                                    text: label + ' (' + value + '%)',
+                                                    fillStyle: dataset.backgroundColor[i],
+                                                    strokeStyle: dataset.borderColor ? dataset.borderColor[i] : dataset.backgroundColor[i],
+                                                    lineWidth: dataset.borderWidth || 0,
+                                                    hidden: false,
+                                                    index: i
+                                                };
+                                            });
+                                        }
+                                        return [];
                                     }
                                 }
                             }
@@ -1570,56 +1561,49 @@
             const additionalModelsCtx = document.getElementById('additionalModelsChart');
             if (additionalModelsCtx) {
                 new Chart(additionalModelsCtx, {
-                    type: 'polarArea',
+                    type: 'doughnut',
                     data: {
                         labels: ['Предприемач', 'Генератор на идеи'],
                         datasets: [{
-                            label: 'Допълнителни модели (%)',
                             data: [70, 65],
-                            backgroundColor: [
-                                'rgba(220, 53, 69, 0.8)',
-                                'rgba(111, 66, 193, 0.8)'
-                            ],
-                            borderColor: [
-                                '#dc3545',
-                                '#6f42c1'
-                            ],
+                            backgroundColor: ['#dc3545', '#6f42c1'],
                             borderWidth: 2,
-                            hoverBorderWidth: 4
+                            hoverBorderWidth: 3
                         }]
                     },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
-                        scales: {
-                            r: {
-                                beginAtZero: true,
-                                max: 100,
-                                ticks: {
-                                    stepSize: 20,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    padding: 15,
                                     font: {
                                         size: 12
                                     },
-                                    callback: function(value) {
-                                        return value + '%';
-                                    }
-                                },
-                                pointLabels: {
-                                    font: {
-                                        size: 13,
-                                        weight: 'bold'
-                                    }
-                                }
-                            }
-                        },
-                        plugins: {
-                            legend: {
-                                display: false
-                            },
-                            tooltip: {
-                                callbacks: {
-                                    label: function(context) {
-                                        return context.label + ': ' + context.parsed.r + '%';
+                                    generateLabels: function(chart) {
+                                        const data = chart.data;
+                                        if (data.labels.length && data.datasets.length) {
+                                            const dataset = data.datasets[0];
+                                            // Create array of label objects with their values
+                                            const labelObjects = data.labels.map(function(label, i) {
+                                                return {
+                                                    text: label + ' (' + dataset.data[i] + '%)',
+                                                    fillStyle: dataset.backgroundColor[i],
+                                                    strokeStyle: dataset.borderColor ? dataset.borderColor[i] : dataset.backgroundColor[i],
+                                                    lineWidth: dataset.borderWidth || 0,
+                                                    hidden: false,
+                                                    index: i,
+                                                    value: dataset.data[i]
+                                                };
+                                            });
+                                            // Sort by value in descending order (highest first)
+                                            return labelObjects.sort(function(a, b) {
+                                                return b.value - a.value;
+                                            });
+                                        }
+                                        return [];
                                     }
                                 }
                             }
@@ -1679,43 +1663,49 @@
             const nervousSystemCtx = document.getElementById('nervousSystemChart');
             if (nervousSystemCtx) {
                 new Chart(nervousSystemCtx, {
-                    type: 'radar',
+                    type: 'bar',
                     data: {
-                        labels: ['Концентрация', 'Бързина на реакция', 'Стресоустойчивост', 'Адаптивност'],
+                        labels: ['Концентрация', 'Адаптивност', 'Бързина на реакция', 'Стресоустойчивост'],
                         datasets: [{
-                            label: 'Нервна система',
-                            data: [88, 72, 68, 75],
-                            borderColor: '#17a2b8',
-                            backgroundColor: 'rgba(23, 162, 184, 0.2)',
-                            pointBackgroundColor: '#17a2b8',
-                            pointBorderColor: '#fff',
-                            pointHoverBackgroundColor: '#fff',
-                            pointHoverBorderColor: '#17a2b8',
-                            pointRadius: 6,
-                            pointHoverRadius: 8
+                            label: 'Нервни качества (%)',
+                            data: [88, 75, 72, 68],
+                            backgroundColor: [
+                                'rgba(40, 167, 69, 0.8)',   // green for concentration (highest)
+                                'rgba(0, 123, 255, 0.8)',   // blue for adaptability
+                                'rgba(255, 193, 7, 0.8)',   // yellow for reaction speed
+                                'rgba(220, 53, 69, 0.6)'    // red for stress resistance (lowest)
+                            ],
+                            borderColor: [
+                                '#28a745',
+                                '#007bff',
+                                '#ffc107',
+                                '#dc3545'
+                            ],
+                            borderWidth: 2,
+                            hoverBorderWidth: 3
                         }]
                     },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
                         scales: {
-                            r: {
+                            y: {
                                 beginAtZero: true,
                                 max: 100,
                                 ticks: {
                                     stepSize: 20,
                                     font: {
                                         size: 12
+                                    },
+                                    callback: function(value) {
+                                        return value + '%';
                                     }
-                                },
-                                pointLabels: {
+                                }
+                            },
+                            x: {
+                                ticks: {
                                     font: {
                                         size: 12
-                                    },
-                                    callback: function(value, index, values) {
-                                        const labels = ['Концентрация', 'Бързина на реакция', 'Стресоустойчивост', 'Адаптивност'];
-                                        const data = [88, 72, 68, 75];
-                                        return labels[index] + ' (' + data[index] + '%)';
                                     }
                                 }
                             }
@@ -1727,7 +1717,7 @@
                             tooltip: {
                                 callbacks: {
                                     label: function(context) {
-                                        return context.label + ': ' + context.parsed.r + '%';
+                                        return context.label + ': ' + context.parsed.y + '%';
                                     }
                                 }
                             }
@@ -1872,19 +1862,19 @@
                 new Chart(adaptationCtx, {
                     type: 'polarArea',
                     data: {
-                        labels: ['Системна адаптация', 'Гъвкава адаптация', 'Консервативна адаптация'],
+                        labels: ['Мислител', 'Практик', 'Събеседник'],
                         datasets: [{
-                            label: 'Адаптационни стилове (%)',
-                            data: [91, 67, 43],
+                            label: 'Основни поведенчески типове (%)',
+                            data: [85, 78, 72],
                             backgroundColor: [
-                                'rgba(40, 167, 69, 0.8)',   // green for highest
-                                'rgba(255, 193, 7, 0.8)',   // yellow for medium
-                                'rgba(108, 117, 125, 0.6)'  // gray for lowest
+                                'rgba(0, 123, 255, 0.9)',   // blue - thinker (highest)
+                                'rgba(40, 167, 69, 0.8)',   // green - practitioner
+                                'rgba(255, 193, 7, 0.8)'    // yellow - conversationalist
                             ],
                             borderColor: [
+                                '#007bff',
                                 '#28a745',
-                                '#ffc107',
-                                '#6c757d'
+                                '#ffc107'
                             ],
                             borderWidth: 2,
                             hoverBorderWidth: 4
