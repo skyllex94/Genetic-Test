@@ -150,9 +150,7 @@
                                         <!-- ИМЕЙЛ поле -->
                                         <div class="mb-3">
                                             <label class="form-label text-muted fw-bold small mb-2">ИМЕЙЛ</label>
-                                            <div class="border-bottom border-2 d-flex align-items-center" style="padding: 8px 0; min-height: 24px;">
-                                                <div id="report-email" class="flex-grow-1" style="font-size: 16px;">___________________________</div>
-                                            </div>
+                                            <input type="email" id="report-email" class="form-control" placeholder="Въведете имейл адрес" style="border: none; border-bottom: 2px solid #dee2e6; border-radius: 0; padding: 8px 0; font-size: 16px;">
                                         </div>
 
                                         <!-- ПОЛ -->
@@ -167,99 +165,269 @@
                     </div>
                 </div>
 
-                <!-- Fingerprint Analysis -->
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-center text-white py-4">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/Genetictest.Svishtov"
+                    role="button"><i class="fab fa-facebook-f"></i></a>
+
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/revolyutsiya.usmivka"
+                    role="button"><i class="fab fa-facebook-f"></i></a>
+
+                |
+
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/genetictest_svishtov"
+                    role="button"><i class="fab fa-instagram"></i></a>
+
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/eveliniangelova"
+                    role="button"><i class="fab fa-instagram"></i></a>
+            </section>
+        </div>
+
+        <div class="text-center p-3">
+            <script>document.write(new Date().getFullYear())</script> - Всички права запазени:
+            <a class="text-white" href="google.com">Genetic Test - Svishtov ©</a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <script>
+        // ===== ДЕРМАТОГЛИФИЧНИ АНАЛИЗИ =====
+
+        // Система за оценка на пръстовите отпечатъци
+        const FINGERPRINT_SCORES = {
+          'Дъга': 0,
+          'Дъга - Палатка': 0,
+          'Палатковидна Дъга': 0,
+          'L-Примка': 1,
+          'R-Примка': 1,
+          'Спирала': 2,
+          'Двойна Спирала': 2
+        };
+
+        // Load data from URL parameters or localStorage
+        function loadReportData() {
+            // Try to get data from URL parameters first
+            const urlParams = new URLSearchParams(window.location.search);
+
+            const name = urlParams.get('name') || localStorage.getItem('report_name') || '______________________________';
+            const gender = urlParams.get('gender') || localStorage.getItem('report_gender') || 'Неопределен';
+            const age = urlParams.get('age') || localStorage.getItem('report_age') || '______';
+            const email = urlParams.get('email') || localStorage.getItem('report_email') || '___________________________';
+            const date = new Date().toLocaleDateString('bg-BG');
+
+            // Update personal info
+            document.getElementById('report-name').textContent = name;
+            document.getElementById('report-gender').textContent = gender;
+            document.getElementById('report-age').textContent = age;
+            document.getElementById('report-email').textContent = email;
+            document.getElementById('report-date').textContent = date;
+
+            // Update gender avatar based on gender
+            updateGenderAvatar(gender);
+        }
+
+        // Update gender avatar based on gender
+        function updateGenderAvatar(gender) {
+            const genderAvatar = document.getElementById('gender-avatar');
+            const silhouetteDiv = document.getElementById('gender-silhouette');
+
+            if (!genderAvatar || !silhouetteDiv) return;
+
+            const genderLower = gender.toLowerCase();
+
+            // Reset to default
+            genderAvatar.src = 'data/placeholder.jpg';
+            genderAvatar.alt = 'Неутрален силует';
+            silhouetteDiv.style.background = 'linear-gradient(135deg, #e9ecef, #dee2e6)';
+            silhouetteDiv.title = 'Неутрален силует';
+
+            if (genderLower.includes('мъж') || genderLower.includes('male') || genderLower.includes('man')) {
+                // Зареждане на мъжко изображение
+                genderAvatar.src = 'data/Picture.png - мъж.png';
+                genderAvatar.alt = 'Мъжки силует';
+                silhouetteDiv.style.background = 'linear-gradient(135deg, #007bff, #0056b3)';
+                silhouetteDiv.title = 'Мъжки силует - персонализирано изображение';
+            } else if (genderLower.includes('жена') || genderLower.includes('female') || genderLower.includes('woman')) {
+                // Зареждане на женско изображение
+                genderAvatar.src = 'data/Picture.png жена.png';
+                genderAvatar.alt = 'Женски силует';
+                silhouetteDiv.style.background = 'linear-gradient(135deg, #f8f9fa, #e9ecef)';
+                silhouetteDiv.title = 'Женски силует - персонализирано изображение';
+            }
+        }
+
+        // Load data and create charts when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadReportData();
+        });
+    </script>
+</body>
+
+</html>
+
+<body>
+    <header>
+        <section class="above-navigation">
+            <div class="container">
+                <div class="row py-4 d-flex">
+                    <div class="col-md-6 align-self-center">
+                        <a class="text-decoration-none" href="index.html">
+                            <p class="display-6 d-inline">Genetic test – Svishtov</p>
+                        </a>
+                        <p class="pt-1"> Биометрично изследване, основано на науката дерматоглифика</p>
+                    </div>
+                    <div class="col-md-2 px-4 v-divider align-self-center d-none d-lg-block d-xl-block">
+                        <p class="lead d-inline"><i class="fas fa-map-marker-alt p-1"></i><b> България</b></p>
+                        <p>гр. Свищов, 5250</p>
+                    </div>
+                    <div class="col-md-2 px-4 v-divider align-self-center d-none d-lg-block d-xl-block">
+                        <p class="lead d-inline"><i class="fas fa-phone p-1"></i><b>9:00-18:00ч.</b></p>
+                        <p>Понеделник-Събота</p>
+                    </div>
+                    <div class="col-md-2 px-4 v-divider align-self-center d-none d-lg-block d-xl-block">
+                        <p class="lead d-inline"><i class="fa fa-envelope px-2"></i><b>genetictest</b></p>
+                        <p>-sv@abv.bg</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="navigation container">
+            <nav class="navbar navbar-expand-lg navbar-light py-4">
+                <div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto ps-0 mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Начало</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">Услуги
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="services1.html">Безплатно Онлайн Тестване</a></li>
+                                <li class="dropdown-divider">
+                                    <hr>
+                                </li>
+                                <li><a class="dropdown-item" href="services2.html">Раздел - Модел за самореализация</a></li>
+                                <li><a class="dropdown-item" href="services3.html">Раздел - Професионална дейност</a></li>
+                                <li><a class="dropdown-item" href="services4.html">Раздел - Тип Темперамент</a></li>
+                                <li class="dropdown-divider">
+                                    <hr>
+                                </li>
+                                <li><a class="dropdown-item" href="services5.html">Тестване от експерт</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="help.html">Помощна страница</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html" tabindex="-1" aria-disabled="true">Контакти</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </section>
+    </header>
+
+    <section class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <!-- Report Header -->
+                <div class="text-center mb-5">
+                    <h1 class="display-4 text-primary mb-3">
+                        <i class="fas fa-file-alt me-3"></i>
+                        Вашият Генетичен Отчет
+                    </h1>
+                    <p class="lead">Базирано на анализа на вашите пръстови отпечатъци</p>
+                    <hr class="my-4">
+                </div>
+
+                <!-- Personal Information -->
                 <div class="card shadow mb-4">
-                    <div class="card-header bg-success text-white">
+                    <div class="card-header bg-primary text-white">
                         <h3 class="card-title mb-0">
-                            <i class="fas fa-fingerprint me-2"></i>
-                            Вашата пръстова формула
+                            <i class="fas fa-user-circle me-2"></i>
+                            Лични данни
                         </h3>
                     </div>
                     <div class="card-body">
-                        <div class="alert alert-success mb-4">
-                            <h6><i class="fas fa-info-circle me-2"></i>Важна информация за вашия отчет</h6>
-                            <p class="mb-2"><strong>Този отчет има приложимо значение само и единствено за вас.</strong></p>
-                            <p class="mb-2">Въз основа на вашият стандартен биометричен отчет, тук ще намерите подробна интерпретация и анализ за вашата пръстова формула.</p>
-                            <p class="mb-0">Моля да имате в предвид, че в отчета се говори за характеристиките, заложени на генетично ниво. Процентните стойности в отчета показват до каква степен вашите дерматоглифски признаци съвпадат с признаците на тези хора, които притежават даденото качество.</p>
-                        </div>
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <!-- Сиво правоъгълно с икона/силует -->
+                                <div class="text-center p-4 bg-light rounded border h-100 d-flex flex-column justify-content-between align-items-center" style="min-height: 220px;">
+                                    <div class="flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+                                        <!-- Генериран силует символ -->
+                                        <div id="gender-silhouette" class="d-flex align-items-center justify-content-center rounded-circle mb-3" style="width: 100px; height: 100px; background: linear-gradient(135deg, #e9ecef, #dee2e6); border: 3px solid #666;">
+                                            <img id="gender-avatar" src="data/placeholder.jpg" alt="Силует" style="width: 95px; height: 95px; object-fit: cover; border-radius: 50%;">
+                                        </div>
+                                        <div class="text-muted small fw-bold">ЛИЧЕН ПРОФИЛ</div>
+                                    </div>
+                                    <div class="mt-auto">
+                                        <div class="text-muted fw-bold small mb-1">ДАТА</div>
+                                        <div id="report-date" class="small fw-semibold">13 декември 2025 г.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <!-- Форма с лични данни -->
+                                <div class="bg-light rounded border p-4 h-100 d-flex flex-column justify-content-between" style="min-height: 220px;">
+                                    <!-- Горна част - основни данни -->
+                                    <div class="flex-grow-1">
+                                        <!-- Ред 1: ИМЕ / ФАМИЛИЯ -->
+                                        <div class="mb-3">
+                                            <label class="form-label text-muted fw-bold small mb-2">ИМЕ / ФАМИЛИЯ</label>
+                                            <div class="border-bottom border-2" id="report-name" style="padding: 8px 0; font-size: 16px; min-height: 24px;">______________________________</div>
+                                        </div>
 
-                        <div class="row">
-                            <!-- Лява ръка -->
-                            <div class="col-md-6">
-                                <div class="bg-light rounded p-3 mb-3">
-                                    <h5 class="text-center mb-3 text-success">
-                                        <i class="fas fa-hand-paper me-2"></i>
-                                        Лява ръка
-                                    </h5>
-                                    <div class="finger-list">
-                                        <div class="d-flex align-items-center mb-2 p-2 bg-white rounded border">
-                                            <div class="finger-icon me-3">
-                                                <i class="fas fa-circle text-muted" style="font-size: 24px;"></i>
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <strong>Палец:</strong>
-                                                <span id="left-thumb-pattern" class="badge bg-secondary ms-1">Дъга</span>
+                                        <!-- Ред 2: ВЪЗРАСТ -->
+                                        <div class="mb-3">
+                                            <label class="form-label text-muted fw-bold small mb-2">ВЪЗРАСТ</label>
+                                            <div class="border-bottom border-2 d-flex align-items-center" style="padding: 8px 0; min-height: 24px;">
+                                                <div id="report-age" class="flex-grow-1" style="font-size: 16px;">______</div>
+                                                <span class="text-muted ms-2 small">години</span>
                                             </div>
                                         </div>
 
-                                        <div class="d-flex align-items-center mb-2 p-2 bg-white rounded border">
-                                            <div class="finger-icon me-3">
-                                                <i class="fas fa-circle text-muted" style="font-size: 24px;"></i>
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <strong>Показалец:</strong>
-                                                <span id="left-index-pattern" class="badge bg-secondary ms-1">Дъга</span>
-                                            </div>
+                                    </div>
+
+                                    <!-- Долна част - допълнителни данни -->
+                                    <div class="mt-auto">
+                                        <!-- ИМЕЙЛ поле -->
+                                        <div class="mb-3">
+                                            <label class="form-label text-muted fw-bold small mb-2">ИМЕЙЛ</label>
+                                            <input type="email" id="report-email" class="form-control" placeholder="Въведете имейл адрес" style="border: none; border-bottom: 2px solid #dee2e6; border-radius: 0; padding: 8px 0; font-size: 16px;">
                                         </div>
 
-                                        <div class="d-flex align-items-center mb-2 p-2 bg-white rounded border">
-                                            <div class="finger-icon me-3">
-                                                <i class="fas fa-circle text-muted" style="font-size: 24px;"></i>
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <strong>Среден:</strong>
-                                                <span id="left-middle-pattern" class="badge bg-secondary ms-1">Дъга</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="d-flex align-items-center mb-2 p-2 bg-white rounded border">
-                                            <div class="finger-icon me-3">
-                                                <i class="fas fa-circle text-muted" style="font-size: 24px;"></i>
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <strong>Безимен:</strong>
-                                                <span id="left-ring-pattern" class="badge bg-primary ms-1">Дъга</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="d-flex align-items-center mb-2 p-2 bg-white rounded border">
-                                            <div class="finger-icon me-3">
-                                                <i class="fas fa-circle text-muted" style="font-size: 24px;"></i>
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <strong>Кутре:</strong>
-                                                <span id="left-pinky-pattern" class="badge bg-secondary ms-1">Дъга</span>
-                                            </div>
+                                        <!-- ПОЛ -->
+                                        <div>
+                                            <label class="form-label text-muted fw-bold small mb-1">ПОЛ</label>
+                                            <div id="report-gender" class="small fw-semibold">Неопределен</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
 
-                            <!-- Дясна ръка -->
-                            <div class="col-md-6">
-                                <div class="bg-light rounded p-3 mb-3">
-                                    <h5 class="text-center mb-3 text-success">
-                                        <i class="fas fa-hand-paper me-2"></i>
-                                        Дясна ръка
-                                    </h5>
-                                    <div class="finger-list">
-                                        <div class="d-flex align-items-center mb-2 p-2 bg-white rounded border">
-                                            <div class="finger-icon me-3">
-                                                <i class="fas fa-circle text-muted" style="font-size: 24px;"></i>
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <strong>Палец:</strong>
-                                                <span id="right-thumb-pattern" class="badge bg-danger ms-1">Дъга</span>
+            </div>
+        </div>
+    </section>
                                             </div>
                                         </div>
 
