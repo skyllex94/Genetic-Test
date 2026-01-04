@@ -304,20 +304,20 @@ function mobileConfirm() {
     rightPinky,
   ];
 
-  let age = document.getElementById("age").value;
+  let age = document.getElementById("mobile-age").value;
   if (age > 99) {
     alert("Моля прегледайте годините си.");
     return 1;
   }
 
-  let email = document.getElementById("email").value;
+  let email = document.getElementById("mobile-email").value;
   if (email == "") {
     alert("Моля въведете вашия имейл адрес.");
     return 1;
   }
 
   // Gender Selection
-  let select = document.getElementById("gender");
+  let select = document.getElementById("mobile-gender");
   let gender = select.options[select.selectedIndex].text;
 
   // Email Body Creation
@@ -335,10 +335,10 @@ function mobileConfirm() {
   }
 
   // Save data to localStorage for the report page
-  localStorage.setItem('report_name', document.getElementById("name").value);
+  localStorage.setItem('report_name', document.getElementById("mobile-name").value);
   localStorage.setItem('report_gender', gender);
   localStorage.setItem('report_age', age);
-  localStorage.setItem('report_email', document.getElementById("email").value);
+  localStorage.setItem('report_email', document.getElementById("mobile-email").value);
 
   // Save fingerprint data for mobile
   const fingerprintData = {

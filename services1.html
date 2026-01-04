@@ -255,7 +255,32 @@
     </section>
 
 
-    <section id="primaryMobile" class="container mobile d-block d-md-none d-lg-none d-xl-none">
+    <section id="primaryMobile" class="container d-block d-md-none d-lg-none d-xl-none">
+        <!-- User Information Form for Mobile -->
+        <div class="mt-4 p-4 bg-light rounded mb-4">
+            <h4 class="text-center mb-3">Вашата информация</h4>
+            <p class="text-center mb-4">Моля попълнете вашите данни преди да продължите с определянето на пръстовите отпечатъци.</p>
+            <form>
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-3 mb-3">
+                        <input type="text" name="name" id="mobile-name" class="form-control" placeholder="Име" required>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <select class="form-select" id="mobile-gender">
+                            <option value="1">Мъж</option>
+                            <option value="2">Жена</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <input type="number" name="age" id="mobile-age" class="form-control" placeholder="Навършени години" required>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <input type="email" name="email" id="mobile-email" class="form-control" placeholder="Имейл" required>
+                    </div>
+                </div>
+            </form>
+        </div>
+
         <div class="card">
             <div class="row justify-content-center h-100 py-3">
                 <div class="col-lg-2 mx-auto px-5">

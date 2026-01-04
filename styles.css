@@ -84,3 +84,14 @@
 .chart-container {
   min-height: 300px !important;
 }
+
+/* Mobile form visibility fixes */
+#primaryMobile {
+  display: block !important;
+}
+
+@media (min-width: 768px) {
+  #primaryMobile {
+    display: none !important;
+  }
+}
