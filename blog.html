@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Genetic Test - Блог</title>
+    <meta content='maximum-scale=1.0, initial-scale=1.0, width=device-width' name='viewport'>
+    <link rel="icon" href="/img/fingerprint-scan.png" type="image/icon type">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link href="styles.css" rel="stylesheet">
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        // Set blog post dates
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+
+            // Set dates for full blog posts
+            document.getElementById('full-post-date-1').textContent = today.toLocaleDateString('bg-BG', options);
+            document.getElementById('full-post-date-2').textContent = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000).toLocaleDateString('bg-BG', options); // 7 days ago
+        });
+    </script>
+    <script src="js/app.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <section class="above-navigation">
+            <div class="container">
+                <div class="row py-4 d-flex">
+                    <div class="col-md-6 align-self-center">
+                        <a class="text-decoration-none" href="index.html">
+                            <p class="display-6 d-inline">Genetic test – Svishtov</p>
+                        </a>
+                        <p class="pt-1"> Биометрично изследване, основано на науката дерматоглифика</p>
+                        <!-- <a href="index.html"><img src="/img/logo.png" class="navbar-brand logo"></a> -->
+
+                    </div>
+                    <div class="col-md-2 px-4 v-divider align-self-center d-none d-lg-block d-xl-block">
+                        <p class="lead d-inline"><i class="fas fa-map-marker-alt p-1"></i><b> България</b></p>
+                        <p>гр. Свищов, 5250</p>
+                    </div>
+                    <div class="col-md-2 px-4 v-divider align-self-center d-none d-lg-block d-xl-block">
+                        <p class="lead d-inline"><i class="fas fa-phone p-1"></i><b>9:00-18:00ч.</b></p>
+                        <p>Понеделник-Събота</p>
+                    </div>
+                    <div class="col-md-2 px-4 v-divider align-self-center d-none d-lg-block d-xl-block">
+                        <p class="lead d-inline"><i class="fa fa-envelope px-2"></i><b>genetictest</b></p>
+                        <p>-sv@abv.bg</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="navigation container">
+            <nav class="navbar navbar-expand-lg navbar-light py-4">
+                <div class="">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto ps-0 mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Начало</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">Услуги
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="services1.html">Безплатно Онлайн Тестване</a></li>
+                                <li><a class="dropdown-item" href="services5.html">Тестване от експерт</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="blog.html">Блог</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="help.html">Помощна страница</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html" tabindex="-1" aria-disabled="true">Контакти</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </section>
+    </header>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-center mb-4">Блог</h1>
+                    <p class="text-center mb-5 lead">Тук споделям моите разработки, открития и мисли за дерматоглификата и човешкия потенциал.</p>
+                </div>
+            </div>
+
+            <!-- Blog Posts -->
+            <div class="row">
+                <!-- Blog Post 1 -->
+                <div class="col-12 mb-5">
+                    <article class="card shadow">
+                        <img src="/img/free-image.jpg" class="card-img-top mx-auto d-block" alt="Тайните на пръстовите отпечатъци" style="height: 400px; object-fit: contain; width: 100%;">
+                        <div class="card-body">
+                            <h2 class="card-title mb-3">Тайните на пръстовите отпечатъци</h2>
+                            <div class="mb-3 text-muted">
+                                <small>Публикувано на: <span id="full-post-date-1"></span></small>
+                            </div>
+
+                            <div class="blog-content">
+                                <p>Пръстовите отпечатъци винаги са будили любопитство – от криминалистиката, през психологията, до езотеричните учения. Мнозина вярват, че по линиите на пръстите може да се „прочете" характерът и дори съдбата. Истината е по-интересна: отпечатъците наистина носят информация за нас, но по малко по-различен начин, отколкото често си представяме.</p>
+
+                                <p>В тази статия ще разгледаме как възникват пръстовите отпечатъци, защо са уникални, какво наистина казва науката за връзката им с личността и какви реални „тайни" могат да разкрият – за нашето развитие, здраве и предразположения.</p>
+
+                                <h3>Какво всъщност представляват пръстовите отпечатъци?</h3>
+                                <p>Пръстовите отпечатъци са релефни рисунъци по кожата на върховете на пръстите, дланите и стъпалата. Те са изградени от:</p>
+                                <ul>
+                                    <li><strong>Гребени</strong> – повдигнати линии</li>
+                                    <li><strong>Бразди</strong> – вдлъбнатините между тях</li>
+                                    <li><strong>Малки разклонения и „островчета"</strong> – характерни детайли, които правят всеки отпечатък уникален</li>
+                                </ul>
+
+                                <p>Основните типове модели са три:</p>
+                                <ul>
+                                    <li><strong>Дъги (arches)</strong> – линии, които плавно преминават от едната страна към другата, без рязък завой</li>
+                                    <li><strong>Контури (loops)</strong> – линиите влизат от едната страна, завиват като „кука" и се връщат</li>
+                                    <li><strong>Върхове (whorls)</strong> – кръгове или спирали, центрирани около ядро</li>
+                                </ul>
+                                <p>Комбинацията от тези модели по десетте пръста образува своеобразна „карта", която е различна за всеки човек.</p>
+
+                                <h3>Как се формират – нашата биологична „подписка"</h3>
+                                <p>Пръстовите отпечатъци се оформят между 10-та и 24-та гестационна седмица (по време на бременността) и:</p>
+                                <ul>
+                                    <li>Остават непроменени през целия живот (освен при тежки травми или изгаряния)</li>
+                                    <li>Не зависят от възпитание, образование или съзнателни усилия</li>
+                                    <li>Зависят от гените + условията в утробата: налягане, позиция на плода, кръвоснабдяване, микродвижения</li>
+                                </ul>
+                                <p>Тоест, в отпечатъците се „запечатва" историята на нашето вътреутробно развитие – как сме се развивали, какви микроскопични сили са действали върху кожата ни и как гените са били „преведени" в реална структура.</p>
+
+                                <h3>Науката зад отпечатъците: дерматоглифика</h3>
+                                <p>Научната дисциплина, която изучава рисунките по кожата на пръстите и дланите, се нарича дерматоглифика. Тя се използва в три основни области:</p>
+                                <ul>
+                                    <li><strong>Криминалистика</strong> – за идентификация на личности</li>
+                                    <li><strong>Медицина и генетика</strong> – за откриване на определени синдроми и аномалии</li>
+                                    <li><strong>Антропология</strong> – за проследяване на етнически и популационни различия</li>
+                                </ul>
+
+                                <p>Има доказани връзки между определени типове дерматоглифични модели и:</p>
+                                <ul>
+                                    <li>Някои генетични синдроми (например синдром на Даун, синдром на Търнър)</li>
+                                    <li>Нарушения в пренаталното развитие</li>
+                                    <li>Определени здравни рискове (но не на ниво „присъда", а на ниво по-висока или по-ниска вероятност)</li>
+                                </ul>
+
+                                <h3>Могат ли пръстовите отпечатъци да разкажат нещо за нашата личност?</h3>
+                                <p>Тук е важен балансът между научното и популярното.</p>
+
+                                <h4>Какво НЕ е доказано</h4>
+                                <p>Няма солидни научни доказателства, че:</p>
+                                <ul>
+                                    <li>По отпечатъците можем с точност да определим:
+                                        <ul>
+                                            <li>характера („лидер", „интроверт", „артистична душа" и т.н.)</li>
+                                            <li>конкретните таланти („роден музикант", „гений по математика")</li>
+                                            <li>житейски събития</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <p>Много системи, които обещават „личностен анализ по пръстови отпечатъци", стъпват по-скоро на интерпретации и аналогии, отколкото на строго научни данни. Те могат да бъдат интересни за саморазмишление, но не бива да се приемат като обективна диагноза.</p>
+
+                                <h4>Какво Е разумно да приемем</h4>
+                                <p>Въпреки това има някои логични връзки:</p>
+                                <ul>
+                                    <li>Пръстовите отпечатъци са маркер за начина, по който сме се развивали в утробата</li>
+                                    <li>Същите гени и фактори на средата, които влияят върху мозъка, нервната система и темперамента, влияят и върху кожните рисунъци</li>
+                                </ul>
+                                <p>Затова в научната литература се изследват корелации между дерматоглификата и:</p>
+                                <ul>
+                                    <li>невроразвитийни особености (например аутизъм, хиперактивност)</li>
+                                    <li>някои когнитивни стилове</li>
+                                </ul>
+                                <p>Тези връзки обаче са статистически и не позволяват точни индивидуални прогнози.</p>
+
+                                <h3>Каква „история" разказват твоите отпечатъци – в по-дълбок смисъл</h3>
+                                <p>Ако гледаме на пръстовите отпечатъци не като на „магически код", а като на символ, можем да видим в тях няколко нива на „история":</p>
+
+                                <p><strong>1. История на произхода и тялото</strong><br>
+                                Те напомнят, че си уникална биологична комбинация – няма втори като теб<br>
+                                Носят отпечатък от произхода ти, защото някои модели са по-чести в определени популации<br>
+                                Показват, че още преди да се родиш, тялото ти е минало през специфичен път на развитие</p>
+
+                                <p><strong>2. История на устойчивостта</strong><br>
+                                Фактът, че отпечатъците:<br>
+                                • не се променят<br>
+                                • преживяват време, работа, климат, ежедневие<br>
+                                ни напомня за нашето постоянно ядро – усещането, че въпреки обстоятелствата имаме вътрешна идентичност, която остава.</p>
+
+                                <p><strong>3. История на нашите избори</strong><br>
+                                Макар отпечатъците да са даденост, това какво ще направим с талантите и предразположенията си зависи от:<br>
+                                • средата<br>
+                                • усилието<br>
+                                • навиците<br>
+                                • възможностите, които създаваме или пропускаме<br>
+                                Тоест, пръстовите отпечатъци могат да се приемат като символ на потенциала, но не и като неговата съдба.</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Blog Post 2 -->
+                <div class="col-12 mb-5">
+                    <article class="card shadow">
+                        <img src="/img/blog-placeholder2.jpg" class="card-img-top" alt="Дерматоглифика и спортни постижения" style="height: 400px; object-fit: cover;">
+                        <div class="card-body">
+                            <h2 class="card-title mb-3">Дерматоглифика и спортни постижения</h2>
+                            <div class="mb-3 text-muted">
+                                <small>Публикувано на: <span id="full-post-date-2"></span></small>
+                            </div>
+
+                            <div class="blog-content">
+                                <p>Изследване на връзката между пръстовите отпечатъци и спортните способности. Какво можем да научим за атлетичния потенциал?</p>
+                                <p>Тази статия е в процес на подготовка. Скоро ще бъде публикувана тук.</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Back to Home Button -->
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <a href="index.html" class="btn btn-outline-primary">Обратно към началната страница</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-center text-white py-4">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/Genetictest.Svishtov"
+                    role="button"><i class="fab fa-facebook-f"></i></a>
+
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/revolyutsiya.usmivka"
+                    role="button"><i class="fab fa-facebook-f"></i></a>
+
+                |
+
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/genetictest_svishtov"
+                    role="button"><i class="fab fa-instagram"></i></a>
+
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/eveliniangelova"
+                    role="button"><i class="fab fa-instagram"></i></a>
+            </section>
+        </div>
+
+        <div class="text-center p-3">
+            <script>document.write(new Date().getFullYear())</script> - Всички права запазени:
+            <a class="text-white" href="google.com">Genetic Test - Svishtov ©</a>
+        </div>
+    </footer>
+</body>
+
+</html>
