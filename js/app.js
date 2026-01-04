@@ -151,6 +151,12 @@ function confirmData() {
     return 1;
   }
 
+  let email = document.getElementById("email").value;
+  if (email == "") {
+    alert("Моля въведете вашия имейл адрес.");
+    return 1;
+  }
+
   let select = document.getElementById("gender");
   let gender = select.options[select.selectedIndex].text;
 
@@ -196,6 +202,7 @@ function confirmData() {
     localStorage.setItem('report_name', document.getElementById("name").value);
     localStorage.setItem('report_gender', gender);
     localStorage.setItem('report_age', age);
+    localStorage.setItem('report_email', document.getElementById("email").value);
 
     // Save fingerprint data
     const fingerprintData = {
@@ -303,6 +310,12 @@ function mobileConfirm() {
     return 1;
   }
 
+  let email = document.getElementById("email").value;
+  if (email == "") {
+    alert("Моля въведете вашия имейл адрес.");
+    return 1;
+  }
+
   // Gender Selection
   let select = document.getElementById("gender");
   let gender = select.options[select.selectedIndex].text;
@@ -325,6 +338,7 @@ function mobileConfirm() {
   localStorage.setItem('report_name', document.getElementById("name").value);
   localStorage.setItem('report_gender', gender);
   localStorage.setItem('report_age', age);
+  localStorage.setItem('report_email', document.getElementById("email").value);
 
   // Save fingerprint data for mobile
   const fingerprintData = {
