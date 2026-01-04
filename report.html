@@ -330,6 +330,470 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Results Section -->
+                <div class="card shadow mb-4">
+                    <div class="card-header bg-info text-white">
+                        <h3 class="card-title mb-0">
+                            <i class="fas fa-file-pdf me-2"></i>
+                            Резултати от анализа
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center">
+                            <p class="mb-4">Кликнете върху линка по-долу, за да видите подробния анализ на вашата пръстова формула:</p>
+                            <a id="formula-pdf-link" href="formulas/10W.pdf" target="_blank" class="btn btn-primary btn-lg">
+                                <i class="fas fa-external-link-alt me-2"></i>
+                                Отвори резултата (10W.pdf)
+                            </a>
+                            <p class="mt-3 text-muted small">Файлът ще се отвори в нов прозорец/таб</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education Type Analysis -->
+                <div class="card shadow mb-4" style="display: none;">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="card-title mb-0">
+                            <i class="fas fa-graduation-cap me-2"></i>
+                            Тип образование - Анализ на показатели
+                        </h3>
+                    </div>
+                    <div class="alert alert-primary mb-3">
+                        <small class="text-muted">Даденият показаател показва най-подходящото за вас профилно образование, което да съчетава вашите нужди и възможности.</small>
+                    </div>
+                    <div class="card-body">
+                        <div id="education-types-container"></div>
+                        <div class="alert alert-info">
+                            <strong>Препоръка:</strong> Най-подходящи са технически и природонаучни специалности с елементи на динамично мислене и практическо приложение. Добри възможности в инженерството, компютърните науки и приложните природни науки.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Directions Analysis -->
+                <div class="card shadow mb-4" style="display: none;">
+                    <div class="card-header bg-success text-white">
+                        <h3 class="card-title mb-0">
+                            <i class="fas fa-compass me-2"></i>
+                            Направления на професионална дейност - Анализ на показатели
+                        </h3>
+                    </div>
+                    <div class="alert alert-success mb-3">
+                        <h6 class="text-center mb-3"><strong>ПРОФЕСИЯТА СЕ СЪСТОИ ОТ ТРИ КОМПОНЕНТА - НАСОКА, СФЕРА, МОДЕЛ</strong></h6>
+                        <small class="text-muted">Вероятно е, че всеки от нас би искал всеки ден да ходи на работа с удоволствие, да постига впечатляващи резултати и да се усъвършенства. За съжаление не на всеки му се отдава. Изборът на професия, която не съответства на особеностите на мисленето и характера на човека, може да предизвика постоянно недоволство от работата и получените резултати. Затова е много важно да се подходи внимателно към определянето на професионалнатото направление.</small>
+                        <br><br>
+                        <small class="text-muted">В този раздел са посочени качествата, които ще Ви помогнат да постигнете успех в работата си. Това са направленията на професионална дейност, в които следва да изградите кариерата си. Направлението на професионална дейност посочва къде Вие ще постигнете максимален успех, а сферата на професионалната дейност помага да разберете как можете да го направите.</small>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-4">
+                            <div class="col-md-6 mb-3">
+                                <div class="text-center">
+                                    <div class="chart-container" style="position: relative; height: 200px;">
+                                        <canvas id="directionsChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 style="font-size: 1.2em; font-weight: bold;">Практика <span class="badge bg-success ms-2">Най-висок показател</span></h6>
+                                <div class="progress report-progress mb-2" style="height: 1.2rem;">
+                                    <div class="progress-bar bg-success" role="progressbar" id="directions-analysis" style="width: 90%; font-size: 1.1em;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
+                                </div>
+                                <p class="text-muted mb-2" style="font-size: 1.05em;">Способност за логическо мислене и решаване на сложни проблеми</p>
+                                <p class="text-muted mb-3" style="font-size: 1.05em;">Най-подходящата за вас е аналитичната дейност, свързана с обработване на обеми от информация. Добре ще е, ако това бъде работа, свързана със свободен график и неизискваща голям брой контакти с колеги.</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6>Практика</h6>
+                                <div class="progress report-progress mb-2">
+                                    <div class="progress-bar bg-success" role="progressbar" id="directions-practice" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
+                                </div>
+                                <p class="text-muted small mb-0">Практическа ориентация и ефективно прилагане на знанията</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 style="font-size: 0.85em;">Комуникации</h6>
+                                <div class="progress report-progress mb-2" style="height: 0.6rem;">
+                                    <div class="progress-bar bg-primary" role="progressbar" id="directions-communication" style="width: 75%; font-size: 0.75em;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+                                </div>
+                                <p class="text-muted small mb-0" style="font-size: 0.8em;">Умения за ефективно общуване и работа в екип</p>
+                            </div>
+                        </div>
+                        <div class="alert alert-success mt-3">
+                            <strong>Основно направление:</strong> Динамична практическа дейност с висока предразположеност към аналитична работа и ефективни комуникации. Идеални за позиции, изискващи бързи решения, практически умения и аналитично мислене.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Spheres Analysis -->
+                <div class="card shadow mb-4" style="display: none;">
+                    <div class="card-header bg-info text-white">
+                        <h3 class="card-title mb-0">
+                            <i class="fas fa-building me-2"></i>
+                            Сфери на професионална дейност - Анализ на показатели
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info mb-4">
+                            <h6><i class="fas fa-info-circle me-2"></i>Обяснение</h6>
+                            <p class="mb-0">В този раздел са посочени сферите на дейност, които допълват показателите от предишния раздел. Представени са някои по-тесни области на професионалната дейност. Разбира се, че те не обхващат всички възможни сфери на работа, но предлагат насока за развитие.</p>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-md-6 mb-3">
+                                <div class="text-center">
+                                    <div class="chart-container" style="position: relative; height: 200px;">
+                                        <canvas id="spheresChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 style="font-size: 1.2em; font-weight: bold;">Иновации (85%) <span class="badge bg-primary ms-2">Най-висок показател</span></h6>
+                                <p class="text-muted mb-2" style="font-size: 1.1em;"><strong>Висока предразположеност към иновативна дейност</strong></p>
+                                <small class="text-muted" style="font-size: 0.95em;">Внедряване на нови идеи, технологични решения, стартъпи</small>
+                                <p class="text-muted mt-1 mb-4" style="font-size: 1.05em;">Кариери в сферата на иновациите включват разработка на нови продукти, стартиране на бизнес, технологични иновации и предприемачество. Необходими качества: висока креативност, аналитично мислене, рискова толерантност, адаптивност към промени, лидерски способности и визия за бъдещето.</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6 style="font-size: 0.9em;">Творчество (78%)</h6>
+                                <p class="text-muted small mb-2" style="font-size: 0.85em;">Добри творчески способности и въображение</p>
+                                <small class="text-muted" style="font-size: 0.8em;">Изкуство, дизайн, креативни проекти, маркетинг</small>
+                                <p class="text-muted small mt-1 mb-0" style="font-size: 0.85em;">Творческата сфера включва артистични професии, дизайн и маркетинг. Необходими качества: въображение, експресивност и оригинално мислене.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 style="font-size: 0.85em;">Спорт (72%)</h6>
+                                <p class="text-muted small mb-2" style="font-size: 0.8em;">Спортистки наклонности и физическа активност</p>
+                                <small class="text-muted" style="font-size: 0.75em;">Спортна дейност, треньорство, спортен мениджмънт</small>
+                                <p class="text-muted small mt-1 mb-0" style="font-size: 0.8em;">Спортната сфера включва професионален спорт, треньорство и спортен мениджмънт. Необходими качества: физическа издръжливост, дисциплина и конкурентен дух.</p>
+                            </div>
+                        </div>
+                        <div class="alert alert-primary mt-3">
+                            <strong>Препоръка:</strong> Най-висока предразположеност показвате към сферата на иновациите (85%). Това е областта, в която ще постигнете максимален успех и удовлетворение от работата си.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Self-Realization Model Analysis -->
+                <div class="card shadow mb-4" style="display: none;">
+                    <div class="card-header bg-warning text-dark">
+                        <h3 class="card-title mb-0">
+                            <i class="fas fa-target me-2"></i>
+                            Модел за самореализация - Анализ на показатели
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-warning mb-4">
+                            <h6><i class="fas fa-lightbulb me-2"></i>Обяснение</h6>
+                            <p class="mb-0">Моделът за самореализация показва вашите предпочитания към различни стилове на професионална реализация. Той включва три основни модела: професионален, корпоративен и управленски, които определят какъв тип работна среда и организационна структура ще ви донесе най-голямо удовлетворение.</p>
+                        </div>
+                        <div id="selfrealization-content"></div>
+                        <div class="alert alert-warning mt-3">
+                            <strong>Вашият модел:</strong> Функционалист тип с висока ефективност в структурирани процеси и практическа работа. Комбинирате системен подход с надеждност и постоянство.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sports Analysis -->
+                <div class="card shadow mb-4" style="display: none;">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="card-title mb-0">
+                            <i class="fas fa-running me-2"></i>
+                            Спорт - Анализ на показатели
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-primary mb-4">
+                            <h6><i class="fas fa-trophy me-2"></i>Вашите спортни предразположености</h6>
+                            <p class="mb-0">Този анализ показва към кои видове спорт имате най-големи заложби въз основа на вашите дерматоглифични характеристики. Спортът не само поддържа здравето, но и развива ценни личностни качества.</p>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-md-6 mb-3">
+                                <div class="text-center">
+                                    <div class="chart-container" style="position: relative; height: 250px;">
+                                        <canvas id="sportsChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 style="font-size: 1.2em; font-weight: bold; color: #28a745;">Издържливост <span class="badge bg-success ms-2">Най-силно качество</span></h6>
+                                <div class="progress report-progress mb-2" style="height: 1.2rem;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 80%; font-size: 1.0em; font-weight: bold;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+                                </div>
+                                <p class="text-dark mb-3" style="font-size: 0.95em;"><strong>Отлични скоростни качества. Подходящ за спринт, бързи спортове.</strong></p>
+                                <p class="text-info small mb-4" style="font-size: 0.8em;"><i class="fas fa-link me-1"></i>Подходящо за: индивидуални спортове (78%), командни спортове (45%).</p>
+
+                                <h6 style="font-size: 1.0em; font-weight: bold;">Координация</h6>
+                                <div class="progress report-progress mb-2" style="height: 1.0rem;">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 70%; font-size: 0.9em;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">70%</div>
+                                </div>
+                                <p class="text-muted small mb-3">Отлична координация. Подходящ за прецизни и технични спортове.</p>
+                                <p class="text-info small mb-4" style="font-size: 0.75em;"><i class="fas fa-link me-1"></i>Подходящо за: интелектуални спортове (92%), индивидуални спортове (78%).</p>
+
+                                <h6 style="font-size: 0.9em; font-weight: normal; color: #6c757d;">Издържливост</h6>
+                                <div class="progress report-progress mb-2" style="height: 0.8rem;">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 80%; font-size: 0.8em;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+                                </div>
+                                <p class="text-muted small mb-0" style="font-size: 0.85em;">Висока издържливост за стабилни и постоянни физически натоварвания.</p>
+                                <p class="text-muted small" style="font-size: 0.7em;"><i class="fas fa-link me-1"></i>Подходящо за: индивидуални спортове (75%), командни спортове (60%).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nervous System Potential -->
+                <div class="card shadow mb-4" style="display: none;">
+                    <div class="card-header bg-info text-white">
+                        <h3 class="card-title mb-0">
+                            <i class="fas fa-brain me-2"></i>
+                            Потенциал на нервната система - Анализ на показатели
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info mb-4">
+                            <h6><i class="fas fa-brain me-2"></i>Вашата нервна система</h6>
+                            <p class="mb-0">Нервната система е основата на вашата умствена и емоционална ефективност. Тези показатели отразяват способността ви да се концентрирате, реагирате бързо и се адаптирате към предизвикателства.</p>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-md-6 mb-3">
+                                <div class="text-center">
+                                    <div class="chart-container" style="position: relative; height: 250px;">
+                                        <canvas id="nervousSystemChart"></canvas>
+                                    </div>
+                                    <small class="text-muted">Стълбовидна графика на нервните показатели</small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 style="font-size: 1.2em; font-weight: bold; color: #28a745;">Стресоустойчивост <span class="badge bg-success ms-2">Най-висок показател</span></h6>
+                                <div class="progress report-progress mb-2" style="height: 1.2rem;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 85%; font-size: 1.0em; font-weight: bold;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
+                                </div>
+                                <p class="text-dark mb-3" style="font-size: 0.95em;"><strong>Отлична концентрация. Висока способност за продължителна концентрация и задълбочена работа с детайли.</strong></p>
+
+                                <h6 style="font-size: 1.0em; font-weight: bold;">Концентрация</h6>
+                                <div class="progress report-progress mb-2" style="height: 1.0rem;">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 75%; font-size: 0.9em;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+                                </div>
+                                <p class="text-muted small mb-3">Добра адаптивност. Добра способност за адаптация към промени и нови ситуации.</p>
+
+                                <h6 style="font-size: 1.0em; font-weight: bold;">Бързина на реакция</h6>
+                                <div class="progress report-progress mb-2" style="height: 1.0rem;">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 65%; font-size: 0.9em;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65%</div>
+                                </div>
+                                <p class="text-muted small mb-3">Добра скорост. Добра скорост на обработка на информация и вземане на решения.</p>
+
+                                <h6 style="font-size: 0.9em; font-weight: normal; color: #6c757d;">Стресоустойчивост</h6>
+                                <div class="progress report-progress mb-2" style="height: 0.8rem;">
+                                    <div class="progress-bar bg-secondary" role="progressbar" style="width: 68%; font-size: 0.8em;" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100">68%</div>
+                                </div>
+                                <p class="text-muted small mb-0" style="font-size: 0.85em;">Средна устойчивост. Средна устойчивост на стресови ситуации, нужда от баланс.</p>
+                            </div>
+                        </div>
+                        <div class="alert alert-info">
+                            <strong>Тип нервна система:</strong> Силен тип с добра работоспособност при системна дейност.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Behavioral Adaptation Type -->
+                <div class="card shadow mb-4" style="display: none;">
+                    <div class="card-header bg-success text-white">
+                        <h3 class="card-title mb-0">
+                            <i class="fas fa-adjust me-2"></i>
+                            Тип поведенческа адаптация - Анализ на показатели
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-success mb-4">
+                            <h6><i class="fas fa-brain me-2"></i>Вашият доминиращ поведенчески тип</h6>
+                            <p class="mb-0">Анализът показва, че вашият основен поведенчески тип е практик. Този тип се характеризира с практическа ориентация и предпочитание към действия пред разговори.</p>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-md-6 mb-3">
+                                <div class="text-center">
+                                    <img src="data/поведение.png" alt="тип поведенческа адаптация" class="img-fluid rounded shadow-sm" style="max-width: 100%; max-height: 200px;">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 style="font-size: 1.3em; font-weight: bold; color: #28a745;">Практик <span class="badge bg-success ms-2">Най-силен тип</span></h6>
+                                <p class="text-dark mb-0" style="font-size: 1.0em;">Практикът е ориентиран към действие тип, който предпочита практическа работа и резултати пред теоретични разговори. Вашият стил на поведение се характеризира с директност, ефективност и предпочитание към конкретни решения. Вие сте склонни да решавате проблеми чрез действие, да търсите практични приложения и да постигате резултати чрез систематична работа.</p>
+                            </div>
+                        </div>
+
+                        <!-- Introversion-Extroversion Scale -->
+                        <div class="mt-4">
+                            <h6 class="text-center mb-4" style="color: #6f42c1;"><i class="fas fa-balance-scale me-2"></i>Интровертност ↔ Екстравертност</h6>
+
+                            <!-- Scale Container -->
+                            <div class="scale-container mb-3" style="position: relative; width: 100%; height: 60px; background: linear-gradient(90deg, #667eea 0%, #f093fb 50%, #f5576c 100%); border-radius: 30px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                                <!-- Scale Labels -->
+                                <div style="position: absolute; left: 15px; color: white; font-weight: bold; font-size: 0.85em;">Интровертност</div>
+                                <div style="position: absolute; right: 15px; color: white; font-weight: bold; font-size: 0.85em;">Екстравертност</div>
+
+                                <!-- Indicator -->
+                                <div class="scale-indicator" style="position: absolute; top: -25px; left: 62%; transform: translateX(-50%);">
+                                    <div style="width: 4px; height: 25px; background: #6f42c1; margin: 0 auto; border-radius: 2px;"></div>
+                                    <div style="width: 12px; height: 12px; background: #6f42c1; border-radius: 50%; margin: -2px auto 0; border: 2px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.2);"></div>
+                                    <small class="text-center d-block mt-1" style="color: #6f42c1; font-weight: bold; font-size: 0.8em;">62%</small>
+                                </div>
+                            </div>
+
+                            <!-- Scale Description -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="alert alert-info py-2" style="font-size: 0.9em;">
+                                        <strong>Интровертни тенденции (38%):</strong><br>
+                                        Предпочитате самота за презареждане, дълбоки разговори, внимателно планиране.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="alert alert-success py-2" style="font-size: 0.9em;">
+                                        <strong>Екстравертни тенденции (62%):</strong><br>
+                                        Социални взаимодействия ви енергизират, обичате да споделяте идеи, бързо вземате решения.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Temperament Analysis -->
+                <div class="card shadow mb-4" style="display: none;">
+                    <div class="card-header bg-warning text-dark">
+                        <h3 class="card-title mb-0">
+                            <i class="fas fa-fire me-2"></i>
+                            Темперамент - Анализ на показатели
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-warning mb-4">
+                            <h6><i class="fas fa-fire me-2"></i>Вашият темперамент</h6>
+                            <p class="mb-0">Темпераментът определя вашия естествен начин на реагиране, емоционалност и енергичност. Той влияе върху начина, по който общувате, работите и се справяте със стресови ситуации.</p>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-md-6 mb-3">
+                                <div class="text-center">
+                                    <img src="data/темперамент.png" alt="темперамент" class="img-fluid rounded shadow-sm" style="max-width: 100%; max-height: 200px;">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 style="font-size: 1.3em; font-weight: bold; color: #6c757d;">Флегматичен <span class="badge bg-secondary ms-2">Доминиращ темперамент</span></h6>
+                                <p class="text-dark mb-0" style="font-size: 1.0em;">Флегматичният темперамент се характеризира със спокойствие, уравновесеност и практичност. Вие сте стабилен, надежден и предпочитате рутината пред промените. Флегматиците са спокойни наблюдатели, които мислят дълбоко преди да действат, имат силна воля и издръжливост. Вашият темперамент ви прави стабилен, последователен и способен да се справяте с монотонна работа чрез систематичен подход и търпение.</p>
+                            </div>
+                        </div>
+                        <div class="alert alert-warning">
+                            <strong>Вашият темперамент:</strong> Чист флегматичен тип с висока степен на практичност и стабилност. Вашата уравновесеност и надеждност ви помагат да се справяте успешно с рутинни задачи и да поддържате постоянство.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Individual-Typological Characteristics of Personality -->
+                <div class="card shadow mb-4" style="display: none;">
+                    <div class="card-header bg-info text-white">
+                        <h3 class="card-title mb-0">
+                            <i class="fas fa-user-astronaut me-2"></i>
+                            Индивидуално-типологически особености на личността
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info mb-4">
+                            <h6><i class="fas fa-user-astronaut me-2"></i>Вашите индивидуални особености</h6>
+                            <p class="mb-0">Този анализ разкрива уникалните типологически характеристики на вашата личност въз основа на комплексна оценка на различни психологически параметри.</p>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-md-6 mb-3">
+                                <div class="text-center">
+                                    <div class="personality-circle-container" style="position: relative; width: 320px; height: 320px; margin: 0 auto; padding: 30px;">
+                                        <!-- Central Fingerprint Icon -->
+                                        <div class="personality-core" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90px; height: 90px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 2;">
+                                            <i class="fas fa-fingerprint text-white fa-2x"></i>
+                                        </div>
+
+                                        <!-- Personality Traits Orbit -->
+                                        <div class="personality-trait trait-1" style="position: absolute; top: 15px; left: 50%; transform: translateX(-50%); z-index: 1;">
+                                            <div class="trait-circle" style="width: 60px; height: 60px; background: linear-gradient(135deg, #4facfe, #00f2fe); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15); margin-bottom: 10px;">
+                                                <i class="fas fa-brain text-white fa-lg"></i>
+                                            </div>
+                                            <div class="trait-label text-center" style="font-size: 0.9em; color: #4facfe; font-weight: bold; line-height: 1.3;">Когнитивен</div>
+                                        </div>
+
+                                        <div class="personality-trait trait-2" style="position: absolute; top: 50%; right: 15px; transform: translateY(-50%); z-index: 1;">
+                                            <div class="trait-circle" style="width: 60px; height: 60px; background: linear-gradient(135deg, #43e97b, #38f9d7); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15); margin-bottom: 10px;">
+                                                <i class="fas fa-heart text-white fa-lg"></i>
+                                            </div>
+                                            <div class="trait-label text-center" style="font-size: 0.9em; color: #43e97b; font-weight: bold; line-height: 1.3;">Емоционален</div>
+                                        </div>
+
+                                        <div class="personality-trait trait-3" style="position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); z-index: 1;">
+                                            <div class="trait-circle" style="width: 60px; height: 60px; background: linear-gradient(135deg, #fa709a, #fee140); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15); margin-bottom: 10px;">
+                                                <i class="fas fa-handshake text-white fa-lg"></i>
+                                            </div>
+                                            <div class="trait-label text-center" style="font-size: 0.9em; color: #fa709a; font-weight: bold; line-height: 1.3;">Социален</div>
+                                        </div>
+
+                                        <div class="personality-trait trait-4" style="position: absolute; top: 50%; left: 15px; transform: translateY(-50%); z-index: 1;">
+                                            <div class="trait-circle" style="width: 60px; height: 60px; background: linear-gradient(135deg, #a8edea, #fed6e3); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15); margin-bottom: 10px;">
+                                                <i class="fas fa-cogs text-white fa-lg"></i>
+                                            </div>
+                                            <div class="trait-label text-center" style="font-size: 0.9em; color: #a8edea; font-weight: bold; line-height: 1.3;">Типологичен</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 style="font-size: 1.3em; font-weight: bold; color: #17a2b8;">Индивидуален профил</h6>
+                                <p class="text-dark mb-0" style="font-size: 1.0em;">Вашият индивидуално-типологически профил се характеризира с уникална комбинация от когнитивни, емоционални и поведенчески особености. Анализът показва специфичните начини, по които обработвате информация, вземате решения и взаимодействате със заобикалящата среда. Тези особености формират вашата уникална индивидуалност и определят най-ефективните стратегии за личностно развитие.</p>
+                            </div>
+                        </div>
+                        <div class="alert alert-info">
+                            <strong>Ключови характеристики:</strong> Индивидуалната типология включва комплексна оценка на вашия темперамент, поведенчески стил и когнитивни предпочитания, които заедно формират уникалния ви личностен профил.
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Recommendations -->
+                <div class="card shadow mb-4" style="display: none;">
+                    <div class="card-header bg-secondary text-white">
+                        <h3 class="card-title mb-0">
+                            <i class="fas fa-star me-2"></i>
+                            Препоръки
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6>Образование:</h6>
+                                <p>Препоръчваме динамични технически специалности като инженерство, компютърни науки или приложни природни науки, където можете да развиете експресивните си способности и практическото мислене.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Спорт и хоби:</h6>
+                                <p>Подходящи спортове: леко атлетика (спринт), бокс, бойни изкуства. Хобита: предприемачество, спортни дейности, творчески проекти, които изискват бързи решения.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Disclaimer -->
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    <strong>Важно:</strong> Този анализ е базиран на дерматоглифични принципи и служи като ориентир.
+                    За по-точна оценка се консултирайте с наш експерт.
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="text-center mt-4">
+                    <button onclick="window.print()" class="btn btn-primary me-2">
+                        <i class="fas fa-print me-1"></i>
+                        Отпечатай
+                    </button>
+                    <a href="services5.html" class="btn btn-success">
+                        <i class="fas fa-user-md me-1"></i>
+                        Поръчай експертен анализ
+                    </a>
+                    <a href="services1.html" class="btn btn-secondary ms-2">
+                        <i class="fas fa-redo me-1"></i>
+                        Нов тест
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -366,13 +830,1156 @@
         crossorigin="anonymous"></script>
 
     <script>
+        // ===== ДЕРМАТОГЛИФИЧНИ АНАЛИЗИ =====
+
+        // Система за оценка на пръстовите отпечатъци
+        const FINGERPRINT_SCORES = {
+          'Дъга': 0,
+          'Дъга - Палатка': 0,
+          'Палатковидна Дъга': 0,
+          'L-Примка': 1,
+          'R-Примка': 1,
+          'Спирала': 2,
+          'Двойна Спирала': 2
+        };
+
+        // Система за оценка на делта индекс
+        const DELTA_INDEX_SCORES = {
+          'Дъга': 0,
+          'Дъга - Палатка': 0,
+          'Палатковидна Дъга': 0,
+          'L-Примка': 1,
+          'R-Примка': 1,
+          'Спирала': 2,
+          'Двойна Спирала': 2
+        };
+
+        // Изображения за различните видове пръстови отпечатъци
+        const FINGERPRINT_IMAGES = {
+          'Дъга': 'img/print2.jpg', // Arch image
+          'Дъга - Палатка': 'img/print5.jpg', // Tented arch image
+          'Палатковидна Дъга': 'img/print5.jpg', // Tented arch image
+          'L-Примка': 'img/print4.jpg', // Ulnar loop (left loop) image
+          'R-Примка': 'img/print3.jpg', // Radial loop (right loop) image
+          'Спирала': 'img/print6.jpg', // Spiral image
+          'Двойна Спирала': 'img/print1.jpg' // Double spiral image
+        };
+
+        // Изчисляване на общата дерматоглифична формула
+        function calculateDermatoglyphicFormula(fingerprints) {
+          let totalScore = 0;
+          let leftHandScore = 0;
+          let rightHandScore = 0;
+
+          // Лява ръка
+          const leftFingers = ['left-thumb', 'left-index', 'left-middle', 'left-ring', 'left-pinky'];
+          leftFingers.forEach(finger => {
+            const score = FINGERPRINT_SCORES[fingerprints.leftHand[leftFingers.indexOf(finger)]] || 0;
+            leftHandScore += score;
+            totalScore += score;
+          });
+
+          // Дясна ръка
+          const rightFingers = ['right-thumb', 'right-index', 'right-middle', 'right-ring', 'right-pinky'];
+          rightFingers.forEach(finger => {
+            const score = FINGERPRINT_SCORES[fingerprints.rightHand[rightFingers.indexOf(finger)]] || 0;
+            rightHandScore += score;
+            totalScore += score;
+          });
+
+          return {
+            total: totalScore,
+            leftHand: leftHandScore,
+            rightHand: rightHandScore,
+            maxScore: 20
+          };
+        }
+
+        // Изчисляване на делта индекс
+        function calculateDeltaIndex(fingerprints) {
+          let totalDeltaScore = 0;
+
+          // Лява ръка
+          fingerprints.leftHand.forEach(pattern => {
+            totalDeltaScore += DELTA_INDEX_SCORES[pattern] || 0;
+          });
+
+          // Дясна ръка
+          fingerprints.rightHand.forEach(pattern => {
+            totalDeltaScore += DELTA_INDEX_SCORES[pattern] || 0;
+          });
+
+          return totalDeltaScore;
+        }
+
+        // Детайлни описания за типовете образование
+        const EDUCATION_DESCRIPTIONS = {
+          technical: {
+            title: 'Техническо образование',
+            description: 'Техническото образование включва инженерство, машиностроене, електротехника и други технически дисциплини. Хората с висока предразположеност към техническо образование проявяват силен интерес към практическо решаване на проблеми и работа с технологии. Те се справят добре с аналитично мислене и имат способността да съчетават теоретични знания с практически приложения.',
+            careers: 'Инженери, техници, конструктори, специалисти по роботика и автоматизация.'
+          },
+          humanitarian: {
+            title: 'Хуманитарно образование',
+            description: 'Хуманитарното образование обхваща философия, история, литература, социология и други хуманитарни науки. Хората с предразположеност към хуманитарни дисциплини проявяват интерес към човешките отношения, културата и обществените процеси. Те имат способността да анализират сложни социални явления и да разбират човешкото поведение.',
+            careers: 'Преподаватели, журналисти, социални работници, културни дейци.'
+          },
+          naturalScience: {
+            title: 'Природни науки',
+            description: 'Природните науки включват биология, химия, физика, екология и други природо-научни дисциплини. Хората с предразположеност към природни науки проявяват интерес към изучаването на природните закони и явления, експериментални методи и научни изследвания. Те имат аналитично мислене, способност за систематично наблюдение и експериментиране, както и критично мислене.',
+            careers: 'Биолози, химици, физици, еколози, изследователи, лаборанти, анализатори.'
+          },
+          economics: {
+            title: 'Икономика и управление',
+            description: 'Икономиката и управлението включват бизнес, финанси, маркетинг и организационно управление. Хората с предразположеност към тези дисциплини проявяват интерес към бизнес процеси, финансов анализ и стратегическо планиране. Те имат способността да вземат рационални решения и да управляват ресурси ефективно.',
+            careers: 'Икономисти, мениджъри, финансисти, бизнес консултанти.'
+          },
+          linguistic: {
+            title: 'Лингвистично образование',
+            description: 'Лингвистичното образование обхваща изучаването на езици, литература и лингвистика. Хората с предразположеност към езикови дисциплини проявяват интерес към комуникацията, езиковите структури и културните аспекти на езика. Те имат способността да учат чужди езици и да анализират езикови явления.',
+            careers: 'Преводачи, филолози, учители по езици, лингвисти.'
+          },
+          mathematical: {
+            title: 'Математическо образование',
+            description: 'Математическото образование включва чиста математика, приложна математика и статистически методи. Хората с предразположеност към математически дисциплини проявяват интерес към абстрактното мислене, логическите конструкции и количествения анализ. Те имат способността да решават сложни проблеми чрез математически модели и алгоритми.',
+            careers: 'Математици, статистици, анализатори на данни, разработчици на софтуер.'
+          }
+        };
+
+        // Анализ на типа образование
+        function calculateEducationType(formula, fingerprints) {
+          const spiralPercentage = calculatePatternPercentage(fingerprints, 'Спирала', 'Двойна Спирала');
+          const loopPercentage = calculatePatternPercentage(fingerprints, 'L-Примка', 'R-Примка');
+          const archPercentage = calculatePatternPercentage(fingerprints, 'Дъга', 'Палатковидна Дъга');
+
+          return {
+            technical: Math.min(100, 75 + (spiralPercentage * 0.5) + (formula.total * 2)),
+            humanitarian: Math.min(100, 45 - (spiralPercentage * 0.3) + Math.max(0, (10 - formula.total) * 2)),
+            naturalScience: Math.min(100, 72 + (spiralPercentage * 0.35) + (formula.total * 1.65)),
+            economics: Math.min(100, 50 + (loopPercentage * 0.3) - (spiralPercentage * 0.2)),
+            linguistic: Math.min(100, 30 + (loopPercentage * 0.4) + Math.max(0, (8 - formula.total) * 1.5)),
+            mathematical: Math.min(100, 80 + (spiralPercentage * 0.6) + (formula.total * 2.2))
+          };
+        }
+
+        // Показване на типовете образование в сортиран ред
+        function displayEducationTypes(educationData) {
+          const container = document.getElementById('education-types-container');
+          if (!container) return;
+
+          // Сортиране по процент в низходящ ред (от най-висок към най-нисък)
+          const sortedEducation = Object.entries(educationData)
+            .map(([key, value]) => ({ key, value, ...EDUCATION_DESCRIPTIONS[key] }))
+            .sort((a, b) => b.value - a.value);
+
+          let html = '';
+
+          // Групиране по 2 в ред
+          for (let i = 0; i < sortedEducation.length; i += 2) {
+            html += '<div class="row mb-4">';
+
+            // Първи елемент в реда
+            const firstItem = sortedEducation[i];
+            html += `
+              <div class="col-md-6">
+                <h6>${firstItem.title}</h6>
+                <div class="progress report-progress mb-2">
+                  <div class="progress-bar" role="progressbar" style="width: ${firstItem.value}%" aria-valuenow="${firstItem.value}" aria-valuemin="0" aria-valuemax="100">${firstItem.value}%</div>
+                </div>
+                <p class="text-muted small mb-2">${firstItem.description}</p>
+                <p class="text-primary small"><strong>Възможни кариери:</strong> ${firstItem.careers}</p>
+              </div>
+            `;
+
+            // Втори елемент в реда (ако съществува)
+            if (i + 1 < sortedEducation.length) {
+              const secondItem = sortedEducation[i + 1];
+              html += `
+                <div class="col-md-6">
+                  <h6>${secondItem.title}</h6>
+                  <div class="progress report-progress mb-2">
+                    <div class="progress-bar" role="progressbar" style="width: ${secondItem.value}%" aria-valuenow="${secondItem.value}" aria-valuemin="0" aria-valuemax="100">${secondItem.value}%</div>
+                  </div>
+                  <p class="text-muted small mb-2">${secondItem.description}</p>
+                  <p class="text-primary small"><strong>Възможни кариери:</strong> ${secondItem.careers}</p>
+                </div>
+              `;
+            }
+
+            html += '</div>';
+          }
+
+          container.innerHTML = html;
+        }
+
+        // Анализ на професионални направления
+        function calculateProfessionalDirections(fingerprints) {
+          const spiralCount = countPatterns(fingerprints, 'Спирала', 'Двойна Спирала');
+          const loopCount = countPatterns(fingerprints, 'L-Примка', 'R-Примка');
+          const archCount = countPatterns(fingerprints, 'Дъга', 'Палатковидна Дъга');
+
+          const totalFingers = 10;
+          const spiralPercentage = (spiralCount / totalFingers) * 100;
+          const loopPercentage = (loopCount / totalFingers) * 100;
+          const archPercentage = (archCount / totalFingers) * 100;
+
+          return {
+            analytical: Math.min(100, 60 + (spiralPercentage * 0.8) + (loopCount * 3)),
+            creative: Math.min(100, 40 + (loopPercentage * 0.6) + (archCount * 2)),
+            organizational: Math.min(100, 55 + (spiralPercentage * 0.4) + (loopCount * 2)),
+            physical: Math.min(100, 30 + (archPercentage * 0.8) - (spiralPercentage * 0.3))
+          };
+        }
+
+        // Анализ на професионални сфери
+        function calculateProfessionalSpheres(fingerprints) {
+          const spiralCount = countPatterns(fingerprints, 'Спирала', 'Двойна Спирала');
+          const loopCount = countPatterns(fingerprints, 'L-Примка', 'R-Примка');
+          const archCount = countPatterns(fingerprints, 'Дъга', 'Палатковидна Дъга');
+
+          return {
+            innovations: Math.min(100, 55 + (spiralCount * 5) + (loopCount * 3)),
+            creativity: Math.min(100, 50 + (loopCount * 4) + (archCount * 2)),
+            sport: Math.min(100, 45 + (archCount * 5) + (spiralCount * 2))
+          };
+        }
+
+        // Анализ на модела за самореализация
+        // Детайлни описания за модела на самореализация
+        const SELFREALIZATION_DESCRIPTIONS = {
+          professional: {
+            title: 'Професионален модел',
+            description: 'Професионалният модел включва индивидуална работа, експертни знания и дълбока специализация в конкретна област. Подходящ е за хора, които предпочитат да се фокусират върху технически умения и експертиза, като работят самостоятелно или в малки екипи.',
+            careers: 'Специалисти, експерти, консултанти, изследователи.'
+          },
+          corporate: {
+            title: 'Корпоративен модел',
+            description: 'Корпоративният модел обхваща работа в големи организации, екипна дейност и следване на корпоративни правила и процедури. Подходящ е за хора, които се чувстват комфортно в структурирана среда с ясна йерархия и колективни цели.',
+            careers: 'Корпоративни служители, мениджъри средно ниво, проектни координатори.'
+          },
+          management: {
+            title: 'Управленски модел',
+            description: 'Управленският модел включва лидерство, вземане на стратегически решения и управление на екипи и ресурси. Подходящ е за хора с високи лидерски качества, способност за мотивация на други и стратегическо мислене.',
+            careers: 'Топ мениджъри, директори, предприемачи, ръководители на отдели.'
+          },
+          entrepreneur: {
+            title: 'Предприемач',
+            description: 'Предприемаческият модел включва създаване на нови бизнеси, поемане на рискове и иновации. Подходящ е за хора с висока толерантност към несигурност, креативност и способност да виждат бизнес възможности.',
+            careers: 'Стартъп основатели, бизнесмени, иноватори, инвеститори.'
+          },
+          ideaGenerator: {
+            title: 'Генератор на идеи',
+            description: 'Моделът на генератор на идеи включва креативно мислене, генериране на иновации и вдъхновяване на други. Подходящ е за хора с богато въображение, артистични наклонности и способност да виждат проблеми от нови ъгли.',
+            careers: 'Дизайнери, маркетолози, творци, консултанти по иновации.'
+          }
+        };
+
+        function calculateSelfRealizationModel(formula, fingerprints) {
+          const spiralPercentage = calculatePatternPercentage(fingerprints, 'Спирала', 'Двойна Спирала');
+          const loopPercentage = calculatePatternPercentage(fingerprints, 'L-Примка', 'R-Примка');
+          const archPercentage = calculatePatternPercentage(fingerprints, 'Дъга', 'Палатковидна Дъга');
+
+          return {
+            professional: Math.min(100, 60 + (spiralPercentage * 0.7) + (formula.total * 1.0)),
+            corporate: Math.min(100, 55 + (loopPercentage * 0.8) + (archPercentage * 0.5)),
+            management: Math.min(100, 50 + (spiralPercentage * 0.5) + (loopPercentage * 0.6) + (formula.total * 0.8)),
+            entrepreneur: Math.min(100, 45 + (spiralPercentage * 0.8) + (loopPercentage * 0.4) + (formula.total * 0.7)),
+            ideaGenerator: Math.min(100, 52 + (loopPercentage * 0.6) + (archPercentage * 0.7) + (spiralPercentage * 0.3))
+          };
+        }
+
+        // Показване на индикаторите за самореализация в сортиран ред
+        function displaySelfRealizationIndicators(modelData) {
+          const container = document.getElementById('selfrealization-content');
+          if (!container) return;
+
+          // Сортиране по процент в низходящ ред (от най-висок към най-нисък)
+          const sortedIndicators = Object.entries(modelData)
+            .map(([key, value]) => ({ key, value, ...SELFREALIZATION_DESCRIPTIONS[key] }))
+            .sort((a, b) => b.value - a.value);
+
+          let html = '';
+
+          // Create pyramid layout with main models
+          const highestIndicator = sortedIndicators[0];
+          const middleIndicator = sortedIndicators[1];
+          const lowestIndicator = sortedIndicators[2];
+
+          // Get the two additional models (entrepreneur and ideaGenerator)
+          const entrepreneurModel = sortedIndicators.find(ind => ind.key === 'entrepreneur');
+          const ideaGeneratorModel = sortedIndicators.find(ind => ind.key === 'ideaGenerator');
+
+          // Top section - highest indicator and chart side by side
+          html += `
+            <div class="row mb-4">
+              <div class="col-md-6">
+                <h6 style="font-size: 1.2em; font-weight: bold;">${highestIndicator.title} <span class="badge bg-warning text-dark ms-2">Най-висок показател</span></h6>
+                <div class="progress report-progress mb-2" style="height: 1.2rem;">
+                  <div class="progress-bar bg-warning" role="progressbar" style="width: ${highestIndicator.value}%; font-size: 1.1em;" aria-valuenow="${highestIndicator.value}" aria-valuemin="0" aria-valuemax="100">${highestIndicator.value}%</div>
+                </div>
+                <p class="text-dark mb-3">${highestIndicator.description}</p>
+                <p class="text-primary"><strong>Подходящи кариери:</strong> ${highestIndicator.careers}</p>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="text-center">
+                  <div class="chart-container" style="position: relative; height: 200px;">
+                    <canvas id="selfRealizationChart"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-4">
+              <div class="col-md-6">
+                <h6>${middleIndicator.title}</h6>
+                <div class="progress report-progress mb-2">
+                  <div class="progress-bar" role="progressbar" style="width: ${middleIndicator.value}%" aria-valuenow="${middleIndicator.value}" aria-valuemin="0" aria-valuemax="100">${middleIndicator.value}%</div>
+                </div>
+                <p class="text-muted small mb-3">${middleIndicator.description}</p>
+                <p class="text-primary small"><strong>Подходящи кариери:</strong> ${middleIndicator.careers}</p>
+              </div>
+              <div class="col-md-6">
+                <h6 style="font-size: 0.9em;">${lowestIndicator.title}</h6>
+                <div class="progress report-progress mb-2" style="height: 0.8rem;">
+                  <div class="progress-bar" role="progressbar" style="width: ${lowestIndicator.value}%; font-size: 0.9em;" aria-valuenow="${lowestIndicator.value}" aria-valuemin="0" aria-valuemax="100">${lowestIndicator.value}%</div>
+                </div>
+                <p class="text-muted small mb-3" style="font-size: 0.9em;">${lowestIndicator.description}</p>
+                <p class="text-primary small"><strong>Подходящи кариери:</strong> ${lowestIndicator.careers}</p>
+              </div>
+            </div>
+          `;
+
+          // Additional subsection for entrepreneur and idea generator models
+          if (entrepreneurModel && ideaGeneratorModel) {
+            html += `
+              <div class="border-top pt-4 mt-3">
+                <h6 class="text-muted mb-3" style="font-size: 1.0em;"><i class="fas fa-lightbulb me-2"></i>Допълнителни модели</h6>
+                <div class="row mb-4">
+                  <div class="col-md-6 mb-3">
+                    <div class="text-center">
+                      <div class="chart-container" style="position: relative; height: 150px;">
+                        <canvas id="additionalModelsChart"></canvas>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <h6 style="font-size: 0.95em;">${entrepreneurModel.title}</h6>
+                    <p class="text-muted small mb-2" style="font-size: 0.85em;">${entrepreneurModel.description}</p>
+                    <p class="text-primary small mb-2" style="font-size: 0.85em;"><strong>Подходящи кариери:</strong> ${entrepreneurModel.careers}</p>
+
+                    <h6 style="font-size: 0.95em; margin-top: 1rem;">${ideaGeneratorModel.title}</h6>
+                    <p class="text-muted small mb-2" style="font-size: 0.85em;">${ideaGeneratorModel.description}</p>
+                    <p class="text-primary small" style="font-size: 0.85em;"><strong>Подходящи кариери:</strong> ${ideaGeneratorModel.careers}</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="progress report-progress mb-2" style="height: 0.7rem;">
+                      <div class="progress-bar bg-danger" role="progressbar" style="width: ${entrepreneurModel.value}%; font-size: 0.8em;" aria-valuenow="${entrepreneurModel.value}" aria-valuemin="0" aria-valuemax="100">${entrepreneurModel.value}%</div>
+                    </div>
+                    <small class="text-muted">${entrepreneurModel.title}</small>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="progress report-progress mb-2" style="height: 0.7rem;">
+                      <div class="progress-bar bg-info" role="progressbar" style="width: ${ideaGeneratorModel.value}%; font-size: 0.8em;" aria-valuenow="${ideaGeneratorModel.value}" aria-valuemin="0" aria-valuemax="100">${ideaGeneratorModel.value}%</div>
+                    </div>
+                    <small class="text-muted">${ideaGeneratorModel.title}</small>
+                  </div>
+                </div>
+              </div>
+            `;
+          }
+
+          // Add recommendation based on highest indicator
+          html += `
+            <div class="alert alert-warning mt-4">
+              <strong>Препоръка:</strong> Вашият основен модел на самореализация е "${highestIndicator.title}" (${highestIndicator.value}%). Това е моделът, който ще ви донесе най-голямо удовлетворение и успех в работата.
+            </div>
+          `;
+
+          container.innerHTML = html;
+        }
+
+        // Анализ на здравословното състояние
+        function calculateHealthAnalysis(fingerprints, formula) {
+          const spiralCount = countPatterns(fingerprints, 'Спирала', 'Двойна Спирала');
+          const loopCount = countPatterns(fingerprints, 'L-Примка', 'R-Примка');
+          const archCount = countPatterns(fingerprints, 'Дъга', 'Палатковидна Дъга');
+
+          return {
+            stressRisk: Math.min(100, 40 + (spiralCount * 8) + (formula.total * 1.5)),
+            immuneSystem: Math.min(100, 60 + (loopCount * 4) - (spiralCount * 2)),
+            nervousSystem: Math.min(100, 55 + (spiralCount * 6) + (loopCount * 2)),
+            physicalEndurance: Math.min(100, 50 + (archCount * 5) + (loopCount * 2))
+          };
+        }
+
+        // Анализ на спорт
+        function calculateSportsAnalysis(fingerprints) {
+          const formula = calculateDermatoglyphicFormula(fingerprints);
+
+          return {
+            intellectualSports: Math.min(100, 60 + (formula.total * 2) + (countPatterns(fingerprints, 'Спирала', 'Двойна Спирала') * 4)),
+            individualSports: Math.min(100, 55 + (formula.total * 1.5) + (countPatterns(fingerprints, 'L-Примка', 'R-Примка') * 3)),
+            teamSports: Math.min(100, 35 + (countPatterns(fingerprints, 'Дъга', 'Палатковидна Дъга') * 4) - (formula.total * 0.5))
+          };
+        }
+
+        // Анализ на нервната система
+        function calculateNervousSystem(fingerprints, formula) {
+          const spiralCount = countPatterns(fingerprints, 'Спирала', 'Двойна Спирала');
+          const loopCount = countPatterns(fingerprints, 'L-Примка', 'R-Примка');
+
+          return {
+            concentration: Math.min(100, 65 + (spiralCount * 6) + (formula.total * 1.2)),
+            reactionSpeed: Math.min(100, 60 + (spiralCount * 5) + (loopCount * 2)),
+            stressResistance: Math.min(100, 55 + (loopCount * 4) - (spiralCount * 2)),
+            adaptability: Math.min(100, 70 + (loopCount * 3) + (spiralCount * 2))
+          };
+        }
+
+        // Анализ на поведенческата адаптация
+        function calculateBehavioralAdaptation(fingerprints) {
+          const formula = calculateDermatoglyphicFormula(fingerprints);
+          const spiralPercentage = calculatePatternPercentage(fingerprints, 'Спирала', 'Двойна Спирала');
+
+          return {
+            systematicAdaptation: Math.min(100, 65 + (formula.total * 1.8) + (spiralPercentage * 0.4)),
+            flexibleAdaptation: Math.min(100, 50 + (calculatePatternPercentage(fingerprints, 'L-Примка', 'R-Примка') * 0.7)),
+            conservativeAdaptation: Math.min(100, 35 + Math.max(0, (8 - formula.total) * 2))
+          };
+        }
+
+        // Анализ на темперамента
+        function calculateTemperament(fingerprints) {
+          const spiralCount = countPatterns(fingerprints, 'Спирала', 'Двойна Спирала');
+          const loopCount = countPatterns(fingerprints, 'L-Примка', 'R-Примка');
+          const archCount = countPatterns(fingerprints, 'Дъга', 'Палатковидна Дъга');
+
+          return {
+            melancholic: Math.min(100, 25 + (archCount * 8) - (spiralCount * 3)),
+            phlegmatic: Math.min(100, 60 + (loopCount * 4) + (spiralCount * 2)),
+            sanguine: Math.min(100, 50 + (loopCount * 3) + (spiralCount * 3)),
+            choleric: Math.min(100, 35 + (spiralCount * 5) + Math.max(0, (loopCount - 3) * 2))
+          };
+        }
+
+        // Анализ на възприемането на новости
+        function calculateNewsPerception(fingerprints) {
+          const spiralCount = countPatterns(fingerprints, 'Спирала', 'Двойна Спирала');
+          const loopCount = countPatterns(fingerprints, 'L-Примка', 'R-Примка');
+          const archCount = countPatterns(fingerprints, 'Дъга', 'Палатковидна Дъга');
+
+          return {
+            analyticalPerception: Math.min(100, 70 + (spiralCount * 6) + (loopCount * 2)),
+            intuitivePerception: Math.min(100, 50 + (spiralCount * 4) + (archCount * 2)),
+            practicalPerception: Math.min(100, 60 + (loopCount * 4) + (spiralCount * 3))
+          };
+        }
+
+        // Update pattern badge color based on pattern type
+        function updatePatternBadge(badgeElement, pattern) {
+            if (!badgeElement) return;
+
+            badgeElement.className = 'badge ms-1';
+
+            if (pattern.includes('Дъга') || pattern.includes('Палатка')) {
+                badgeElement.classList.add('bg-secondary');
+            } else if (pattern.includes('Примка')) {
+                badgeElement.classList.add('bg-primary');
+            } else if (pattern.includes('Спирала')) {
+                badgeElement.classList.add('bg-danger');
+            } else {
+                badgeElement.classList.add('bg-secondary');
+            }
+        }
+
+        // Update fingerprint icon based on pattern type
+        function updateFingerprintIcon(iconContainer, pattern) {
+            if (!iconContainer) return;
+
+            const imageSrc = FINGERPRINT_IMAGES[pattern] || 'img/placeholder.jpg';
+
+            // Replace the icon element with an image
+            iconContainer.innerHTML = `<img src="${imageSrc}" alt="${pattern}" style="width: 32px; height: 32px; object-fit: cover; border-radius: 4px;">`;
+        }
+
+        // Update gender avatar based on gender
+        function updateGenderAvatar(gender) {
+            const genderAvatar = document.getElementById('gender-avatar');
+            const silhouetteDiv = document.getElementById('gender-silhouette');
+
+            if (!genderAvatar || !silhouetteDiv) return;
+
+            const genderLower = gender.toLowerCase();
+
+            // Reset to default
+            genderAvatar.src = 'data/placeholder.jpg';
+            genderAvatar.alt = 'Неутрален силует';
+            silhouetteDiv.style.background = 'linear-gradient(135deg, #e9ecef, #dee2e6)';
+            silhouetteDiv.title = 'Неутрален силует';
+
+            if (genderLower.includes('мъж') || genderLower.includes('male') || genderLower.includes('man')) {
+                // Зареждане на мъжко изображение
+                genderAvatar.src = 'data/Picture.png - мъж.png';
+                genderAvatar.alt = 'Мъжки силует';
+                silhouetteDiv.style.background = 'linear-gradient(135deg, #007bff, #0056b3)';
+                silhouetteDiv.title = 'Мъжки силует - персонализирано изображение';
+            } else if (genderLower.includes('жена') || genderLower.includes('female') || genderLower.includes('woman')) {
+                // Зареждане на женско изображение
+                genderAvatar.src = 'data/Picture.png жена.png';
+                genderAvatar.alt = 'Женски силует';
+                silhouetteDiv.style.background = 'linear-gradient(135deg, #f8f9fa, #e9ecef)';
+                silhouetteDiv.title = 'Женски силует - персонализирано изображение';
+            }
+        }
+
+        // Помощни функции
+        function countPatterns(fingerprints, ...patterns) {
+          let count = 0;
+
+          Object.values(fingerprints.leftHand).forEach(pattern => {
+            if (patterns.includes(pattern)) count++;
+          });
+
+          Object.values(fingerprints.rightHand).forEach(pattern => {
+            if (patterns.includes(pattern)) count++;
+          });
+
+          return count;
+        }
+
+        function calculatePatternPercentage(fingerprints, ...patterns) {
+          const count = countPatterns(fingerprints, ...patterns);
+          return (count / 10) * 100; // 10 пръста общо
+        }
+
+        // Генериране на пълен анализ
+        function generateCompleteAnalysis(fingerprints) {
+          const formula = calculateDermatoglyphicFormula(fingerprints);
+          const deltaIndex = calculateDeltaIndex(fingerprints);
+
+          return {
+            dermatoglyphicFormula: formula,
+            deltaIndex: deltaIndex,
+            educationType: calculateEducationType(formula, fingerprints),
+            professionalDirections: calculateProfessionalDirections(fingerprints),
+            professionalSpheres: calculateProfessionalSpheres(fingerprints),
+            selfRealizationModel: calculateSelfRealizationModel(formula, fingerprints),
+            healthAnalysis: calculateHealthAnalysis(fingerprints, formula),
+            sportsAnalysis: calculateSportsAnalysis(fingerprints),
+            nervousSystem: calculateNervousSystem(fingerprints, formula),
+            behavioralAdaptation: calculateBehavioralAdaptation(fingerprints),
+            temperament: calculateTemperament(fingerprints),
+            newsPerception: calculateNewsPerception(fingerprints)
+          };
+        }
+
+        // Load data from URL parameters or localStorage
+        function loadReportData() {
+            // Try to get data from URL parameters first
+            const urlParams = new URLSearchParams(window.location.search);
+
+            const name = urlParams.get('name') || localStorage.getItem('report_name') || '______________________________';
+            const gender = urlParams.get('gender') || localStorage.getItem('report_gender') || 'Неопределен';
+            const age = urlParams.get('age') || localStorage.getItem('report_age') || '______';
+            const email = urlParams.get('email') || localStorage.getItem('report_email') || '___________________________';
+            const date = new Date().toLocaleDateString('bg-BG');
+
+            // Update personal info
+            document.getElementById('report-name').textContent = name;
+            document.getElementById('report-gender').textContent = gender;
+            document.getElementById('report-age').textContent = age;
+            document.getElementById('report-email').textContent = email;
+            document.getElementById('report-date').textContent = date;
+
+            // Update gender avatar based on gender
+            updateGenderAvatar(gender);
+
+            // Load fingerprint data from localStorage
+            const fingerprintDataJson = localStorage.getItem('fingerprint_data');
+            let fingerprintData = {
+                leftHand: ['Не е посочен', 'Не е посочен', 'Не е посочен', 'Не е посочен', 'Не е посочен'],
+                rightHand: ['Не е посочен', 'Не е посочен', 'Не е посочен', 'Не е посочен', 'Не е посочен']
+            };
+
+            if (fingerprintDataJson) {
+                try {
+                    fingerprintData = JSON.parse(fingerprintDataJson);
+                } catch (e) {
+                    console.error('Error parsing fingerprint data:', e);
+                }
+            }
+
+            // Update left hand fingers
+            const leftFingerIds = ['left-thumb-pattern', 'left-index-pattern', 'left-middle-pattern', 'left-ring-pattern', 'left-pinky-pattern'];
+            leftFingerIds.forEach((fingerId, index) => {
+                const element = document.getElementById(fingerId);
+                if (element && fingerprintData.leftHand && fingerprintData.leftHand[index]) {
+                    element.textContent = fingerprintData.leftHand[index];
+                    // Update badge color based on pattern type
+                    updatePatternBadge(element, fingerprintData.leftHand[index]);
+
+                    // Update icon based on pattern type
+                    const fingerContainer = element.closest('.d-flex');
+                    const iconContainer = fingerContainer.querySelector('.finger-icon');
+                    updateFingerprintIcon(iconContainer, fingerprintData.leftHand[index]);
+                }
+            });
+
+            // Update right hand fingers
+            const rightFingerIds = ['right-thumb-pattern', 'right-index-pattern', 'right-middle-pattern', 'right-ring-pattern', 'right-pinky-pattern'];
+            rightFingerIds.forEach((fingerId, index) => {
+                const element = document.getElementById(fingerId);
+                if (element && fingerprintData.rightHand && fingerprintData.rightHand[index]) {
+                    element.textContent = fingerprintData.rightHand[index];
+                    // Update badge color based on pattern type
+                    updatePatternBadge(element, fingerprintData.rightHand[index]);
+
+                    // Update icon based on pattern type
+                    const fingerContainer = element.closest('.d-flex');
+                    const iconContainer = fingerContainer.querySelector('.finger-icon');
+                    updateFingerprintIcon(iconContainer, fingerprintData.rightHand[index]);
+                }
+            });
+        }
+
+        // Create charts when page loads
+        function createCharts() {
+            // Directions Chart
+            const directionsCtx = document.getElementById('directionsChart');
+            if (directionsCtx) {
+                new Chart(directionsCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Комуникации', 'Практика', 'Анализ'],
+                        datasets: [{
+                            data: [55, 90, 75],
+                            backgroundColor: ['#007bff', '#28a745', '#ffc107'],
+                            borderWidth: 2,
+                            borderColor: '#fff'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    padding: 20,
+                                    font: {
+                                        size: 14
+                                    },
+                                    generateLabels: function(chart) {
+                                        const data = chart.data;
+                                        if (data.labels.length && data.datasets.length) {
+                                            const dataset = data.datasets[0];
+                                            return data.labels.map(function(label, i) {
+                                                const value = dataset.data[i];
+                                                return {
+                                                    text: label + ' (' + value + '%)',
+                                                    fillStyle: dataset.backgroundColor[i],
+                                                    strokeStyle: dataset.borderColor ? dataset.borderColor[i] : dataset.backgroundColor[i],
+                                                    lineWidth: dataset.borderWidth || 0,
+                                                    hidden: false,
+                                                    index: i
+                                                };
+                                            });
+                                        }
+                                        return [];
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Spheres Chart
+            const spheresCtx = document.getElementById('spheresChart');
+            if (spheresCtx) {
+                new Chart(spheresCtx, {
+                    type: 'polarArea',
+                    data: {
+                        labels: ['Иновации', 'Творчество', 'Спорт'],
+                        datasets: [{
+                            label: 'Професионални сфери (%)',
+                            data: [85, 78, 72],
+                            backgroundColor: [
+                                'rgba(0, 123, 255, 0.8)',
+                                'rgba(40, 167, 69, 0.8)',
+                                'rgba(255, 193, 7, 0.8)'
+                            ],
+                            borderColor: [
+                                '#007bff',
+                                '#28a745',
+                                '#ffc107'
+                            ],
+                            borderWidth: 2,
+                            hoverBorderWidth: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            r: {
+                                beginAtZero: true,
+                                max: 100,
+                                ticks: {
+                                    stepSize: 20,
+                                    font: {
+                                        size: 12
+                                    },
+                                    callback: function(value) {
+                                        return value + '%';
+                                    }
+                                },
+                                pointLabels: {
+                                    font: {
+                                        size: 13,
+                                        weight: 'bold'
+                                    }
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return context.label + ': ' + context.parsed.r + '%';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Additional Models Chart
+            const additionalModelsCtx = document.getElementById('additionalModelsChart');
+            if (additionalModelsCtx) {
+                new Chart(additionalModelsCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Предприемач', 'Генератор на идеи'],
+                        datasets: [{
+                            data: [70, 65],
+                            backgroundColor: ['#dc3545', '#6f42c1'],
+                            borderWidth: 2,
+                            hoverBorderWidth: 3
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    padding: 15,
+                                    font: {
+                                        size: 12
+                                    },
+                                    generateLabels: function(chart) {
+                                        const data = chart.data;
+                                        if (data.labels.length && data.datasets.length) {
+                                            const dataset = data.datasets[0];
+                                            // Create array of label objects with their values
+                                            const labelObjects = data.labels.map(function(label, i) {
+                                                return {
+                                                    text: label + ' (' + dataset.data[i] + '%)',
+                                                    fillStyle: dataset.backgroundColor[i],
+                                                    strokeStyle: dataset.borderColor ? dataset.borderColor[i] : dataset.backgroundColor[i],
+                                                    lineWidth: dataset.borderWidth || 0,
+                                                    hidden: false,
+                                                    index: i,
+                                                    value: dataset.data[i]
+                                                };
+                                            });
+                                            // Sort by value in descending order (highest first)
+                                            return labelObjects.sort(function(a, b) {
+                                                return b.value - a.value;
+                                            });
+                                        }
+                                        return [];
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Sports Chart
+            const sportsCtx = document.getElementById('sportsChart');
+            if (sportsCtx) {
+                new Chart(sportsCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Скорост', 'Координация', 'Издържливост'],
+                        datasets: [{
+                            label: 'Физически качества (%)',
+                            data: [60, 70, 80],
+                            backgroundColor: ['#28a745', '#ffc107', '#6c757d'],
+                            borderWidth: 2,
+                            borderColor: '#fff',
+                            hoverBorderWidth: 3
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 100,
+                                ticks: {
+                                    stepSize: 20,
+                                    font: {
+                                        size: 12
+                                    }
+                                }
+                            },
+                            x: {
+                                ticks: {
+                                    font: {
+                                        size: 14
+                                    }
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Nervous System Chart
+            const nervousSystemCtx = document.getElementById('nervousSystemChart');
+            if (nervousSystemCtx) {
+                new Chart(nervousSystemCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Стресоустойчивост', 'Концентрация', 'Бързина на реакция'],
+                        datasets: [{
+                            label: 'Нервни качества (%)',
+                            data: [85, 75, 65],
+                            backgroundColor: [
+                                'rgba(40, 167, 69, 0.8)',   // green for stress resistance (highest)
+                                'rgba(0, 123, 255, 0.8)',   // blue for concentration
+                                'rgba(255, 193, 7, 0.8)'    // yellow for reaction speed
+                            ],
+                            borderColor: [
+                                '#28a745',
+                                '#007bff',
+                                '#ffc107',
+                                '#dc3545'
+                            ],
+                            borderWidth: 2,
+                            hoverBorderWidth: 3
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 100,
+                                ticks: {
+                                    stepSize: 20,
+                                    font: {
+                                        size: 12
+                                    },
+                                    callback: function(value) {
+                                        return value + '%';
+                                    }
+                                }
+                            },
+                            x: {
+                                ticks: {
+                                    font: {
+                                        size: 12
+                                    }
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return context.label + ': ' + context.parsed.y + '%';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+
+            // Self-Realization Chart
+            const selfRealizationCtx = document.getElementById('selfRealizationChart');
+            if (selfRealizationCtx) {
+                new Chart(selfRealizationCtx, {
+                    type: 'polarArea',
+                    data: {
+                        labels: ['Професионален', 'Корпоративен', 'Управленски'],
+                        datasets: [{
+                            label: 'Модели за самореализация (%)',
+                            data: [75, 85, 90],
+                            backgroundColor: [
+                                'rgba(0, 123, 255, 0.8)',
+                                'rgba(40, 167, 69, 0.8)',
+                                'rgba(255, 193, 7, 0.8)'
+                            ],
+                            borderColor: [
+                                '#007bff',
+                                '#28a745',
+                                '#ffc107'
+                            ],
+                            borderWidth: 2,
+                            hoverBorderWidth: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            r: {
+                                beginAtZero: true,
+                                max: 100,
+                                ticks: {
+                                    stepSize: 20,
+                                    font: {
+                                        size: 12
+                                    },
+                                    callback: function(value) {
+                                        return value + '%';
+                                    }
+                                },
+                                pointLabels: {
+                                    font: {
+                                        size: 13,
+                                        weight: 'bold'
+                                    }
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return context.label + ': ' + context.parsed.r + '%';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+
+        }
+
+        // Calculate and update all analysis results
+        function calculateAndUpdateResults() {
+            // Use static fingerprint data
+            const fingerprints = {
+                leftHand: ['Дъга - Палатка', 'Дъга - Палатка', 'Дъга - Палатка', 'R-Примка', 'Дъга - Палатка'],
+                rightHand: ['Спирала', 'L-Примка', 'R-Примка', 'R-Примка', 'Дъга - Палатка']
+            };
+
+            // Generate complete analysis
+            const analysis = generateCompleteAnalysis(fingerprints);
+
+            // Update Delta Index
+            document.getElementById('delta-index').textContent = analysis.deltaIndex;
+
+            // Display Education Types (sorted)
+            displayEducationTypes(analysis.educationType);
+
+            // Display Self-Realization Model (sorted)
+            displaySelfRealizationIndicators(analysis.selfRealizationModel);
+
+            // Update Professional Directions
+            updateProgressBar('directions-communication', analysis.selfRealizationModel.communication);
+            updateProgressBar('directions-practice', analysis.selfRealizationModel.practice);
+            updateProgressBar('directions-analysis', analysis.selfRealizationModel.analysis);
+
+
+            // Display Self-Realization Model (sorted)
+            displaySelfRealizationIndicators(analysis.selfRealizationModel);
+
+
+
+            // Update Temperament
+            updateProgressBar('temperament-phlegmatic', analysis.temperament.phlegmatic);
+            updateProgressBar('temperament-sanguine', analysis.temperament.sanguine);
+        }
+
+        // Helper function to update progress bars
+        function updateProgressBar(elementId, percentage) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                const roundedPercentage = Math.round(percentage);
+                element.style.width = roundedPercentage + '%';
+                element.setAttribute('aria-valuenow', roundedPercentage);
+                element.textContent = roundedPercentage + '%';
+            }
+        }
+
+        // Mapping from Bulgarian names to formula codes
+        const FINGERPRINT_CODE_MAPPING = {
+          'Дъга': 'A',
+          'Палатковидна Дъга': 'AT',
+          'L-Примка': 'L',
+          'R-Примка': 'RL',
+          'Спирала': 'W',
+          'Двойна Спирала': 'S'
+        };
+
+        // Generate formula string from fingerprint data
+        function generateFingerprintFormula(fingerprintData) {
+          // Count occurrences of each pattern type
+          const counts = {};
+
+          // Initialize counts for all pattern types
+          Object.values(FINGERPRINT_CODE_MAPPING).forEach(code => {
+            counts[code] = 0;
+          });
+
+          // Count left hand fingers
+          fingerprintData.leftHand.forEach(pattern => {
+            const code = FINGERPRINT_CODE_MAPPING[pattern];
+            if (code) {
+              counts[code]++;
+            }
+          });
+
+          // Count right hand fingers
+          fingerprintData.rightHand.forEach(pattern => {
+            const code = FINGERPRINT_CODE_MAPPING[pattern];
+            if (code) {
+              counts[code]++;
+            }
+          });
+
+          // Generate formula string - sort by count descending, then by code alphabetically
+          const formulaParts = [];
+          const sortedEntries = Object.entries(counts)
+            .filter(([code, count]) => count > 0) // Only include types that appear
+            .sort((a, b) => {
+              // First sort by count descending
+              if (a[1] !== b[1]) {
+                return b[1] - a[1];
+              }
+              // Then sort by code alphabetically
+              return a[0].localeCompare(b[0]);
+            });
+
+          sortedEntries.forEach(([code, count]) => {
+            formulaParts.push(`${count}${code}`);
+          });
+
+          return formulaParts.join(' ');
+        }
+
+        // Find matching PDF file from formulas folder
+        function findMatchingFormulaPDF(formula) {
+          // List of all available formula PDFs (we'll need to maintain this or read from filesystem)
+          const availableFormulas = [
+            '10A.pdf', '10L.pdf', '10W.pdf',
+            '3RL 3L 2W 1S 1AT.pdf', '3RL 3W 2L 2S.pdf',
+            '4A 3L 2S 1W.pdf', '4L 3W 3A.pdf',
+            '4L 4RL 1S 1AT.pdf', '4L 4RL 2AT.pdf',
+            '4L 4W 2RL.pdf', '4W 3L 2S 1RL.pdf',
+            '4W 3RL 3A.pdf', '4W 3S 2L 1RL.pdf',
+            '4W 4AT 2RL.pdf', '5A 5L.pdf',
+            '5AT 4RL 1L.pdf', '5AT 5L.pdf',
+            '5L 2A 1RL 1W 1S.pdf', '5L 3RL 1W 1AT.pdf',
+            '5L 3S 2RL.pdf', '5L 3W 1RL 1AT.pdf',
+            '5L 4RL 1W.pdf', '5L 4W 1S.pdf',
+            '5L 5RL.pdf', '5RL 3L 1W 1S.pdf',
+            '5S 4W 1L.pdf', '5W 3L 2S.pdf',
+            '5W 3S 2L.pdf', '5W 4L 1RL.pdf',
+            '5W 4L 1S.pdf', '5W 4RL 1AT.pdf',
+            '6A 3L 1RL.pdf', '6A 4L.pdf',
+            '6L 2S 1AT 1A.pdf', '6L 2W 1S 1RL.pdf',
+            '6L 3A 1AT.pdf', '6L 3W 1RL.pdf',
+            '6L 4W.pdf', '6RL 2L 2W.pdf',
+            '6RL 3W 1A.pdf', '6W 2L 1S 1RL.pdf',
+            '6W 2L 2RL.pdf', '6W 2S 2L.pdf',
+            '6W 3L 1S.pdf', '6W 3S 1RL.pdf',
+            '6W 4L.pdf', '7L 1RL 1S 1AT.pdf',
+            '7L 1RL 1W 1A.pdf', '7L 2A 1RL.pdf',
+            '7L 3W.pdf', '7RL 1L 1W 1S.pdf',
+            '7W 3RL.pdf', '8L 1RL 1AT.pdf',
+            '8L 1S 1W.pdf', '8L 1W 1A.pdf',
+            '8L 1W 1S.pdf', '8L 2S.pdf',
+            '8L 2W.pdf', '8RL 2AT.pdf',
+            '8W 2L.pdf', '9AT 1A.pdf',
+            '9L 1S.pdf', '9W 1L.pdf',
+            '9W 1RL.pdf'
+          ];
+
+          // Find exact match
+          const exactMatch = availableFormulas.find(pdf => pdf === `${formula}.pdf`);
+          if (exactMatch) {
+            return exactMatch;
+          }
+
+          // If no exact match, try to find closest match or return default
+          console.warn(`No exact match found for formula: ${formula}. Available formulas:`, availableFormulas);
+          return '10W.pdf'; // Fallback to default
+        }
+
+        // Update PDF link based on fingerprint formula
+        function updateFormulaPDFLink(fingerprintData) {
+            const formula = generateFingerprintFormula(fingerprintData);
+            const pdfFile = findMatchingFormulaPDF(formula);
+
+            const pdfLink = document.getElementById('formula-pdf-link');
+            if (pdfLink) {
+                pdfLink.href = `formulas/${pdfFile}`;
+                pdfLink.innerHTML = `<i class="fas fa-external-link-alt me-2"></i>Отвори резултата (${pdfFile})`;
+            }
+
+            console.log(`Generated formula: ${formula}, PDF file: ${pdfFile}`);
+        }
+
         // Load data and create charts when page loads
         document.addEventListener('DOMContentLoaded', function() {
             loadReportData();
             calculateAndUpdateResults();
             createCharts();
+
+            // Update PDF link after data is loaded
+            const fingerprintDataJson = localStorage.getItem('fingerprint_data');
+            if (fingerprintDataJson) {
+                try {
+                    const fingerprintData = JSON.parse(fingerprintDataJson);
+                    updateFormulaPDFLink(fingerprintData);
+                } catch (e) {
+                    console.error('Error parsing fingerprint data for PDF:', e);
+                }
+            }
         });
     </script>
 </body>
 
-</html>
+</html></contents>
+</xai:function_call">Creating a new report page with placeholder data that will be populated from the fingerprint selection.
