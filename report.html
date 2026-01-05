@@ -1923,8 +1923,23 @@
           const comp1 = parseFormula(formula1);
           const comp2 = parseFormula(formula2);
 
-          let totalScore = 0;
-          let maxPossibleScore = 0;
+          // PRIORITY 1: Diversity (number of different fingerprint types)
+          const diversity1 = comp1.length;
+          const diversity2 = comp2.length;
+
+          // Base diversity score - higher diversity gets exponentially higher priority
+          let diversityScore = 0;
+          if (diversity1 === diversity2) {
+            diversityScore = 100; // Perfect diversity match
+          } else {
+            // Penalize less diverse formulas more heavily
+            const diversityDiff = Math.abs(diversity1 - diversity2);
+            diversityScore = Math.max(0, 100 - (diversityDiff * 25)); // 25 points penalty per diversity difference
+          }
+
+          // PRIORITY 2: Count similarities for matching codes
+          let countSimilarityScore = 0;
+          const maxPossibleCountScore = 100;
 
           // Create maps for easier lookup
           const comp1Map = new Map();
@@ -1933,39 +1948,62 @@
           comp1.forEach(comp => comp1Map.set(comp.code, comp.count));
           comp2.forEach(comp => comp2Map.set(comp.code, comp.count));
 
-          // Get all unique codes
+          // Get all unique codes from both formulas
           const allCodes = new Set([...comp1Map.keys(), ...comp2Map.keys()]);
+          const matchedCodes = new Set();
 
+          // Score exact code matches first
           allCodes.forEach(code => {
             const count1 = comp1Map.get(code) || 0;
             const count2 = comp2Map.get(code) || 0;
 
-            // Exact match gets full points
-            if (count1 === count2 && count1 > 0) {
-              totalScore += count1 * 2; // Bonus for exact match
-              maxPossibleScore += count1 * 2;
-            } else if (count1 > 0 && count2 > 0) {
-              // Partial match - give points for similarity
-              const minCount = Math.min(count1, count2);
-              const maxCount = Math.max(count1, count2);
-              const similarityRatio = minCount / maxCount;
-              totalScore += minCount * similarityRatio * 1.5;
-              maxPossibleScore += maxCount * 1.5;
-            } else if (count1 > 0 || count2 > 0) {
-              // One has this code, other doesn't - small penalty
-              maxPossibleScore += Math.max(count1, count2) * 0.5;
+            if (count1 > 0 && count2 > 0) {
+              matchedCodes.add(code);
+              // Exact count match gets highest points
+              if (count1 === count2) {
+                countSimilarityScore += 20; // Bonus for exact count match
+              } else {
+                // Partial count match - closer counts get higher scores
+                const minCount = Math.min(count1, count2);
+                const maxCount = Math.max(count1, count2);
+                const ratio = minCount / maxCount;
+                countSimilarityScore += ratio * 15; // Up to 15 points for close matches
+              }
             }
           });
 
-          // Bonus for same total finger count
+          // PRIORITY 3: Total finger count proximity
           const total1 = comp1.reduce((sum, comp) => sum + comp.count, 0);
           const total2 = comp2.reduce((sum, comp) => sum + comp.count, 0);
-          if (total1 === total2) {
-            totalScore += total1 * 0.1; // Small bonus
-            maxPossibleScore += total1 * 0.1;
+          const totalDiff = Math.abs(total1 - total2);
+          const totalScore = Math.max(0, 20 - totalDiff); // Up to 20 points, decreasing with difference
+
+          // PRIORITY 4: Bonus for having the same highest count pattern
+          let highestPatternBonus = 0;
+          if (comp1.length > 0 && comp2.length > 0) {
+            const highest1 = comp1[0]; // Already sorted by count descending
+            const highest2 = comp2[0];
+            if (highest1.code === highest2.code) {
+              highestPatternBonus = 15; // Bonus for matching primary pattern
+            }
           }
 
-          return maxPossibleScore > 0 ? (totalScore / maxPossibleScore) * 100 : 0;
+          // Combine scores with weights:
+          // Diversity: 40% weight (most important)
+          // Count similarity: 30% weight
+          // Total count: 20% weight
+          // Highest pattern bonus: 10% weight
+          const finalScore = (
+            (diversityScore * 0.4) +
+            (countSimilarityScore * 0.3) +
+            (totalScore * 0.2) +
+            (highestPatternBonus * 0.1)
+          );
+
+          // Add small bonus for each matched code type
+          const matchedCodeBonus = matchedCodes.size * 2;
+
+          return Math.min(100, finalScore + matchedCodeBonus);
         }
 
         // Find matching PDF file from formulas folder
