@@ -342,10 +342,16 @@
                     <div class="card-body">
                         <div class="text-center">
                             <p class="mb-4">Кликнете върху линка по-долу, за да видите подробния анализ на вашата пръстова формула:</p>
-                            <a id="formula-pdf-link" href="formulas/10W.pdf" target="_blank" class="btn btn-primary btn-lg">
-                                <i class="fas fa-external-link-alt me-2"></i>
-                                Отвори резултата (10W.pdf)
-                            </a>
+                            <div class="d-flex justify-content-center gap-3 mb-3">
+                                <a id="promo-pdf-link" href="files/promo_reports/10W.pdf" target="_blank" class="btn btn-success btn-lg">
+                                    <i class="fas fa-file-alt me-2"></i>
+                                    Безплатен отчет
+                                </a>
+                                <a id="full-pdf-link" href="formulas/10W.pdf" target="_blank" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-star me-2"></i>
+                                    Пълен отчет (Платен)
+                                </a>
+                            </div>
                             <p class="mt-3 text-muted small">Файлът ще се отвори в нов прозорец/таб</p>
                         </div>
                     </div>
@@ -2074,15 +2080,21 @@
           return bestMatch || '10W.pdf'; // Fallback to default if no match found
         }
 
-        // Update PDF link based on fingerprint formula
+        // Update PDF links based on fingerprint formula
         function updateFormulaPDFLink(fingerprintData) {
             const formula = generateFingerprintFormula(fingerprintData);
             const pdfFile = findMatchingFormulaPDF(formula);
 
-            const pdfLink = document.getElementById('formula-pdf-link');
-            if (pdfLink) {
-                pdfLink.href = `files/promo_reports/${pdfFile}`;
-                pdfLink.innerHTML = `<i class="fas fa-external-link-alt me-2"></i>Отвори резултата (${pdfFile})`;
+            // Update promo (free) report link
+            const promoLink = document.getElementById('promo-pdf-link');
+            if (promoLink) {
+                promoLink.href = `files/promo_reports/${pdfFile}`;
+            }
+
+            // Update full (paid) report link
+            const fullLink = document.getElementById('full-pdf-link');
+            if (fullLink) {
+                fullLink.href = `formulas/${pdfFile}`;
             }
 
             console.log(`Generated formula: ${formula}, PDF file: ${pdfFile}`);
