@@ -86,7 +86,7 @@
         <h2 class="text-center my-5">Безплатно Тестване</h2>
         <div class="row justify-content-center">
             <div class="col-md-10 my-2">
-                <p>Със онлайн формата по-долу можете да попълните полетата със съответните икони на пръстов отпечатък и след като натиснете бутона "Генерирай отчет" ще ви се изпратят първите 3 страници от пълния стандартен отчет.</p>
+                <p>Със онлайн формата по-долу можете да попълните полетата със съответните икони на пръстов отпечатък и след като натиснете бутона "Изпрати данните" ще получите 3 страници от вашия биометричен тест.</p>
                 <p>За да определите типът пръстов отпечатък (папил) на всеки един от вашите пръсти, моля разгледайте нашата
                     <a href="/help.html">помощна страница</a> или по-съкратената версия по-долу за всеки един папил. Моля се
                     запознаете със различните папили за да самоопределите всеки един от пръстите си.
@@ -454,7 +454,7 @@
         <h2 class="text-center my-5">Безплатно Тестване</h2>
         <div class="row justify-content-center">
             <div class="col-md-12 py-4">
-                <p>Със онлайн формата по-долу можете да попълните полетата със съответните икони на пръстов отпечатък и след като натиснете бутона "Генерирай отчет" ще ви се изпратят първите 3 страници от пълния стандартен отчет.</p>
+                <p>Със онлайн формата по-долу можете да попълните полетата със съответните икони на пръстов отпечатък и след като натиснете бутона "Изпрати данните" ще получите 3 страници от вашия биометричен тест.</p>
                 <p>За да определите типът пръстов отпечатък (папил) на всеки един от вашите пръсти, моля разгледайте нашата
                     <a href="/help.html">помощна страница</a> за обстойна информация за всеки един папил. Моля разгледайте
                     първо
@@ -689,16 +689,12 @@
     <section id="submission-form" class="container mb-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <form action="https://formsubmit.co/2cee929ab804db457c7070a522866dba" method="POST">
+                <form id="online-form" action="mailto:genetictest-sv@abv.bg" method="POST" onsubmit="return sendFormByEmail()">
                     <input type="hidden" name="_subject" placeholder="Subject" value="Нов онлайн отчет">
                     <textarea id="message" name="message" hidden></textarea>
 
                     <div class="text-center">
-                        <div class="btn-group" role="group">
-                            <button type="button" id="confirmSelection" class="btn btn-primary btn-lg me-2"
-                                onclick="confirmData()">Генерирай отчет</button>
-                            <button type="submit" id="sendData" class="btn btn-success btn-lg" disabled>Изпрати данните</button>
-                        </div>
+                        <button type="submit" id="sendData" class="btn btn-success btn-lg">Изпрати данните</button>
                     </div>
                 </form>
             </div>
@@ -732,6 +728,30 @@
             <a class="text-white" href="google.com">Genetic Test - Svishtov ©</a>
         </div>
     </footer>
+
+    <script>
+    function sendFormByEmail() {
+        var form = document.getElementById('online-form');
+        var formData = new FormData(form);
+        
+        var message = "Нови данни от онлайн тест\n\n";
+        
+        for (var pair of formData.entries()) {
+            message += pair[0] + ": " + pair[1] + "\n";
+        }
+        
+        var subject = encodeURIComponent("Нови данни от биометричен тест");
+        var body = encodeURIComponent(message);
+        
+        window.location.href = "mailto:genetictest-sv@abv.bg?subject=" + subject + "&body=" + body;
+        
+        // Clear the form
+        form.reset();
+        
+        alert("Данните са изпратени! Формата е изчистена.");
+        return false;
+    }
+    </script>
 </body>
 
 </html>

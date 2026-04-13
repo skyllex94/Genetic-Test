@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <title>Калкулатор на пръстова формула - Genetic Test</title>
+    <meta content='maximum-scale=1.0, initial-scale=1.0, width=device-width' name='viewport'>
+    <link rel="icon" href="/img/fingerprint-scan.png" type="image/icon type">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="styles.css" rel="stylesheet">
+    <style>
+        .finger-selector {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .finger-box {
+            text-align: center;
+            padding: 15px;
+            border: 2px dashed #dee2e6;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+        .finger-box:hover {
+            border-color: #198754;
+            background: #e9ecef;
+        }
+        .finger-box.selected {
+            border-style: solid;
+            border-color: #198754;
+            background: #d1e7dd;
+        }
+        .pattern-btn {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 2px solid #dee2e6;
+            border-radius: 5px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .pattern-btn:hover {
+            background: #e9ecef;
+        }
+        .pattern-btn.active {
+            background: #198754;
+            color: white;
+            border-color: #198754;
+        }
+        .upload-area {
+            border: 3px dashed #dee2e6;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .upload-area:hover {
+            border-color: #198754;
+            background: #f8fff8;
+        }
+        .upload-area.dragover {
+            border-color: #198754;
+            background: #d1e7dd;
+        }
+        .result-card {
+            transition: all 0.3s ease;
+        }
+        .result-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        .hand-diagram {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+        }
+        .hand {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        .hand-label {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .finger-slot {
+            width: 50px;
+            height: 60px;
+            border: 2px solid #dee2e6;
+            border-radius: 25px 25px 5px 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            cursor: pointer;
+            background: white;
+            transition: all 0.2s ease;
+        }
+        .finger-slot:hover {
+            border-color: #198754;
+        }
+        .finger-slot.selected {
+            border-color: #198754;
+            background: #d1e7dd;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <section class="above-navigation">
+            <div class="container">
+                <div class="row py-4 d-flex">
+                    <div class="col-md-6 align-self-center">
+                        <a class="text-decoration-none" href="index.html">
+                            <p class="display-6 d-inline">Genetic test – Svishtov</p>
+                        </a>
+                        <p class="pt-1">Биометрично изследване, основано на науката дерматоглифика</p>
+                    </div>
+                    <div class="col-md-2 px-4 v-divider align-self-center d-none d-lg-block">
+                        <p class="lead d-inline"><i class="fas fa-map-marker-alt p-1"></i><b>България</b></p>
+                        <p>гр. Свищов, 5250</p>
+                    </div>
+                    <div class="col-md-2 px-4 v-divider align-self-center d-none d-lg-block">
+                        <p class="lead d-inline"><i class="fas fa-clock p-1"></i><b>9:00-18:00ч.</b></p>
+                        <p>Понеделник-Събота</p>
+                    </div>
+                    <div class="col-md-2 px-4 v-divider align-self-center d-none d-lg-block">
+                        <p class="lead d-inline"><i class="fa fa-envelope px-2"></i><b>genetictest</b></p>
+                        <p>-sv@abv.bg</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="navigation container">
+            <nav class="navbar navbar-expand-lg navbar-light py-4">
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Начало</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Услуги</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="services1.html">Безплатно Онлайн Тестване</a></li>
+                                <li><a class="dropdown-item" href="order.html">Поръчка на отчет</a></li>
+                                <li><a class="dropdown-item" href="test.html">Психологически тест</a></li>
+                                <li><a class="dropdown-item active" href="calculator.html">Калкулатор</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="help.html">Помощна страница</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Контакти</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </section>
+    </header>
+
+    <section class="container py-5">
+        <h1 class="text-center mb-4">Калкулатор на пръстова формула</h1>
+        <p class="text-center lead mb-5">Определете вашата пръстова формула бързо и лесно</p>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <ul class="nav nav-tabs mb-4" id="methodTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="manual-tab" data-bs-toggle="tab" data-bs-target="#manual" type="button">Ръчно</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="upload-tab" data-bs-toggle="tab" data-bs-target="#upload" type="button">Качи изображение</button>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="methodTabContent">
+                    <div class="tab-pane fade show active" id="manual" role="tabpanel">
+                        <div class="card mb-4">
+                            <div class="card-header bg-success text-white">
+                                <h5 class="mb-0"><i class="fas fa-hand-pointer me-2"></i>Изберете модела за всеки пръст</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="text-muted">Кликнете върху пръст, след това изберете модела на отпечатъка</p>
+                                
+                                <h6 class="mb-3">Лява ръка</h6>
+                                <div class="finger-selector" id="left-hand">
+                                    <div class="finger-box" data-finger="left-thumb" onclick="selectFinger('left-thumb')">
+                                        <i class="fas fa-hand-point-up fa-2x"></i>
+                                        <div>Палец</div>
+                                        <div class="selected-pattern" id="pattern-left-thumb">-</div>
+                                    </div>
+                                    <div class="finger-box" data-finger="left-index" onclick="selectFinger('left-index')">
+                                        <i class="fas fa-hand-point-up fa-2x"></i>
+                                        <div>Показалец</div>
+                                        <div class="selected-pattern" id="pattern-left-index">-</div>
+                                    </div>
+                                    <div class="finger-box" data-finger="left-middle" onclick="selectFinger('left-middle')">
+                                        <i class="fas fa-hand-point-up fa-2x"></i>
+                                        <div>Среден</div>
+                                        <div class="selected-pattern" id="pattern-left-middle">-</div>
+                                    </div>
+                                    <div class="finger-box" data-finger="left-ring" onclick="selectFinger('left-ring')">
+                                        <i class="fas fa-hand-point-up fa-2x"></i>
+                                        <div>Безимен</div>
+                                        <div class="selected-pattern" id="pattern-left-ring">-</div>
+                                    </div>
+                                    <div class="finger-box" data-finger="left-pinky" onclick="selectFinger('left-pinky')">
+                                        <i class="fas fa-hand-point-up fa-2x"></i>
+                                        <div>Кутре</div>
+                                        <div class="selected-pattern" id="pattern-left-pinky">-</div>
+                                    </div>
+                                </div>
+
+                                <h6 class="mb-3">Дясна ръка</h6>
+                                <div class="finger-selector" id="right-hand">
+                                    <div class="finger-box" data-finger="right-thumb" onclick="selectFinger('right-thumb')">
+                                        <i class="fas fa-hand-point-up fa-2x"></i>
+                                        <div>Палец</div>
+                                        <div class="selected-pattern" id="pattern-right-thumb">-</div>
+                                    </div>
+                                    <div class="finger-box" data-finger="right-index" onclick="selectFinger('right-index')">
+                                        <i class="fas fa-hand-point-up fa-2x"></i>
+                                        <div>Показалец</div>
+                                        <div class="selected-pattern" id="pattern-right-index">-</div>
+                                    </div>
+                                    <div class="finger-box" data-finger="right-middle" onclick="selectFinger('right-middle')">
+                                        <i class="fas fa-hand-point-up fa-2x"></i>
+                                        <div>Среден</div>
+                                        <div class="selected-pattern" id="pattern-right-middle">-</div>
+                                    </div>
+                                    <div class="finger-box" data-finger="right-ring" onclick="selectFinger('right-ring')">
+                                        <i class="fas fa-hand-point-up fa-2x"></i>
+                                        <div>Безимен</div>
+                                        <div class="selected-pattern" id="pattern-right-ring">-</div>
+                                    </div>
+                                    <div class="finger-box" data-finger="right-pinky" onclick="selectFinger('right-pinky')">
+                                        <i class="fas fa-hand-point-up fa-2x"></i>
+                                        <div>Кутре</div>
+                                        <div class="selected-pattern" id="pattern-right-pinky">-</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card" id="pattern选择">
+                            <div class="card-header bg-warning">
+                                <h5 class="mb-0"><i class="fas fa-shapes me-2"></i>Изберете модел на отпечатък</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="text-muted mb-3">Изберете модела на вашия пръстов отпечатък:</p>
+                                
+                                <div class="row">
+                                    <div class="col-6 mb-2">
+                                        <button class="pattern-btn" onclick="setPattern('Дъга')">
+                                            <img src="/img/print2.jpg" style="height: 40px;"> Дъга (Arch)
+                                        </button>
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <button class="pattern-btn" onclick="setPattern('Палатковидна Дъга')">
+                                            <img src="/img/print5.jpg" style="height: 40px;"> Палатковидна Дъга
+                                        </button>
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <button class="pattern-btn" onclick="setPattern('L-Примка')">
+                                            <img src="/img/print4.jpg" style="height: 40px;"> L-Примка (Loop)
+                                        </button>
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <button class="pattern-btn" onclick="setPattern('R-Примка')">
+                                            <img src="/img/print3.jpg" style="height: 40px;"> R-Примка
+                                        </button>
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <button class="pattern-btn" onclick="setPattern('Спирала')">
+                                            <img src="/img/print6.jpg" style="height: 40px;"> Спирала (Whorl)
+                                        </button>
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <button class="pattern-btn" onclick="setPattern('Двойна Спирала')">
+                                            <img src="/img/print1.jpg" style="height: 40px;"> Двойна Спирала
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="upload" role="tabpanel">
+                        <div class="card">
+                            <div class="card-header bg-success text-white">
+                                <h5 class="mb-0"><i class="fas fa-upload me-2"></i>Качете изображение</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="upload-area" id="upload-area">
+                                    <i class="fas fa-cloud-upload-alt fa-3x mb-3 text-muted"></i>
+                                    <h5>Пуснете изображение тук</h5>
+                                    <p class="text-muted">или кликнете, за да изберете файл</p>
+                                    <input type="file" id="file-input" accept="image/*" style="display: none;">
+                                </div>
+                                
+                                <div class="mt-4">
+                                    <h6>Качете ясно изображение на:</h6>
+                                    <ul>
+                                        <li>Сканирани пръстови отпечатъци</li>
+                                        <li>Снимка на двата длана</li>
+                                        <li>Специална бланка за пръстови отпечатъци</li>
+                                    </ul>
+                                    
+                                    <div class="alert alert-info">
+                                        <i class="fas fa-info-circle me-2"></i>
+                                        <strong>Забележка:</strong> След качване на изображението, моля посочете ръчно всеки пръст, тъй като автоматичното разпознаване изисква експертен преглед.
+                                    </div>
+                                </div>
+
+                                <div id="preview-container" class="mt-4 d-none">
+                                    <h5>Преглед на изображението</h5>
+                                    <img id="preview-image" class="img-fluid" style="max-height: 400px; border: 2px solid #dee2e6; border-radius: 10px;">
+                                    <button class="btn btn-outline-danger mt-2" onclick="clearImage()">
+                                        <i class="fas fa-trash me-2"></i>Премахни
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card" id="result-card">
+                    <div class="card-header bg-dark text-white">
+                        <h5 class="mb-0">Вашата формула</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center mb-4">
+                            <h6>Лява ръка</h6>
+                            <div class="d-flex justify-content-center gap-2" id="left-formula"></div>
+                        </div>
+                        <div class="text-center mb-4">
+                            <h6>Дясна ръка</h6>
+                            <div class="d-flex justify-content-center gap-2" id="right-formula"></div>
+                        </div>
+                        <hr>
+                        <div class="text-center mb-3">
+                            <h4>Пръстова формула:</h4>
+                            <h2 class="text-success" id="final-formula">-</h2>
+                        </div>
+                        <div class="text-center mb-3">
+                            <h6>Делта индекс:</h6>
+                            <span id="delta-index" class="fs-4">0</span>
+                        </div>
+                        <div class="text-center mb-3">
+                            <h6>Тип ръце:</h6>
+                            <span id="hand-type" class="fs-5">-</span>
+                        </div>
+                        <hr>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-success btn-lg" onclick="generateReport()">
+                                <i class="fas fa-file-alt me-2"></i>Генерирай отчет
+                            </button>
+                            <a href="order.html" class="btn btn-warning">
+                                <i class="fas fa-shopping-cart me-2"></i>Поръчай пълен отчет
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-3">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="mb-0"><i class="fas fa-chart-pie me-2"></i>Бърз анализ</h5>
+                    </div>
+                    <div class="card-body" id="quick-analysis">
+                        <p class="text-muted">Попълнете всички 10 пръста за анализ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-center text-white py-4 mt-5">
+        <div class="container p-4 pb-0">
+            <section class="mb-4">
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/Genetictest.Svishtov">
+                    <i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/genetictest_svishtov">
+                    <i class="fab fa-instagram"></i></a>
+            </section>
+        </div>
+        <div class="text-center p-3">
+            <script>document.write(new Date().getFullYear())</script> - Всички права запазени: Genetic Test - Svishtov ©
+        </div>
+    </footer>
+
+    <script>
+        let selectedFinger = null;
+        let fingerprintData = {
+            leftThumb: null, leftIndex: null, leftMiddle: null, leftRing: null, leftPinky: null,
+            rightThumb: null, rightIndex: null, rightMiddle: null, rightRing: null, rightPinky: null
+        };
+
+        const patterns = {
+            'Дъга': { abbr: 'A', score: 0 },
+            'Палатковидна Дъга': { abbr: 'AT', score: 0 },
+            'L-Примка': { abbr: 'L', score: 1 },
+            'R-Примка': { abbr: 'RL', score: 1 },
+            'Спирала': { abbr: 'W', score: 2 },
+            'Двойна Спирала': { abbr: 'S', score: 2 }
+        };
+
+        function selectFinger(fingerId) {
+            selectedFinger = fingerId;
+            
+            document.querySelectorAll('.finger-box').forEach(box => {
+                box.classList.remove('selected');
+            });
+            
+            document.querySelector(`[data-finger="${fingerId}"]`).classList.add('selected');
+            
+            window.scrollTo({
+                top: document.getElementById('pattern选择').offsetTop - 100,
+                behavior: 'smooth'
+            });
+        }
+
+        function setPattern(pattern) {
+            if (!selectedFinger) {
+                alert('Моля, първо изберете пръст!');
+                return;
+            }
+
+            fingerprintData[selectedFinger] = pattern;
+            
+            document.getElementById(`pattern-${selectedFinger}`).textContent = patterns[pattern].abbr;
+            document.querySelector(`[data-finger="${selectedFinger}"]`).classList.add('selected');
+
+            updateFormulaDisplay();
+            updateQuickAnalysis();
+        }
+
+        function updateFormulaDisplay() {
+            const leftFingers = ['leftThumb', 'leftIndex', 'leftMiddle', 'leftRing', 'leftPinky'];
+            const rightFingers = ['rightThumb', 'rightIndex', 'rightMiddle', 'rightRing', 'rightPinky'];
+
+            let leftHTML = '';
+            let rightHTML = '';
+            let leftAbbr = [];
+            let rightAbbr = [];
+            let totalScore = 0;
+
+            leftFingers.forEach(finger => {
+                const pattern = fingerprintData[finger];
+                const abbr = pattern ? patterns[pattern].abbr : '-';
+                leftHTML += `<span class="badge bg-secondary">${abbr}</span>`;
+                if (pattern) leftAbbr.push(abbr);
+                totalScore += pattern ? patterns[pattern].score : 0;
+            });
+
+            rightFingers.forEach(finger => {
+                const pattern = fingerprintData[finger];
+                const abbr = pattern ? patterns[pattern].abbr : '-';
+                rightHTML += `<span class="badge bg-secondary">${abbr}</span>`;
+                if (pattern) rightAbbr.push(abbr);
+                totalScore += pattern ? patterns[pattern].score : 0;
+            });
+
+            document.getElementById('left-formula').innerHTML = leftHTML;
+            document.getElementById('right-formula').innerHTML = rightHTML;
+
+            const formula = leftAbbr.join('') + ':' + rightAbbr.join('');
+            document.getElementById('final-formula').textContent = formula || '-';
+            document.getElementById('delta-index').textContent = totalScore;
+
+            const handType = getHandType(totalScore);
+            document.getElementById('hand-type').textContent = handType;
+        }
+
+        function getHandType(score) {
+            if (score <= 3) return 'Функционалист';
+            if (score <= 7) return 'Практик';
+            if (score <= 12) return 'Аналитик';
+            if (score <= 16) return 'Креативен';
+            return 'Иноватор';
+        }
+
+        function updateQuickAnalysis() {
+            const allSelected = Object.values(fingerprintData).every(p => p !== null);
+            
+            if (!allSelected) return;
+
+            const counts = { A: 0, AT: 0, L: 0, RL: 0, W: 0, S: 0 };
+            
+            Object.values(fingerprintData).forEach(pattern => {
+                counts[patterns[pattern].abbr]++;
+            });
+
+            let analysis = `
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Дъги (A)</span>
+                        <strong>${counts.A}</strong>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Палатковидни (AT)</span>
+                        <strong>${counts.AT}</strong>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>L-Примки (L)</span>
+                        <strong>${counts.L}</strong>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>R-Примки (RL)</span>
+                        <strong>${counts.RL}</strong>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Спирали (W)</span>
+                        <strong>${counts.W}</strong>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Двойни спирали (S)</span>
+                        <strong>${counts.S}</strong>
+                    </li>
+                </ul>
+            `;
+
+            const totalScore = counts.W * 2 + counts.S * 2 + counts.L + counts.RL + counts.A + counts.AT;
+            let recommendation = '';
+
+            if (counts.W + counts.S >= 6) {
+                recommendation = '<div class="alert alert-info mt-3">Висок аналитичен потенциал</div>';
+            } else if (counts.L + counts.RL >= 6) {
+                recommendation = '<div class="alert alert-success mt-3">Добър практически потенциал</div>';
+            } else if (counts.A + counts.AT >= 6) {
+                recommendation = '<div class="alert alert-warning mt-3">Стабилен практичен потенциал</div>';
+            } else {
+                recommendation = '<div class="alert alert-primary mt-3">Балансиран профил</div>';
+            }
+
+            document.getElementById('quick-analysis').innerHTML = analysis + recommendation;
+        }
+
+        document.getElementById('upload-area').addEventListener('click', () => {
+            document.getElementById('file-input').click();
+        });
+
+        document.getElementById('file-input').addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    document.getElementById('preview-image').src = e.target.result;
+                    document.getElementById('preview-container').classList.remove('d-none');
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        document.getElementById('upload-area').addEventListener('dragover', (e) => {
+            e.preventDefault();
+            document.getElementById('upload-area').classList.add('dragover');
+        });
+
+        document.getElementById('upload-area').addEventListener('dragleave', () => {
+            document.getElementById('upload-area').classList.remove('dragover');
+        });
+
+        document.getElementById('upload-area').addEventListener('drop', (e) => {
+            e.preventDefault();
+            document.getElementById('upload-area').classList.remove('dragover');
+            
+            const file = e.dataTransfer.files[0];
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    document.getElementById('preview-image').src = e.target.result;
+                    document.getElementById('preview-container').classList.remove('d-none');
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function clearImage() {
+            document.getElementById('preview-image').src = '';
+            document.getElementById('preview-container').classList.add('d-none');
+            document.getElementById('file-input').value = '';
+        }
+
+        function generateReport() {
+            const allSelected = Object.values(fingerprintData).every(p => p !== null);
+            
+            if (!allSelected) {
+                alert('Моля, попълнете всички 10 пръста!');
+                return;
+            }
+
+            const formula = document.getElementById('final-formula').textContent;
+            localStorage.setItem('fingerprint_data', JSON.stringify(fingerprintData));
+            localStorage.setItem('fingerprint_formula', formula);
+
+            window.location.href = 'report.html';
+        }
+    </script>
+</body>
+</html>

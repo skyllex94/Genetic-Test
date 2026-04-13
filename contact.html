@@ -95,7 +95,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6 mb-md-0 mb-5">
                 <!-- kamens' formsumbit -  https://formsubmit.co/d0f1b53d9f2c1063a0e8744d739cd10d -->
-                <form action="https://formsubmit.co//b564c9678dae094ec162ce1bee6780a3" method="POST">
+                <form id="contactForm">
                     <div class="row mb-2">
                         <div class="col-md-6">
                             <div class="md-form mb-0">
@@ -128,8 +128,9 @@
                         </div>
                     </div>
                     <div class="text-center text-md-left">
-                        <button class="btn btn-primary" type="submit">Изпрати</button>
+                        <button class="btn btn-primary" type="button" onclick="sendContactEmail()">Изпрати</button>
                     </div>
+                    <div id="form-status" class="status mt-2"></div>
                 </form>
 
             </div>
@@ -176,5 +177,46 @@
             <a class="text-white" href="google.com">Genetic Test - Svishtov ©</a>
         </div>
     </footer>
+
+    <script>
+    const ADMIN_EMAIL = 'genetictest-sv@abv.bg';
+
+    function sendContactEmail() {
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+
+        if (!name || !email || !subject || !message) {
+            document.querySelector('.status').innerHTML = 'Моля, попълте всички полета!';
+            return;
+        }
+
+        const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (!emailRegex.test(email)) {
+            document.querySelector('.status').innerHTML = 'Имейлът не е валиден!';
+            return;
+        }
+
+        const subjectEncoded = encodeURIComponent(`Контакт форма: ${subject} - от ${name}`);
+        const bodyEncoded = encodeURIComponent(
+            `СЪОБЩЕНИЕ ОТ КОНТАКТНАТА ФОРМА\n\n` +
+            `От: ${name}\n` +
+            `Имейл: ${email}\n` +
+            `Задание: ${subject}\n` +
+            `Съобщение:\n${message}\n` +
+            `Дата: ${new Date().toLocaleDateString('bg-BG')}`
+        );
+
+        window.location.href = `mailto:${ADMIN_EMAIL}?subject=${subjectEncoded}&body=${bodyEncoded}`;
+        
+        document.querySelector('.status').innerHTML = 'Изпраща се...';
+        
+        setTimeout(() => {
+            document.querySelector('.status').innerHTML = 'Благодарим! Съобщението ще бъде изпратено на вашия имейл.';
+            document.getElementById('contactForm').reset();
+        }, 1000);
+    }
+    </script>
 </body>
 </html>

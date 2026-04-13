@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <title>Психологиски тест за темперамент - 20 въпроса</title>
+    <meta content='maximum-scale=1.0, initial-scale=1.0, width=device-width' name='viewport'>
+    <link rel="icon" href="/img/fingerprint-scan.png" type="image/icon type">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="styles.css" rel="stylesheet">
+    <style>
+        body { background: #f5f5f5; }
+        .question-card { border-radius: 10px; margin-bottom: 20px; }
+        .form-check-label { cursor: pointer; }
+    </style>
+</head>
+<body>
+    <section class="container py-5">
+        <h1 class="text-center mb-4">Психологиски тест за темперамент</h1>
+        <p class="text-center lead mb-4">20 въпроса</p>
+        
+        <form id="test-form" method="post">
+            <div class="card mb-4 p-3">
+                <h5 class="mb-3">1. Когато се сблъскате с проблем, как реагирате?</h5>
+                <div class="form-check"><input type="radio" name="q1" value="phlegmatic" class="form-check-input"><label class="form-check-label ms-2">Анализирам внимателно преди да действам</label></div>
+                <div class="form-check"><input type="radio" name="q1" value="choleric" class="form-check-input"><label class="form-check-label ms-2">Действам бързо и емоционално</label></div>
+                <div class="form-check"><input type="radio" name="q1" value="sanguine" class="form-check-input"><label class="form-check-label ms-2">Търся подкрепа от другите</label></div>
+                <div class="form-check"><input type="radio" name="q1" value="melancholic" class="form-check-input"><label class="form-check-label ms-2">Премислям много пъти и се притеснявам</label></div>
+            </div>
+            
+            <div class="card mb-4 p-3">
+                <h5 class="mb-3">2. В компания как се чувствате най-добре?</h5>
+                <div class="form-check"><input type="radio" name="q2" value="sanguine" class="form-check-input"><label class="form-check-label ms-2">В центъра на вниманието, разказвам истории</label></div>
+                <div class="form-check"><input type="radio" name="q2" value="phlegmatic" class="form-check-input"><label class="form-check-label ms-2">Наблюдавам и слушам другите</label></div>
+                <div class="form-check"><input type="radio" name="q2" value="melancholic" class="form-check-input"><label class="form-check-label ms-2">Обсъждам сериозни теми</label></div>
+                <div class="form-check"><input type="radio" name="q2" value="choleric" class="form-check-input"><label class="form-check-label ms-2">Поемам лидерството</label></div>
+            </div>
+            
+            <div class="card mb-4 p-3">
+                <h5 class="mb-3">3. Какво ви мотивира най-много?</h5>
+                <div class="form-check"><input type="radio" name="q3" value="choleric" class="form-check-input"><label class="form-check-label ms-2">Успехът и признанието</label></div>
+                <div class="form-check"><input type="radio" name="q3" value="phlegmatic" class="form-check-input"><label class="form-check-label ms-2">Хармонията и спокойствието</label></div>
+                <div class="form-check"><input type="radio" name="q3" value="sanguine" class="form-check-input"><label class="form-check-label ms-2">Новите преживявания и забавлението</label></div>
+                <div class="form-check"><input type="radio" name="q3" value="melancholic" class="form-check-input"><label class="form-check-label ms-2">Смисълът и дълбочината</label></div>
+            </div>
+            
+            <div class="card mb-4 p-3">
+                <h5 class="mb-3">4. Когато ви се ядосат, какво правите?</h5>
+                <div class="form-check"><input type="radio" name="q4" value="choleric" class="form-check-input"><label class="form-check-label ms-2">Избухвам веднага</label></div>
+                <div class="form-check"><input type="radio" name="q4" value="phlegmatic" class="form-check-input"><label class="form-check-label ms-2">Тръгвам си и премислям после</label></div>
+                <div class="form-check"><input type="radio" name="q4" value="melancholic" class="form-check-input"><label class="form-check-label ms-2">Сдържам се, но дълго мисля</label></div>
+                <div class="form-check"><input type="radio" name="q4" value="sanguine" class="form-check-input"><label class="form-check-label ms-2">Опитвам се да разведря ситуацията</label></div>
+            </div>
+            
+            <div class="card mb-4 p-3">
+                <h5 class="mb-3">5. Как планирате нещата?</h5>
+                <div class="form-check"><input type="radio" name="q5" value="melancholic" class="form-check-input"><label class="form-check-label ms-2">Имам подробен план за всичко</label></div>
+                <div class="form-check"><input type="radio" name="q5" value="phlegmatic" class="form-check-input"><label class="form-check-label ms-2">Планирам гъвкаво, но имам цел</label></div>
+                <div class="form-check"><input type="radio" name="q5" value="sanguine" class="form-check-input"><label class="form-check-label ms-2">Приключвам в последния момент</label></div>
+                <div class="form-check"><input type="radio" name="q5" value="choleric" class="form-check-input"><label class="form-check-label ms-2">Взимам бързи решения</label></div>
+            </div>
+            
+            <div class="card mb-4 p-3">
+                <h5 class="mb-3">6. Как се справяте със стрес?</h5>
+                <div class="form-check"><input type="radio" name="q6" value="phlegmatic" class="form-check-input"><label class="form-check-label ms-2">Оставам спокоен и контролирам нещата</label></div>
+                <div class="form-check"><input type="radio" name="q6" value="melancholic" class="form-check-input"><label class="form-check-label ms-2">Притеснявам се и анализирам</label></div>
+                <div class="form-check"><input type="radio" name="q6" value="sanguine" class="form-check-input"><label class="form-check-label ms-2">Търся подкрепата на приятели</label></div>
+                <div class="form-check"><input type="radio" name="q6" value="choleric" class="form-check-input"><label class="form-check-label ms-2">Действам активно за решаване</label></div>
+            </div>
+            
+            <div class="card mb-4 p-3">
+                <h5 class="mb-3">7. Кое ви описва най-добре?</h5>
+                <div class="form-check"><input type="radio" name="q7" value="sanguine" class="form-check-input"><label class="form-check-label ms-2">Ентусиазиран и оптимистичен</label></div>
+                <div class="form-check"><input type="radio" name="q7" value="melancholic" class="form-check-input"><label class="form-check-label ms-2">Тих и срамежлив</label></div>
+                <div class="form-check"><input type="radio" name="q7" value="phlegmatic" class="form-check-input"><label class="form-check-label ms-2">Спокоен и стабилен</label></div>
+                <div class="form-check"><input type="radio" name="q7" value="choleric" class="form-check-input"><label class="form-check-label ms-2">Енергичен и амбициозен</label></div>
+            </div>
+            
+            <div class="card mb-4 p-3">
+                <h5 class="mb-3">8. Как вземате важни решения?</h5>
+                <div class="form-check"><input type="radio" name="q8" value="melancholic" class="form-check-input"><label class="form-check-label ms-2">С анализ на фактите</label></div>
+                <div class="form-check"><input type="radio" name="q8" value="sanguine" class="form-check-input"><label class="form-check-label ms-2">С интуицията си</label></div>
+                <div class="form-check"><input type="radio" name="q8" value="choleric" class="form-check-input"><label class="form-check-label ms-2">Бързо и решително</label></div>
+                <div class="form-check"><input type="radio" name="q8" value="phlegmatic" class="form-check-input"><label class="form-check-label ms-2">Балансирам всички гледни точки</label></div>
+            </div>
+            
+            <div class="card mb-4 p-3">
+                <h5 class="mb-3">9. Какво виждат хората в вас?</h5>
+                <div class="form-check"><input type="radio" name="q9" value="choleric" class="form-check-input"><label class="form-check-label ms-2">Лидер и организатор</label></div>
+                <div class="form-check"><input type="radio" name="q9" value="sanguine" class="form-check-input"><label class="form-check-label ms-2">Добър и забавен приятел</label></div>
+                <div class="form-check"><input type="radio" name="q9" value="phlegmatic" class="form-check-input"><label class="form-check-label ms-2">Надежден и стабилен</label></div>
+                <div class="form-check"><input type="radio" name="q9" value="melancholic" class="form-check-input"><label class="form-check-label ms-2">Мислител и анализатор</label></div>
+            </div>
+            
+            <div class="card mb-4 p-3">
+                <h5 class="mb-3">10. Как се отнасяте с критики?</h5>
+                <div class="form-check"><input type="radio" name="q10" value="melancholic" class="form-check-input"><label class="form-check-label ms-2">Приемам ги лично и се притеснявам</label></div>
+                <div class="form-check"><input type="radio" name="q10" value="phlegmatic" class="form-check-input"><label class="form-check-label ms-2">Игнорирам ги</label></div>
+                <div class="form-check"><input type="radio" name="q10" value="choleric" class="form-check-input"><label class="form-check-label ms-2">Защитавам се веднага</label></div>
+                <div class="form-check"><input type="radio" name="q10" value="sanguine" class="form-check-input"><label class="form-check-label ms-2">Превръщам ги в шега</label></div>
+            </div>
+            
+            <div class="card mb-4 p-3">
+                <h5 class="mb-3">11. Как работите под напрежение?</h5>
+                <div class="form-check"><input type="radio" name="q11" value="choleric" class="form-check-input"><label class="form-check-label ms-2">Работя по-добре под напрежение</label></div>
+                <div class="form-check"><input type="radio" name="q11" value="phlegmatic" class="form-check-input"><label class="form-check-label ms-2">Запазвам спокойствие</label></div>
+                <div class="form-check"><input type="radio" name="q11" value="melancholic" class="form-check-input"><label class="form-check-label ms-2">Ставам тревожен</label></div>
+                <div class="form-check"><input type="radio" name="q11" value="sanguine" class="form-check-input"><label class="form-check-label ms-2">Мотивирам екипа</label></div>
+            </div>
+            
+            <div class="card mb-4 p-3">
+                <h5 class="mb-3">12. Кое най-много ви frustranе?</h5>
+                <div class="form-check"><input type="radio" name="q12" value="melancholic" class="form-check-input"><label class="form-check-label ms-2">Безредие и хаос</label></div>
+                <div class="form-check"><input type="radio" name="q12" value="choleric" class="form-check-input"><label class="form-check-label ms-2">Липса на контрол</label></div>
+                <div class="form-check"><input type="radio" name="q12" value="sanguine" class="form-check-input"><label class="form-check-label ms-2">Скуката</label></div>
+                <div class="form-check"><input type="radio" name="q12" value="phlegmatic" class="form-check-input"><label class="form-check-label ms-2">Конфликтите</label></div>
+            </div>
+            
+            <div class="card mb-4 p-3">
+                <h5 class="mb-3">13. Какво обичате да правите в свободното си време?</h5>
+                <div class="form-check"><input type="radio" name="q13" value="melancholic" class="form-check-input"><label class="form-check-label ms-2">Занимая се с творчески дейности</label></div>
+                <div class="form-check"><input type="radio" name="q13" value="choleric" class="form-check-input"><label class="form-check-label ms-2">Спорт или активни занимания</label></div>
+                <div class="form-check"><input type="radio" name="q13" value="sanguine" class="form-check-input"><label class="form-check-label ms-2">Прекарвам време с приятели</label></div>
+                <div class="form-check"><input type="radio" name="q13" value="phlegmatic" class="form-check-input"><label class="form-check-label ms-2">Почивка и спокойствие</label></div>
+            </div>
+            
+            <div class="card mb-4 p-3">
+                <h5 class="mb-3">14. Как общувате с непознати?</h5>
+                <div class="form-check"><input type="radio" name="q14" value="sanguine" class="form-check-input"><label class="form-check-label ms-2">Лесно започвам разговор</label></div>
+                <div class="form-check"><input type="radio" name="q14" value="phlegmatic" class="form-check-input"><label class="form-check-label ms-2">Изчаквам да ме потърсят</label></div>
+                <div class="form-check"><input type="radio" name="q14" value="melancholic" class="form-check-input"><label class="form-check-label ms-2">Започвам с въпроси</label></div>
+                <div class="form-check"><input type="radio" name="q14" value="choleric" class="form-check-input"><label class="form-check-label ms-2">Поемам инициативата</label></div>
+            </div>
+            
+            <div class="card mb-4 p-3">
+                <h5 class="mb-3">15. Какво ви кара да се чувствате осъществени?</h5>
+                <div class="form-check"><input type="radio" name="q15" value="choleric" class="form-check-input"><label class="form-check-label ms-2">Постигане на цели</label></div>
+                <div class="form-check"><input type="radio" name="q15" value="sanguine" class="form-check-input"><label class="form-check-label ms-2">Хармонични отношения</label></div>
+                <div class="form-check"><input type="radio" name="q15" value="phlegmatic" class="form-check-input"><label class="form-check-label ms-2">Стабилност и сигурност</label></div>
+                <div class="form-check"><input type="radio" name="q15" value="melancholic" class="form-check-input"><label class="form-check-label ms-2">Дълбоки постижения</label></div>
+            </div>
+            
+            <div class="card mb-4 p-3">
+                <h5 class="mb-3">16. Как се справяте с промени?</h5>
+                <div class="form-check"><input type="radio" name="q16" value="phlegmatic" class="form-check-input"><label class="form-check-label ms-2">Приемам ги трудно, предпочитам рутина</label></div>
+                <div class="form-check"><input type="radio" name="q16" value="sanguine" class="form-check-input"><label class="form-check-label ms-2">Бързо се адаптирам</label></div>
+                <div class="form-check"><input type="radio" name="q16" value="melancholic" class="form-check-input"><label class="form-check-label ms-2">Планирам внимателно всяка промяна</label></div>
+                <div class="form-check"><input type="radio" name="q16" value="choleric" class="form-check-input"><label class="form-check-label ms-2">Поемам ги като предизвикателство</label></div>
+            </div>
+            
+            <div class="card mb-4 p-3">
+                <h5 class="mb-3">17. Какво е отношението ви към грешките?</h5>
+                <div class="form-check"><input type="radio" name="q17" value="sanguine" class="form-check-input"><label class="form-check-label ms-2">Виждам ги като възможност за учене</label></div>
+                <div class="form-check"><input type="radio" name="q17" value="melancholic" class="form-check-input"><label class="form-check-label ms-2">Анализирам ги подробно</label></div>
+                <div class="form-check"><input type="radio" name="q17" value="choleric" class="form-check-input"><label class="form-check-label ms-2">Бързо ги поправям</label></div>
+                <div class="form-check"><input type="radio" name="q17" value="phlegmatic" class="form-check-input"><label class="form-check-label ms-2">Приемам ги спокойно</label></div>
+            </div>
+            
+            <div class="card mb-4 p-3">
+                <h5 class="mb-3">18. Какво виждате в бъдещето?</h5>
+                <div class="form-check"><input type="radio" name="q18" value="sanguine" class="form-check-input"><label class="form-check-label ms-2">Възможности и приключения</label></div>
+                <div class="form-check"><input type="radio" name="q18" value="choleric" class="form-check-input"><label class="form-check-label ms-2">Ясни цели и постижения</label></div>
+                <div class="form-check"><input type="radio" name="q18" value="phlegmatic" class="form-check-input"><label class="form-check-label ms-2">Стабилност и сигурност</label></div>
+                <div class="form-check"><input type="radio" name="q18" value="melancholic" class="form-check-input"><label class="form-check-label ms-2">Предизвикателства и смисъл</label></div>
+            </div>
+            
+            <div class="card mb-4 p-3">
+                <h5 class="mb-3">19. Как третирате другите?</h5>
+                <div class="form-check"><input type="radio" name="q19" value="phlegmatic" class="form-check-input"><label class="form-check-label ms-2">Състрадателно и разбиращо</label></div>
+                <div class="form-check"><input type="radio" name="q19" value="melancholic" class="form-check-input"><label class="form-check-label ms-2">Равно и справедливо</label></div>
+                <div class="form-check"><input type="radio" name="q19" value="sanguine" class="form-check-input"><label class="form-check-label ms-2">Ентусиазирано и подкрепящо</label></div>
+                <div class="form-check"><input type="radio" name="q19" value="choleric" class="form-check-input"><label class="form-check-label ms-2">Директно и ефективно</label></div>
+            </div>
+            
+            <div class="card mb-4 p-3">
+                <h5 class="mb-3">20. Кое ви дава енергия?</h5>
+                <div class="form-check"><input type="radio" name="q20" value="choleric" class="form-check-input"><label class="form-check-label ms-2">Постигането на резултати</label></div>
+                <div class="form-check"><input type="radio" name="q20" value="sanguine" class="form-check-input"><label class="form-check-label ms-2">Времето с хората</label></div>
+                <div class="form-check"><input type="radio" name="q20" value="phlegmatic" class="form-check-input"><label class="form-check-label ms-2">Спокойствието</label></div>
+                <div class="form-check"><input type="radio" name="q20" value="melancholic" class="form-check-input"><label class="form-check-label ms-2">Разбирането на нещата</label></div>
+            </div>
+            
+            <div class="text-center mt-4 mb-5">
+                <button type="button" class="btn btn-success btn-lg" onclick="calculateResult()">
+                    <i class="fas fa-check me-2"></i>Виж резултата
+                </button>
+            </div>
+        </form>
+        
+        <div id="result" style="display:none;" class="mt-4 mb-5">
+        </div>
+    </section>
+
+    <script>
+        function calculateResult() {
+            var scores = { melancholic: 0, phlegmatic: 0, sanguine: 0, choleric: 0 };
+            
+            for(var i = 1; i <= 20; i++) {
+                var radios = document.getElementsByName('q' + i);
+                for(var r = 0; r < radios.length; r++) {
+                    if(radios[r].checked) {
+                        scores[radios[r].value]++;
+                    }
+                }
+            }
+            
+            var max = 0;
+            var temp = '';
+            for(var t in scores) {
+                if(scores[t] > max) {
+                    max = scores[t];
+                    temp = t;
+                }
+            }
+            
+            var names = {
+                melancholic: 'Меланхолик',
+                phlegmatic: 'Флегматик',
+                sanguine: 'Сангвиник',
+                choleric: 'Холерик'
+            };
+            
+            var icons = {
+                melancholic: '📚',
+                phlegmatic: '🧘',
+                sanguine: '🎉',
+                choleric: '⚡'
+            };
+            
+            var resultHtml = '<div class="card"><div class="card-body text-center">';
+            resultHtml += '<div style="font-size: 60px;">' + icons[temp] + '</div>';
+            resultHtml += '<h2>' + names[temp] + '</h2>';
+            resultHtml += '<p class="lead">Вашият доминиращ темперамент</p>';
+            resultHtml += '<hr>';
+            resultHtml += '<p>Меланхолик: ' + scores.melancholic + '/20</p>';
+            resultHtml += '<p>Флегматик: ' + scores.phlegmatic + '/20</p>';
+            resultHtml += '<p>Сангвиник: ' + scores.sanguine + '/20</p>';
+            resultHtml += '<p>Холерик: ' + scores.choleric + '/20</p>';
+            resultHtml += '<hr>';
+            resultHtml += '<a href="order.html" class="btn btn-success">Поръчай пълен отчет</a>';
+            resultHtml += '</div></div>';
+            
+            document.getElementById('result').innerHTML = resultHtml;
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('test-form').style.display = 'none';
+            window.scrollTo(0, document.body.scrollHeight);
+        }
+    </script>
+</body>
+</html>
