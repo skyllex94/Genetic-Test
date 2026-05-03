@@ -364,89 +364,10 @@
                 </div>
             </div>
         </div>
-    
-        <div class="card my-3">
-            <div class="row justify-content-center h-100 py-3">
-                <div class="col-lg-2 mx-auto px-5 ">
-                    <img src="/img/hand.png" class="img-fluid mx-auto d-none d-lg-block rounded-start rightHand" alt="...">
-                    <p class="text-center mt-3 lead">Дясна Ръка</p>
-                </div>
-                <div class="col-lg-10">
-                    <div class="row justify-content-center">
-                        <div class="col-md-2 text-center mb-2">
-                            <div class="card border-dark mx-auto mx-md-0 h-100" style="max-width: 18rem;" id="Десен Палец">
-                                <div class="card-header">Палец</div>
-                                <select id="mobile-right-thumb" class="form-select">
-                                    <option value="1">Спирала</option>
-                                    <option value="2">Двойна Спирала</option>
-                                    <option value="3">Дъга</option>
-                                    <option value="4">R-Примка</option>
-                                    <option value="5">L-Примка</option>
-                                    <option value="6">Палатковидна Дъга</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-2 text-center mb-2">
-                            <div class="card border-dark mx-auto mx-md-0 h-100" style="max-width: 18rem;" id="Десен Показалец">
-                                <div class="card-header">Показалец</div>
-                                <select id="mobile-right-index" class="form-select">
-                                    <option value="1">Спирала</option>
-                                    <option value="2">Двойна Спирала</option>
-                                    <option value="3">Дъга</option>
-                                    <option value="4">R-Примка</option>
-                                    <option value="5">L-Примка</option>
-                                    <option value="6">Палатковидна Дъга</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-2 text-center mb-2">
-                            <div class="card border-dark mx-auto mx-md-0 h-100" style="max-width: 18rem;" id="Десен Среден">
-                                <div class="card-header">Среден</div>
-                                <select id="mobile-right-middle" class="form-select">
-                                    <option value="1">Спирала</option>
-                                    <option value="2">Двойна Спирала</option>
-                                    <option value="3">Дъга</option>
-                                    <option value="4">R-Примка</option>
-                                    <option value="5">L-Примка</option>
-                                    <option value="6">Палатковидна Дъга</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-2 text-center mb-2">
-                            <div class="card border-dark mx-auto mx-md-0 h-100" style="max-width: 18rem;" id="Десен Безимен">
-                                <div class="card-header">Безимен</div>
-                                <select id="mobile-right-ring" class="form-select">
-                                    <option value="1">Спирала</option>
-                                    <option value="2">Двойна Спирала</option>
-                                    <option value="3">Дъга</option>
-                                    <option value="4">R-Примка</option>
-                                    <option value="5">L-Примка</option>
-                                    <option value="6">Палатковидна Дъга</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-2 text-center mb-2">
-                            <div class="card border-dark mx-auto mx-md-0 h-100" style="max-width: 18rem;" id="Дясно Кутре">
-                                <div class="card-header">Кутре</div>
-                                <select id="mobile-right-pinky" class="form-select">
-                                    <option value="1">Спирала</option>
-                                    <option value="2">Двойна Спирала</option>
-                                    <option value="3">Дъга</option>
-                                    <option value="4">R-Примка</option>
-                                    <option value="5">L-Примка</option>
-                                    <option value="6">Палатковидна Дъга</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-2">
-                            <div class="alert">
-                                <i class="fa-solid fa-circle-info"></i>
-                                След като натиснете "Потвърди" опциите ви ще бъдат заключени.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+        <div class="text-center my-4">
+            <button type="button" id="mobile-confirm" class="btn btn-primary btn-lg me-2" onclick="mobileConfirm()">Потвърди</button>
+            <button type="button" id="mobile-send" class="btn btn-success btn-lg" onclick="sendMobileFormByEmail()" disabled>Изпрати данните</button>
         </div>
     </section>
 
@@ -689,12 +610,18 @@
     <section id="submission-form" class="container mb-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <form id="online-form" action="mailto:genetictest-sv@abv.bg" method="POST" onsubmit="return sendFormByEmail()">
-                    <input type="hidden" name="_subject" placeholder="Subject" value="Нов онлайн отчет">
+                <form id="online-form" action="https://formsubmit.co/genetictest-sv@abv.bg" method="POST">
+                    <input type="hidden" name="_subject" value="Нов онлайн отчет - Биометричен тест">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" id="form-name" name="name">
+                    <input type="hidden" id="form-email" name="email">
+                    <input type="hidden" id="form-age" name="age">
+                    <input type="hidden" id="form-gender" name="gender">
                     <textarea id="message" name="message" hidden></textarea>
 
                     <div class="text-center">
-                        <button type="submit" id="sendData" class="btn btn-success btn-lg">Изпрати данните</button>
+                        <button type="button" id="confirmSelection" class="btn btn-primary btn-lg me-2" onclick="confirmData()">Потвърди</button>
+                        <button type="submit" id="sendData" class="btn btn-success btn-lg" disabled>Изпрати данните</button>
                     </div>
                 </form>
             </div>
@@ -731,13 +658,11 @@
 
     <script>
     function sendFormByEmail() {
-        var form = document.getElementById('online-form');
-        var formData = new FormData(form);
+        var message = document.getElementById('message').value;
         
-        var message = "Нови данни от онлайн тест\n\n";
-        
-        for (var pair of formData.entries()) {
-            message += pair[0] + ": " + pair[1] + "\n";
+        if (!message || message.trim() === '') {
+            alert('Моля първо натиснете бутона "Потвърди" за да запазите вашите данни.');
+            return false;
         }
         
         var subject = encodeURIComponent("Нови данни от биометричен тест");
@@ -745,10 +670,24 @@
         
         window.location.href = "mailto:genetictest-sv@abv.bg?subject=" + subject + "&body=" + body;
         
-        // Clear the form
-        form.reset();
+        alert("Данните са изпратени! Ще получите отговор в следващите дни.");
+        return false;
+    }
+
+    function sendMobileFormByEmail() {
+        var message = document.getElementById('message').value;
         
-        alert("Данните са изпратени! Формата е изчистена.");
+        if (!message || message.trim() === '') {
+            alert('Моля първо натиснете бутона "Потвърди" за да запазите вашите данни.');
+            return false;
+        }
+        
+        var subject = encodeURIComponent("Нови данни от биометричен тест");
+        var body = encodeURIComponent(message);
+        
+        window.location.href = "mailto:genetictest-sv@abv.bg?subject=" + subject + "&body=" + body;
+        
+        alert("Данните са изпратени! Ще получите отговор в следващите дни.");
         return false;
     }
     </script>
