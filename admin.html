@@ -56,19 +56,19 @@
                     <h4 class="text-white"><i class="fas fa-cog me-2"></i>Админ Панел</h4>
                 </div>
                 <nav class="mt-3">
-                    <a href="#" class="active" onclick="showSection('dashboard')">
+                    <a href="#" class="active" onclick="showSection('dashboard', this)">
                         <i class="fas fa-tachometer-alt me-2"></i>Табло
                     </a>
-                    <a href="#" onclick="showSection('orders')">
+                    <a href="#" onclick="showSection('orders', this)">
                         <i class="fas fa-shopping-cart me-2"></i>Поръчки
                     </a>
-                    <a href="#" onclick="showSection('tests')">
+                    <a href="#" onclick="showSection('tests', this)">
                         <i class="fas fa-clipboard-list me-2"></i>Тестове
                     </a>
-                    <a href="#" onclick="showSection('results')">
+                    <a href="#" onclick="showSection('results', this)">
                         <i class="fas fa-chart-bar me-2"></i>Резултати
                     </a>
-                    <a href="#" onclick="showSection('reports')">
+                    <a href="#" onclick="showSection('reports', this)">
                         <i class="fas fa-file-alt me-2"></i>Отчети
                     </a>
                     <a href="index.html">
@@ -91,7 +91,7 @@
                             <div class="stat-card bg-primary text-white">
                                 <div class="d-flex justify-content-between">
                                     <div>
-                                        <h3>12</h3>
+                                        <h3 id="stat-orders">0</h3>
                                         <p class="mb-0">Поръчки</p>
                                     </div>
                                     <i class="fas fa-shopping-cart fa-2x opacity-50"></i>
@@ -102,7 +102,7 @@
                             <div class="stat-card bg-success text-white">
                                 <div class="d-flex justify-content-between">
                                     <div>
-                                        <h3>8</h3>
+                                        <h3 id="stat-completed">0</h3>
                                         <p class="mb-0">Завършени</p>
                                     </div>
                                     <i class="fas fa-check-circle fa-2x opacity-50"></i>
@@ -113,7 +113,7 @@
                             <div class="stat-card bg-warning text-white">
                                 <div class="d-flex justify-content-between">
                                     <div>
-                                        <h3>45</h3>
+                                        <h3 id="stat-tests">0</h3>
                                         <p class="mb-0">Теста</p>
                                     </div>
                                     <i class="fas fa-clipboard-list fa-2x opacity-50"></i>
@@ -124,10 +124,10 @@
                             <div class="stat-card bg-info text-white">
                                 <div class="d-flex justify-content-between">
                                     <div>
-                                        <h3>156</h3>
-                                        <p class="mb-0">Посещения</p>
+                                        <h3 id="stat-revenue">0 лв</h3>
+                                        <p class="mb-0">Приходи</p>
                                     </div>
-                                    <i class="fas fa-users fa-2x opacity-50"></i>
+                                    <i class="fas fa-money-bill-wave fa-2x opacity-50"></i>
                                 </div>
                             </div>
                         </div>
@@ -166,7 +166,27 @@
                                     <h5 class="mb-0"><i class="fas fa-chart-line me-2"></i>Анализ на типовете</h5>
                                 </div>
                                 <div class="card-body">
-                                    <canvas id="analysis-chart" height="200"></canvas>
+                                    <div class="row text-center">
+                                        <div class="col-6 border-end">
+                                            <h4 id="melancholic-count">0</h4>
+                                            <small>Меланхолик</small>
+                                        </div>
+                                        <div class="col-6">
+                                            <h4 id="phlegmatic-count">0</h4>
+                                            <small>Флегматик</small>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row text-center">
+                                        <div class="col-6 border-end">
+                                            <h4 id="sanguine-count">0</h4>
+                                            <small>Сангвиник</small>
+                                        </div>
+                                        <div class="col-6">
+                                            <h4 id="choleric-count">0</h4>
+                                            <small>Холерик</small>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -281,19 +301,17 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label class="form-label">Тип отчет</label>
-                                        <select class="form-select" id="report-type">
+                                        <label class="form-label" for="report-type">Тип отчет</label>                                                                          <select class="form-select" id="report-type">
                                             <option value="orders">Поръчки</option>
                                             <option value="tests">Тестове</option>
                                             <option value="stats">Статистика</option>
                                         </select>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label">Дата от</label>
-                                        <input type="date" class="form-control" id="date-from">
+                                        <label class="form-label" for="date-from">Дата от</label>                                      <input type="date" class="form-control" id="date-from">
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label">Дата до</label>
+                                        <<label class="form-label" for="date-to">Дата до</label>
                                         <input type="date" class="form-control" id="date-to">
                                     </div>
                                     <button class="btn btn-success" onclick="generateReport()">
@@ -315,175 +333,216 @@
         </div>
     </div>
 
-    <script>
-        document.getElementById('current-date').textContent = new Date().toLocaleDateString('bg-BG', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
+<script>
+    document.getElementById('current-date').textContent = new Date().toLocaleDateString('bg-BG', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+
+    let orders = [];
+    let testResults = [];
+
+    function loadData() {
+        const storedOrders = localStorage.getItem('orders');
+        if (storedOrders) {
+            orders = JSON.parse(storedOrders);
+        }
+
+        const storedTests = localStorage.getItem('test_results');
+        if (storedTests) {
+            testResults = JSON.parse(storedTests);
+        }
+
+        updateDashboard();
+        updateOrdersTable();
+        updateTestsTable();
+        updateStats();
+    }
+
+    function updateDashboard() {
+        // Обновяване на статистическите карти
+        document.getElementById('stat-orders').textContent = orders.length;
+        const completed = orders.filter(o => o.status === 'completed').length;
+        document.getElementById('stat-completed').textContent = completed;
+        document.getElementById('stat-tests').textContent = testResults.length;
+        const revenue = orders.reduce((sum, o) => sum + (o.price || 0), 0);
+        document.getElementById('stat-revenue').textContent = revenue + ' лв';
+
+        // Броене на темпераменти
+        const counts = { melancholic: 0, phlegmatic: 0, sanguine: 0, choleric: 0 };
+        testResults.forEach(t => {
+            if (t.temperament) {
+                const key = t.temperament.toLowerCase();
+                if (counts.hasOwnProperty(key)) {
+                    counts[key]++;
+                }
+            }
         });
+        document.getElementById('melancholic-count').textContent = counts.melancholic;
+        document.getElementById('phlegmatic-count').textContent = counts.phlegmatic;
+        document.getElementById('sanguine-count').textContent = counts.sanguine;
+        document.getElementById('choleric-count').textContent = counts.choleric;
 
-        let orders = [];
-        let testResults = [];
-
-        function loadData() {
-            const storedOrders = localStorage.getItem('orders');
-            if (storedOrders) {
-                orders = JSON.parse(storedOrders);
-            }
-
-            const storedTests = localStorage.getItem('test_results');
-            if (storedTests) {
-                testResults = JSON.parse(storedTests);
-            }
-
-            updateDashboard();
-            updateOrdersTable();
-            updateTestsTable();
-            updateStats();
+        // Последни поръчки в таблото
+        const ordersList = document.getElementById('orders-list');
+        if (orders.length === 0) {
+            ordersList.innerHTML = '<tr><td colspan="5" class="text-center text-muted">Няма поръчки</td></tr>';
+            return;
         }
 
-        function updateDashboard() {
-            const ordersList = document.getElementById('orders-list');
-            
-            if (orders.length === 0) {
-                ordersList.innerHTML = '<tr><td colspan="5" class="text-center text-muted">Няма поръчки</td></tr>';
-                return;
-            }
+        ordersList.innerHTML = orders.slice(0, 5).map((order, index) => {
+            const statusClass = order.status === 'completed' ? 'badge-completed' : 
+                             order.status === 'processing' ? 'badge-processing' : 'badge-new';
+            const statusText = order.status === 'completed' ? 'Завършена' : 
+                             order.status === 'processing' ? 'Обработва се' : 'Нова';
+            return `
+            <tr>
+                <td>#${String(index + 1).padStart(4, '0')}</td>
+                <td>${order.name || '-'}</td>
+                <td>${order.reportType || '-'}</td>
+                <td><span class="badge ${statusClass}">${statusText}</span></td>
+                <td>${order.date ? new Date(order.date).toLocaleDateString('bg-BG') : '-'}</td>
+            </tr>`;
+        }).join('');
+    }
 
-            ordersList.innerHTML = orders.slice(0, 5).map((order, index) => `
-                <tr>
-                    <td>#${String(index + 1).padStart(4, '0')}</td>
-                    <td>${order.name || '-'}</td>
-                    <td>${order.reportType || '-'}</td>
-                    <td><span class="badge badge-new">Нова</span></td>
-                    <td>${order.date ? new Date(order.date).toLocaleDateString('bg-BG') : '-'}</td>
-                </tr>
-            `).join('');
+    function updateOrdersTable() {
+        const allOrdersList = document.getElementById('all-orders-list');
+        if (orders.length === 0) {
+            allOrdersList.innerHTML = '<tr><td colspan="9" class="text-center text-muted">Няма поръчки</td></tr>';
+            return;
         }
 
-        function updateOrdersTable() {
-            const allOrdersList = document.getElementById('all-orders-list');
-            
-            if (orders.length === 0) {
-                allOrdersList.innerHTML = '<tr><td colspan="9" class="text-center text-muted">Няма поръчки</td></tr>';
-                return;
-            }
+        allOrdersList.innerHTML = orders.map((order, index) => {
+            const statusClass = order.status === 'completed' ? 'badge-completed' : 
+                             order.status === 'processing' ? 'badge-processing' : 'badge-new';
+            const statusText = order.status === 'completed' ? 'Завършена' : 
+                             order.status === 'processing' ? 'Обработва се' : 'Нова';
+            return `
+            <tr>
+                <td>#${String(index + 1).padStart(4, '0')}</td>
+                <td>${order.name || '-'}</td>
+                <td>${order.email || '-'}</td>
+                <td>${order.phone || '-'}</td>
+                <td>${order.formula || '-'}</td>
+                <td>${order.reportType || '-'}</td>
+                <td>${order.price || 0} лв</td>
+                <td><span class="badge ${statusClass}">${statusText}</span></td>
+                <td>
+                    <button class="btn btn-sm btn-outline-primary me-1" onclick="viewOrder(${index})">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-success me-1" onclick="changeStatus(${index}, 'processing')">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-info me-1" onclick="changeStatus(${index}, 'completed')">
+                        <i class="fas fa-check"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger" onclick="deleteOrder(${index})">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </td>
+            </tr>`;
+        }).join('');
+    }
 
-            allOrdersList.innerHTML = orders.map((order, index) => `
-                <tr>
-                    <td>#${String(index + 1).padStart(4, '0')}</td>
-                    <td>${order.name || '-'}</td>
-                    <td>${order.email || '-'}</td>
-                    <td>${order.phone || '-'}</td>
-                    <td>${order.formula || '-'}</td>
-                    <td>${order.reportType || '-'}</td>
-                    <td>${order.price || 0} лв</td>
-                    <td><span class="badge badge-new">Нова</span></td>
-                    <td>
-                        <button class="btn btn-sm btn-outline-primary me-1" onclick="viewOrder(${index})">
-                            <i class="fas fa-eye"></i>
-                        </button>
-                        <button class="btn btn-sm btn-outline-danger" onclick="deleteOrder(${index})">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-            `).join('');
+    function updateTestsTable() {
+        const testsList = document.getElementById('tests-list');
+        if (testResults.length === 0) {
+            testsList.innerHTML = '<tr><td colspan="7" class="text-center text-muted">Няма тестове</td></tr>';
+            return;
         }
 
-        function updateTestsTable() {
-            const testsList = document.getElementById('tests-list');
-            
-            if (testResults.length === 0) {
-                testsList.innerHTML = '<tr><td colspan="7" class="text-center text-muted">Няма тестове</td></tr>';
-                return;
-            }
+        testsList.innerHTML = testResults.map((test, index) => `
+            <tr>
+                <td>${index + 1}</td>
+                <td>${test.date ? new Date(test.date).toLocaleDateString('bg-BG') : '-'}</td>
+                <td>${test.temperament || '-'}</td>
+                <td>${test.scores?.melancholic || 0}</td>
+                <td>${test.scores?.phlegmatic || 0}</td>
+                <td>${test.scores?.sanguine || 0}</td>
+                <td>${test.scores?.choleric || 0}</td>
+            </tr>
+        `).join('');
+    }
 
-            testsList.innerHTML = testResults.map((test, index) => `
-                <tr>
-                    <td>${index + 1}</td>
-                    <td>${test.date ? new Date(test.date).toLocaleDateString('bg-BG') : '-'}</td>
-                    <td>${test.temperament || '-'}</td>
-                    <td>${test.scores?.melancholic || 0}</td>
-                    <td>${test.scores?.phlegmatic || 0}</td>
-                    <td>${test.scores?.sanguine || 0}</td>
-                    <td>${test.scores?.choleric || 0}</td>
-                </tr>
-            `).join('');
-        }
+    function updateStats() {
+        document.getElementById('total-orders').textContent = orders.length;
+        document.getElementById('total-tests').textContent = testResults.length;
+        const revenue = orders.reduce((sum, order) => sum + (order.price || 0), 0);
+        document.getElementById('total-revenue').textContent = revenue + ' лв';
+    }
 
-        function updateStats() {
-            document.getElementById('total-orders').textContent = orders.length;
-            document.getElementById('total-tests').textContent = testResults.length;
-            
-            const revenue = orders.reduce((sum, order) => sum + (order.price || 0), 0);
-            document.getElementById('total-revenue').textContent = revenue + ' лв';
-        }
+    function showSection(sectionName, element) {
+        document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
+        if (element) element.classList.add('active');
 
-        function showSection(sectionName) {
-            document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
-            event.target.classList.add('active');
+        document.getElementById('dashboard-section').style.display = 'none';
+        document.getElementById('orders-section').style.display = 'none';
+        document.getElementById('tests-section').style.display = 'none';
+        document.getElementById('results-section').style.display = 'none';
+        document.getElementById('reports-section').style.display = 'none';
 
-            document.getElementById('dashboard-section').style.display = 'none';
-            document.getElementById('orders-section').style.display = 'none';
-            document.getElementById('tests-section').style.display = 'none';
-            document.getElementById('results-section').style.display = 'none';
-            document.getElementById('reports-section').style.display = 'none';
+        document.getElementById(sectionName + '-section').style.display = 'block';
+    }
 
-            document.getElementById(sectionName + '-section').style.display = 'block';
-        }
+    function refreshOrders() {
+        loadData();
+        alert('Данните са обновени!');
+    }
 
-        function refreshOrders() {
+    function viewOrder(index) {
+        const order = orders[index];
+        alert(`Поръчка #${index + 1}\n\nИме: ${order.name}\nИмейл: ${order.email}\nТелефон: ${order.phone}\nФормула: ${order.formula}\nТип: ${order.reportType}\nЦена: ${order.price} лв`);
+    }
+
+    function changeStatus(index, status) {
+        if (orders[index]) {
+            orders[index].status = status;
+            localStorage.setItem('orders', JSON.stringify(orders));
             loadData();
-            alert('Данните са обновени!');
+        }
+    }
+
+    function deleteOrder(index) {
+        if (confirm('Сигурни ли сте, че искате да изтриете тази поръчка?')) {
+            orders.splice(index, 1);
+            localStorage.setItem('orders', JSON.stringify(orders));
+            loadData();
+        }
+    }
+
+    function generateReport() {
+        const type = document.getElementById('report-type').value;
+        let csvContent = '';
+        let filename = '';
+
+        if (type === 'orders') {
+            filename = 'orders.csv';
+            csvContent = 'ID,Име,Имейл,Телефон,Формула,Тип,Цена,Дата\n';
+            csvContent += orders.map((o, i) => 
+                `${i + 1},${o.name},${o.email},${o.phone},${o.formula},${o.reportType},${o.price},${o.date}`
+            ).join('\n');
+        } else if (type === 'tests') {
+            filename = 'tests.csv';
+            csvContent = 'ID,Темперамент,Меланхолик,Флегматик,Сангвиник,Холерик,Дата\n';
+            csvContent += testResults.map((t, i) => 
+                `${i + 1},${t.temperament},${t.scores?.melancholic},${t.scores?.phlegmatic},${t.scores?.sanguine},${t.scores?.choleric},${t.date}`
+            ).join('\n');
+        } else {
+            filename = 'stats.csv';
+            csvContent = `Поръчки,${orders.length}\nТестове,${testResults.length}\nПриходи,${orders.reduce((s, o) => s + (o.price || 0), 0)}`;
         }
 
-        function viewOrder(index) {
-            const order = orders[index];
-            alert(`Поръчка #${index + 1}\n\nИме: ${order.name}\nИмейл: ${order.email}\nТелефон: ${order.phone}\nФормула: ${order.formula}\nТип: ${order.reportType}\nЦена: ${order.price} лв`);
-        }
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = filename;
+        link.click();
 
-        function deleteOrder(index) {
-            if (confirm('Сигурни ли сте, че искате да изтриете тази поръчка?')) {
-                orders.splice(index, 1);
-                localStorage.setItem('orders', JSON.stringify(orders));
-                loadData();
-            }
-        }
+        alert(`Отчетът ${filename} е изтеглен!`);
+    }
 
-        function generateReport() {
-            const type = document.getElementById('report-type').value;
-            
-            let csvContent = '';
-            let filename = '';
-
-            if (type === 'orders') {
-                filename = 'orders.csv';
-                csvContent = 'ID,Име,Имейл,Телефон,Формула,Тип,Цена,Дата\n';
-                csvContent += orders.map((o, i) => 
-                    `${i + 1},${o.name},${o.email},${o.phone},${o.formula},${o.reportType},${o.price},${o.date}`
-                ).join('\n');
-            } else if (type === 'tests') {
-                filename = 'tests.csv';
-                csvContent = 'ID,Темперамент,Меланхолик,Флегматик,Сангвиник,Холерик,Дата\n';
-                csvContent += testResults.map((t, i) => 
-                    `${i + 1},${t.temperament},${t.scores?.melancholic},${t.scores?.phlegmatic},${t.scores?.sanguine},${t.scores?.choleric},${t.date}`
-                ).join('\n');
-            } else {
-                filename = 'stats.csv';
-                csvContent = `Поръчки,${orders.length}\nТестове,${testResults.length}\nПриходи,${orders.reduce((s, o) => s + (o.price || 0), 0)}`;
-            }
-
-            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = filename;
-            link.click();
-
-            alert(`Отчетът ${filename} е изтеглен!`);
-        }
-
-        window.addEventListener('load', loadData);
-    </script>
-</body>
-</html>
+    window.addEventListener('load', loadData);
+</script>

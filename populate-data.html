@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Зареждане на тестови данни</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h2>Тестови данни се зареждат...</h2>
+    <p>Моля, изчакайте...</p>
+    
+    <script>
+        // Тестови резултати от тестове
+        const testResults = [
+            {
+                date: new Date('2026-04-20').toISOString(),
+                temperament: 'Melancholic',
+                scores: { melancholic: 45, phlegmatic: 30, sanguine: 15, choleric: 10 }
+            },
+            {
+                date: new Date('2026-04-22').toISOString(),
+                temperament: 'Phlegmatic',
+                scores: { melancholic: 20, phlegmatic: 50, sanguine: 20, choleric: 10 }
+            },
+            {
+                date: new Date('2026-04-25').toISOString(),
+                temperament: 'Sanguine',
+                scores: { melancholic: 10, phlegmatic: 25, sanguine: 50, choleric: 15 }
+            },
+            {
+                date: new Date('2026-04-28').toISOString(),
+                temperament: 'Choleric',
+                scores: { melancholic: 15, phlegmatic: 20, sanguine: 25, choleric: 40 }
+            },
+            {
+                date: new Date('2026-05-01').toISOString(),
+                temperament: 'Melancholic',
+                scores: { melancholic: 40, phlegmatic: 35, sanguine: 15, choleric: 10 }
+            }
+        ];
+        
+        // Тестови поръчки
+        const orders = [
+            {
+                name: 'Иван Иванов',
+                email: 'ivan@example.com',
+                phone: '0888123456',
+                formula: 'LLL-RLL-RRR',
+                reportType: 'Безплатен',
+                price: 0,
+                date: new Date('2026-04-21').toISOString(),
+                status: 'completed'
+            },
+            {
+                name: 'Мария Петрова',
+                email: 'maria@example.com',
+                phone: '0899123456',
+                formula: 'RRL-LLR-RLR',
+                reportType: 'Платен',
+                price: 25,
+                date: new Date('2026-04-23').toISOString(),
+                status: 'processing'
+            },
+            {
+                name: 'Георги Стоянов',
+                email: 'georgi@example.com',
+                phone: '0877123456',
+                formula: 'LLR-RLR-LLR',
+                reportType: 'Платен',
+                price: 25,
+                date: new Date('2026-04-26').toISOString(),
+                status: 'new'
+            },
+            {
+                name: 'Елена Димитрова',
+                email: 'elena@example.com',
+                phone: '0888234567',
+                formula: 'RRL-RRL-RLL',
+                reportType: 'Безплатен',
+                price: 0,
+                date: new Date('2026-04-29').toISOString(),
+                status: 'completed'
+            },
+            {
+                name: 'Петър Николов',
+                email: 'petar@example.com',
+                phone: '0899234567',
+                formula: 'LLL-LLL-RRR',
+                reportType: 'Платен',
+                price: 25,
+                date: new Date('2026-05-02').toISOString(),
+                status: 'new'
+            }
+        ];
+        
+        // Запазване в localStorage
+        localStorage.setItem('test_results', JSON.stringify(testResults));
+        localStorage.setItem('orders', JSON.stringify(orders));
+        
+        alert('Тестовите данни са заредени успешно! Отворете admin.html за да ги видите.');
+        window.location.href = 'admin.html';
+    </script>
+</body>
+</html>
