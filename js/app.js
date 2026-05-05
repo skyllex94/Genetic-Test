@@ -223,3 +223,82 @@ function emailResponse(message)
         return alert("Грешка с изпращането, моля проверете дали всички папили са въведели, ако грешката продължава свържете се с нас чрез контактната форма.");
     }
 }
+
+// ---- Unified confirmation handler ----
+function confirmSelectionHandler() {
+    // Check if mobile version is visible
+    let mobileSection = document.getElementById("primaryMobile");
+    let isMobile = mobileSection && window.getComputedStyle(mobileSection).display !== "none";
+
+    if (isMobile) {
+        mobileConfirm();
+    } else {
+        confirmData();
+    }
+}
+
+// ---- Mobile form confirmation ----
+function mobileConfirm()
+{
+    const fingerprintTypes = {
+        "1": "Спирала",
+        "2": "Двойна Спирала",
+        "3": "Дъга",
+        "4": "R-Примка",
+        "5": "L-Примка",
+        "6": "Палатковидна Дъга"
+    };
+
+    let name = document.getElementById("mobile-name").value;
+    let email = document.getElementById("mobile-email").value;
+    let age = document.getElementById("mobile-age").value;
+    let genderSelect = document.getElementById("mobile-gender");
+    let gender = genderSelect.options[genderSelect.selectedIndex].text;
+
+    let leftThumb = fingerprintTypes[document.getElementById("mobile-left-thumb").value];
+    let leftIndex = fingerprintTypes[document.getElementById("mobile-left-index").value];
+    let leftMiddle = fingerprintTypes[document.getElementById("mobile-left-middle").value];
+    let leftRing = fingerprintTypes[document.getElementById("mobile-left-ring").value];
+    let leftPinky = fingerprintTypes[document.getElementById("mobile-left-pinky").value];
+
+    let rightThumb = fingerprintTypes[document.getElementById("mobile-right-thumb").value];
+    let rightIndex = fingerprintTypes[document.getElementById("mobile-right-index").value];
+    let rightMiddle = fingerprintTypes[document.getElementById("mobile-right-middle").value];
+    let rightRing = fingerprintTypes[document.getElementById("mobile-right-ring").value];
+    let rightPinky = fingerprintTypes[document.getElementById("mobile-right-pinky").value];
+
+    if (name && email && age && leftThumb && leftIndex && leftMiddle && leftRing && leftPinky &&
+        rightThumb && rightIndex && rightMiddle && rightRing && rightPinky) {
+
+        let emailBody = "Име: " + name + "\n";
+        emailBody += "Имейл: " + email + "\n";
+        emailBody += "Години: " + age + "\n";
+        emailBody += "Пол: " + gender + "\n";
+        emailBody += "\n" + " --- Пръстови отпечатъци ---" + "\n" + "\n";
+
+        emailBody += "Ляв Палец : " + leftThumb + "\n";
+        emailBody += "Ляв Показалец : " + leftIndex + "\n";
+        emailBody += "Ляв Среден : " + leftMiddle + "\n";
+        emailBody += "Ляв Безимен : " + leftRing + "\n";
+        emailBody += "Ляво Кутре : " + leftPinky + "\n";
+        emailBody += "Десен Палец : " + rightThumb + "\n";
+        emailBody += "Десен Показалец : " + rightIndex + "\n";
+        emailBody += "Десен Среден : " + rightMiddle + "\n";
+        emailBody += "Десен Безимен : " + rightRing + "\n";
+        emailBody += "Дясно Кутре : " + rightPinky + "\n";
+
+        let message = document.getElementById("message");
+        message.value = emailBody;
+
+        document.getElementById("form-name").value = name;
+        document.getElementById("form-email").value = email;
+        document.getElementById("form-age").value = age;
+        document.getElementById("form-gender").value = gender;
+
+        document.getElementById("sendData").disabled = false;
+        document.getElementById("confirmSelection").disabled = true;
+    }
+    else {
+        alert("Моля въведете нужната информация във всички полета.");
+    }
+}

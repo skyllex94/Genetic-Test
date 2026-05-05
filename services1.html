@@ -263,19 +263,19 @@
             <form>
                 <div class="row d-flex justify-content-center">
                     <div class="col-md-3 mb-3">
-                        <input type="text" name="name" id="mobile-name" class="form-control" placeholder="Име" required>
+                        <input type="text" name="name" id="mobile-name" class="form-control" placeholder="Име" autocomplete="name" required>
                     </div>
                     <div class="col-md-3 mb-3">
-                        <select class="form-select" id="mobile-gender">
+                        <select class="form-select" id="mobile-gender" autocomplete="sex">
                             <option value="1">Мъж</option>
                             <option value="2">Жена</option>
                         </select>
                     </div>
                     <div class="col-md-3 mb-3">
-                        <input type="number" name="age" id="mobile-age" class="form-control" placeholder="Навършени години" required>
+                        <input type="number" name="age" id="mobile-age" class="form-control" placeholder="Навършени години" autocomplete="age" required>
                     </div>
                     <div class="col-md-3 mb-3">
-                        <input type="email" name="email" id="mobile-email" class="form-control" placeholder="Имейл" required>
+                        <input type="email" name="email" id="mobile-email" class="form-control" placeholder="Имейл" autocomplete="email" required>
                     </div>
                 </div>
             </form>
@@ -365,10 +365,90 @@
             </div>
         </div>
 
-        <div class="text-center my-4">
-            <button type="button" id="mobile-confirm" class="btn btn-primary btn-lg me-2" onclick="mobileConfirm()">Потвърди</button>
-            <button type="button" id="mobile-send" class="btn btn-success btn-lg" onclick="sendMobileFormByEmail()" disabled>Изпрати данните</button>
+        <div class="card mt-3">
+            <div class="row justify-content-center h-100 py-3">
+                <div class="col-lg-2 mx-auto px-5">
+                    <p class="text-center mt-3 lead">Дясна Ръка</p>
+                </div>
+                <div class="col-lg-10">
+                    <div class="row justify-content-center">
+                        <div class="col-md-2 text-center mb-2">
+                            <div class="card border-dark mx-auto mx-md-0 h-100" style="max-width: 18rem;" id="Десен Палец">
+                                <div class="card-header">Палец</div>
+                                <select id="mobile-right-thumb" class="form-select">
+                                    <option value="1">Спирала</option>
+                                    <option value="2">Двойна Спирала</option>
+                                    <option value="3">Дъга</option>
+                                    <option value="4">R-Примка</option>
+                                    <option value="5">L-Примка</option>
+                                    <option value="6">Палатковидна Дъга</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2 text-center mb-2">
+                            <div class="card border-dark mx-auto mx-md-0 h-100" style="max-width: 18rem;" id="Десен Показалец">
+                                <div class="card-header">Показалец</div>
+                                <select id="mobile-right-index" class="form-select">
+                                    <option value="1">Спирала</option>
+                                    <option value="2">Двойна Спирала</option>
+                                    <option value="3">Дъга</option>
+                                    <option value="4">R-Примка</option>
+                                    <option value="5">L-Примка</option>
+                                    <option value="6">Палатковидна Дъга</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2 text-center mb-2">
+                            <div class="card border-dark mx-auto mx-md-0 h-100" style="max-width: 18rem;" id="Десен Среден">
+                                <div class="card-header">Среден</div>
+                                <select id="mobile-right-middle" class="form-select">
+                                    <option value="1">Спирала</option>
+                                    <option value="2">Двойна Спирала</option>
+                                    <option value="3">Дъга</option>
+                                    <option value="4">R-Примка</option>
+                                    <option value="5">L-Примка</option>
+                                    <option value="6">Палатковидна Дъга</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2 text-center mb-2">
+                            <div class="card border-dark mx-auto mx-md-0 h-100" style="max-width: 18rem;" id="Десен Безимен">
+                                <div class="card-header">Безимен</div>
+                                <select id="mobile-right-ring" class="form-select">
+                                    <option value="1">Спирала</option>
+                                    <option value="2">Двойна Спирала</option>
+                                    <option value="3">Дъга</option>
+                                    <option value="4">R-Примка</option>
+                                    <option value="5">L-Примка</option>
+                                    <option value="6">Палатковидна Дъга</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2 text-center mb-2">
+                            <div class="card border-dark mx-auto mx-md-0 h-100" style="max-width: 18rem;" id="Дясно Кутре">
+                                <div class="card-header">Кутре</div>
+                                <select id="mobile-right-pinky" class="form-select">
+                                    <option value="1">Спирала</option>
+                                    <option value="2">Двойна Спирала</option>
+                                    <option value="3">Дъга</option>
+                                    <option value="4">R-Примка</option>
+                                    <option value="5">L-Примка</option>
+                                    <option value="6">Палатковидна Дъга</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="alert">
+                                <i class="fa-solid fa-circle-info"></i>
+                                При затруднения с индентифицирането на типът отпечатък, моля посетете нашата
+                                <a href="/help.html">помощна страница.</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
     </section>
 
     <section id="textDesktop" class="container mb-5 d-none d-md-block d-lg-block d-xl-block">
@@ -394,21 +474,21 @@
                     <p class="text-center mb-4">Моля попълнете вашите данни преди да продължите с определянето на пръстовите отпечатъци.</p>
                     <form>
                         <div class="row d-flex justify-content-center">
-                            <div class="col-md-3 mb-3">
-                                <input type="text" name="name" id="name" class="form-control" placeholder="Име" required>
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <select class="form-select" id="gender">
-                                    <option value="1">Мъж</option>
-                                    <option value="2">Жена</option>
-                                </select>
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <input type="number" name="age" id="age" class="form-control" placeholder="Навършени години" required>
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <input type="email" name="email" id="email" class="form-control" placeholder="Имейл" required>
-                            </div>
+                    <div class="col-md-3 mb-3">
+                        <input type="text" name="name" id="name" class="form-control" placeholder="Име" autocomplete="name" required>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <select class="form-select" id="gender" autocomplete="sex">
+                            <option value="1">Мъж</option>
+                            <option value="2">Жена</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <input type="number" name="age" id="age" class="form-control" placeholder="Навършени години" autocomplete="age" required>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <input type="email" name="email" id="email" class="form-control" placeholder="Имейл" autocomplete="email" required>
+                    </div>
                         </div>
                     </form>
                 </div>
@@ -611,18 +691,18 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <form id="online-form" action="https://formsubmit.co/genetictest-sv@abv.bg" method="POST">
-                    <input type="hidden" name="_subject" value="Нов онлайн отчет - Биометричен тест">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" id="form-name" name="name">
-                    <input type="hidden" id="form-email" name="email">
-                    <input type="hidden" id="form-age" name="age">
-                    <input type="hidden" id="form-gender" name="gender">
-                    <textarea id="message" name="message" hidden></textarea>
+                <input type="hidden" name="_subject" value="Нов онлайн отчет - Биометричен тест" autocomplete="off">
+                <input type="hidden" name="_template" value="table" autocomplete="off">
+                <input type="hidden" id="form-name" name="name" autocomplete="off">
+                <input type="hidden" id="form-email" name="email" autocomplete="off">
+                <input type="hidden" id="form-age" name="age" autocomplete="off">
+                <input type="hidden" id="form-gender" name="gender" autocomplete="off">
+                <textarea id="message" name="message" hidden autocomplete="off"></textarea>
 
-                    <div class="text-center">
-                        <button type="button" id="confirmSelection" class="btn btn-primary btn-lg me-2" onclick="confirmData()">Потвърди</button>
-                        <button type="submit" id="sendData" class="btn btn-success btn-lg" disabled>Изпрати данните</button>
-                    </div>
+                <div class="text-center">
+                    <button type="button" id="confirmSelection" class="btn btn-primary btn-lg me-2" onclick="confirmSelectionHandler()">Потвърди</button>
+                    <button type="submit" id="sendData" class="btn btn-success btn-lg" disabled>Изпрати данните</button>
+                </div>
                 </form>
             </div>
         </div>
